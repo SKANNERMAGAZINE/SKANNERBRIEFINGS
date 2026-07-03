@@ -400,7 +400,7 @@ textarea:focus-visible {
 .home-theme-card{border:2px solid var(--ink);background:#fff;text-decoration:none;color:inherit;display:flex;flex-direction:column;overflow:hidden;transition:transform .14s;}
 .home-theme-card:hover{transform:translateY(-3px);}
 .home-theme-locked{border-color:var(--rule);background:var(--paper);opacity:.85;}
-.home-theme-img{height:130px;position:relative;overflow:hidden;}
+.home-theme-img{height:200px;position:relative;overflow:hidden;}
 .home-theme-badge{position:absolute;top:10px;left:10px;font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;}
 .home-theme-badge-on{background:var(--sage,#39FF14);color:#0D0D0D;}
 .home-theme-badge-soon{background:var(--ink);color:#fff;}
