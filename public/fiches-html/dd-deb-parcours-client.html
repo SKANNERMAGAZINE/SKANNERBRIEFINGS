@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5"/>
+<title>Le parcours client en ligne — Briefings by Skanner Magazine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=General+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet"/>
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700,800,900&display=swap" rel="stylesheet"/>
+<style>
+:root{--glacial:'General Sans','Helvetica Neue',Arial,sans-serif;}
+
+:root{
+  --ink:#0D0D0D;--white:#fff;--paper:#F8F7F5;--rule:#DDDBD6;--muted:#7A7770;
+  --fluo-yellow:#E8FF00;   /* jaune fluo */
+  --fluo-violet:#C77DFF;   /* violet fluo */
+  --fluo-green:#39FF14;    /* vert fluo */
+  --fluo-pink:#FF6FD8;     /* rose fluo */
+  --fluo-blue:#4DD2FF;     /* bleu fluo */
+  --sage:#39FF14;          /* on réutilise le vert fluo partout où --sage était */
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+body{font-family:'General Sans','Helvetica Neue',Arial,sans-serif;background:var(--white);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+
+.sitenav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);border-bottom:1px solid var(--rule);backdrop-filter:blur(8px);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 40px;height:56px;}
+.nav-left{display:flex;align-items:center;gap:4px;}
+.nav-link{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:6px 14px;transition:color .12s;}
+.nav-link:hover{color:var(--ink);}
+.nav-center{text-align:center;justify-self:center;}
+.logo-pre{font-size:8px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:2px;}
+.logo-s{font-size:17px;font-weight:900;letter-spacing:-.02em;text-transform:uppercase;font-style:italic;}
+.logo-mag{font-size:17px;font-weight:400;letter-spacing:.01em;text-transform:uppercase;font-style:normal;}
+.nav-right{display:flex;align-items:center;justify-content:flex-end;gap:12px;}
+.nav-badge{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:3px 9px;border:1px solid var(--rule);color:var(--muted);}
+
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:11px 40px;border-bottom:1px solid var(--rule);background:var(--paper);}
+.breadcrumb .sep{color:var(--rule);}
+.breadcrumb .active{color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:340px 1fr;align-items:start;}
+.col-img{position:sticky;top:56px;height:calc(100vh - 56px);overflow:hidden;background:var(--paper);border-right:1px solid var(--rule);align-self:start;}
+.col-img img{width:100%;height:100%;object-fit:cover;object-position:center;}
+.col-content{min-width:0;}
+
+.head{padding:48px 56px 40px;border-bottom:1px solid var(--rule);}
+.tags{display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap;}
+.tag{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border:1px solid var(--rule);color:var(--muted);}
+.tag.lvl{color:#0D0D0D;border-color:var(--ink);background:var(--fluo-green);font-weight:800;}
+h1.title{font-size:clamp(34px,4.5vw,58px);font-weight:900;letter-spacing:-.03em;line-height:.94;text-transform:uppercase;margin-bottom:18px;}
+.lead{font-size:15px;line-height:1.7;color:var(--muted);border-left:2px solid var(--ink);padding-left:18px;max-width:580px;}
+.lead strong{color:var(--ink);font-weight:600;}
+
+.meta{display:flex;flex-wrap:wrap;border-bottom:1px solid var(--rule);padding:0 56px;}
+.meta-item{font-size:11px;color:var(--muted);padding:14px 48px 14px 0;}
+.meta-item strong{color:var(--ink);font-weight:700;}
+
+.body{padding:8px 56px 64px;}
+.section{margin-top:72px;scroll-margin-top:72px;}
+.sec-label{display:flex;align-items:center;gap:0;margin-bottom:36px;background:var(--ink);color:#fff;}
+.sec-num{font-size:18px;font-weight:900;letter-spacing:.02em;color:#0D0D0D;background:var(--fluo-yellow);flex-shrink:0;padding:20px 22px;align-self:stretch;display:flex;align-items:center;}
+.sec-title-txt{font-size:clamp(18px,2.3vw,25px);font-weight:900;letter-spacing:-.01em;line-height:1.15;text-transform:uppercase;padding:18px 24px;color:#fff;}
+.p{font-size:15px;line-height:1.9;margin-bottom:22px;}
+.p.muted{color:var(--muted);}
+.p b,.p strong{font-weight:700;}
+
+/* GRAND CHIFFRE EN EXERGUE — style magazine */
+.stat{margin:44px 0;padding:36px 40px;background:var(--ink);color:#fff;display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center;}
+.stat-num{font-size:clamp(60px,9.5vw,116px);font-weight:900;letter-spacing:-.04em;line-height:.8;white-space:nowrap;color:var(--fluo-green);}
+.stat-txt{font-size:15px;line-height:1.65;color:rgba(255,255,255,.92);border-left:3px solid var(--fluo-green);padding-left:22px;}
+.stat-txt b{font-weight:700;color:#fff;}
+.stat-txt .src{display:block;margin-top:10px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--fluo-green);}
+
+/* listes éditoriales (remplacent les tableaux) */
+.points{margin:18px 0;}
+.point{display:flex;gap:20px;padding:20px 0;border-bottom:1px solid rgba(0,0,0,.08);}
+.point:last-child{border-bottom:none;}
+.point-k{flex-shrink:0;width:140px;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.02em;line-height:1.3;}
+.point-k small{display:block;font-size:11px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted);margin-top:2px;}
+.point-v{font-size:14px;line-height:1.7;color:var(--ink);}
+.point-v b{font-weight:700;}
+
+.arrow-list{margin:18px 0;}
+.al{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid rgba(0,0,0,.08);}
+.al:last-child{border-bottom:none;}
+.al-a{color:var(--fluo-violet);font-weight:900;flex-shrink:0;font-size:15px;margin-top:1px;}
+.al p{font-size:14px;line-height:1.7;}
+.al strong{font-weight:700;}
+
+/* entonnoir en liste éditoriale */
+.funnel{margin:22px 0;}
+.fn{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid rgba(0,0,0,.08);}
+.fn:last-child{border-bottom:none;}
+.fn-step{font-size:14px;font-weight:700;background:linear-gradient(transparent 28%, var(--fluo-yellow) 28%);padding:2px 5px;display:inline;}
+.fn-step small{font-weight:400;color:var(--muted);}
+.fn-val{font-size:20px;font-weight:900;letter-spacing:-.02em;white-space:nowrap;}
+.fn-val small{font-size:11px;font-weight:600;color:var(--muted);margin-left:8px;letter-spacing:.04em;}
+
+.pull{margin:44px 0;padding:32px 34px;background:#0D0D0D;color:#fff;position:relative;}
+.pull::before{content:"\201C";position:absolute;top:8px;left:18px;font-size:64px;line-height:1;color:var(--fluo-yellow);font-weight:900;}
+.pull p{font-size:23px;font-weight:600;font-style:normal;line-height:1.4;margin-bottom:12px;padding-left:36px;}
+.pull cite{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--fluo-yellow);font-style:normal;padding-left:36px;display:block;}
+
+.gloss{margin:8px 0 0;padding:8px 0 0;}
+.gloss-l{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin-bottom:28px;}
+.gl-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.gl-item{display:flex;flex-direction:column;gap:12px;padding:22px;background:var(--ink);}
+.gl-term{align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:var(--ink);background:var(--pastel,#C4B5FD);padding:6px 13px;}
+.gl-def{display:block;font-size:13px;line-height:1.6;color:rgba(255,255,255,.75);}
+
+.quiz{margin-top:8px;padding:40px;background:var(--paper);border-top:3px solid var(--ink);}
+.quiz-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px;}
+.quiz-head .qbadge{font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#0D0D0D;border:none;background:var(--fluo-violet);padding:5px 12px;}
+.quiz-head .qttl{font-size:clamp(22px,2.8vw,30px);font-weight:900;letter-spacing:-.02em;text-transform:uppercase;}
+.quiz-intro p{font-size:14px;color:var(--muted);margin-bottom:28px;}
+.q{margin-bottom:22px;padding:22px 24px;background:#fff;border:1px solid var(--rule);}
+.qn{font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#0D0D0D;background:var(--fluo-violet);display:inline-block;padding:3px 9px;margin-bottom:12px;}
+.qt{font-size:16px;font-weight:700;margin-bottom:16px;line-height:1.45;}
+.opts{display:flex;flex-direction:column;gap:8px;}
+.opt{text-align:left;font-family:inherit;font-size:14px;color:var(--ink);background:#fff;border:1px solid var(--rule);padding:12px 16px;cursor:pointer;transition:all .14s;line-height:1.5;}
+.opt:hover:not(:disabled){border-color:var(--ink);}
+.opt:disabled{cursor:default;}
+.opt.ok{border-color:#0D0D0D;background:var(--fluo-green);color:#0D0D0D;font-weight:700;}
+.opt.no{border-color:#C8273A;background:rgba(200,39,58,.06);color:#C8273A;}
+.fb{display:none;margin-top:12px;padding:14px 18px;font-size:13px;line-height:1.6;background:#0D0D0D;color:#fff;border-left:4px solid var(--fluo-green);}
+.fb.show{display:block;}
+.score{display:none;margin-top:24px;padding:36px;background:var(--ink);color:#fff;text-align:center;}
+.score.show{display:block;}
+.score-l{font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--fluo-violet);margin-bottom:10px;}
+.score-n{font-size:72px;font-weight:900;letter-spacing:-.04em;line-height:1;margin-bottom:12px;color:var(--fluo-green);}
+.score-m{font-size:14px;line-height:1.6;color:rgba(255,255,255,.8);max-width:380px;margin:0 auto;}
+
+.recap{margin-top:8px;padding:0;background:none;color:var(--ink);}
+.recap .lbl{font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:22px;color:var(--ink);}
+
+.foot{padding:24px 56px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--rule);margin-top:46px;}
+.foot-copy{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.backbtn{position:fixed;top:14px;left:14px;z-index:1000;background:#fff;color:#0D0D0D;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:9px 15px;border:1px solid var(--rule);}
+
+@media(max-width:768px){
+  .sitenav{grid-template-columns:1fr auto;padding:0 16px;height:52px;}
+  .nav-left{display:none;}
+  .layout{grid-template-columns:1fr;}
+  .col-img{display:none;}
+  .breadcrumb,.head,.meta,.body,.foot{padding-left:20px;padding-right:20px;}
+  .quiz{padding:24px 20px;}
+  .q{padding:18px 16px;}
+  .stat{padding:24px;gap:14px;}
+  .recap{padding:24px;}
+  .gl-grid{grid-template-columns:1fr;gap:14px;}
+  .meta-item{padding-right:28px;}
+  h1.title{font-size:30px;}
+  .stat{grid-template-columns:1fr;gap:12px;}
+  .stat-num{font-size:64px;}
+  .point{flex-direction:column;gap:6px;}
+  .point-k{width:auto;}
+}
+
+/* mots-clés en gras : surlignage éditorial discret */
+.body .p strong, .body .p b, .body .point-v b, .body .al p strong{font-weight:700;background:linear-gradient(transparent 30%, var(--fluo-yellow) 30%);padding:1px 3px;}
+
+/* tableau À retenir */
+.recap-tbl{width:100%;border-collapse:collapse;}
+.recap-tbl td{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.15);vertical-align:top;font-size:14px;line-height:1.65;}
+.recap-tbl tr:last-child td{border-bottom:none;}
+.recap-tbl .rt-k{width:160px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;font-size:12px;padding-right:24px;padding-top:18px;color:var(--fluo-yellow);}
+.recap-tbl .rt-v{color:rgba(255,255,255,.92);}
+@media(max-width:768px){
+  .recap-tbl td{display:block;border-bottom:none;padding:4px 0;}
+  .recap-tbl .rt-k{width:auto;padding-top:14px;}
+  .recap-tbl tr{display:block;border-bottom:1px solid var(--rule);padding-bottom:10px;}
+}
+
+/* Barre de progression de lecture */
+.readbar{position:fixed;top:56px;left:0;right:0;height:3px;background:transparent;z-index:99;}
+.readbar-fill{height:100%;width:0;background:var(--fluo-violet);transition:width .1s linear;}
+@media(max-width:768px){.readbar{top:52px;}}
+
+/* Sommaire */
+.toc{margin:8px 0 12px;padding:24px;border:1px solid var(--rule);background:var(--paper);}
+.toc-label{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.toc-item{display:flex;align-items:baseline;gap:14px;padding:10px 0;border-bottom:1px solid var(--rule);transition:padding-left .15s;}
+.toc-item:last-child{border-bottom:none;}
+.toc-item:hover{padding-left:8px;}
+.toc-n{font-size:12px;font-weight:800;color:#0D0D0D;background:var(--fluo-yellow);padding:2px 7px;flex-shrink:0;}
+.toc-t{font-size:14px;font-weight:600;color:var(--ink);}
+
+/* retour haut */
+.totop{display:inline-flex;align-items:center;gap:8px;margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+.totop:hover{color:var(--ink);}
+
+a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:2px;}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important;}}
+
+/* Onglets sticky */
+.tabs{position:sticky;top:56px;z-index:90;display:flex;gap:8px;background:var(--paper);border-bottom:1px solid var(--rule);padding:12px 56px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.tab{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:#fff;border:1px solid var(--rule);padding:12px 18px;cursor:pointer;transition:all .15s;white-space:nowrap;}
+.tab:hover{color:var(--ink);border-color:var(--ink);}
+.tab.active{color:#0D0D0D;background:var(--fluo-violet);border-color:var(--ink);font-weight:800;}
+
+to{opacity:1;transform:none;}}
+@media(max-width:768px){
+  .tabs{top:52px;padding:10px 16px;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .tab{padding:14px 16px;font-size:11px;white-space:nowrap;}
+}
+
+/* accents fluo variés sur les listes de définition */
+.points .point:nth-child(1) .point-k{color:#0D0D0D;}
+.points .point:nth-child(1) .point-k::before{content:'';display:inline-block;width:12px;height:12px;background:var(--fluo-violet);margin-right:8px;vertical-align:middle;}
+.points .point:nth-child(2) .point-k::before{content:'';display:inline-block;width:12px;height:12px;background:var(--fluo-pink);margin-right:8px;vertical-align:middle;}
+.points .point:nth-child(3) .point-k::before{content:'';display:inline-block;width:12px;height:12px;background:var(--fluo-blue);margin-right:8px;vertical-align:middle;}
+/* entonnoir : valeurs en bleu fluo highlight */
+.fn-val{position:relative;}
+.fn:nth-child(odd) .fn-val{background:linear-gradient(transparent 32%, var(--fluo-blue) 32%);padding:2px 5px;}
+.fn:nth-child(even) .fn-val{background:linear-gradient(transparent 32%, var(--fluo-pink) 32%);padding:2px 5px;}
+/* sommaire : numéros alternent jaune/rose */
+.toc-item:nth-child(even) .toc-n{background:var(--fluo-pink);}
+/* Topbar actions */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:24px 0;border-bottom:1px solid var(--rule);flex-wrap:wrap;}
+.topbar-info{font-size:11px;color:var(--muted);}
+.topbar-info strong{color:var(--ink);}
+.actions{display:flex;gap:10px;}
+.btn{font-family:inherit;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:12px 20px;cursor:pointer;border:1px solid var(--ink);background:#fff;color:var(--ink);transition:all .15s;}
+.btn:hover{background:var(--paper);}
+.btn-primary{background:var(--ink);color:#fff;}
+.btn-primary:hover{background:#000;}
+.btn:disabled{opacity:.5;cursor:wait;}
+
+/* Header */
+.head{padding:44px 0 32px;}
+.tags{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;}
+.tag{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border:1px solid var(--rule);color:var(--muted);}
+.tag.tpl{background:var(--fluo-violet);color:#0D0D0D;border-color:var(--ink);font-weight:800;}
+.tag.lvl{background:var(--fluo-green);color:#0D0D0D;border-color:var(--ink);font-weight:800;}
+h1{font-size:clamp(30px,4vw,48px);font-weight:900;letter-spacing:-.03em;line-height:.96;text-transform:uppercase;margin-bottom:16px;}
+.intro{font-size:15px;line-height:1.7;color:var(--muted);border-left:3px solid var(--fluo-yellow);padding-left:18px;max-width:620px;}
+.intro strong{color:var(--ink);font-weight:600;}
+
+/* Progress */
+.progress-wrap{margin:28px 0 8px;}
+.progress-label{display:flex;justify-content:space-between;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.progress-bar{height:6px;background:var(--paper);border:1px solid var(--rule);overflow:hidden;}
+.progress-fill{height:100%;width:0;background:var(--fluo-violet);transition:width .3s ease;}
+
+/* Sections du template */
+.tpl-section{margin:40px 0;}
+.tpl-sec-head{display:flex;align-items:center;gap:0;margin-bottom:24px;}
+.tpl-sec-num{font-size:18px;font-weight:900;color:#0D0D0D;background:var(--fluo-yellow);padding:14px 18px;align-self:stretch;display:flex;align-items:center;}
+.tpl-sec-title{font-size:clamp(17px,2.2vw,22px);font-weight:900;letter-spacing:-.01em;text-transform:uppercase;background:#0D0D0D;color:#fff;padding:14px 20px;flex:1;}
+.tpl-sec-desc{font-size:14px;line-height:1.7;color:var(--muted);margin-bottom:20px;}
+
+/* Champs */
+.field{margin-bottom:20px;}
+.field-label{display:block;font-size:12px;font-weight:700;letter-spacing:.02em;margin-bottom:8px;}
+.field-hint{font-size:12px;color:var(--muted);margin-bottom:8px;font-weight:400;}
+.field-input,.field-textarea{width:100%;font-family:inherit;font-size:14px;color:var(--ink);background:#fff;border:1px solid var(--ink);padding:12px 14px;transition:border-color .15s;}
+.field-input:focus,.field-textarea:focus{outline:none;border-color:var(--fluo-violet);border-width:2px;}
+.field-textarea{min-height:80px;resize:vertical;line-height:1.6;}
+
+/* Grille de canaux owned/earned/paid */
+.channels{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.channel{border:1px solid var(--ink);padding:18px;}
+.channel-tag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;margin-bottom:12px;color:#0D0D0D;}
+.channel:nth-child(1) .channel-tag{background:var(--fluo-violet);}
+.channel:nth-child(2) .channel-tag{background:var(--fluo-pink);}
+.channel:nth-child(3) .channel-tag{background:var(--fluo-blue);}
+.channel-textarea{width:100%;font-family:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--rule);padding:10px;min-height:100px;resize:vertical;line-height:1.6;}
+.channel-textarea:focus{outline:none;border-color:var(--ink);}
+
+/* Calculateur de chiffres */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.calc-card{border:1px solid var(--ink);padding:20px;}
+.calc-card .ck{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;}
+.calc-card .cd{font-size:11px;color:var(--muted);margin-bottom:14px;line-height:1.5;}
+.calc-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.calc-row label{font-size:12px;color:var(--muted);flex:1;}
+.calc-row input{width:120px;font-family:inherit;font-size:14px;border:1px solid var(--rule);padding:8px 10px;text-align:right;}
+.calc-row input:focus{outline:none;border-color:var(--fluo-violet);}
+.calc-result{margin-top:12px;padding:14px;background:#0D0D0D;color:#fff;display:flex;align-items:baseline;justify-content:space-between;}
+.calc-result .rl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fluo-green);}
+.calc-result .rv{font-size:26px;font-weight:900;letter-spacing:-.02em;color:var(--fluo-green);}
+.calc-result .rv.muted{color:var(--muted);font-size:18px;}
+
+/* Verdict LTV/CAC */
+.verdict{margin-top:16px;padding:18px 22px;border:2px solid var(--ink);font-size:14px;line-height:1.6;display:none;}
+.verdict.show{display:block;}
+.verdict.good{background:var(--fluo-green);}
+.verdict.bad{background:var(--fluo-pink);}
+.verdict strong{font-weight:800;}
+
+/* Plan d'action */
+.action-item{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--rule);}
+.action-check{width:22px;height:22px;border:2px solid var(--ink);flex-shrink:0;margin-top:2px;cursor:pointer;position:relative;background:#fff;}
+.action-check.checked{background:var(--fluo-green);}
+.action-check.checked::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;color:#0D0D0D;}
+.action-input{flex:1;font-family:inherit;font-size:14px;border:none;border-bottom:1px solid var(--rule);padding:4px 0;background:transparent;}
+.action-input:focus{outline:none;border-bottom-color:var(--fluo-violet);}
+
+.note{margin:32px 0;padding:28px 30px;background:#0D0D0D;border:2px solid var(--ink);font-size:14px;line-height:1.7;color:rgba(255,255,255,.9);}
+.note strong{color:var(--fluo-green);}
+
+.foot{padding:32px 0;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--rule);margin-top:40px;}
+.foot-copy{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.backbtn{position:fixed;top:14px;left:14px;z-index:1000;background:#fff;color:#0D0D0D;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:9px 15px;border:1px solid var(--rule);}
+
+@media(max-width:768px){
+  .sitenav{grid-template-columns:1fr auto;padding:0 16px;height:52px;}
+  .nav-left{display:none;}
+  .wrap{padding:0 18px;}
+  .breadcrumb{padding:11px 18px;}
+  .channels{grid-template-columns:1fr;}
+  .calc{grid-template-columns:1fr;}
+  h1{font-size:28px;}
+  .topbar{flex-direction:column;align-items:flex-start;}
+}
+/* Styles spécifiques à l'export PDF */
+.pdf-mode .backbtn,.pdf-mode .sitenav,.pdf-mode .actions,.pdf-mode .progress-wrap{display:none!important;}
+.pdf-mode .field-input,.pdf-mode .field-textarea,.pdf-mode .channel-textarea,.pdf-mode .calc-row input,.pdf-mode .action-input{border:1px solid #999;}
+
+/* Listes à choix multiples */
+.checklist{display:flex;flex-direction:column;gap:2px;margin-bottom:12px;}
+.checklist-col{gap:4px;}
+.check{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.5;padding:7px 0;cursor:pointer;color:var(--ink);}
+.check input[type=checkbox]{appearance:none;-webkit-appearance:none;width:18px;height:18px;border:2px solid var(--ink);background:#fff;flex-shrink:0;margin-top:1px;cursor:pointer;position:relative;}
+.check input[type=checkbox]:checked{background:var(--fluo-green);}
+.check input[type=checkbox]:checked::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px;color:#0D0D0D;}
+.check em{font-style:normal;color:var(--muted);font-size:12px;}
+
+/* À retenir : cards colorées */
+.recap-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.recap-card{padding:24px;background:#0D0D0D;color:#fff;border:2px solid var(--ink);display:flex;flex-direction:column;gap:10px;}
+.recap-card .rc-k{font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;}
+.recap-card .rc-v{font-size:14px;line-height:1.6;font-weight:500;color:rgba(255,255,255,.9);}
+@media(max-width:768px){.recap-grid{grid-template-columns:1fr;}}
+
+
+
+
+.panel{ display:none; }
+.panel.is-active{ display:block; }
+.tab{ cursor:pointer; }
+.tab.is-active{ color:#0D0D0D; background:var(--fluo-violet); border-color:var(--ink); font-weight:800; }
+
+.panel{ display:none; }
+.panel.is-active{ display:block; }
+.tab{ cursor:pointer; }
+.tab.is-active{ color:#0D0D0D; background:var(--fluo-violet); border-color:var(--ink); font-weight:800; }
+</style>
+</head>
+<body>
+<a href="/home" class="backbtn">← Retour</a>
+<nav class="sitenav">
+  <div class="nav-left">
+    <a href="/home" class="nav-link">Thématiques</a>
+    <a href="/formules" class="nav-link">Formules</a>
+    <a href="/waitlist" class="nav-link" style="color:var(--fluo-green);font-weight:800;">Waiting List</a>
+  </div>
+  <div class="nav-center">
+    <a href="/home" style="display:inline-flex;flex-direction:column;align-items:center;">
+      <span class="logo-pre">Briefings</span>
+      <span><span class="logo-s">SKANNER</span><span class="logo-mag">MAGAZINE</span></span>
+    </a>
+  </div>
+  <div class="nav-right"><span class="nav-badge">Data &amp; Digital</span></div>
+</nav>
+<div class="breadcrumb">
+  <a href="/home" style="color:var(--muted);">Accueil</a>
+  <span class="sep">/</span><span>Data &amp; Digital</span>
+  <span class="sep">/</span><span class="active">Chapitre 1 · Fiche 2</span>
+</div>
+<div class="layout">
+  <div class="col-img"><img src="/pr-2.jpg" alt="Le parcours client en ligne"/></div>
+  <div class="col-content">
+    <header class="head">
+      <div class="tags"><span class="tag">Data &amp; Digital</span><span class="tag lvl">Débutant</span></div>
+      <h1 class="title">Le parcours<br>client en ligne</h1>
+      <p class="lead">Un client n'achète jamais par hasard. Il suit un <strong>chemin en cinq étapes</strong>, de la découverte à la fidélité. Comprendre ce parcours, c'est savoir où agir pour transformer un visiteur en client — puis en client fidèle.</p>
+    </header>
+    <div class="meta">
+      <div class="meta-item">Niveau <strong>Débutant</strong></div>
+      <div class="meta-item">Durée <strong>13 min</strong></div>
+      <div class="meta-item">Chapitre <strong>1 — Fondations</strong></div>
+      <div class="meta-item">Fiche <strong>2 / 4</strong></div>
+    </div>
+    <div class="tabs" role="tablist">
+      <button class="tab is-active" type="button" data-panel="fiche">Fiche</button>
+      <button class="tab" type="button" data-panel="retenir">À retenir</button>
+      <button class="tab" type="button" data-panel="gloss">Glossaire</button>
+      <button class="tab" type="button" data-panel="quiz">Quiz</button>
+      <button class="tab" type="button" data-panel="template">Template</button>
+    </div>
+    <div class="body">
+      <div class="panel is-active" id="panel-fiche" role="tabpanel">
+
+        <nav class="toc" aria-label="Sommaire">
+          <div class="toc-label">Dans cette fiche</div>
+          <a href="#sec-1" class="toc-item"><span class="toc-n">01</span><span class="toc-t">Les 5 étapes du parcours client</span></a>
+          <a href="#sec-2" class="toc-item"><span class="toc-n">02</span><span class="toc-t">Ce que vit le client à chaque étape</span></a>
+          <a href="#sec-3" class="toc-item"><span class="toc-n">03</span><span class="toc-t">Les points de friction qui font fuir</span></a>
+          <a href="#sec-4" class="toc-item"><span class="toc-n">04</span><span class="toc-t">Accompagner au lieu de pousser</span></a>
+        </nav>
+
+        <section class="section" id="sec-1">
+          <div class="sec-label"><span class="sec-num">01</span><span class="sec-title-txt">Les 5 étapes du parcours client</span></div>
+          <p class="p">Un client n'achète jamais sur un coup de tête. Il traverse un <strong>parcours</strong>, de l'instant où il te découvre jusqu'à devenir fidèle. Comprendre ces étapes, c'est savoir où agir.</p>
+          <div class="arrow-list">
+            <div class="al"><span class="al-a">→</span><p><strong>DÉCOUVERTE.</strong> Le client te voit pour la première fois : une pub, un post, une recommandation. Il ne te connaît pas encore.</p></div>
+            <div class="al"><span class="al-a">→</span><p><strong>INTÉRÊT.</strong> Quelque chose l'accroche. Il visite ton site, lit, regarde. Il commence à se demander si c'est pour lui.</p></div>
+            <div class="al"><span class="al-a">→</span><p><strong>CONSIDÉRATION.</strong> Il compare, hésite, lit les avis. Il se projette mais n'est pas encore décidé.</p></div>
+            <div class="al"><span class="al-a">→</span><p><strong>ACHAT.</strong> Il passe à l'acte. C'est le moment clé — mais ce n'est pas la fin.</p></div>
+            <div class="al"><span class="al-a">→</span><p><strong>FIDÉLISATION.</strong> Après l'achat, il revient (ou pas). Un client qui revient coûte bien moins cher qu'un nouveau.</p></div>
+          </div>
+        </section>
+
+        <section class="section" id="sec-2">
+          <div class="sec-label"><span class="sec-num">02</span><span class="sec-title-txt">Ce que vit le client à chaque étape</span></div>
+          <p class="p">À chaque étape, le client a un <strong>état d'esprit différent</strong>. Lui parler pareil partout, c'est le perdre. Voici ce qu'il ressent.</p>
+          <div class="arrow-list">
+            <div class="al"><span class="al-a">→</span><p><strong>En découverte</strong>, il est curieux mais distrait. Il faut capter son attention en quelques secondes.</p></div>
+            <div class="al"><span class="al-a">→</span><p><strong>En intérêt</strong>, il cherche à comprendre. Il veut des réponses claires, pas un argumentaire de vente.</p></div>
+            <div class="al"><span class="al-a">→</span><p><strong>En considération</strong>, il doute. Il a besoin d'être rassuré : avis, garanties, preuves.</p></div>
+            <div class="al"><span class="al-a">→</span><p><strong>Au moment d'acheter</strong>, il veut que ce soit simple et rapide. La moindre complication le fait abandonner.</p></div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">7</div>
+            <div class="stat-txt">En moyenne, il faut <b>environ 7 contacts</b> avec une marque avant qu'un client achète. Rares sont ceux qui achètent dès la première visite.<span class="src">La règle des 7 points de contact</span></div>
+          </div>
+        </section>
+
+        <section class="section" id="sec-3">
+          <div class="sec-label"><span class="sec-num">03</span><span class="sec-title-txt">Les points de friction qui font fuir</span></div>
+          <p class="p">À chaque étape, il y a des <strong>frictions</strong> : ces petits obstacles qui découragent. Les repérer, c'est récupérer des clients qu'on perdait sans le savoir.</p>
+          <div class="arrow-list">
+            <div class="al"><span class="al-a">→</span><p><strong>Un site lent</strong> ou confus : le client part avant même de comprendre ce que tu proposes.</p></div>
+            <div class="al"><span class="al-a">→</span><p><strong>Trop d'étapes pour acheter</strong> : créer un compte, remplir dix champs… chaque clic en trop fait perdre des acheteurs.</p></div>
+            <div class="al"><span class="al-a">→</span><p><strong>Des frais surprise</strong> à la fin : rien ne fait plus abandonner un panier qu'un coût caché qui apparaît au dernier moment.</p></div>
+            <div class="al"><span class="al-a">→</span><p><strong>Le silence après l'achat</strong> : aucun email, aucun suivi. Le client se sent oublié et ne revient pas.</p></div>
+          </div>
+          <div class="pull"><p>« Chaque clic en trop sur le chemin de l'achat est un client en moins. La simplicité, c'est de la rentabilité. »</p><cite>Principe de base</cite></div>
+        </section>
+
+        <section class="section" id="sec-4">
+          <div class="sec-label"><span class="sec-num">04</span><span class="sec-title-txt">Accompagner au lieu de pousser</span></div>
+          <p class="p">Le bon réflexe n'est pas de <strong>pousser à vendre</strong> à tout prix, mais d'<strong>accompagner</strong> le client à son rythme, étape par étape.</p>
+          <div class="arrow-list">
+            <div class="al"><span class="al-a">→</span><p><strong>En découverte</strong>, donne de la valeur (un conseil, une idée) avant de demander quoi que ce soit.</p></div>
+            <div class="al"><span class="al-a">→</span><p><strong>En considération</strong>, rassure avec des preuves : avis clients, démonstrations, garanties.</p></div>
+            <div class="al"><span class="al-a">→</span><p><strong>À l'achat</strong>, enlève tous les obstacles : moins de champs, paiement simple, frais clairs.</p></div>
+            <div class="al"><span class="al-a">→</span><p><strong>Après l'achat</strong>, reste présent : un email de remerciement, un suivi, une attention. C'est là que naît la fidélité.</p></div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">5×</div>
+            <div class="stat-txt">Garder un client existant coûte <b>environ 5 fois moins cher</b> que d'en acquérir un nouveau. La fidélisation est l'étape la plus rentable.<span class="src">Coût de rétention vs acquisition</span></div>
+          </div>
+        </section>
+
+      </div>
+      <div class="panel" id="panel-retenir" role="tabpanel">
+
+        <div class="recap">
+          <div class="lbl">À retenir</div>
+          <div class="recap-grid">
+            <div class="recap-card"><div class="rc-k" style="color:var(--fluo-yellow);">5 étapes</div><div class="rc-v">Découverte, intérêt, considération, achat, fidélisation. Le client les traverse dans l'ordre.</div></div>
+            <div class="recap-card"><div class="rc-k" style="color:var(--fluo-violet);">État d'esprit</div><div class="rc-v">À chaque étape, le client ressent autre chose. On adapte le message, on ne parle pas pareil partout.</div></div>
+            <div class="recap-card"><div class="rc-k" style="color:var(--fluo-green);">Les frictions</div><div class="rc-v">Site lent, trop d'étapes, frais surprise, silence après-vente : chaque obstacle fait fuir.</div></div>
+            <div class="recap-card"><div class="rc-k" style="color:var(--fluo-pink);">Accompagner</div><div class="rc-v">Guider à son rythme plutôt que pousser. La fidélisation est l'étape la plus rentable.</div></div>
+          </div>
+        </div>
+
+      </div>
+      <div class="panel" id="panel-gloss" role="tabpanel">
+
+        <div class="gloss">
+          <div class="gloss-l">Glossaire</div>
+          <div class="gl-grid">
+          <div class="gl-item"><span class="gl-term" style="background:#E8FF00;color:#0D0D0D;">Parcours client</span><span class="gl-def">L'ensemble des étapes qu'un client traverse, de la découverte à la fidélisation.</span></div>
+          <div class="gl-item"><span class="gl-term" style="background:#C77DFF;color:#0D0D0D;">Découverte</span><span class="gl-def">Première étape : le moment où un client potentiel découvre la marque.</span></div>
+          <div class="gl-item"><span class="gl-term" style="background:#39FF14;color:#0D0D0D;">Considération</span><span class="gl-def">Étape où le client compare et hésite avant de décider.</span></div>
+          <div class="gl-item"><span class="gl-term" style="background:#FF6FD8;color:#0D0D0D;">Conversion</span><span class="gl-def">Le passage d'une étape à la suivante, notamment le moment de l'achat.</span></div>
+          <div class="gl-item"><span class="gl-term" style="background:#4DD2FF;color:#0D0D0D;">Friction</span><span class="gl-def">Tout obstacle qui freine ou décourage le client dans son parcours.</span></div>
+          <div class="gl-item"><span class="gl-term" style="background:#E8FF00;color:#0D0D0D;">Panier abandonné</span><span class="gl-def">Un achat commencé mais non terminé, souvent à cause d'une friction.</span></div>
+          <div class="gl-item"><span class="gl-term" style="background:#C77DFF;color:#0D0D0D;">Point de contact</span><span class="gl-def">Chaque interaction entre le client et la marque (pub, email, site…).</span></div>
+          <div class="gl-item"><span class="gl-term" style="background:#39FF14;color:#0D0D0D;">Fidélisation</span><span class="gl-def">Étape consistant à faire revenir un client qui a déjà acheté.</span></div>
+          <div class="gl-item"><span class="gl-term" style="background:#FF6FD8;color:#0D0D0D;">Rétention</span><span class="gl-def">Capacité à garder ses clients dans le temps.</span></div>
+          <div class="gl-item"><span class="gl-term" style="background:#4DD2FF;color:#0D0D0D;">Tunnel d'achat</span><span class="gl-def">La suite d'étapes techniques menant du panier au paiement.</span></div>
+          <div class="gl-item"><span class="gl-term" style="background:#E8FF00;color:#0D0D0D;">Réassurance</span><span class="gl-def">Éléments qui rassurent le client : avis, garanties, paiement sécurisé.</span></div>
+          <div class="gl-item"><span class="gl-term" style="background:#C77DFF;color:#0D0D0D;">Après-vente</span><span class="gl-def">Tout ce qui se passe après l'achat : suivi, support, relation.</span></div>
+          </div>
+        </div>
+
+      </div>
+      <div class="panel" id="panel-quiz" role="tabpanel">
+
+        <div class="quiz">
+        <div class="quiz-intro">
+          <div class="quiz-head"><span class="qbadge">Quiz</span><span class="qttl">Validez vos acquis</span></div>
+          <p>Cinq questions pour vérifier que le parcours client est clair.</p>
+        </div>
+        <div class="q" id="q1">
+          <p class="qn">Question 01 / 05</p>
+          <p class="qt">Quelle est la bonne suite des étapes du parcours client ?</p>
+          <div class="opts">
+            <button class="opt" data-ok="0" data-q="1">Achat, découverte, intérêt, fidélisation</button>
+            <button class="opt" data-ok="1" data-q="1">Découverte, intérêt, considération, achat, fidélisation</button>
+            <button class="opt" data-ok="0" data-q="1">Considération, achat, découverte, intérêt</button>
+          </div>
+          <div class="fb" id="f1"></div>
+        </div>
+        <div class="q" id="q2">
+          <p class="qn">Question 02 / 05</p>
+          <p class="qt">Pourquoi ne faut-il pas parler au client de la même façon à chaque étape ?</p>
+          <div class="opts">
+            <button class="opt" data-ok="1" data-q="2">Parce qu'il a un état d'esprit différent à chaque étape</button>
+            <button class="opt" data-ok="0" data-q="2">Parce que c'est plus joli</button>
+            <button class="opt" data-ok="0" data-q="2">Il faut au contraire toujours dire la même chose</button>
+          </div>
+          <div class="fb" id="f2"></div>
+        </div>
+        <div class="q" id="q3">
+          <p class="qn">Question 03 / 05</p>
+          <p class="qt">Lequel de ces éléments est une friction typique ?</p>
+          <div class="opts">
+            <button class="opt" data-ok="0" data-q="3">Un site rapide et clair</button>
+            <button class="opt" data-ok="1" data-q="3">Des frais surprise qui apparaissent à la fin</button>
+            <button class="opt" data-ok="0" data-q="3">Un email de remerciement après l'achat</button>
+          </div>
+          <div class="fb" id="f3"></div>
+        </div>
+        <div class="q" id="q4">
+          <p class="qn">Question 04 / 05</p>
+          <p class="qt">Combien de contacts faut-il en moyenne avant qu'un client achète ?</p>
+          <div class="opts">
+            <button class="opt" data-ok="0" data-q="4">Un seul</button>
+            <button class="opt" data-ok="1" data-q="4">Environ 7</button>
+            <button class="opt" data-ok="0" data-q="4">Plus de 50</button>
+          </div>
+          <div class="fb" id="f4"></div>
+        </div>
+        <div class="q" id="q5">
+          <p class="qn">Question 05 / 05</p>
+          <p class="qt">Quelle est l'étape la plus rentable du parcours ?</p>
+          <div class="opts">
+            <button class="opt" data-ok="0" data-q="5">La découverte</button>
+            <button class="opt" data-ok="1" data-q="5">La fidélisation</button>
+            <button class="opt" data-ok="0" data-q="5">La considération</button>
+          </div>
+          <div class="fb" id="f5"></div>
+        </div>
+        <div class="score" id="score">
+          <p class="score-l">Votre score</p>
+          <p class="score-n" id="sn">0 / 5</p>
+          <p class="score-m" id="sm"></p>
+        </div>
+        </div>
+
+      </div>
+      <div class="panel" id="panel-template" role="tabpanel">
+
+      <div class="topbar">
+        <div class="topbar-info">Template lié à <strong>Le parcours client en ligne</strong> · Chapitre 1 · Fiche 2 · Débutant</div>
+        <div class="actions">
+          <button class="btn" onclick="resetAll()">↺ Réinitialiser</button>
+          <button class="btn btn-primary" id="btn-pdf" onclick="exportPDF()">↓ Exporter en PDF</button>
+        </div>
+      </div>
+      <div id="export-zone">
+        <header class="head">
+          <div class="tags"><span class="tag tpl">Template</span><span class="tag">Data &amp; Digital</span><span class="tag lvl">Débutant</span></div>
+          <h1>Cartographie de mon<br>parcours client</h1>
+          <p class="intro">Dessine le parcours de <strong>tes propres clients</strong>. Pour chaque étape, note ce que vit ton client, repère les frictions et décide d'une action. Exporte ta carte en PDF.</p>
+        </header>
+        <div class="progress-wrap">
+          <div class="progress-label"><span>Progression</span><span id="ppct">0%</span></div>
+          <div class="progress-bar"><div class="progress-fill" id="pfill"></div></div>
+        </div>
+
+        <section class="tpl-section">
+          <div class="tpl-sec-head"><span class="tpl-sec-num">01</span><span class="tpl-sec-title">Mes 5 étapes</span></div>
+          <p class="tpl-sec-desc">Pour chaque étape, décris concrètement comment ton client te rencontre et avance.</p>
+          <div class="field"><label class="field-label">Découverte — comment me trouve-t-il ?</label><textarea class="field-textarea track" placeholder="Ex : via Instagram, une recommandation, une recherche Google…"></textarea></div>
+          <div class="field"><label class="field-label">Intérêt — qu'est-ce qui l'accroche ?</label><textarea class="field-textarea track" placeholder="Ex : un produit précis, mon style, un article…"></textarea></div>
+          <div class="field"><label class="field-label">Considération — qu'est-ce qui le fait hésiter ?</label><textarea class="field-textarea track" placeholder="Ex : le prix, le manque d'avis, la livraison…"></textarea></div>
+          <div class="field"><label class="field-label">Achat — comment se passe le passage à l'acte ?</label><textarea class="field-textarea track" placeholder="Ex : panier, paiement, compte obligatoire…"></textarea></div>
+          <div class="field"><label class="field-label">Fidélisation — que se passe-t-il après ?</label><textarea class="field-textarea track" placeholder="Ex : email de suivi, rien, programme fidélité…"></textarea></div>
+        </section>
+
+        <section class="tpl-section">
+          <div class="tpl-sec-head"><span class="tpl-sec-num">02</span><span class="tpl-sec-title">Mes frictions</span></div>
+          <p class="tpl-sec-desc">Coche les frictions que tu reconnais dans ton parcours actuel.</p>
+          <div class="checklist checklist-col">
+            <label class="check"><input type="checkbox" class="track"> Mon site est lent ou pas clair</label>
+            <label class="check"><input type="checkbox" class="track"> Il y a trop d'étapes pour acheter</label>
+            <label class="check"><input type="checkbox" class="track"> Des frais apparaissent au dernier moment</label>
+            <label class="check"><input type="checkbox" class="track"> Je demande de créer un compte avant l'achat</label>
+            <label class="check"><input type="checkbox" class="track"> Je manque d'avis ou d'éléments de réassurance</label>
+            <label class="check"><input type="checkbox" class="track"> Je ne recontacte pas le client après l'achat</label>
+          </div>
+        </section>
+
+        <section class="tpl-section">
+          <div class="tpl-sec-head"><span class="tpl-sec-num">03</span><span class="tpl-sec-title">Mon étape prioritaire</span></div>
+          <p class="tpl-sec-desc">Quelle étape vas-tu améliorer en premier ?</p>
+          <div class="checklist checklist-col">
+            <label class="check"><input type="checkbox" class="track"> Découverte — me faire connaître davantage</label>
+            <label class="check"><input type="checkbox" class="track"> Intérêt — mieux accrocher les visiteurs</label>
+            <label class="check"><input type="checkbox" class="track"> Considération — rassurer davantage</label>
+            <label class="check"><input type="checkbox" class="track"> Achat — simplifier le passage à l'acte</label>
+            <label class="check"><input type="checkbox" class="track"> Fidélisation — faire revenir les clients</label>
+          </div>
+        </section>
+
+        <section class="tpl-section">
+          <div class="tpl-sec-head"><span class="tpl-sec-num">04</span><span class="tpl-sec-title">Mes 3 actions</span></div>
+          <p class="tpl-sec-desc">Trois actions concrètes à lancer dans les 30 jours. Coche quand c'est fait.</p>
+          <div class="action-item"><div class="action-check"></div><input type="text" class="action-input track" placeholder="Action 1…"></div>
+          <div class="action-item"><div class="action-check"></div><input type="text" class="action-input track" placeholder="Action 2…"></div>
+          <div class="action-item"><div class="action-check"></div><input type="text" class="action-input track" placeholder="Action 3…"></div>
+        </section>
+
+        <div class="note">
+          <strong>Rappel de la fiche.</strong> Le client traverse <strong>5 étapes</strong>. À chacune, on adapte le message et on enlève les frictions. La <strong>fidélisation</strong> est l'étape la plus rentable : 5 fois moins chère que l'acquisition.
+        </div>
+      </div><!-- /export-zone -->
+
+      </div>
+    </div>
+    <footer class="foot">
+      <a href="/home" style="display:inline-flex;flex-direction:column;">
+        <span class="logo-pre">Briefings</span>
+        <span><span class="logo-s">SKANNER</span><span class="logo-mag">MAGAZINE</span></span>
+      </a>
+      <div class="foot-copy">© 2026 — Skanner Magazine</div>
+    </footer>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+<script>
+document.addEventListener('click', function(e){
+  var btn = e.target.closest('.tab'); if(!btn) return;
+  var name = btn.getAttribute('data-panel');
+  var tabs = document.querySelectorAll('.tab');
+  for(var i=0;i<tabs.length;i++){ if(tabs[i].getAttribute('data-panel')===name) tabs[i].classList.add('is-active'); else tabs[i].classList.remove('is-active'); }
+  var panels = document.querySelectorAll('.panel');
+  for(var j=0;j<panels.length;j++){ if(panels[j].id==='panel-'+name) panels[j].classList.add('is-active'); else panels[j].classList.remove('is-active'); }
+});
+</script>
+<script>
+
+document.body && document.body.classList.add('js-ready');
+
+// Barre de progression
+function updateProgress(){
+  var fields=document.querySelectorAll('.track');var filled=0;
+  fields.forEach(function(f){ if(f.type==='checkbox'){if(f.checked)filled++;} else if(f.value&&f.value.trim()!=='')filled++; });
+  var pct=fields.length?Math.round(filled/fields.length*100):0;
+  var pf=document.getElementById('pfill'); if(pf)pf.style.width=pct+'%';
+  var pp=document.getElementById('ppct'); if(pp)pp.textContent=pct+'%';
+}
+document.addEventListener('input',updateProgress);
+document.addEventListener('change',updateProgress);
+
+// Quiz
+var FB={
+1:{c:"Exact. Le client va de la découverte à la fidélisation, dans cet ordre : découverte, intérêt, considération, achat, fidélisation.",i:"Pas tout à fait. L'ordre est : découverte, intérêt, considération, achat, puis fidélisation."},
+2:{c:"Exact. À chaque étape le client ressent autre chose : curieux, puis hésitant, puis prêt. On adapte le message.",i:"Pas tout à fait. Le client a un état d'esprit différent à chaque étape, il faut donc adapter le message."},
+3:{c:"Exact. Les frais surprise à la fin sont une friction majeure : c'est l'une des premières causes d'abandon de panier.",i:"Pas tout à fait. La friction ici, ce sont les frais surprise qui apparaissent au dernier moment."},
+4:{c:"Exact. Il faut en moyenne environ 7 contacts avant l'achat. Rares sont ceux qui achètent à la première visite.",i:"Pas tout à fait. La moyenne tourne autour de 7 points de contact avant l'achat."},
+5:{c:"Exact. La fidélisation est la plus rentable : garder un client coûte environ 5 fois moins que d'en acquérir un.",i:"Pas tout à fait. C'est la fidélisation qui est la plus rentable, loin devant l'acquisition."}
+};
+var ans={},score=0;
+document.querySelectorAll('.opt').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var q=parseInt(btn.getAttribute('data-q'),10);
+    var ok=btn.getAttribute('data-ok')==='1';
+    if(ans[q]!==undefined)return;
+    ans[q]=ok;if(ok)score++;
+    var block=document.getElementById('q'+q);
+    block.querySelectorAll('.opt').forEach(function(x){x.disabled=true;});
+    btn.classList.add(ok?'ok':'no');
+    if(!ok)block.querySelectorAll('.opt').forEach(function(x){if(x.getAttribute('data-ok')==='1')x.classList.add('ok');});
+    var f=document.getElementById('f'+q);
+    f.textContent=ok?FB[q].c:FB[q].i;f.className='fb show';
+    if(Object.keys(ans).length===5)done();
+  });
+});
+function done(){
+  var s=document.getElementById('score');s.classList.add('show');
+  document.getElementById('sn').textContent=score+' / 5';
+  var m=["Reprends la fiche : les 5 étapes et les frictions sont la base.",
+  "Quelques acquis. Revois les étapes et leur ordre.",
+  "Bonne base. Tu comprends le parcours client.",
+  "Très solide. Tu sais repérer les frictions et accompagner.",
+  "Sans faute. Le parcours client n'a plus de secret pour toi."];
+  document.getElementById('sm').textContent=m[score<5?score:4];
+}
+
+// Cases à cocher plan d'action
+document.querySelectorAll('.action-check').forEach(function(box){
+  box.addEventListener('click',function(){ box.classList.toggle('checked'); });
+});
+
+// Reset
+function resetAll(){
+  if(!confirm('Réinitialiser tous les champs ?'))return;
+  document.querySelectorAll('input,textarea').forEach(function(el){ if(el.type==='checkbox')el.checked=false; else el.value=''; });
+  document.querySelectorAll('.action-check').forEach(function(b){ b.classList.remove('checked'); });
+  updateProgress();
+}
+
+// Export PDF
+function exportPDF(){
+  if(typeof window.jspdf==='undefined' || typeof html2canvas==='undefined'){ alert('Le module d\'export se charge encore, réessaie dans un instant.'); return; }
+  var btn=document.getElementById('btn-pdf'); btn.disabled=true; var old=btn.textContent; btn.textContent='Génération…';
+  document.body.classList.add('pdf-mode');
+  var target=document.getElementById('export-zone');
+  html2canvas(target,{scale:2,useCORS:true,backgroundColor:'#ffffff',windowWidth:target.scrollWidth}).then(function(canvas){
+    var img=canvas.toDataURL('image/jpeg',0.92);
+    var pdf=new window.jspdf.jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+    var pw=pdf.internal.pageSize.getWidth(),ph=pdf.internal.pageSize.getHeight();
+    var margin=10,cw=pw-margin*2;var ih=canvas.height*cw/canvas.width;var left=ih,pos=margin;
+    pdf.addImage(img,'JPEG',margin,pos,cw,ih); left-=(ph-margin*2);
+    while(left>0){pdf.addPage();pos=margin-(ih-left);pdf.addImage(img,'JPEG',margin,pos,cw,ih);left-=(ph-margin*2);}
+    pdf.save('skanner-parcours-client.pdf');
+    document.body.classList.remove('pdf-mode');btn.disabled=false;btn.textContent=old;
+  }).catch(function(e){ alert('Export impossible, réessaie.'); document.body.classList.remove('pdf-mode');btn.disabled=false;btn.textContent=old; });
+}
+
+</script>
+</body>
+</html>

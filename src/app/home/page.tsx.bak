@@ -1,0 +1,123 @@
+'use client'
+import { useState } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import AuthGuard from '@/components/AuthGuard'
+import Nav from '@/components/Nav'
+import { THEME_LABELS, LEVEL_LABELS, type Theme, type Level } from '@/data/themes'
+import { getFichesHtmlByThemeAndLevel } from '@/data/fichesHtml'
+
+const MARQUEE = ['BRIEFINGS EXPERTS','PR & COMMUNICATION','MANAGEMENT','MARKETING MODE','FINANCE','DÉBUTANT · INTERMÉDIAIRE · EXPERT']
+
+const THEMES = [
+  { key:'dd' as Theme,   title:'DATA & DIGITAL',     desc:'Marketing digital, e-commerce, data, SEO et pilotage de la performance.', img:'/mktg-2.jpg' },
+]
+
+export default function HomePage() {
+  const [activeTheme, setActiveTheme] = useState<Theme>('dd')
+  const [activeLevel, setActiveLevel] = useState<Record<Theme,Level>>({pr:'deb',mgmt:'deb',mktg:'deb',fin:'deb',dd:'deb'})
+  const theme = THEMES.find(t => t.key === activeTheme)!
+
+  return (
+    <AuthGuard>
+      <Nav active="home" />
+
+      {/* HERO */}
+      <section className="hero-editorial">
+        <div className="hero-ed-img" style={{position:'relative'}}>
+          <Image src="/hero.jpg" alt="Briefings by Skanner Magazine" fill style={{objectFit:'contain',objectPosition:'center bottom'}} priority />
+        </div>
+        <div className="hero-ed-panel">
+          <div>
+            <h1 className="hero-ed-title">BRIEF<span style={{fontWeight:400,fontStyle:'italic'}}>INGS</span><br/>EXPERTS.</h1>
+            <p className="hero-ed-lead">Des fiches et templates pour les professionnels exigeants. <strong>Data &amp; Digital.</strong></p>
+            <div style={{display:'flex',gap:10,flexWrap:'wrap'}}>
+              <a href="#thematiques" className="btn btn-ink">Voir les thématiques</a>
+              <Link href="/formules" className="btn btn-outline">Formules</Link>
+            </div>
+          </div>
+          <div style={{display:'flex',borderTop:'1px solid var(--rule)',paddingTop:24}}>
+            {[['4','Thématiques'],['3','Niveaux'],['∞','À venir']].map(([n,l],i) => (
+              <div key={l} style={{flex:1,paddingRight:i<2?16:0,borderRight:i<2?'1px solid var(--rule)':undefined,marginRight:i<2?16:0}}>
+                <div style={{fontSize:34,fontWeight:900,letterSpacing:'-.03em',lineHeight:1,color:'var(--ink)'}}>{n}</div>
+                <div style={{fontSize:9,fontWeight:600,letterSpacing:'.14em',textTransform:'uppercase',color:'var(--muted)',marginTop:3}}>{l}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+            {/* PANNEAU THÉMATIQUE — nom mis en lumière, contenu à venir */}
+      <div className="ed-spread">
+        <div className="ed-spread-img" style={{position:'relative'}}>
+          <Image src={theme.img} alt={theme.title} fill style={{objectFit:'contain',objectPosition:'center bottom'}} />
+        </div>
+        <div className="ed-spread-content">
+          <div className="ed-header">
+            <div className="ed-title">{theme.title}</div>
+            <div className="ed-desc">{theme.desc}</div>
+          </div>
+          <div className="ed-levels">
+            <div className="ed-level-bar">
+              {(['deb','int','exp'] as Level[]).map(l => (
+                <button key={l} className={`ed-level-pill ${activeLevel[activeTheme]===l?'active':''}`}
+                  onClick={() => setActiveLevel(prev => ({...prev,[activeTheme]:l}))}>
+                  {LEVEL_LABELS[l].fr}
+                </button>
+              ))}
+            </div>
+
+            {/* Fiches de la thématique / niveau */}
+            {(() => {
+              const fiches = getFichesHtmlByThemeAndLevel(activeTheme, activeLevel[activeTheme])
+              if (fiches.length === 0) {
+                return (
+                  <div style={{paddingTop:32,paddingBottom:32,textAlign:'center'}}>
+                    <div style={{fontSize:9,fontWeight:700,letterSpacing:'.2em',textTransform:'uppercase',color:'var(--muted)',marginBottom:14}}>
+                      {theme.title} · {LEVEL_LABELS[activeLevel[activeTheme]].fr}
+                    </div>
+                    <div style={{width:32,height:1,background:'var(--rule)',margin:'0 auto 18px'}} />
+                    <p style={{fontSize:14,color:'var(--muted)',lineHeight:1.7,maxWidth:340,margin:'0 auto'}}>
+                      Le contenu de ce niveau arrive prochainement.
+                    </p>
+                  </div>
+                )
+              }
+              return (
+                <div style={{paddingTop:20,paddingBottom:24}}>
+                  <div style={{fontSize:9,fontWeight:700,letterSpacing:'.18em',textTransform:'uppercase',color:'var(--muted)',marginBottom:12,display:'flex',alignItems:'center',gap:8}}>
+                    Fiches <span style={{flex:1,height:1,background:'var(--rule)',display:'inline-block'}}></span>
+                  </div>
+                  {fiches.map(f => (
+                    <a key={f.slug} href={`/fiches-html/${f.slug}.html`}
+                      style={{display:'flex',alignItems:'center',justifyContent:'space-between',padding:'13px 0',borderBottom:'1px solid rgba(0,0,0,.06)',textDecoration:'none',color:'inherit',gap:10}}>
+                      <div style={{minWidth:0}}>
+                        <div style={{fontSize:13,fontWeight:600,color:'var(--ink)',display:'flex',alignItems:'center',gap:8,flexWrap:'wrap'}}>
+                          <span style={{fontSize:8,fontWeight:700,letterSpacing:'.08em',textTransform:'uppercase',color:'var(--muted)',border:'1px solid var(--rule)',padding:'1px 6px'}}>Ch.{f.chapitre} · S{f.semaine}</span>
+                          {f.name}
+                          <span style={{fontSize:8,fontWeight:700,letterSpacing:'.1em',textTransform:'uppercase',color:'#3B5FC0',border:'1px solid rgba(147,197,253,.5)',padding:'1px 6px'}}>Quiz</span>
+                        </div>
+                        <div style={{fontSize:11,color:'var(--muted)',marginTop:3}}>{f.desc} · ⏱ {f.duree}</div>
+                      </div>
+                      <span style={{fontSize:13,color:'var(--muted)',flexShrink:0}}>→</span>
+                    </a>
+                  ))}
+                </div>
+              )
+            })()}
+          </div>
+        </div>
+      </div>
+
+      
+      {/* FOOTER */}
+      <footer className="sitefooter">
+        <div style={{display:'flex',flexDirection:'column'}}>
+          <span className="logo-pre">Briefings</span>
+          <div style={{display:'flex',alignItems:'baseline'}}><span className="logo-s">SKANNER</span><span className="logo-mag">MAGAZINE</span></div>
+        </div>
+        <div className="footer-copy">© 2026 — Skanner Magazine</div>
+      </footer>
+    </AuthGuard>
+  )
+}
