@@ -1,0 +1,18 @@
+PHOTOS DE COUVERTURE — Chapitre 1 PR (à déposer dans public/)
+
+11 images prêtes (JPG < 300 Ko, format portrait).
+Il manque : pr-mesure-3.jpg (Expert "Cadrer avant de lancer") — à fournir.
+
+Affectation :
+  pr-media-1.jpg      -> Écosystème média / Débutant
+  pr-media-2.jpg      -> Écosystème média / Intermédiaire
+  pr-media-3.jpg      -> Écosystème média / Expert
+  pr-message-1.jpg    -> Construire son message / Débutant
+  pr-message-2.jpg    -> Construire son message / Intermédiaire
+  pr-message-3.jpg    -> Construire son message / Expert
+  pr-communique-1.jpg -> Communiqué et pitch / Débutant
+  pr-communique-2.jpg -> Communiqué et pitch / Intermédiaire
+  pr-communique-3.jpg -> Communiqué et pitch / Expert
+  pr-mesure-1.jpg     -> Mesurer ses retombées / Débutant
+  pr-mesure-2.jpg     -> Mesurer ses retombées / Intermédiaire
+  pr-mesure-3.jpg     -> MANQUANTE (à ajouter)
