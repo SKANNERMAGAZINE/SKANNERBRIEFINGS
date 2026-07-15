@@ -25,7 +25,10 @@ export const CHAPITRES: Record<Theme, Chapitre[]> = {
     { num:11, slug:'legal',            nom:'Légal & e-réputation',desc:'RGPD, mentions, avis, gestion de crise',      statut:'bientot' },
     { num:12, slug:'pilotage',         nom:'Pilotage & performance',desc:'Dashboards, KPIs, cohortes, reporting',     statut:'bientot' },
   ],
-  pr: [], mgmt: [], mktg: [], fin: [],
+  pr: [
+    { num:1, slug:'fondations-rp', nom:'Fondations des relations presse', desc:'Écosystème média, message clé, communiqué, retombées', statut:'dispo' },
+  ],
+  mgmt: [], mktg: [], fin: [],
 }
 
 export function getChapitres(theme: Theme): Chapitre[] {
