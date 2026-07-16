@@ -12,7 +12,18 @@ export interface FicheHtml {
   duree: string
 }
 
-export const FICHES_HTML: FicheHtml[] = [
+export const FICHES_HTML: FicheHtml[] = [ { slug: 'pr-deb-ecosysteme-media', theme: 'pr', level: 'deb', chapitre: 1, semaine: 1, name: "Comprendre l'écosystème média", desc: "Earned, owned, paid, médias, journalistes, angle", duree: '14 min' },
+  { slug: 'pr-int-ecosysteme-media', theme: 'pr', level: 'int', chapitre: 1, semaine: 1, name: "Arbitrer son mix média", desc: "Répartir earned/owned/paid selon l'objectif", duree: '15 min' },
+  { slug: 'pr-exp-ecosysteme-media', theme: 'pr', level: 'exp', chapitre: 1, semaine: 1, name: "Modéliser le rendement RP", desc: "Part de voix, valeur des retombées, scénarios", duree: '18 min' },
+  { slug: 'pr-deb-message-cle', theme: 'pr', level: 'deb', chapitre: 1, semaine: 2, name: "Construire son message", desc: "Clarté, preuve, différenciation, mémorabilité", duree: '14 min' },
+  { slug: 'pr-int-message-cle', theme: 'pr', level: 'int', chapitre: 1, semaine: 2, name: "Structurer sa pyramide de message", desc: "Message principal et preuves, cohérence", duree: '15 min' },
+  { slug: 'pr-exp-message-cle', theme: 'pr', level: 'exp', chapitre: 1, semaine: 2, name: "Adapter son message multi-cibles", desc: "Un noyau décliné par audience, scoring", duree: '18 min' },
+  { slug: 'pr-deb-communique-pitch', theme: 'pr', level: 'deb', chapitre: 1, semaine: 3, name: "Le communiqué et le pitch", desc: "Structure, angle, accroche, erreurs à éviter", duree: '14 min' },
+  { slug: 'pr-int-communique-pitch', theme: 'pr', level: 'int', chapitre: 1, semaine: 3, name: "Optimiser son communiqué", desc: "Scoring angle, clarté, preuve, timing", duree: '15 min' },
+  { slug: 'pr-exp-communique-pitch', theme: 'pr', level: 'exp', chapitre: 1, semaine: 3, name: "Piloter sa diffusion presse", desc: "Ciblage, séquençage, taux de reprise", duree: '18 min' },
+  { slug: 'pr-deb-mesurer-retombees', theme: 'pr', level: 'deb', chapitre: 1, semaine: 4, name: "Mesurer ses retombées", desc: "Portée, part de voix, équivalence publicitaire", duree: '14 min' },
+  { slug: 'pr-int-mesurer-retombees', theme: 'pr', level: 'int', chapitre: 1, semaine: 4, name: "Analyser ses retombées", desc: "Qualité des retombées, tonalité, priorisation", duree: '15 min' },
+  { slug: 'pr-exp-mesurer-retombees', theme: 'pr', level: 'exp', chapitre: 1, semaine: 4, name: "Modéliser la valeur RP", desc: "Part de voix, valeur, matrice de priorisation", duree: '18 min' },
   {
     slug: 'fin-deb-compte-resultat',
     theme: 'fin',
