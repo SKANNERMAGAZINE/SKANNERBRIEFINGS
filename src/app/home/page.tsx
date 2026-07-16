@@ -20,8 +20,8 @@ export default function HomePage() {
         <div className="hero-ed-panel">
           <div>
 <h1 className="hero-ed-title">BRIEF<span style={{fontWeight:400,fontStyle:'italic'}}>INGS</span></h1>
-            <p className="hero-ed-lead">Chaque sujet expliqué en une fiche, avec un template actionnable pour décider et agir tout de suite. <strong>Pensé pour les professionnels qui vont à l'essentiel.</strong></p>
-            <div style={{display:'flex',gap:10,flexWrap:'wrap'}}>
+<p className="hero-ed-lead"><strong>Une fiche pour comprendre. Un template pour agir.</strong> Le savoir qui se met au travail.</p>
+             <div style={{display:'flex',gap:10,flexWrap:'wrap'}}>
               <a href="#thematiques" className="btn btn-ink">Voir les thématiques</a>
               <Link href="/formules" className="btn btn-outline">Formules</Link>
             </div>
