@@ -39,8 +39,7 @@ export default function HomePage() {
             </div>
           </div>
           <div style={{display:'flex',borderTop:'1px solid var(--rule)',paddingTop:24}}>
-{[['4','Thématiques'],['3','Niveaux'],['+1','Thématique / mois']].map(([n,l],i) => (
-              <div key={l} style={{flex:1,paddingRight:i<2?16:0,borderRight:i<2?'1px solid var(--rule)':undefined,marginRight:i<2?16:0}}>
+{[['3','Niveaux'],['+1','Thématique / mois']].map(([n,l],i) => (              <div key={l} style={{flex:1,paddingRight:i<2?16:0,borderRight:i<2?'1px solid var(--rule)':undefined,marginRight:i<2?16:0}}>
                 <div style={{fontSize:34,fontWeight:900,letterSpacing:'-.03em',lineHeight:1,color:'var(--ink)'}}>{n}</div>
                 <div style={{fontSize:9,fontWeight:600,letterSpacing:'.14em',textTransform:'uppercase',color:'var(--muted)',marginTop:3}}>{l}</div>
               </div>
