@@ -44,7 +44,7 @@ export default function HomePage() {
 
           <Link href="/thematique/dd" className="home-theme-card">
             <div className="home-theme-img" style={{position:'relative'}}>
-              <Image src="/mktg-2.jpg" alt="Data & Digital" fill style={{objectFit:'cover',objectPosition:'center top'}} />
+              <Image src="/dd-mesurer.jpg" alt="Data & Digital" fill style={{objectFit:'cover',objectPosition:'center top'}} />
               <span className="home-theme-badge home-theme-badge-on">Disponible</span>
             </div>
             <div className="home-theme-body">
