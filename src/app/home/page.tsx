@@ -21,6 +21,18 @@ export default function HomePage() {
           <div>
 <h1 className="hero-ed-title">BRIEF<span style={{fontWeight:400,fontStyle:'italic'}}>INGS</span></h1>
 <p className="hero-ed-lead"><strong>Une fiche pour comprendre. Un template pour agir.</strong> Le savoir qui se met au travail.</p>
+             <div style={{borderTop:'1px solid var(--rule)',paddingTop:24,marginBottom:32}}>
+              <div style={{fontSize:10,letterSpacing:'.2em',textTransform:'uppercase',color:'var(--muted)',marginBottom:18}}>Comment ça marche</div>
+              {[['01','Comprendre','Une fiche claire, l\'essentiel d\'un sujet.'],['02','Décider','Les repères pour arbitrer juste.'],['03','Agir','Un template actionnable, tout de suite.']].map(([num,titre,desc]) => (
+                <div key={num} style={{display:'flex',gap:14,alignItems:'flex-start',marginBottom:16}}>
+                  <span style={{fontSize:13,fontWeight:900,color:'var(--ink)',minWidth:22}}>{num}</span>
+                  <div>
+                    <div style={{fontSize:14,fontWeight:700,color:'var(--ink)'}}>{titre}</div>
+                    <div style={{fontSize:12,color:'var(--muted)',lineHeight:1.4}}>{desc}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
              <div style={{display:'flex',gap:10,flexWrap:'wrap'}}>
               <a href="#thematiques" className="btn btn-ink">Voir les thématiques</a>
               <Link href="/formules" className="btn btn-outline">Formules</Link>
