@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5"/>
+<title>Comprendre l'écosystème média — Briefings by Skanner Magazine</title>
+<meta name="description" content="Journalistes, médias, influenceurs : earned/owned/paid et la logique de l'angle pour bâtir une stratégie RP qui porte. Fiche Débutant — Skanner Magazine."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=General+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet"/>
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700,800,900&display=swap" rel="stylesheet"/>
+<style>
+
+:root{--glacial:'General Sans','Helvetica Neue',Arial,sans-serif;}
+
+:root{
+  --ink:#0D0D0D;--white:#fff;--paper:#F8F7F5;--rule:#DDDBD6;--muted:#7A7770;
+  --fluo-yellow:#E8FF00;   /* jaune fluo */
+  --fluo-violet:#C77DFF;   /* violet fluo */
+  --fluo-green:#39FF14;    /* vert fluo */
+  --fluo-pink:#FF6FD8;     /* rose fluo */
+  --fluo-blue:#4DD2FF;     /* bleu fluo */
+  --sage:#39FF14;          /* on réutilise le vert fluo partout où --sage était */
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+body{font-family:'General Sans','Helvetica Neue',Arial,sans-serif;background:var(--white);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+
+.sitenav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);border-bottom:1px solid var(--rule);backdrop-filter:blur(8px);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 40px;height:56px;}
+.nav-left{display:flex;align-items:center;gap:4px;}
+.nav-link{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:6px 14px;transition:color .12s;}
+.nav-link:hover{color:var(--ink);}
+.nav-center{text-align:center;justify-self:center;}
+.logo-pre{font-size:8px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:2px;}
+.logo-s{font-size:17px;font-weight:900;letter-spacing:-.02em;text-transform:uppercase;font-style:italic;}
+.logo-mag{font-size:17px;font-weight:400;letter-spacing:.01em;text-transform:uppercase;font-style:normal;}
+.nav-right{display:flex;align-items:center;justify-content:flex-end;gap:12px;}
+.nav-badge{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:3px 9px;border:1px solid var(--rule);color:var(--muted);}
+
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:11px 40px;border-bottom:1px solid var(--rule);background:var(--paper);}
+.breadcrumb .sep{color:var(--rule);}
+.breadcrumb .active{color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:340px 1fr;align-items:start;}
+.col-img{position:sticky;top:56px;height:calc(100vh - 56px);overflow:hidden;background:var(--paper);border-right:1px solid var(--rule);align-self:start;}
+.col-img img{width:100%;height:100%;object-fit:cover;object-position:center;}
+.col-content{min-width:0;}
+
+.head{padding:48px 56px 40px;border-bottom:1px solid var(--rule);}
+.tags{display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap;}
+.tag{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border:1px solid var(--rule);color:var(--muted);}
+.tag.lvl{color:#0D0D0D;border-color:var(--ink);background:var(--fluo-green);font-weight:800;}
+h1.title{font-size:clamp(34px,4.5vw,58px);font-weight:900;letter-spacing:-.03em;line-height:.94;text-transform:uppercase;margin-bottom:18px;}
+.lead{font-size:15px;line-height:1.7;color:var(--muted);border-left:2px solid var(--ink);padding-left:18px;max-width:580px;}
+.lead strong{color:var(--ink);font-weight:600;}
+
+.meta{display:flex;flex-wrap:wrap;border-bottom:1px solid var(--rule);padding:0 56px;}
+.meta-item{font-size:11px;color:var(--muted);padding:14px 48px 14px 0;}
+.meta-item strong{color:var(--ink);font-weight:700;}
+
+.body{padding:8px 56px 64px;}
+.section{margin-top:72px;scroll-margin-top:72px;}
+.sec-label{display:flex;align-items:center;gap:0;margin-bottom:36px;background:var(--ink);color:#fff;}
+.sec-num{font-size:18px;font-weight:900;letter-spacing:.02em;color:#0D0D0D;background:var(--fluo-yellow);flex-shrink:0;padding:20px 22px;align-self:stretch;display:flex;align-items:center;}
+.sec-title-txt{font-size:clamp(18px,2.3vw,25px);font-weight:900;letter-spacing:-.01em;line-height:1.15;text-transform:uppercase;padding:18px 24px;color:#fff;}
+.p{font-size:15px;line-height:1.9;margin-bottom:22px;}
+.p.muted{color:var(--muted);}
+.p b,.p strong{font-weight:700;}
+
+/* GRAND CHIFFRE EN EXERGUE — style magazine */
+.stat{margin:44px 0;padding:36px 40px;background:var(--ink);color:#fff;display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center;}
+.stat-num{font-size:clamp(60px,9.5vw,116px);font-weight:900;letter-spacing:-.04em;line-height:.8;white-space:nowrap;color:var(--fluo-green);}
+.stat-txt{font-size:15px;line-height:1.65;color:rgba(255,255,255,.92);border-left:3px solid var(--fluo-green);padding-left:22px;}
+.stat-txt b{font-weight:700;color:#fff;}
+.stat-txt .src{display:block;margin-top:10px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--fluo-green);}
+
+/* listes éditoriales (remplacent les tableaux) */
+.points{margin:18px 0;}
+.point{display:flex;gap:20px;padding:20px 0;border-bottom:1px solid rgba(0,0,0,.08);}
+.point:last-child{border-bottom:none;}
+.point-k{flex-shrink:0;width:140px;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.02em;line-height:1.3;}
+.point-k small{display:block;font-size:11px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted);margin-top:2px;}
+.point-v{font-size:14px;line-height:1.7;color:var(--ink);}
+.point-v b{font-weight:700;}
+
+.arrow-list{margin:18px 0;}
+.al{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid rgba(0,0,0,.08);}
+.al:last-child{border-bottom:none;}
+.al-a{color:var(--fluo-violet);font-weight:900;flex-shrink:0;font-size:15px;margin-top:1px;}
+.al p{font-size:14px;line-height:1.7;}
+.al strong{font-weight:700;}
+
+/* entonnoir en liste éditoriale */
+.funnel{margin:22px 0;}
+.fn{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid rgba(0,0,0,.08);}
+.fn:last-child{border-bottom:none;}
+.fn-step{font-size:14px;font-weight:700;background:linear-gradient(transparent 28%, var(--fluo-yellow) 28%);padding:2px 5px;display:inline;}
+.fn-step small{font-weight:400;color:var(--muted);}
+.fn-val{font-size:20px;font-weight:900;letter-spacing:-.02em;white-space:nowrap;}
+.fn-val small{font-size:11px;font-weight:600;color:var(--muted);margin-left:8px;letter-spacing:.04em;}
+
+.pull{margin:44px 0;padding:32px 34px;background:#0D0D0D;color:#fff;position:relative;}
+.pull::before{content:"\201C";position:absolute;top:8px;left:18px;font-size:64px;line-height:1;color:var(--fluo-yellow);font-weight:900;}
+.pull p{font-size:23px;font-weight:600;font-style:normal;line-height:1.4;margin-bottom:12px;padding-left:36px;}
+.pull cite{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--fluo-yellow);font-style:normal;padding-left:36px;display:block;}
+
+.gloss{margin:8px 0 0;padding:8px 0 0;}
+.gloss-l{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin-bottom:28px;}
+.gl-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.gl-item{display:flex;flex-direction:column;gap:12px;padding:22px;background:var(--ink);}
+.gl-term{align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:var(--ink);background:var(--pastel,#C4B5FD);padding:6px 13px;}
+.gl-def{display:block;font-size:13px;line-height:1.6;color:rgba(255,255,255,.75);}
+
+.quiz{margin-top:8px;padding:40px;background:var(--paper);border-top:3px solid var(--ink);}
+.quiz-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px;}
+.quiz-head .qbadge{font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#0D0D0D;border:none;background:var(--fluo-violet);padding:5px 12px;}
+.quiz-head .qttl{font-size:clamp(22px,2.8vw,30px);font-weight:900;letter-spacing:-.02em;text-transform:uppercase;}
+.quiz-intro p{font-size:14px;color:var(--muted);margin-bottom:28px;}
+.q{margin-bottom:22px;padding:22px 24px;background:#fff;border:1px solid var(--rule);}
+.qn{font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#0D0D0D;background:var(--fluo-violet);display:inline-block;padding:3px 9px;margin-bottom:12px;}
+.qt{font-size:16px;font-weight:700;margin-bottom:16px;line-height:1.45;}
+.opts{display:flex;flex-direction:column;gap:8px;}
+.opt{text-align:left;font-family:inherit;font-size:14px;color:var(--ink);background:#fff;border:1px solid var(--rule);padding:12px 16px;cursor:pointer;transition:all .14s;line-height:1.5;}
+.opt:hover:not(:disabled){border-color:var(--ink);}
+.opt:disabled{cursor:default;}
+.opt.ok{border-color:#0D0D0D;background:var(--fluo-green);color:#0D0D0D;font-weight:700;}
+.opt.no{border-color:#C8273A;background:rgba(200,39,58,.06);color:#C8273A;}
+.fb{display:none;margin-top:12px;padding:14px 18px;font-size:13px;line-height:1.6;background:#0D0D0D;color:#fff;border-left:4px solid var(--fluo-green);}
+.fb.show{display:block;}
+.score{display:none;margin-top:24px;padding:36px;background:var(--ink);color:#fff;text-align:center;}
+.score.show{display:block;}
+.score-l{font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--fluo-violet);margin-bottom:10px;}
+.score-n{font-size:72px;font-weight:900;letter-spacing:-.04em;line-height:1;margin-bottom:12px;color:var(--fluo-green);}
+.score-m{font-size:14px;line-height:1.6;color:rgba(255,255,255,.8);max-width:380px;margin:0 auto;}
+
+.recap{margin-top:8px;padding:0;background:none;color:var(--ink);}
+.recap .lbl{font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:22px;color:var(--ink);}
+
+.foot{padding:24px 56px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--rule);margin-top:46px;}
+.foot-copy{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.backbtn{position:fixed;top:14px;left:14px;z-index:1000;background:#fff;color:#0D0D0D;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:9px 15px;border:1px solid var(--rule);}
+
+@media(max-width:768px){
+  .sitenav{grid-template-columns:1fr auto;padding:0 16px;height:52px;}
+  .nav-left{display:none;}
+  .layout{grid-template-columns:1fr;}
+  .col-img{display:none;}
+  .breadcrumb,.head,.meta,.body,.foot{padding-left:20px;padding-right:20px;}
+  .quiz{padding:24px 20px;}
+  .q{padding:18px 16px;}
+  .stat{padding:24px;gap:14px;}
+  .recap{padding:24px;}
+  .gl-grid{grid-template-columns:1fr;gap:14px;}
+  .meta-item{padding-right:28px;}
+  h1.title{font-size:30px;}
+  .stat{grid-template-columns:1fr;gap:12px;}
+  .stat-num{font-size:64px;}
+  .point{flex-direction:column;gap:6px;}
+  .point-k{width:auto;}
+}
+
+/* mots-clés en gras : surlignage éditorial discret */
+.body .p strong, .body .p b, .body .point-v b, .body .al p strong{font-weight:700;background:linear-gradient(transparent 30%, var(--fluo-yellow) 30%);padding:1px 3px;}
+
+/* tableau À retenir */
+.recap-tbl{width:100%;border-collapse:collapse;}
+.recap-tbl td{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.15);vertical-align:top;font-size:14px;line-height:1.65;}
+.recap-tbl tr:last-child td{border-bottom:none;}
+.recap-tbl .rt-k{width:160px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;font-size:12px;padding-right:24px;padding-top:18px;color:var(--fluo-yellow);}
+.recap-tbl .rt-v{color:rgba(255,255,255,.92);}
+@media(max-width:768px){
+  .recap-tbl td{display:block;border-bottom:none;padding:4px 0;}
+  .recap-tbl .rt-k{width:auto;padding-top:14px;}
+  .recap-tbl tr{display:block;border-bottom:1px solid var(--rule);padding-bottom:10px;}
+}
+
+/* Barre de progression de lecture */
+.readbar{position:fixed;top:56px;left:0;right:0;height:3px;background:transparent;z-index:99;}
+.readbar-fill{height:100%;width:0;background:var(--fluo-violet);transition:width .1s linear;}
+@media(max-width:768px){.readbar{top:52px;}}
+
+/* Sommaire */
+.toc{margin:8px 0 12px;padding:24px;border:1px solid var(--rule);background:var(--paper);}
+.toc-label{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.toc-item{display:flex;align-items:baseline;gap:14px;padding:10px 0;border-bottom:1px solid var(--rule);transition:padding-left .15s;}
+.toc-item:last-child{border-bottom:none;}
+.toc-item:hover{padding-left:8px;}
+.toc-n{font-size:12px;font-weight:800;color:#0D0D0D;background:var(--fluo-yellow);padding:2px 7px;flex-shrink:0;}
+.toc-t{font-size:14px;font-weight:600;color:var(--ink);}
+
+/* retour haut */
+.totop{display:inline-flex;align-items:center;gap:8px;margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+.totop:hover{color:var(--ink);}
+
+a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:2px;}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important;}}
+
+/* Onglets sticky */
+.tabs{position:sticky;top:56px;z-index:90;display:flex;gap:8px;background:var(--paper);border-bottom:1px solid var(--rule);padding:12px 56px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.tab{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:#fff;border:1px solid var(--rule);padding:12px 18px;cursor:pointer;transition:all .15s;white-space:nowrap;}
+.tab:hover{color:var(--ink);border-color:var(--ink);}
+.tab.active{color:#0D0D0D;background:var(--fluo-violet);border-color:var(--ink);font-weight:800;}
+
+to{opacity:1;transform:none;}}
+@media(max-width:768px){
+  .tabs{top:52px;padding:10px 16px;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .tab{padding:14px 16px;font-size:11px;white-space:nowrap;}
+}
+
+/* accents fluo variés sur les listes de définition */
+.points .point:nth-child(1) .point-k{color:#0D0D0D;}
+.points .point:nth-child(1) .point-k::before{content:'';display:inline-block;width:12px;height:12px;background:var(--fluo-violet);margin-right:8px;vertical-align:middle;}
+.points .point:nth-child(2) .point-k::before{content:'';display:inline-block;width:12px;height:12px;background:var(--fluo-pink);margin-right:8px;vertical-align:middle;}
+.points .point:nth-child(3) .point-k::before{content:'';display:inline-block;width:12px;height:12px;background:var(--fluo-blue);margin-right:8px;vertical-align:middle;}
+/* entonnoir : valeurs en bleu fluo highlight */
+.fn-val{position:relative;}
+.fn:nth-child(odd) .fn-val{background:linear-gradient(transparent 32%, var(--fluo-blue) 32%);padding:2px 5px;}
+.fn:nth-child(even) .fn-val{background:linear-gradient(transparent 32%, var(--fluo-pink) 32%);padding:2px 5px;}
+/* sommaire : numéros alternent jaune/rose */
+.toc-item:nth-child(even) .toc-n{background:var(--fluo-pink);}
+/* Topbar actions */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:24px 0;border-bottom:1px solid var(--rule);flex-wrap:wrap;}
+.topbar-info{font-size:11px;color:var(--muted);}
+.topbar-info strong{color:var(--ink);}
+.actions{display:flex;gap:10px;}
+.btn{font-family:inherit;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:12px 20px;cursor:pointer;border:1px solid var(--ink);background:#fff;color:var(--ink);transition:all .15s;}
+.btn:hover{background:var(--paper);}
+.btn-primary{background:var(--ink);color:#fff;}
+.btn-primary:hover{background:#000;}
+.btn:disabled{opacity:.5;cursor:wait;}
+
+/* Header */
+.head{padding:44px 0 32px;}
+.tags{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;}
+.tag{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border:1px solid var(--rule);color:var(--muted);}
+.tag.tpl{background:var(--fluo-violet);color:#0D0D0D;border-color:var(--ink);font-weight:800;}
+.tag.lvl{background:var(--fluo-green);color:#0D0D0D;border-color:var(--ink);font-weight:800;}
+h1{font-size:clamp(30px,4vw,48px);font-weight:900;letter-spacing:-.03em;line-height:.96;text-transform:uppercase;margin-bottom:16px;}
+.intro{font-size:15px;line-height:1.7;color:var(--muted);border-left:3px solid var(--fluo-yellow);padding-left:18px;max-width:620px;}
+.intro strong{color:var(--ink);font-weight:600;}
+
+/* Progress */
+.progress-wrap{margin:28px 0 8px;}
+.progress-label{display:flex;justify-content:space-between;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.progress-bar{height:6px;background:var(--paper);border:1px solid var(--rule);overflow:hidden;}
+.progress-fill{height:100%;width:0;background:var(--fluo-violet);transition:width .3s ease;}
+
+/* Sections du template */
+.tpl-section{margin:40px 0;}
+.tpl-sec-head{display:flex;align-items:center;gap:0;margin-bottom:24px;}
+.tpl-sec-num{font-size:18px;font-weight:900;color:#0D0D0D;background:var(--fluo-yellow);padding:14px 18px;align-self:stretch;display:flex;align-items:center;}
+.tpl-sec-title{font-size:clamp(17px,2.2vw,22px);font-weight:900;letter-spacing:-.01em;text-transform:uppercase;background:#0D0D0D;color:#fff;padding:14px 20px;flex:1;}
+.tpl-sec-desc{font-size:14px;line-height:1.7;color:var(--muted);margin-bottom:20px;}
+
+/* Champs */
+.field{margin-bottom:20px;}
+.field-label{display:block;font-size:12px;font-weight:700;letter-spacing:.02em;margin-bottom:8px;}
+.field-hint{font-size:12px;color:var(--muted);margin-bottom:8px;font-weight:400;}
+.field-input,.field-textarea{width:100%;font-family:inherit;font-size:14px;color:var(--ink);background:#fff;border:1px solid var(--ink);padding:12px 14px;transition:border-color .15s;}
+.field-input:focus,.field-textarea:focus{outline:none;border-color:var(--fluo-violet);border-width:2px;}
+.field-textarea{min-height:80px;resize:vertical;line-height:1.6;}
+
+/* Grille de canaux owned/earned/paid */
+.channels{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.channel{border:1px solid var(--ink);padding:18px;}
+.channel-tag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;margin-bottom:12px;color:#0D0D0D;}
+.channel:nth-child(1) .channel-tag{background:var(--fluo-violet);}
+.channel:nth-child(2) .channel-tag{background:var(--fluo-pink);}
+.channel:nth-child(3) .channel-tag{background:var(--fluo-blue);}
+.channel-textarea{width:100%;font-family:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--rule);padding:10px;min-height:100px;resize:vertical;line-height:1.6;}
+.channel-textarea:focus{outline:none;border-color:var(--ink);}
+
+/* Calculateur de chiffres */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.calc-card{border:1px solid var(--ink);padding:20px;}
+.calc-card .ck{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;}
+.calc-card .cd{font-size:11px;color:var(--muted);margin-bottom:14px;line-height:1.5;}
+.calc-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.calc-row label{font-size:12px;color:var(--muted);flex:1;}
+.calc-row input{width:120px;font-family:inherit;font-size:14px;border:1px solid var(--rule);padding:8px 10px;text-align:right;}
+.calc-row input:focus{outline:none;border-color:var(--fluo-violet);}
+.calc-result{margin-top:12px;padding:14px;background:#0D0D0D;color:#fff;display:flex;align-items:baseline;justify-content:space-between;}
+.calc-hint{margin-top:10px;font-size:12px;line-height:1.55;color:var(--muted);border-left:2px solid var(--fluo-blue);padding-left:12px;}
+.calc-result .rl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fluo-green);}
+.calc-result .rv{font-size:26px;font-weight:900;letter-spacing:-.02em;color:var(--fluo-green);}
+.calc-result .rv.muted{color:var(--muted);font-size:18px;}
+
+/* Verdict LTV/CAC */
+.verdict{margin-top:16px;padding:18px 22px;border:2px solid var(--ink);font-size:14px;line-height:1.6;display:none;}
+.verdict.show{display:block;}
+.verdict.good{background:var(--fluo-green);}
+.verdict.bad{background:var(--fluo-pink);}
+.verdict strong{font-weight:800;}
+
+/* Plan d'action */
+.action-item{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--rule);}
+.action-check{width:22px;height:22px;border:2px solid var(--ink);flex-shrink:0;margin-top:2px;cursor:pointer;position:relative;background:#fff;}
+.action-check.checked{background:var(--fluo-green);}
+.action-check.checked::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;color:#0D0D0D;}
+.action-input{flex:1;font-family:inherit;font-size:14px;border:none;border-bottom:1px solid var(--rule);padding:4px 0;background:transparent;}
+.action-input:focus{outline:none;border-bottom-color:var(--fluo-violet);}
+
+.note{margin:32px 0;padding:28px 30px;background:#0D0D0D;border:2px solid var(--ink);font-size:14px;line-height:1.7;color:rgba(255,255,255,.9);}
+.note strong{color:var(--fluo-green);}
+
+.foot{padding:32px 0;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--rule);margin-top:40px;}
+.foot-copy{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.backbtn{position:fixed;top:14px;left:14px;z-index:1000;background:#fff;color:#0D0D0D;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:9px 15px;border:1px solid var(--rule);}
+
+@media(max-width:768px){
+  .sitenav{grid-template-columns:1fr auto;padding:0 16px;height:52px;}
+  .nav-left{display:none;}
+  .wrap{padding:0 18px;}
+  .breadcrumb{padding:11px 18px;}
+  .channels{grid-template-columns:1fr;}
+  .calc{grid-template-columns:1fr;}
+  h1{font-size:28px;}
+  .topbar{flex-direction:column;align-items:flex-start;}
+}
+/* Styles spécifiques à l'export PDF */
+.pdf-mode .backbtn,.pdf-mode .sitenav,.pdf-mode .actions,.pdf-mode .progress-wrap{display:none!important;}
+.pdf-mode .field-input,.pdf-mode .field-textarea,.pdf-mode .channel-textarea,.pdf-mode .calc-row input,.pdf-mode .action-input{border:1px solid #999;}
+
+/* Listes à choix multiples */
+.checklist{display:flex;flex-direction:column;gap:2px;margin-bottom:12px;}
+.checklist-col{gap:4px;}
+.check{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.5;padding:7px 0;cursor:pointer;color:var(--ink);}
+.check input[type=checkbox]{appearance:none;-webkit-appearance:none;width:18px;height:18px;border:2px solid var(--ink);background:#fff;flex-shrink:0;margin-top:1px;cursor:pointer;position:relative;}
+.check input[type=checkbox]:checked{background:var(--fluo-green);}
+.check input[type=checkbox]:checked::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px;color:#0D0D0D;}
+.check em{font-style:normal;color:var(--muted);font-size:12px;}
+
+/* À retenir : cards colorées */
+.recap-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.recap-card{padding:24px;background:#0D0D0D;color:#fff;border:2px solid var(--ink);display:flex;flex-direction:column;gap:10px;}
+.recap-card .rc-k{font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;}
+.recap-card .rc-v{font-size:14px;line-height:1.6;font-weight:500;color:rgba(255,255,255,.9);}
+@media(max-width:768px){.recap-grid{grid-template-columns:1fr;}}
+
+
+
+
+.panel{ display:none; }
+.panel.is-active{ display:block; }
+.tab{ cursor:pointer; }
+.tab.is-active{ color:#0D0D0D; background:var(--fluo-violet); border-color:var(--ink); font-weight:800; }
+
+
+/* ===== Matrice de notation ===== */
+.matrix{margin:8px 0 4px;border:2px solid var(--ink);background:#fff;}
+.mx-head{display:grid;grid-template-columns:1fr 44px 44px 44px 44px;align-items:center;background:#0D0D0D;color:#fff;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;}
+.mx-head span{padding:10px 12px;text-align:center;}
+.mx-head span:first-child{text-align:left;}
+.mx-row{display:grid;grid-template-columns:1fr 44px 44px 44px 44px;align-items:stretch;border-top:1px solid var(--rule);}
+.mx-row:nth-child(even){background:var(--paper);}
+.mx-label{padding:12px;font-size:13px;font-weight:600;display:flex;align-items:center;}
+.mx-cell{display:flex;align-items:center;justify-content:center;border-left:1px solid var(--rule);cursor:pointer;font-size:13px;font-weight:700;color:var(--muted);transition:all .12s ease;user-select:none;}
+.mx-cell:hover{background:var(--fluo-yellow);color:#0D0D0D;}
+.mx-cell.sel{background:var(--fluo-violet);color:#0D0D0D;font-weight:800;}
+.mx-score{margin-top:14px;padding:18px 22px;background:#0D0D0D;color:#fff;display:flex;flex-direction:column;gap:4px;}
+.mxs-l{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.6);}
+.mxs-v{font-size:28px;font-weight:900;color:var(--fluo-green);line-height:1;}
+.mxs-msg{font-size:13px;color:rgba(255,255,255,.85);margin-top:4px;line-height:1.5;}
+@media(max-width:560px){
+  .mx-head,.mx-row{grid-template-columns:1fr 34px 34px 34px 34px;}
+  .mx-label{font-size:12px;padding:10px;}
+  .mx-cell{font-size:12px;}
+}
+
+/* ===== Générateur de plan média (Déb écosystème) ===== */
+.pm-field{margin-bottom:18px;}
+.pm-lab{display:block;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:8px;}
+.pm-lab small{font-weight:500;color:var(--muted);}
+.pm-opts{display:flex;flex-wrap:wrap;gap:8px;}
+.pm-chip{border:2px solid var(--ink);background:#fff;color:var(--ink);font-family:inherit;font-size:13px;font-weight:600;padding:9px 14px;cursor:pointer;transition:all .12s;}
+.pm-chip:hover{background:var(--paper);}
+.pm-chip.sel{background:#0D0D0D;color:#fff;}
+.pm-input{width:100%;border:2px solid var(--ink);background:#fff;padding:11px 13px;font-family:inherit;font-size:14px;color:var(--ink);}
+.pm-input:focus{outline:none;border-color:var(--fluo-violet);}
+.pm-empty{color:var(--muted);font-size:13px;padding:20px;border:2px dashed var(--rule);background:var(--paper);text-align:center;}
+.pm-card{border:2px solid var(--ink);background:#fff;margin-bottom:12px;display:flex;gap:0;overflow:hidden;}
+.pm-rank{flex:0 0 46px;background:#0D0D0D;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px 0;}
+.pm-rank .n{font-size:20px;font-weight:900;line-height:1;}
+.pm-rank .lbl{font-size:8px;text-transform:uppercase;letter-spacing:.05em;color:rgba(255,255,255,.55);margin-top:3px;}
+.pm-card.prio .pm-rank{background:var(--fluo-green);}
+.pm-card.prio .pm-rank .n{color:#0D0D0D;}
+.pm-card.prio .pm-rank .lbl{color:rgba(13,13,13,.6);}
+.pm-body{flex:1;padding:14px 16px;}
+.pm-type{font-size:15px;font-weight:800;color:var(--ink);margin-bottom:4px;}
+.pm-cat{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 7px;margin-bottom:8px;}
+.pm-cat.earned{background:var(--fluo-green);color:#0D0D0D;}
+.pm-cat.owned{background:var(--fluo-violet);color:#0D0D0D;}
+.pm-cat.paid{background:var(--fluo-blue);color:#0D0D0D;}
+.pm-angle{font-size:13px;line-height:1.5;color:var(--muted);}
+.pm-angle strong{color:var(--ink);}
+.btn-add{display:inline-flex;align-items:center;gap:8px;background:#0D0D0D;color:#fff;border:none;padding:12px 18px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;letter-spacing:.02em;transition:opacity .12s ease;}
+.btn-add:hover{opacity:.82;}
+
+/* ===== Recommandations dynamiques ===== */
+.reco{margin-top:14px;padding:14px 16px 14px 18px;border-left:3px solid var(--ink);background:var(--white);font-size:13px;line-height:1.6;color:var(--muted);display:none;position:relative;}
+.reco.show{display:block;}
+.reco::before{content:'';position:absolute;left:-3px;top:0;width:3px;height:22px;background:var(--ink);}
+.reco.good::before{background:var(--fluo-green);}
+.reco.warn::before{background:var(--fluo-yellow);}
+.reco.bad::before{background:var(--fluo-pink);}
+.reco strong{font-weight:700;color:var(--ink);}
+.bilan{margin:36px 0 8px;padding:30px 32px;background:#0D0D0D;border:2px solid var(--ink);}
+.bilan-lbl{display:inline-block;background:var(--fluo-green);color:#0D0D0D;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:4px 10px;margin-bottom:18px;}
+.bilan h3{color:#fff;font-size:20px;font-weight:900;margin:0 0 16px;letter-spacing:-.01em;}
+.bilan-empty{color:rgba(255,255,255,.5);font-size:14px;line-height:1.6;}
+.bilan-line{display:flex;gap:12px;padding:12px 0;border-top:1px solid rgba(255,255,255,.12);font-size:14px;line-height:1.6;color:rgba(255,255,255,.9);}
+.bilan-line:first-of-type{border-top:none;}
+.bilan-ico{flex-shrink:0;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;}
+.bilan-ico.g{background:#39FF14;color:#0D0D0D;}
+.bilan-ico.w{background:#E8FF00;color:#0D0D0D;}
+.bilan-ico.b{background:#FF6FD8;color:#0D0D0D;}
+.bilan-line strong{color:#fff;}
+/* ---- Matrice multi-médias ---- */
+.media-card{border:2px solid var(--ink);background:#fff;margin-bottom:18px;}
+.media-card-head{display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--paper);border-bottom:1px solid var(--rule);}
+.media-card-head .idx{flex-shrink:0;width:26px;height:26px;background:#0D0D0D;color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+.media-name{flex:1;border:1px solid var(--rule);background:#fff;padding:8px 10px;font-family:inherit;font-size:14px;font-weight:600;color:var(--ink);}
+.media-name:focus{outline:none;border-color:var(--fluo-violet);}
+.media-del{flex-shrink:0;background:none;border:1px solid var(--rule);color:var(--muted);width:30px;height:30px;cursor:pointer;font-size:15px;line-height:1;border-radius:0;transition:all .12s ease;}
+.media-del:hover{background:var(--fluo-pink);color:#0D0D0D;border-color:#0D0D0D;}
+.media-badge{flex-shrink:0;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;padding:4px 8px;color:#0D0D0D;}
+.media-badge.good{background:var(--fluo-green);}
+.media-badge.warn{background:var(--fluo-yellow);}
+.media-badge.bad{background:var(--fluo-pink);}
+.media-badge.none{background:var(--rule);color:var(--muted);}
+.btn-add{display:inline-flex;align-items:center;gap:8px;background:#0D0D0D;color:#fff;border:none;padding:12px 18px;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;letter-spacing:.02em;transition:opacity .12s ease;}
+.btn-add:hover{opacity:.82;}
+.rank{margin-top:18px;border:2px solid var(--ink);}
+.rank-head{background:#0D0D0D;color:#fff;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:12px 16px;}
+.rank-row{display:flex;align-items:center;gap:12px;padding:12px 16px;border-top:1px solid var(--rule);font-size:14px;}
+.rank-row:nth-child(even){background:var(--paper);}
+.rank-pos{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+.rank-name{flex:1;font-weight:600;color:var(--ink);}
+.rank-score{flex-shrink:0;font-weight:800;color:var(--ink);}
+.rank-dot{flex-shrink:0;width:12px;height:12px;border-radius:50%;}
+.rank-dot.good{background:#39FF14;}
+.rank-dot.warn{background:#E8FF00;}
+.rank-dot.bad{background:#FF6FD8;}
+.rank-empty{padding:16px;font-size:13px;color:var(--muted);}
+
+/* ===== Onglets (OBLIGATOIRE) ===== */
+.panel{ display:none; }
+.panel.is-active{ display:block; }
+.tab{ cursor:pointer; }
+.tab.is-active{ color:#0D0D0D; background:var(--fluo-violet); border-color:var(--ink); font-weight:800; }
+</style></head>
+<body>
+<a href="/home" class="backbtn">← Retour</a>
+<nav class="sitenav"><div class="nav-left"><a href="/home" class="nav-link">Thématiques</a><a href="/formules" class="nav-link">Formules</a><a href="/waitlist" class="nav-link" style="color:var(--fluo-green);font-weight:800;">Waiting List</a></div>
+<div class="nav-center"><a href="/home" style="display:inline-flex;flex-direction:column;align-items:center;"><span class="logo-pre">Briefings</span><span><span class="logo-s">SKANNER</span><span class="logo-mag">MAGAZINE</span></span></a></div>
+<div class="nav-right"><span class="nav-badge">PR &amp; Communication</span></div></nav>
+<div class="breadcrumb"><a href="/home" style="color:var(--muted);">Accueil</a><span class="sep">/</span><span>PR &amp; Communication</span><span class="sep">/</span><span class="active">Chapitre 1 · Fiche 1 · Débutant</span></div>
+
+<div class="layout">
+  <div class="col-img"><img src="/pr-media-1.jpg" alt="Salle de rédaction, journalistes au travail"/></div>
+  <div class="col-content">
+    <header class="head">
+      <div class="tags"><span class="tag">PR &amp; Communication</span><span class="tag lvl">Débutant</span></div>
+      <h1 class="title">COMPRENDRE<br/>L'ÉCOSYSTÈME MÉDIA</h1>
+      <p class="lead">Un journaliste n'est pas un <strong>relais publicitaire</strong> : c'est un filtre. Comprendre qui décide de parler de vous — et pourquoi — est le premier levier de toute stratégie de relations presse.</p>
+    </header>
+    <div class="meta">
+      <div class="meta-item">Niveau <strong>Débutant</strong></div>
+      <div class="meta-item">Durée <strong>14 min</strong></div>
+      <div class="meta-item">Chapitre <strong>1 — Fondations des relations presse</strong></div>
+      <div class="meta-item">Fiche <strong>1 / 4</strong></div>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab is-active" type="button" data-panel="fiche">Fiche</button>
+      <button class="tab" type="button" data-panel="retenir">À retenir</button>
+      <button class="tab" type="button" data-panel="gloss">Glossaire</button>
+      <button class="tab" type="button" data-panel="quiz">Quiz</button>
+      <button class="tab" type="button" data-panel="template">Template</button>
+    </div>
+
+    <div class="body">
+
+      <!-- ===== PANNEAU FICHE ===== -->
+      <div class="panel is-active" id="panel-fiche" role="tabpanel">
+        <section class="section" id="sec-1">
+          <div class="sec-label"><span class="sec-num">01</span><span class="sec-title-txt">Qui décide de parler de vous</span></div>
+          <p class="p">Trois familles d'acteurs se partagent l'accès à l'attention publique, et elles ne répondent pas aux mêmes règles. Les confondre, c'est envoyer le même message à un <strong>journaliste</strong>, un <strong>influenceur</strong> et un <strong>média propriétaire</strong> — et perdre les trois.</p>
+          <div class="arrow-list">
+            <div class="al"><span class="al-a">→</span><p><strong>Le journaliste.</strong> Il ne vous doit rien. Il sert son lectorat et sa ligne éditoriale, pas votre communication. Son unique monnaie d'échange : une information qui a de la valeur pour son audience.</p></div>
+            <div class="al"><span class="al-a">→</span><p><strong>Le média.</strong> Une rédaction a une ligne éditoriale, un rythme de publication et une hiérarchie de l'info. Un sujet peut être pertinent et arriver au mauvais moment — ou dans le mauvais titre.</p></div>
+            <div class="al"><span class="al-a">→</span><p><strong>L'influenceur / créateur.</strong> Il monétise sa crédibilité auprès d'une communauté. Contrairement au journaliste, une collaboration rémunérée est possible et légale — à condition d'être transparente (mention publicitaire).</p></div>
+          </div>
+          <div class="stat"><div class="stat-num">3</div><div class="stat-txt">C'est le nombre de sujets qu'un journaliste économique traite en moyenne <b>par jour</b> pour tenir sa ligne éditoriale — sur des dizaines de sollicitations reçues.<span class="src">Observation métier — pige presse</span></div></div>
+        </section>
+
+        <section class="section" id="sec-2">
+          <div class="sec-label"><span class="sec-num">02</span><span class="sec-title-txt">Earned, owned, paid : trois logiques</span></div>
+          <p class="p">Toute prise de parole publique entre dans l'une de ces trois catégories. Le RP pur, c'est de l'<strong>earned</strong> — et c'est ce qui le rend à la fois plus puissant et moins contrôlable que la publicité.</p>
+          <div class="points">
+            <div class="point"><div class="point-k">Earned<small>Gagné</small></div><div class="point-v">La couverture obtenue parce qu'un tiers a jugé votre sujet digne d'intérêt. <b>Crédibilité maximale</b>, contrôle minimal — vous ne choisissez ni l'angle ni le titre.</div></div>
+            <div class="point"><div class="point-k">Owned<small>Possédé</small></div><div class="point-v">Vos propres canaux (site, newsletter, réseaux). <b>Contrôle total</b> du message, crédibilité perçue plus faible car c'est vous qui parlez de vous.</div></div>
+            <div class="point"><div class="point-k">Paid<small>Payé</small></div><div class="point-v">Publicité, partenariat rémunéré, contenu sponsorisé. <b>Contrôle total</b>, mais le public sait qu'il est payé — donc l'impact sur la confiance est différent.</div></div>
+          </div>
+          <div class="pull"><p>On ne remplace pas l'earned par du paid. On les articule — le paid amplifie, l'earned légitime.</p><cite>Doctrine RP</cite></div>
+        </section>
+
+        <section class="section" id="sec-3">
+          <div class="sec-label"><span class="sec-num">03</span><span class="sec-title-txt">La logique de l'angle</span></div>
+          <p class="p">Un journaliste n'accepte pas une entreprise, il accepte une <strong>histoire</strong>. L'angle, c'est l'entrée choisie dans un sujet — celle qui répond à la question que se pose la rédaction : <strong>« pourquoi maintenant, pourquoi nous, pourquoi ce lecteur » ?</strong></p>
+          <div class="arrow-list">
+            <div class="al"><span class="al-a">→</span><p><strong>Pourquoi maintenant.</strong> L'actualité, une tendance, un chiffre qui vient de sortir — l'angle a besoin d'un déclencheur temporel, sinon il n'est pas « news ».</p></div>
+            <div class="al"><span class="al-a">→</span><p><strong>Pourquoi nous.</strong> Votre légitimité sur le sujet : expertise, data propriétaire, position unique sur le marché.</p></div>
+            <div class="al"><span class="al-a">→</span><p><strong>Pourquoi ce lecteur.</strong> L'angle doit servir l'audience du média, pas votre communication interne. « On lance un produit » n'est jamais un angle ; « ce que ce lancement dit du marché » peut l'être.</p></div>
+          </div>
+        </section>
+
+        <div class="note">
+          <strong>À garder en tête.</strong> Le journaliste sert son lectorat, pas votre message. Votre travail n'est pas de le convaincre de parler de vous : c'est de lui apporter un <strong>angle</strong> qui sert déjà son <strong>audience</strong>. Tout commence par cette bascule de point de vue.
+        </div>
+      </div>
+
+      <!-- ===== PANNEAU À RETENIR ===== -->
+      <div class="panel" id="panel-retenir" role="tabpanel">
+        <div class="recap">
+          <div class="lbl">À retenir</div>
+          <div class="recap-grid">
+            <div class="recap-card"><div class="rc-k" style="color:var(--fluo-yellow);">Trois acteurs, trois règles</div><div class="rc-v">Journaliste, média, influenceur ne répondent pas aux mêmes logiques. Un message unique pour les trois est un message perdu.</div></div>
+            <div class="recap-card"><div class="rc-k" style="color:var(--fluo-violet);">Earned ≠ Paid</div><div class="rc-v">L'earned se gagne, ne s'achète pas. Il apporte de la crédibilité au prix du contrôle du message.</div></div>
+            <div class="recap-card"><div class="rc-k" style="color:var(--fluo-green);">L'angle avant tout</div><div class="rc-v">Un journaliste accepte une histoire, pas une entreprise. Pourquoi maintenant, pourquoi vous, pourquoi ce lecteur.</div></div>
+            <div class="recap-card"><div class="rc-k" style="color:var(--fluo-pink);">Servir l'audience, pas soi</div><div class="rc-v">Le bon réflexe RP : partir du lecteur du média visé, pas de ce que vous voulez annoncer.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PANNEAU GLOSSAIRE ===== -->
+      <div class="panel" id="panel-gloss" role="tabpanel">
+        <div class="gloss">
+          <div class="gloss-l">Glossaire</div>
+          <div class="gl-grid">
+            <div class="gl-item"><span class="gl-term" style="background:#E8FF00;color:#0D0D0D;">Earned media</span><span class="gl-def">Couverture obtenue sans paiement, décidée par un tiers (journaliste, média) qui juge le sujet digne d'intérêt.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#C77DFF;color:#0D0D0D;">Owned media</span><span class="gl-def">Canaux détenus et maîtrisés par la marque : site, newsletter, réseaux sociaux propres.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#39FF14;color:#0D0D0D;">Paid media</span><span class="gl-def">Espace ou contenu acheté : publicité, partenariat rémunéré, contenu sponsorisé.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#FF6FD8;color:#0D0D0D;">Angle</span><span class="gl-def">Entrée choisie pour traiter un sujet ; ce qui rend une information pertinente pour un lectorat donné, à un moment donné.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#4DD2FF;color:#0D0D0D;">Embargo</span><span class="gl-def">Accord tacite : le journaliste reçoit l'info en avance mais s'engage à ne pas publier avant une date fixée.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#E8FF00;color:#0D0D0D;">Exclusivité</span><span class="gl-def">Information donnée à un seul média avant tous les autres, en échange d'une garantie de traitement.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#C77DFF;color:#0D0D0D;">Dossier de presse</span><span class="gl-def">Document de référence remis aux journalistes : contexte, chiffres clés, visuels, contacts.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#39FF14;color:#0D0D0D;">Plan média</span><span class="gl-def">Liste priorisée des médias et journalistes à cibler pour une campagne, avec la logique de contact pour chacun.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#FF6FD8;color:#0D0D0D;">Ligne éditoriale</span><span class="gl-def">Positionnement et angle constant d'un média : ce qu'il traite, comment, et pour quel lectorat.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#4DD2FF;color:#0D0D0D;">Off (the record)</span><span class="gl-def">Information donnée sans autorisation de citation ni d'attribution — sert à éclairer le journaliste, pas à être publiée telle quelle.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#E8FF00;color:#0D0D0D;">On the record</span><span class="gl-def">Propos attribuables et citables nommément — le mode par défaut d'un entretien presse.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#C77DFF;color:#0D0D0D;">Media list</span><span class="gl-def">Fichier structuré des contacts presse pertinents (nom, média, sujet couvert, historique de contact).</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PANNEAU QUIZ (5 questions + feedback noir + score /5) ===== -->
+      <div class="panel" id="panel-quiz" role="tabpanel">
+        <div class="quiz">
+          <div class="quiz-intro">
+            <div class="quiz-head"><span class="qbadge">Quiz</span><span class="qttl">Validez vos acquis</span></div>
+            <p>Cinq questions pour ancrer la logique d'ensemble.</p>
+          </div>
+          <div class="q" id="q1">
+            <p class="qn">Question 01 / 05</p>
+            <p class="qt">Qu'est-ce que l'« earned media » ?</p>
+            <div class="opts">
+              <button class="opt" data-ok="0" data-q="1">Un espace publicitaire acheté sur un média</button>
+              <button class="opt" data-ok="1" data-q="1">Une couverture obtenue sans paiement, décidée par un tiers</button>
+              <button class="opt" data-ok="0" data-q="1">Le contenu publié sur les réseaux sociaux de la marque</button>
+            </div>
+            <div class="fb" id="f1"></div>
+          </div>
+          <div class="q" id="q2">
+            <p class="qn">Question 02 / 05</p>
+            <p class="qt">Pourquoi un journaliste refuse-t-il le plus souvent une sollicitation RP ?</p>
+            <div class="opts">
+              <button class="opt" data-ok="0" data-q="2">Parce qu'il n'aime pas les marques</button>
+              <button class="opt" data-ok="1" data-q="2">Parce que le sujet n'a pas d'angle qui sert son lectorat</button>
+              <button class="opt" data-ok="0" data-q="2">Parce qu'il manque de temps pour écrire</button>
+            </div>
+            <div class="fb" id="f2"></div>
+          </div>
+          <div class="q" id="q3">
+            <p class="qn">Question 03 / 05</p>
+            <p class="qt">Que signifie « on the record » ?</p>
+            <div class="opts">
+              <button class="opt" data-ok="0" data-q="3">L'information ne peut pas être publiée</button>
+              <button class="opt" data-ok="1" data-q="3">Les propos sont attribuables et citables nommément</button>
+              <button class="opt" data-ok="0" data-q="3">C'est réservé aux exclusivités</button>
+            </div>
+            <div class="fb" id="f3"></div>
+          </div>
+          <div class="q" id="q4">
+            <p class="qn">Question 04 / 05</p>
+            <p class="qt">Quelle est la différence principale entre owned et paid media ?</p>
+            <div class="opts">
+              <button class="opt" data-ok="0" data-q="4">Owned est gratuit, paid est payant — sinon c'est identique</button>
+              <button class="opt" data-ok="1" data-q="4">Owned = canaux propres à la marque ; paid = espace acheté sur des canaux tiers</button>
+              <button class="opt" data-ok="0" data-q="4">Paid ne concerne que la publicité télévisée</button>
+            </div>
+            <div class="fb" id="f4"></div>
+          </div>
+          <div class="q" id="q5">
+            <p class="qn">Question 05 / 05</p>
+            <p class="qt">Un bon angle RP répond avant tout à quelle question ?</p>
+            <div class="opts">
+              <button class="opt" data-ok="0" data-q="5">Combien coûte la campagne de relations presse ?</button>
+              <button class="opt" data-ok="1" data-q="5">Pourquoi ce sujet intéresse ce lectorat, maintenant ?</button>
+              <button class="opt" data-ok="0" data-q="5">Quel budget allouer aux relations presse cette année ?</button>
+            </div>
+            <div class="fb" id="f5"></div>
+          </div>
+          <div class="score" id="score">
+            <p class="score-l">Votre score</p>
+            <p class="score-n" id="sn">0 / 5</p>
+            <p class="score-m" id="sm"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PANNEAU TEMPLATE : GÉNÉRATEUR DE PLAN MÉDIA ===== -->
+      <div class="panel" id="panel-template" role="tabpanel">
+        <div class="topbar">
+          <div class="topbar-info">Template lié à <strong>Générateur de plan média</strong> · Chapitre 1 · Fiche 1 · Débutant</div>
+          <div class="actions"><button class="btn" onclick="resetAll()">↺ Réinitialiser</button><button class="btn" id="btn-copy" onclick="copyPlan()">⧉ Copier le plan</button><button class="btn btn-primary" id="btn-pdf" onclick="exportPDF()">↓ Exporter en PDF</button></div>
+        </div>
+        <div id="export-zone">
+          <header class="head">
+            <div class="tags"><span class="tag tpl">Template</span><span class="tag">PR &amp; Communication</span><span class="tag lvl">Débutant</span></div>
+            <h1>CONSTRUIRE MON<br/>PLAN MÉDIA</h1>
+            <p class="intro">Dites qui vous voulez toucher et ce que vous annoncez. L'outil assemble une liste priorisée de types de médias à contacter, avec l'angle adapté à chacun — un vrai point de départ de plan presse, pas une note.</p>
+          </header>
+          <div class="progress-wrap"><div class="progress-label"><span>Progression</span><span id="ppct">0%</span></div><div class="progress-bar"><div class="progress-fill" id="pfill"></div></div></div>
+
+          <section class="tpl-section">
+            <div class="tpl-sec-head"><span class="tpl-sec-num">01</span><span class="tpl-sec-title">Votre situation</span></div>
+            <p class="cd">Quelques choix suffisent : le plan se construit tout seul en dessous.</p>
+
+            <div class="pm-field"><label class="pm-lab">Qui voulez-vous toucher en priorité ?</label>
+              <div class="pm-opts" id="pm-audience">
+                <button class="pm-chip" data-v="grandpublic" onclick="pickPM('audience','grandpublic',this)">Le grand public</button>
+                <button class="pm-chip" data-v="pro" onclick="pickPM('audience','pro',this)">Des professionnels / B2B</button>
+                <button class="pm-chip" data-v="local" onclick="pickPM('audience','local',this)">Un public local</button>
+                <button class="pm-chip" data-v="niche" onclick="pickPM('audience','niche',this)">Une communauté de niche</button>
+              </div>
+            </div>
+
+            <div class="pm-field"><label class="pm-lab">Qu'est-ce que vous annoncez ?</label>
+              <div class="pm-opts" id="pm-news">
+                <button class="pm-chip" data-v="produit" onclick="pickPM('news','produit',this)">Un lancement produit</button>
+                <button class="pm-chip" data-v="levee" onclick="pickPM('news','levee',this)">Une levée / un chiffre</button>
+                <button class="pm-chip" data-v="expertise" onclick="pickPM('news','expertise',this)">Une expertise / une prise de position</button>
+                <button class="pm-chip" data-v="evenement" onclick="pickPM('news','evenement',this)">Un événement</button>
+              </div>
+            </div>
+
+            <div class="pm-field"><label class="pm-lab">Votre sujet en quelques mots <small>pour personnaliser les angles</small></label>
+              <input type="text" id="pm-subject" class="pm-input" placeholder="Ex : une appli qui réduit le gaspillage alimentaire" oninput="buildPlan()">
+            </div>
+          </section>
+
+          <section class="tpl-section">
+            <div class="tpl-sec-head"><span class="tpl-sec-num">02</span><span class="tpl-sec-title">Votre plan média</span></div>
+            <p class="cd">Les types de médias à viser, du plus au moins prioritaire pour votre cas, avec l'angle à travailler pour chacun.</p>
+            <div id="pm-plan">
+              <div class="pm-empty" id="pm-empty">Faites vos choix ci-dessus : votre plan média priorisé apparaîtra ici, prêt à copier.</div>
+            </div>
+          </section>
+
+          <div class="bilan" id="bilan">
+            <span class="bilan-lbl">Le réflexe à garder</span>
+            <h3>Ma synthèse</h3>
+            <div id="bilan-content"><p class="bilan-empty">Composez votre plan : le conseil de priorisation s'affichera ici.</p></div>
+          </div>
+
+          <div class="note">
+            <strong>Rappel de la fiche.</strong> Un plan média n'est pas une liste de tous les médias possibles : c'est un <strong>choix</strong>. Mieux vaut trois médias bien ciblés, avec un angle sur mesure, qu'un envoi massif et générique.
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /body -->
+
+    <footer class="foot"><a href="/home" style="display:inline-flex;flex-direction:column;"><span class="logo-pre">Briefings</span><span><span class="logo-s">SKANNER</span><span class="logo-mag">MAGAZINE</span></span></a><div class="foot-copy">© 2026 — Skanner Magazine</div></footer>
+  </div>
+</div>
+
+<!-- CDN PDF (defer pour ne pas bloquer les onglets) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+
+<!-- JS ONGLETS (OBLIGATOIRE, délégation d'événement) -->
+<script>
+document.addEventListener('click', function(e){
+  var btn = e.target.closest('.tab');
+  if(!btn) return;
+  var name = btn.getAttribute('data-panel');
+  var tabs = document.querySelectorAll('.tab');
+  for(var i=0;i<tabs.length;i++){
+    if(tabs[i].getAttribute('data-panel')===name) tabs[i].classList.add('is-active');
+    else tabs[i].classList.remove('is-active');
+  }
+  var panels = document.querySelectorAll('.panel');
+  for(var j=0;j<panels.length;j++){
+    if(panels[j].id==='panel-'+name) panels[j].classList.add('is-active');
+    else panels[j].classList.remove('is-active');
+  }
+});
+</script>
+
+<!-- JS QUIZ + TEMPLATE -->
+<script>
+// ===== QUIZ — objet FB : 1 entrée par question. c = si bonne réponse, i = si mauvaise =====
+var FB={
+  1:{c:"Exact. L'earned se gagne — un tiers juge le sujet digne d'intérêt, sans paiement.",i:"Non : ça, c'est du paid ou de l'owned. L'earned n'implique aucun paiement, c'est un tiers qui décide."},
+  2:{c:"Exact. Sans angle qui sert son lectorat, votre sujet n'a simplement pas sa place dans sa ligne éditoriale.",i:"Pas tout à fait : la vraie raison est presque toujours l'absence d'angle pertinent pour son audience."},
+  3:{c:"Exact. On the record = vous pouvez être cité nommément, c'est le mode par défaut d'un entretien presse.",i:"Non : c'est l'inverse de l'off. On the record veut dire que vos propos sont attribuables et publiables tels quels."},
+  4:{c:"Exact. Owned = vos canaux à vous ; paid = un espace acheté sur les canaux de quelqu'un d'autre.",i:"Non : la différence porte sur qui possède le canal, pas seulement sur le prix."},
+  5:{c:"Exact. Un angle sert d'abord le lecteur du média visé — pas votre communication interne.",i:"Non : le budget vient après. L'angle se juge d'abord du point de vue du lecteur."}
+};
+var ans={},score=0;
+document.querySelectorAll('.opt').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var q=parseInt(btn.getAttribute('data-q'),10);
+    var ok=btn.getAttribute('data-ok')==='1';
+    if(ans[q]!==undefined)return;
+    ans[q]=ok;if(ok)score++;
+    var block=document.getElementById('q'+q);
+    block.querySelectorAll('.opt').forEach(function(x){x.disabled=true;});
+    btn.classList.add(ok?'ok':'no');
+    if(!ok)block.querySelectorAll('.opt').forEach(function(x){if(x.getAttribute('data-ok')==='1')x.classList.add('ok');});
+    var f=document.getElementById('f'+q);
+    f.textContent=ok?FB[q].c:FB[q].i;f.className='fb show';
+    if(Object.keys(ans).length===5)done();
+  });
+});
+function done(){
+  var s=document.getElementById('score');s.classList.add('show');
+  document.getElementById('sn').textContent=score+' / 5';
+  var m=["Aucune bonne réponse pour l'instant — relis la fiche, notamment la distinction earned/owned/paid.","1/5 : les bases ne sont pas encore fixées, un second passage sur la fiche aidera.","2/5 : quelques notions sont acquises, revois la logique de l'angle en particulier.","3/5 : la moitié est claire. Concentre-toi sur les nuances earned vs paid et on/off the record.","4/5 : presque tout est acquis, un dernier point à consolider.","5/5 : la logique de l'écosystème média est claire. Direction le Template pour l'appliquer."];
+  document.getElementById('sm').textContent=m[score]||'';
+}
+
+// ===== Barre de progression de lecture =====
+(function(){
+  var bar=document.getElementById('readbar');
+  if(!bar)return;
+  function upd(){
+    var h=document.documentElement;
+    var max=h.scrollHeight-h.clientHeight;
+    var p=max>0?(h.scrollTop||document.body.scrollTop)/max*100:0;
+    bar.style.width=p+'%';
+  }
+  window.addEventListener('scroll',upd,{passive:true});
+  window.addEventListener('resize',upd);upd();
+})();
+
+
+
+// ===== GÉNÉRATEUR DE PLAN MÉDIA =====
+var pmSel={audience:null,news:null};
+
+function pickPM(group,val,btn){
+  pmSel[group]=val;
+  var wrap=document.getElementById('pm-'+group);
+  wrap.querySelectorAll('.pm-chip').forEach(function(c){c.classList.remove('sel');});
+  btn.classList.add('sel');
+  buildPlan();
+}
+
+// Catalogue de types de médias avec leur nature earned/owned/paid
+// Chaque entrée : type, cat, base (angle générique), et pondération selon audience/news
+var MEDIA_CATALOG=[
+  {type:"Presse spécialisée / trade",cat:"earned",fit:function(a,n){var s=1;if(a==='pro'||a==='niche')s+=3;if(n==='expertise'||n==='levee')s+=2;if(n==='produit')s+=1;return s;},
+   angle:function(subj,n){return (n==='expertise'?'Proposez une tribune ou un point de vue d\'expert sur ':'Pitchez l\'angle sectoriel de ')+subj+', avec un chiffre ou une donnée exclusive.';}},
+  {type:"Presse généraliste nationale",cat:"earned",fit:function(a,n){var s=1;if(a==='grandpublic')s+=3;if(n==='levee')s+=2;if(n==='evenement')s+=1;return s;},
+   angle:function(subj,n){return 'Trouvez l\'angle « société » de '+subj+' : en quoi ça concerne la vie des gens, au-delà de votre entreprise.';}},
+  {type:"Presse quotidienne régionale (PQR)",cat:"earned",fit:function(a,n){var s=1;if(a==='local')s+=4;if(n==='evenement')s+=2;if(n==='produit')s+=1;return s;},
+   angle:function(subj,n){return 'Ancrez '+subj+' dans le territoire : emplois locaux, impact régional, dimension humaine de proximité.';}},
+  {type:"Newsletters & médias de niche",cat:"earned",fit:function(a,n){var s=1;if(a==='niche')s+=4;if(a==='pro')s+=1;if(n==='expertise')s+=2;return s;},
+   angle:function(subj,n){return 'Adressez-vous à la communauté : pourquoi '+subj+' compte spécifiquement pour ce public d\'initiés.';}},
+  {type:"Podcasts & médias audio",cat:"earned",fit:function(a,n){var s=1;if(n==='expertise')s+=3;if(a==='niche'||a==='pro')s+=1;return s;},
+   angle:function(subj,n){return 'Proposez une intervention qui raconte l\'histoire derrière '+subj+' : le récit, pas la fiche produit.';}},
+  {type:"Influenceurs & créateurs",cat:"paid",fit:function(a,n){var s=1;if(a==='grandpublic'||a==='niche')s+=2;if(n==='produit')s+=2;return s;},
+   angle:function(subj,n){return 'Sélectionnez des créateurs dont l\'audience recoupe la vôtre ; faites-leur tester '+subj+' — et signalez le partenariat.';}},
+  {type:"Vos canaux propres (site, blog, newsletter)",cat:"owned",fit:function(a,n){return 3;},
+   angle:function(subj,n){return 'Publiez le contenu de référence sur '+subj+' que vous pointerez dans tous vos échanges presse. C\'est votre socle.';}},
+  {type:"LinkedIn & réseaux dirigeant",cat:"owned",fit:function(a,n){var s=1;if(a==='pro')s+=3;if(n==='expertise'||n==='levee')s+=2;return s;},
+   angle:function(subj,n){return 'Portez '+subj+' via la voix de votre dirigeant : prise de parole personnelle, pas communiqué corporate.';}},
+  {type:"Publicité / contenu sponsorisé",cat:"paid",fit:function(a,n){var s=1;if(n==='produit')s+=2;if(a==='grandpublic')s+=1;return s;},
+   angle:function(subj,n){return 'À réserver pour amplifier '+subj+' une fois qu\'une première retombée earned existe. Toujours signalé comme sponsorisé.';}}
+];
+
+function buildPlan(){
+  var a=pmSel.audience,n=pmSel.news;
+  var subjRaw=(document.getElementById('pm-subject').value||'').trim();
+  var subj=subjRaw!==''?subjRaw:'votre sujet';
+  var box=document.getElementById('pm-plan');
+  var empty=document.getElementById('pm-empty');
+  if(!a||!n){
+    box.innerHTML='<div class="pm-empty" id="pm-empty">Faites vos choix ci-dessus : votre plan média priorisé apparaîtra ici, prêt à copier.</div>';
+    updateProgress();updateBilan();return;
+  }
+  // scorer et trier
+  var scored=MEDIA_CATALOG.map(function(m){return {m:m,score:m.fit(a,n)};}).sort(function(x,y){return y.score-x.score;});
+  // garder le top 5
+  var top=scored.slice(0,5);
+  var html=top.map(function(it,idx){
+    var prio=idx<2;
+    var catLabel=it.m.cat==='earned'?'Earned':(it.m.cat==='owned'?'Owned':'Paid');
+    return '<div class="pm-card'+(prio?' prio':'')+'">'+
+      '<div class="pm-rank"><span class="n">'+(idx+1)+'</span><span class="lbl">'+(prio?'Prioritaire':'Ensuite')+'</span></div>'+
+      '<div class="pm-body"><div class="pm-type">'+it.m.type+'</div>'+
+      '<span class="pm-cat '+it.m.cat+'">'+catLabel+'</span>'+
+      '<div class="pm-angle">'+it.m.angle(subj,n)+'</div></div></div>';
+  }).join('');
+  box.innerHTML=html;
+  updateProgress();updateBilan();
+}
+
+function planText(){
+  var cards=document.querySelectorAll('#pm-plan .pm-card');
+  if(cards.length===0)return '';
+  var subjRaw=(document.getElementById('pm-subject').value||'').trim();
+  var lines=['PLAN MÉDIA — '+(subjRaw||'(sujet à préciser)'),''];
+  cards.forEach(function(c,i){
+    var type=c.querySelector('.pm-type').textContent;
+    var cat=c.querySelector('.pm-cat').textContent;
+    var angle=c.querySelector('.pm-angle').textContent;
+    lines.push((i+1)+'. '+type+' ['+cat+']');
+    lines.push('   Angle : '+angle);
+    lines.push('');
+  });
+  return lines.join('\n');
+}
+
+function copyPlan(){
+  var txt=planText();
+  if(!txt){alert('Composez d\'abord votre plan (choisissez audience et annonce).');return;}
+  var btn=document.getElementById('btn-copy');var old=btn.textContent;
+  function done(){btn.textContent='\u2713 Copié';setTimeout(function(){btn.textContent=old;},1500);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done).catch(function(){fallbackCopy(txt);done();});}
+  else{fallbackCopy(txt);done();}
+}
+function fallbackCopy(txt){var ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);}
+
+function updateProgress(){
+  var steps=0,total=3;
+  if(pmSel.audience)steps++;
+  if(pmSel.news)steps++;
+  if((document.getElementById('pm-subject').value||'').trim()!=='')steps++;
+  var p=Math.round(steps/total*100);
+  var pf=document.getElementById('pfill');if(pf)pf.style.width=p+'%';
+  var pp=document.getElementById('ppct');if(pp)pp.textContent=p+'%';
+}
+
+function updateBilan(){
+  var c=document.getElementById('bilan-content');if(!c)return;
+  var a=pmSel.audience,n=pmSel.news;
+  if(!a&&!n){c.innerHTML='<p class="bilan-empty">Composez votre plan : le conseil de priorisation s\'affichera ici.</p>';return;}
+  var lines=[];
+  if(a&&n){
+    var cards=document.querySelectorAll('#pm-plan .pm-card');
+    var top2=[];cards.forEach(function(cd,i){if(i<2)top2.push(cd.querySelector('.pm-type').textContent);});
+    lines.push(['g','<strong>Plan généré</strong> : commencez par vos 2 médias prioritaires \u2014 '+top2.join(' et ')+'.']);
+    lines.push(['g','<strong>Ordre de bataille</strong> : d\'abord l\'earned (crédibilité), en l\'appuyant sur vos canaux owned, et le paid seulement pour amplifier ensuite.']);
+    if((document.getElementById('pm-subject').value||'').trim()==='')lines.push(['w','Précisez votre sujet pour des angles personnalisés à copier tels quels.']);
+    lines.push(['w','Ne contactez pas les 5 en même temps : 2 ou 3 bien ciblés, avec un angle sur mesure, valent mieux qu\'un envoi massif.']);
+  }else{
+    lines.push(['w','Complétez les deux choix (audience + annonce) pour générer le plan.']);
+  }
+  var warn=lines.some(function(l){return l[0]==='w';});
+  var head=warn?'Bon départ \u2014 affinez avant d\'envoyer vos premiers mails.':'Plan prêt : priorisez, personnalisez l\'angle, et lancez vos contacts dans le bon ordre.';
+  var html='<p style="color:#fff;font-size:14px;line-height:1.6;margin:0 0 16px;">'+head+'</p>';
+  lines.forEach(function(l){var s=l[0]==='g'?'OK':(l[0]==='w'?'!':'X');html+='<div class="bilan-line"><span class="bilan-ico '+l[0]+'">'+s+'</span><span>'+l[1]+'</span></div>';});
+  c.innerHTML=html;
+}
+
+function resetAll(){
+  if(!confirm('Réinitialiser ?'))return;
+  pmSel={audience:null,news:null};
+  document.querySelectorAll('.pm-chip').forEach(function(c){c.classList.remove('sel');});
+  document.getElementById('pm-subject').value='';
+  buildPlan();
+}
+
+// ===== Export PDF réel =====
+function exportPDF(){
+  if(typeof window.jspdf==='undefined' || typeof html2canvas==='undefined'){ alert('Le module d\'export se charge encore, réessaie dans un instant.'); return; }
+  var btn=document.getElementById('btn-pdf');
+  btn.disabled=true; var old=btn.textContent; btn.textContent='Génération…';
+  document.body.classList.add('pdf-mode');
+  var target=document.getElementById('export-zone');
+  html2canvas(target,{scale:2,useCORS:true,backgroundColor:'#ffffff',windowWidth:target.scrollWidth}).then(function(canvas){
+    var img=canvas.toDataURL('image/jpeg',0.92);
+    var pdf=new window.jspdf.jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+    var pw=pdf.internal.pageSize.getWidth(), ph=pdf.internal.pageSize.getHeight();
+    var margin=10, cw=pw-margin*2;
+    var ih=canvas.height*cw/canvas.width;
+    var left=ih, pos=margin;
+    pdf.addImage(img,'JPEG',margin,pos,cw,ih); left-=(ph-margin*2);
+    while(left>0){ pdf.addPage(); pos=margin-(ih-left); pdf.addImage(img,'JPEG',margin,pos,cw,ih); left-=(ph-margin*2); }
+    pdf.save('skanner-plan-media.pdf');
+    document.body.classList.remove('pdf-mode');
+    btn.disabled=false; btn.textContent=old;
+  }).catch(function(e){
+    console.error(e); alert('Export impossible, réessaie.');
+    document.body.classList.remove('pdf-mode');
+    btn.disabled=false; btn.textContent=old;
+  });
+}
+
+// INIT
+updateProgress();updateBilan();
+</script>
+</body></html>
