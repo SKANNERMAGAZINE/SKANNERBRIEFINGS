@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5"/>
+<title>Notoriété : spontanée, assistée, image — Briefings by Skanner</title>
+<meta name="description" content="Distinguer notoriété spontanée, assistée, top of mind et image de marque. Trieur interactif par secteur. Fiche Débutant — Skanner Magazine."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=General+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet"/>
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700,800,900&display=swap" rel="stylesheet"/>
+<style>
+
+:root{--glacial:'General Sans','Helvetica Neue',Arial,sans-serif;}
+
+:root{
+  --ink:#0D0D0D;--white:#fff;--paper:#F8F7F5;--rule:#DDDBD6;--muted:#7A7770;
+  --fluo-yellow:#E8FF00;   /* jaune fluo */
+  --fluo-violet:#C77DFF;   /* violet fluo */
+  --fluo-green:#39FF14;    /* vert fluo */
+  --fluo-pink:#FF6FD8;     /* rose fluo */
+  --fluo-blue:#4DD2FF;     /* bleu fluo */
+  --sage:#39FF14;          /* on réutilise le vert fluo partout où --sage était */
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+body{font-family:'General Sans','Helvetica Neue',Arial,sans-serif;background:var(--white);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+
+.sitenav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);border-bottom:1px solid var(--rule);backdrop-filter:blur(8px);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 40px;height:56px;}
+.nav-left{display:flex;align-items:center;gap:4px;}
+.nav-link{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:6px 14px;transition:color .12s;}
+.nav-link:hover{color:var(--ink);}
+.nav-center{text-align:center;justify-self:center;}
+.logo-pre{font-size:8px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:2px;}
+.logo-s{font-size:17px;font-weight:900;letter-spacing:-.02em;text-transform:uppercase;font-style:italic;}
+.logo-mag{font-size:17px;font-weight:400;letter-spacing:.01em;text-transform:uppercase;font-style:normal;}
+.nav-right{display:flex;align-items:center;justify-content:flex-end;gap:12px;}
+.nav-badge{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:3px 9px;border:1px solid var(--rule);color:var(--muted);}
+
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:11px 40px;border-bottom:1px solid var(--rule);background:var(--paper);}
+.breadcrumb .sep{color:var(--rule);}
+.breadcrumb .active{color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:340px 1fr;align-items:start;}
+.col-img{position:sticky;top:56px;height:calc(100vh - 56px);overflow:hidden;background:var(--paper);border-right:1px solid var(--rule);align-self:start;}
+.col-img img{width:100%;height:100%;object-fit:cover;object-position:center;}
+.col-content{min-width:0;}
+
+.head{padding:48px 56px 40px;border-bottom:1px solid var(--rule);}
+.tags{display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap;}
+.tag{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border:1px solid var(--rule);color:var(--muted);}
+.tag.lvl{color:#0D0D0D;border-color:var(--ink);background:var(--fluo-green);font-weight:800;}
+h1.title{font-size:clamp(34px,4.5vw,58px);font-weight:900;letter-spacing:-.03em;line-height:.94;text-transform:uppercase;margin-bottom:18px;}
+.lead{font-size:15px;line-height:1.7;color:var(--muted);border-left:2px solid var(--ink);padding-left:18px;max-width:580px;}
+.lead strong{color:var(--ink);font-weight:600;}
+
+.meta{display:flex;flex-wrap:wrap;border-bottom:1px solid var(--rule);padding:0 56px;}
+.meta-item{font-size:11px;color:var(--muted);padding:14px 48px 14px 0;}
+.meta-item strong{color:var(--ink);font-weight:700;}
+
+.body{padding:8px 56px 64px;}
+.section{margin-top:72px;scroll-margin-top:72px;}
+.sec-label{display:flex;align-items:center;gap:0;margin-bottom:36px;background:var(--ink);color:#fff;}
+.sec-num{font-size:18px;font-weight:900;letter-spacing:.02em;color:#0D0D0D;background:var(--fluo-yellow);flex-shrink:0;padding:20px 22px;align-self:stretch;display:flex;align-items:center;}
+.sec-title-txt{font-size:clamp(18px,2.3vw,25px);font-weight:900;letter-spacing:-.01em;line-height:1.15;text-transform:uppercase;padding:18px 24px;color:#fff;}
+.p{font-size:15px;line-height:1.9;margin-bottom:22px;}
+.p.muted{color:var(--muted);}
+.p b,.p strong{font-weight:700;}
+
+/* GRAND CHIFFRE EN EXERGUE — style magazine */
+.stat{margin:44px 0;padding:36px 40px;background:var(--ink);color:#fff;display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center;}
+.stat-num{font-size:clamp(60px,9.5vw,116px);font-weight:900;letter-spacing:-.04em;line-height:.8;white-space:nowrap;color:var(--fluo-green);}
+.stat-txt{font-size:15px;line-height:1.65;color:rgba(255,255,255,.92);border-left:3px solid var(--fluo-green);padding-left:22px;}
+.stat-txt b{font-weight:700;color:#fff;}
+.stat-txt .src{display:block;margin-top:10px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--fluo-green);}
+
+/* listes éditoriales (remplacent les tableaux) */
+.points{margin:18px 0;}
+.point{display:flex;gap:20px;padding:20px 0;border-bottom:1px solid rgba(0,0,0,.08);}
+.point:last-child{border-bottom:none;}
+.point-k{flex-shrink:0;width:140px;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.02em;line-height:1.3;}
+.point-k small{display:block;font-size:11px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted);margin-top:2px;}
+.point-v{font-size:14px;line-height:1.7;color:var(--ink);}
+.point-v b{font-weight:700;}
+
+.arrow-list{margin:18px 0;}
+.al{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid rgba(0,0,0,.08);}
+.al:last-child{border-bottom:none;}
+.al-a{color:var(--fluo-violet);font-weight:900;flex-shrink:0;font-size:15px;margin-top:1px;}
+.al p{font-size:14px;line-height:1.7;}
+.al strong{font-weight:700;}
+
+/* entonnoir en liste éditoriale */
+.funnel{margin:22px 0;}
+.fn{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid rgba(0,0,0,.08);}
+.fn:last-child{border-bottom:none;}
+.fn-step{font-size:14px;font-weight:700;background:linear-gradient(transparent 28%, var(--fluo-yellow) 28%);padding:2px 5px;display:inline;}
+.fn-step small{font-weight:400;color:var(--muted);}
+.fn-val{font-size:20px;font-weight:900;letter-spacing:-.02em;white-space:nowrap;}
+.fn-val small{font-size:11px;font-weight:600;color:var(--muted);margin-left:8px;letter-spacing:.04em;}
+
+.pull{margin:44px 0;padding:32px 34px;background:#0D0D0D;color:#fff;position:relative;}
+.pull::before{content:"\201C";position:absolute;top:8px;left:18px;font-size:64px;line-height:1;color:var(--fluo-yellow);font-weight:900;}
+.pull p{font-size:23px;font-weight:600;font-style:normal;line-height:1.4;margin-bottom:12px;padding-left:36px;}
+.pull cite{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--fluo-yellow);font-style:normal;padding-left:36px;display:block;}
+
+.gloss{margin:8px 0 0;padding:8px 0 0;}
+.gloss-l{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin-bottom:28px;}
+.gl-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.gl-item{display:flex;flex-direction:column;gap:12px;padding:22px;background:var(--ink);}
+.gl-term{align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:var(--ink);background:var(--pastel,#C4B5FD);padding:6px 13px;}
+.gl-def{display:block;font-size:13px;line-height:1.6;color:rgba(255,255,255,.75);}
+
+.quiz{margin-top:8px;padding:40px;background:var(--paper);border-top:3px solid var(--ink);}
+.quiz-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px;}
+.quiz-head .qbadge{font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#0D0D0D;border:none;background:var(--fluo-violet);padding:5px 12px;}
+.quiz-head .qttl{font-size:clamp(22px,2.8vw,30px);font-weight:900;letter-spacing:-.02em;text-transform:uppercase;}
+.quiz-intro p{font-size:14px;color:var(--muted);margin-bottom:28px;}
+.q{margin-bottom:22px;padding:22px 24px;background:#fff;border:1px solid var(--rule);}
+.qn{font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#0D0D0D;background:var(--fluo-violet);display:inline-block;padding:3px 9px;margin-bottom:12px;}
+.qt{font-size:16px;font-weight:700;margin-bottom:16px;line-height:1.45;}
+.opts{display:flex;flex-direction:column;gap:8px;}
+.opt{text-align:left;font-family:inherit;font-size:14px;color:var(--ink);background:#fff;border:1px solid var(--rule);padding:12px 16px;cursor:pointer;transition:all .14s;line-height:1.5;}
+.opt:hover:not(:disabled){border-color:var(--ink);}
+.opt:disabled{cursor:default;}
+.opt.ok{border-color:#0D0D0D;background:var(--fluo-green);color:#0D0D0D;font-weight:700;}
+.opt.no{border-color:#C8273A;background:rgba(200,39,58,.06);color:#C8273A;}
+.fb{display:none;margin-top:12px;padding:14px 18px;font-size:13px;line-height:1.6;background:#0D0D0D;color:#fff;border-left:4px solid var(--fluo-green);}
+.fb.show{display:block;}
+.score{display:none;margin-top:24px;padding:36px;background:var(--ink);color:#fff;text-align:center;}
+.score.show{display:block;}
+.score-l{font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--fluo-violet);margin-bottom:10px;}
+.score-n{font-size:72px;font-weight:900;letter-spacing:-.04em;line-height:1;margin-bottom:12px;color:var(--fluo-green);}
+.score-m{font-size:14px;line-height:1.6;color:rgba(255,255,255,.8);max-width:380px;margin:0 auto;}
+
+.recap{margin-top:8px;padding:0;background:none;color:var(--ink);}
+.recap .lbl{font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:22px;color:var(--ink);}
+
+.foot{padding:24px 56px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--rule);margin-top:46px;}
+.foot-copy{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.backbtn{position:fixed;top:14px;left:14px;z-index:1000;background:#fff;color:#0D0D0D;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:9px 15px;border:1px solid var(--rule);}
+
+@media(max-width:768px){
+  .sitenav{grid-template-columns:1fr auto;padding:0 16px;height:52px;}
+  .nav-left{display:none;}
+  .layout{grid-template-columns:1fr;}
+  .col-img{display:none;}
+  .breadcrumb,.head,.meta,.body,.foot{padding-left:20px;padding-right:20px;}
+  .quiz{padding:24px 20px;}
+  .q{padding:18px 16px;}
+  .stat{padding:24px;gap:14px;}
+  .recap{padding:24px;}
+  .gl-grid{grid-template-columns:1fr;gap:14px;}
+  .meta-item{padding-right:28px;}
+  h1.title{font-size:30px;}
+  .stat{grid-template-columns:1fr;gap:12px;}
+  .stat-num{font-size:64px;}
+  .point{flex-direction:column;gap:6px;}
+  .point-k{width:auto;}
+}
+
+/* mots-clés en gras : surlignage éditorial discret */
+.body .p strong, .body .p b, .body .point-v b, .body .al p strong{font-weight:700;background:linear-gradient(transparent 30%, var(--fluo-yellow) 30%);padding:1px 3px;}
+
+/* tableau À retenir */
+.recap-tbl{width:100%;border-collapse:collapse;}
+.recap-tbl td{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.15);vertical-align:top;font-size:14px;line-height:1.65;}
+.recap-tbl tr:last-child td{border-bottom:none;}
+.recap-tbl .rt-k{width:160px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;font-size:12px;padding-right:24px;padding-top:18px;color:var(--fluo-yellow);}
+.recap-tbl .rt-v{color:rgba(255,255,255,.92);}
+@media(max-width:768px){
+  .recap-tbl td{display:block;border-bottom:none;padding:4px 0;}
+  .recap-tbl .rt-k{width:auto;padding-top:14px;}
+  .recap-tbl tr{display:block;border-bottom:1px solid var(--rule);padding-bottom:10px;}
+}
+
+/* Barre de progression de lecture */
+.readbar{position:fixed;top:56px;left:0;right:0;height:3px;background:transparent;z-index:99;}
+.readbar-fill{height:100%;width:0;background:var(--fluo-violet);transition:width .1s linear;}
+@media(max-width:768px){.readbar{top:52px;}}
+
+/* Sommaire */
+.toc{margin:8px 0 12px;padding:24px;border:1px solid var(--rule);background:var(--paper);}
+.toc-label{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.toc-item{display:flex;align-items:baseline;gap:14px;padding:10px 0;border-bottom:1px solid var(--rule);transition:padding-left .15s;}
+.toc-item:last-child{border-bottom:none;}
+.toc-item:hover{padding-left:8px;}
+.toc-n{font-size:12px;font-weight:800;color:#0D0D0D;background:var(--fluo-yellow);padding:2px 7px;flex-shrink:0;}
+.toc-t{font-size:14px;font-weight:600;color:var(--ink);}
+
+/* retour haut */
+.totop{display:inline-flex;align-items:center;gap:8px;margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+.totop:hover{color:var(--ink);}
+
+a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:2px;}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important;}}
+
+/* Onglets sticky */
+.tabs{position:sticky;top:56px;z-index:90;display:flex;gap:8px;background:var(--paper);border-bottom:1px solid var(--rule);padding:12px 56px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.tab{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:#fff;border:1px solid var(--rule);padding:12px 18px;cursor:pointer;transition:all .15s;white-space:nowrap;}
+.tab:hover{color:var(--ink);border-color:var(--ink);}
+.tab.active{color:#0D0D0D;background:var(--fluo-violet);border-color:var(--ink);font-weight:800;}
+
+to{opacity:1;transform:none;}}
+@media(max-width:768px){
+  .tabs{top:52px;padding:10px 16px;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .tab{padding:14px 16px;font-size:11px;white-space:nowrap;}
+}
+
+/* accents fluo variés sur les listes de définition */
+.points .point:nth-child(1) .point-k{color:#0D0D0D;}
+.points .point:nth-child(1) .point-k::before{content:'';display:inline-block;width:12px;height:12px;background:var(--fluo-violet);margin-right:8px;vertical-align:middle;}
+.points .point:nth-child(2) .point-k::before{content:'';display:inline-block;width:12px;height:12px;background:var(--fluo-pink);margin-right:8px;vertical-align:middle;}
+.points .point:nth-child(3) .point-k::before{content:'';display:inline-block;width:12px;height:12px;background:var(--fluo-blue);margin-right:8px;vertical-align:middle;}
+.points .point:nth-child(4) .point-k::before{content:'';display:inline-block;width:12px;height:12px;background:var(--fluo-green);margin-right:8px;vertical-align:middle;}
+.points .point:nth-child(5) .point-k::before{content:'';display:inline-block;width:12px;height:12px;background:var(--fluo-yellow);margin-right:8px;vertical-align:middle;}
+/* entonnoir : valeurs en bleu fluo highlight */
+.fn-val{position:relative;}
+.fn:nth-child(odd) .fn-val{background:linear-gradient(transparent 32%, var(--fluo-blue) 32%);padding:2px 5px;}
+.fn:nth-child(even) .fn-val{background:linear-gradient(transparent 32%, var(--fluo-pink) 32%);padding:2px 5px;}
+/* sommaire : numéros alternent jaune/rose */
+.toc-item:nth-child(even) .toc-n{background:var(--fluo-pink);}
+/* Topbar actions */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:24px 0;border-bottom:1px solid var(--rule);flex-wrap:wrap;}
+.topbar-info{font-size:11px;color:var(--muted);}
+.topbar-info strong{color:var(--ink);}
+.actions{display:flex;gap:10px;}
+.btn{font-family:inherit;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:12px 20px;cursor:pointer;border:1px solid var(--ink);background:#fff;color:var(--ink);transition:all .15s;}
+.btn:hover{background:var(--paper);}
+.btn-primary{background:var(--ink);color:#fff;}
+.btn-primary:hover{background:#000;}
+.btn:disabled{opacity:.5;cursor:wait;}
+
+/* Header */
+.head{padding:44px 0 32px;}
+.tags{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;}
+.tag{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border:1px solid var(--rule);color:var(--muted);}
+.tag.tpl{background:var(--fluo-violet);color:#0D0D0D;border-color:var(--ink);font-weight:800;}
+.tag.lvl{background:var(--fluo-green);color:#0D0D0D;border-color:var(--ink);font-weight:800;}
+h1{font-size:clamp(30px,4vw,48px);font-weight:900;letter-spacing:-.03em;line-height:.96;text-transform:uppercase;margin-bottom:16px;}
+.intro{font-size:15px;line-height:1.7;color:var(--muted);border-left:3px solid var(--fluo-yellow);padding-left:18px;max-width:620px;}
+.intro strong{color:var(--ink);font-weight:600;}
+
+/* Progress */
+.progress-wrap{margin:28px 0 8px;}
+.progress-label{display:flex;justify-content:space-between;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.progress-bar{height:6px;background:var(--paper);border:1px solid var(--rule);overflow:hidden;}
+.progress-fill{height:100%;width:0;background:var(--fluo-violet);transition:width .3s ease;}
+
+/* Sections du template */
+.tpl-section{margin:40px 0;}
+.tpl-sec-head{display:flex;align-items:center;gap:0;margin-bottom:24px;}
+.tpl-sec-num{font-size:18px;font-weight:900;color:#0D0D0D;background:var(--fluo-yellow);padding:14px 18px;align-self:stretch;display:flex;align-items:center;}
+.tpl-sec-title{font-size:clamp(17px,2.2vw,22px);font-weight:900;letter-spacing:-.01em;text-transform:uppercase;background:#0D0D0D;color:#fff;padding:14px 20px;flex:1;}
+.tpl-sec-desc{font-size:14px;line-height:1.7;color:var(--muted);margin-bottom:20px;}
+
+/* Champs */
+.field{margin-bottom:20px;}
+.field-label{display:block;font-size:12px;font-weight:700;letter-spacing:.02em;margin-bottom:8px;}
+.field-hint{font-size:12px;color:var(--muted);margin-bottom:8px;font-weight:400;}
+.field-input,.field-textarea{width:100%;font-family:inherit;font-size:14px;color:var(--ink);background:#fff;border:1px solid var(--ink);padding:12px 14px;transition:border-color .15s;}
+.field-input:focus,.field-textarea:focus{outline:none;border-color:var(--fluo-violet);border-width:2px;}
+.field-textarea{min-height:80px;resize:vertical;line-height:1.6;}
+
+/* Grille de canaux owned/earned/paid */
+.channels{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.channel{border:1px solid var(--ink);padding:18px;}
+.channel-tag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;margin-bottom:12px;color:#0D0D0D;}
+.channel:nth-child(1) .channel-tag{background:var(--fluo-violet);}
+.channel:nth-child(2) .channel-tag{background:var(--fluo-pink);}
+.channel:nth-child(3) .channel-tag{background:var(--fluo-blue);}
+.channel-textarea{width:100%;font-family:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--rule);padding:10px;min-height:100px;resize:vertical;line-height:1.6;}
+.channel-textarea:focus{outline:none;border-color:var(--ink);}
+
+/* Calculateur de chiffres */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.calc-card{border:1px solid var(--ink);padding:20px;}
+.calc-card .ck{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;}
+.calc-card .cd{font-size:11px;color:var(--muted);margin-bottom:14px;line-height:1.5;}
+.calc-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.calc-row label{font-size:12px;color:var(--muted);flex:1;}
+.calc-row input{width:120px;font-family:inherit;font-size:14px;border:1px solid var(--rule);padding:8px 10px;text-align:right;}
+.calc-row input:focus{outline:none;border-color:var(--fluo-violet);}
+.calc-result{margin-top:12px;padding:14px;background:#0D0D0D;color:#fff;display:flex;align-items:baseline;justify-content:space-between;}
+.calc-result .rl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fluo-green);}
+.calc-result .rv{font-size:26px;font-weight:900;letter-spacing:-.02em;color:var(--fluo-green);}
+.calc-result .rv.muted{color:var(--muted);font-size:18px;}
+
+/* Verdict LTV/CAC */
+.verdict{margin-top:16px;padding:18px 22px;border:2px solid var(--ink);font-size:14px;line-height:1.6;display:none;}
+.verdict.show{display:block;}
+.verdict.good{background:var(--fluo-green);}
+.verdict.bad{background:var(--fluo-pink);}
+.verdict strong{font-weight:800;}
+
+/* Plan d'action */
+.action-item{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--rule);}
+.action-check{width:22px;height:22px;border:2px solid var(--ink);flex-shrink:0;margin-top:2px;cursor:pointer;position:relative;background:#fff;}
+.action-check.checked{background:var(--fluo-green);}
+.action-check.checked::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;color:#0D0D0D;}
+.action-input{flex:1;font-family:inherit;font-size:14px;border:none;border-bottom:1px solid var(--rule);padding:4px 0;background:transparent;}
+.action-input:focus{outline:none;border-bottom-color:var(--fluo-violet);}
+
+.note{margin:32px 0;padding:28px 30px;background:#0D0D0D;border:2px solid var(--ink);font-size:14px;line-height:1.7;color:rgba(255,255,255,.9);}
+.note strong{color:var(--fluo-green);}
+
+.foot{padding:32px 0;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--rule);margin-top:40px;}
+.foot-copy{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.backbtn{position:fixed;top:14px;left:14px;z-index:1000;background:#fff;color:#0D0D0D;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:9px 15px;border:1px solid var(--rule);}
+
+@media(max-width:768px){
+  .sitenav{grid-template-columns:1fr auto;padding:0 16px;height:52px;}
+  .nav-left{display:none;}
+  .wrap{padding:0 18px;}
+  .breadcrumb{padding:11px 18px;}
+  .channels{grid-template-columns:1fr;}
+  .calc{grid-template-columns:1fr;}
+  h1{font-size:28px;}
+  .topbar{flex-direction:column;align-items:flex-start;}
+}
+/* Styles spécifiques à l'export PDF */
+.pdf-mode .backbtn,.pdf-mode .sitenav,.pdf-mode .actions,.pdf-mode .progress-wrap{display:none!important;}
+.pdf-mode .field-input,.pdf-mode .field-textarea,.pdf-mode .channel-textarea,.pdf-mode .calc-row input,.pdf-mode .action-input{border:1px solid #999;}
+
+/* Listes à choix multiples */
+.checklist{display:flex;flex-direction:column;gap:2px;margin-bottom:12px;}
+.checklist-col{gap:4px;}
+.check{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.5;padding:7px 0;cursor:pointer;color:var(--ink);}
+.check input[type=checkbox]{appearance:none;-webkit-appearance:none;width:18px;height:18px;border:2px solid var(--ink);background:#fff;flex-shrink:0;margin-top:1px;cursor:pointer;position:relative;}
+.check input[type=checkbox]:checked{background:var(--fluo-green);}
+.check input[type=checkbox]:checked::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px;color:#0D0D0D;}
+.check em{font-style:normal;color:var(--muted);font-size:12px;}
+
+/* À retenir : cards colorées */
+.recap-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.recap-card{padding:24px;background:#0D0D0D;color:#fff;border:2px solid var(--ink);display:flex;flex-direction:column;gap:10px;}
+.recap-card .rc-k{font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;}
+.recap-card .rc-v{font-size:14px;line-height:1.6;font-weight:500;color:rgba(255,255,255,.9);}
+@media(max-width:768px){.recap-grid{grid-template-columns:1fr;}}
+
+
+
+
+.panel{ display:none; }
+.panel.is-active{ display:block; }
+.tab{ cursor:pointer; }
+.tab.is-active{ color:#0D0D0D; background:var(--fluo-violet); border-color:var(--ink); font-weight:800; }
+
+
+/* ===== Matrice de notation ===== */
+.matrix{margin:8px 0 4px;border:2px solid var(--ink);background:#fff;}
+.mx-head{display:grid;grid-template-columns:1fr 44px 44px 44px 44px;align-items:center;background:#0D0D0D;color:#fff;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;}
+.mx-head span{padding:10px 12px;text-align:center;}
+.mx-head span:first-child{text-align:left;}
+.mx-row{display:grid;grid-template-columns:1fr 44px 44px 44px 44px;align-items:stretch;border-top:1px solid var(--rule);}
+.mx-row:nth-child(even){background:var(--paper);}
+.mx-label{padding:12px;font-size:13px;font-weight:600;display:flex;align-items:center;}
+.mx-cell{display:flex;align-items:center;justify-content:center;border-left:1px solid var(--rule);cursor:pointer;font-size:13px;font-weight:700;color:var(--muted);transition:all .12s ease;user-select:none;}
+.mx-cell:hover{background:var(--fluo-yellow);color:#0D0D0D;}
+.mx-cell.sel{background:var(--fluo-violet);color:#0D0D0D;font-weight:800;}
+.mx-score{margin-top:14px;padding:18px 22px;background:#0D0D0D;color:#fff;display:flex;flex-direction:column;gap:4px;}
+.mxs-l{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.6);}
+.mxs-v{font-size:28px;font-weight:900;color:var(--fluo-green);line-height:1;}
+.mxs-msg{font-size:13px;color:rgba(255,255,255,.85);margin-top:4px;line-height:1.5;}
+@media(max-width:560px){
+  .mx-head,.mx-row{grid-template-columns:1fr 34px 34px 34px 34px;}
+  .mx-label{font-size:12px;padding:10px;}
+  .mx-cell{font-size:12px;}
+}
+
+
+
+/* ===== Hiérarchiseur de KPIs (Int mesurer) ===== */
+.kp-intro-pool{border:2px solid var(--ink);background:#fff;padding:14px;margin-bottom:18px;}
+.kp-pool-h{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:10px;}
+.kp-pool{display:flex;flex-direction:column;gap:10px;}
+.kp-done{font-size:13px;color:var(--muted);font-style:italic;margin:2px 0;}
+.kp-chip{border:2px solid var(--ink);background:var(--paper);padding:12px;display:flex;flex-direction:column;gap:10px;}
+.kp-chip-txt{font-size:14px;font-weight:600;color:var(--ink);line-height:1.4;}
+.kp-chip-btns{display:flex;gap:8px;}
+.kp-b{flex:1;border:2px solid var(--ink);background:#fff;font-family:inherit;font-size:12px;font-weight:800;letter-spacing:.01em;padding:9px 6px;cursor:pointer;transition:all .12s;color:#0D0D0D;}
+.kp-b.valeur:hover{background:var(--fluo-green);}
+.kp-b.vanite:hover{background:var(--fluo-pink);}
+.kp-cols{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.kp-col{border:2px solid var(--ink);background:#fff;min-height:120px;display:flex;flex-direction:column;}
+.kp-col-h{padding:10px;font-size:13px;font-weight:900;letter-spacing:-.01em;color:#0D0D0D;text-align:center;}
+.kp-col[data-cat="valeur"] .kp-col-h{background:var(--fluo-green);}
+.kp-col[data-cat="vanite"] .kp-col-h{background:var(--fluo-pink);}
+.kp-col-sub{font-size:10px;font-weight:600;letter-spacing:0;opacity:.7;display:block;margin-top:2px;}
+.kp-drop{flex:1;padding:10px;display:flex;flex-direction:column;gap:7px;}
+.kp-placed{border:1px solid var(--rule);background:var(--paper);padding:9px 10px;font-size:12px;line-height:1.4;color:var(--ink);position:relative;}
+.kp-placed.correct{border-color:var(--fluo-green);border-left:4px solid var(--fluo-green);}
+.kp-placed.wrong{border-color:var(--fluo-pink);border-left:4px solid var(--fluo-pink);}
+.kp-placed .fbk{display:block;font-size:11px;margin-top:5px;line-height:1.4;color:var(--muted);}
+.kp-placed .verdict{font-weight:800;}
+.kp-placed.correct .verdict{color:#1a7a0a;}
+.kp-placed.wrong .verdict{color:#b3005f;}
+.kp-back{margin-top:6px;border:1px solid var(--rule);background:#fff;color:var(--muted);font-family:inherit;font-size:10px;font-weight:700;padding:3px 8px;cursor:pointer;}
+.kp-back:hover{background:#0D0D0D;color:#fff;border-color:#0D0D0D;}
+.kp-count{font-size:11px;color:var(--muted);text-align:center;padding:4px 0 8px;}
+@media(max-width:560px){.kp-cols{grid-template-columns:1fr;}}
+.kp-score-wrap{display:flex;align-items:center;gap:24px;border:2px solid var(--ink);background:#0D0D0D;padding:20px 24px;flex-wrap:wrap;}
+.kp-donut-wrap{position:relative;width:140px;height:140px;flex:0 0 140px;}
+.kp-donut-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.kp-donut-big{font-size:26px;font-weight:900;color:#fff;line-height:1;}
+.kp-donut-sub{font-size:9px;text-transform:uppercase;letter-spacing:.04em;color:rgba(255,255,255,.55);margin-top:2px;}
+.kp-score-legend{flex:1;min-width:180px;display:flex;flex-direction:column;gap:10px;}
+.kp-score-line{display:flex;align-items:center;gap:10px;font-size:13px;color:rgba(255,255,255,.8);}
+.kp-score-line b{margin-left:auto;color:#fff;font-weight:800;font-size:15px;}
+.kp-score-line .dot{width:12px;height:12px;border-radius:50%;flex:0 0 12px;}
+.kp-score-line .dot.ok{background:var(--fluo-green);}
+.kp-score-line .dot.ko{background:var(--fluo-pink);}
+.kp-score-line .dot.todo{background:rgba(255,255,255,.2);}
+
+.kp-fiches{display:flex;flex-direction:column;gap:10px;}
+.kp-fiche{border:2px solid var(--ink);background:#fff;padding:14px 16px;}
+.kp-fiche-sit{font-size:13px;font-weight:800;color:var(--ink);margin-bottom:8px;}
+.kp-fiche-sit::before{content:'\26A0';color:var(--fluo-pink);margin-right:7px;font-weight:400;}
+.kp-fiche-lab{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:2px;}
+.kp-fiche-say{display:block;background:#0D0D0D;padding:16px 18px;font-size:14px;line-height:1.6;color:#fff;font-style:italic;margin-top:4px;}
+
+/* ===== Qualificateur de crise (domaines + 3 colonnes) ===== */
+.dom-opts{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.dom-chip{display:flex;flex-direction:column;gap:3px;text-align:left;border:2px solid var(--ink);background:#fff;padding:12px 14px;cursor:pointer;font-family:inherit;transition:all .12s;}
+.dom-chip:hover{background:var(--paper);}
+.dom-chip.sel{background:#0D0D0D;}
+.dom-k{font-size:14px;font-weight:800;color:var(--ink);}
+.dom-d{font-size:11px;color:var(--muted);}
+.dom-chip.sel .dom-k{color:var(--fluo-yellow);}
+.dom-chip.sel .dom-d{color:rgba(255,255,255,.7);}
+.nt-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+.nt-col{border:2px solid var(--ink);background:#fff;min-height:110px;display:flex;flex-direction:column;}
+.nt-col-h{padding:9px 7px;font-size:11px;font-weight:900;color:#0D0D0D;text-align:center;line-height:1.25;}
+.nt-col[data-cat="top"] .nt-col-h{background:var(--fluo-green);}
+.nt-col[data-cat="spont"] .nt-col-h{background:var(--fluo-yellow);}
+.nt-col[data-cat="assist"] .nt-col-h{background:var(--fluo-blue);}
+.nt-col[data-cat="image"] .nt-col-h{background:var(--fluo-violet);}
+.nt-col-sub{display:block;font-size:9px;font-weight:600;letter-spacing:0;opacity:.7;margin-top:2px;}
+.kp-b4{flex:1;border:2px solid var(--ink);background:#fff;font-family:inherit;font-size:10px;font-weight:800;padding:9px 3px;cursor:pointer;transition:all .12s;color:#0D0D0D;}
+.kp-b4.top:hover{background:var(--fluo-green);}
+.kp-b4.spont:hover{background:var(--fluo-yellow);}
+.kp-b4.assist:hover{background:var(--fluo-blue);}
+.kp-b4.image:hover{background:var(--fluo-violet);}
+.kp-fiche-strat{display:inline-block;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;padding:3px 8px;margin-bottom:7px;}
+.kp-fiche-strat.top{background:var(--fluo-green);color:#0D0D0D;}
+.kp-fiche-strat.spont{background:var(--fluo-yellow);color:#0D0D0D;}
+.kp-fiche-strat.assist{background:var(--fluo-blue);color:#0D0D0D;}
+.kp-fiche-strat.image{background:var(--fluo-violet);color:#0D0D0D;}
+@media(max-width:900px){.nt-cols{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.dom-opts{grid-template-columns:1fr;}.nt-cols{grid-template-columns:1fr;}}
+
+/* ===== Recommandations dynamiques ===== */
+.reco{margin-top:14px;padding:14px 16px 14px 18px;border-left:3px solid var(--ink);background:var(--white);font-size:13px;line-height:1.6;color:var(--muted);display:none;position:relative;}
+.reco.show{display:block;}
+.reco::before{content:'';position:absolute;left:-3px;top:0;width:3px;height:22px;background:var(--ink);}
+.reco.good::before{background:var(--fluo-green);}
+.reco.warn::before{background:var(--fluo-yellow);}
+.reco.bad::before{background:var(--fluo-pink);}
+.reco strong{font-weight:700;color:var(--ink);}
+.bilan{margin:36px 0 8px;padding:30px 32px;background:#0D0D0D;border:2px solid var(--ink);}
+.bilan-lbl{display:inline-block;background:var(--fluo-green);color:#0D0D0D;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:4px 10px;margin-bottom:18px;}
+.bilan h3{color:#fff;font-size:20px;font-weight:900;margin:0 0 16px;letter-spacing:-.01em;}
+.bilan-empty{color:rgba(255,255,255,.5);font-size:14px;line-height:1.6;}
+.bilan-line{display:flex;gap:12px;padding:12px 0;border-top:1px solid rgba(255,255,255,.12);font-size:14px;line-height:1.6;color:rgba(255,255,255,.9);}
+.bilan-line:first-of-type{border-top:none;}
+.bilan-ico{flex-shrink:0;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;}
+.bilan-ico.g{background:#39FF14;color:#0D0D0D;}
+.bilan-ico.w{background:#E8FF00;color:#0D0D0D;}
+.bilan-ico.b{background:#FF6FD8;color:#0D0D0D;}
+.bilan-line strong{color:#fff;}
+
+/* ===== Onglets (OBLIGATOIRE) ===== */
+.panel{ display:none; }
+.panel.is-active{ display:block; }
+.tab{ cursor:pointer; }
+.tab.is-active{ color:#0D0D0D; background:var(--fluo-violet); border-color:var(--ink); font-weight:800; }
+</style></head>
+<body>
+<a href="/home" class="backbtn">← Retour</a>
+<nav class="sitenav"><div class="nav-left"><a href="/home" class="nav-link">Thématiques</a><a href="/formules" class="nav-link">Formules</a><a href="/waitlist" class="nav-link" style="color:var(--fluo-green);font-weight:800;">Waiting List</a></div>
+<div class="nav-center"><a href="/home" style="display:inline-flex;flex-direction:column;align-items:center;"><span class="logo-pre">Briefings</span><span><span class="logo-s">SKANNER</span><span class="logo-mag">MAGAZINE</span></span></a></div>
+<div class="nav-right"><span class="nav-badge">PR &amp; Communication</span></div></nav>
+<div class="breadcrumb"><a href="/home" style="color:var(--muted);">Accueil</a><span class="sep">/</span><span>PR &amp; Communication</span><span class="sep">/</span><span class="active">Chapitre 2 · Fiche 4 · Débutant</span></div>
+
+<div class="layout">
+  <div class="col-img"><img src="/pr-notoriete-1.jpg" alt="Mesure de la notoriété de marque"/></div>
+  <div class="col-content">
+    <header class="head">
+      <div class="tags"><span class="tag">PR &amp; Communication</span><span class="tag lvl">Débutant</span></div>
+      <h1 class="title">CONNU<br/>COMMENT ?</h1>
+      <p class="lead">« On nous connaît » ne veut rien dire. Être <strong>cité spontanément</strong>, être <strong>reconnu dans une liste</strong> ou être <strong>bien perçu</strong> sont trois choses différentes — qui ne se mesurent pas pareil et ne se travaillent pas pareil.</p>
+    </header>
+    <div class="meta">
+      <div class="meta-item">Niveau <strong>Débutant</strong></div>
+      <div class="meta-item">Durée <strong>14 min</strong></div>
+      <div class="meta-item">Chapitre <strong>2 — Prise de parole &amp; influence</strong></div>
+      <div class="meta-item">Fiche <strong>4 / 4</strong></div>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab is-active" type="button" data-panel="fiche">Fiche</button>
+      <button class="tab" type="button" data-panel="retenir">À retenir</button>
+      <button class="tab" type="button" data-panel="gloss">Glossaire</button>
+      <button class="tab" type="button" data-panel="quiz">Quiz</button>
+      <button class="tab" type="button" data-panel="template">Template</button>
+    </div>
+
+    <div class="body">
+
+      <!-- ===== PANNEAU FICHE ===== -->
+      <div class="panel is-active" id="panel-fiche" role="tabpanel">
+        <section class="section" id="sec-1">
+          <div class="sec-label"><span class="sec-num">01</span><span class="sec-title-txt">Être connu, mais comment</span></div>
+          <p class="p">La notoriété n'est pas un interrupteur. Elle se mesure par <strong>degrés</strong>, et chaque degré raconte autre chose sur votre place dans la tête des gens. Confondre ces niveaux, c'est se réjouir d'un chiffre qui ne dit pas ce qu'on croit.</p>
+          <p class="p" style="font-size:13px;color:var(--muted);border-left:2px solid var(--fluo-blue);padding-left:12px;">En clair : la <strong>notoriété</strong>, c'est la facilité avec laquelle votre nom vient à l'esprit de quelqu'un. Plus il vient facilement, plus elle est forte.</p>
+          <div class="points">
+            <div class="point"><div class="point-k">Top of mind<small>Le plus haut niveau</small></div><div class="point-v">Vous êtes cité <b>en premier</b>, sans aide. Question posée : « citez une marque de… ». C'est la position la plus forte du marché.</div></div>
+            <div class="point"><div class="point-k">Notoriété spontanée<small>Sans aide</small></div><div class="point-v">Vous êtes cité sans qu'on vous nomme, mais pas forcément en premier. Question ouverte : « quelles marques connaissez-vous ? ».</div></div>
+            <div class="point"><div class="point-k">Notoriété assistée<small>Avec aide</small></div><div class="point-v">Vous êtes reconnu dans une liste. Question fermée : « parmi ces marques, lesquelles connaissez-vous ? ». Le niveau le plus facile à atteindre.</div></div>
+            <div class="point"><div class="point-k">Image<small>Autre chose</small></div><div class="point-v">Non pas si l'on vous connaît, mais <b>ce que l'on pense de vous</b> : sérieux, innovant, cher, engagé. Une notoriété forte peut aller avec une image mauvaise.</div></div>
+          </div>
+        </section>
+
+        <section class="section" id="sec-2">
+          <div class="sec-label"><span class="sec-num">02</span><span class="sec-title-txt">L'écart qui en dit long</span></div>
+          <p class="p">Le chiffre le plus instructif n'est aucun des trois : c'est l'<strong>écart entre la spontanée et l'assistée</strong>. Une marque reconnue par tous dans une liste mais que personne ne cite spontanément a un problème précis — elle est connue mais pas <strong>présente à l'esprit</strong>.</p>
+          <div class="pull"><p>Une forte notoriété assistée avec une faible spontanée signale un défaut d'ancrage : on vous reconnaît, on ne pense pas à vous. C'est un problème de saillance, pas de visibilité.</p><cite>Lecture des écarts</cite></div>
+          <p class="p" style="font-size:13px;color:var(--muted);border-left:2px solid var(--fluo-blue);padding-left:12px;">En clair : si beaucoup vous reconnaissent mais que peu vous citent d'eux-mêmes, vous existez sans compter. Le travail à faire n'est pas d'être plus vu, mais d'être plus mémorable.</p>
+        </section>
+
+        <section class="section" id="sec-3">
+          <div class="sec-label"><span class="sec-num">03</span><span class="sec-title-txt">Ce n'est pas la même chose que les retombées</span></div>
+          <p class="p">Attention à ne pas confondre deux registres. Les <strong>retombées presse</strong> mesurent ce qui sort d'une campagne : des articles, des citations. La <strong>notoriété</strong> mesure ce qui reste dans la tête des gens, des mois après. On peut avoir beaucoup de retombées et une notoriété inchangée.</p>
+          <div class="arrow-list">
+            <div class="al"><span class="al-a">→</span><p><strong>Les retombées se comptent</strong> en continu, à partir de ce qui est publié.</p></div>
+            <div class="al"><span class="al-a">→</span><p><strong>La notoriété se sonde</strong>, auprès d'un échantillon, à intervalles réguliers. Elle bouge lentement.</p></div>
+            <div class="al"><span class="al-a">→</span><p><strong>L'image se qualifie</strong> par des questions sur les attributs perçus, pas par un simple taux.</p></div>
+          </div>
+        </section>
+
+        <div class="note">
+          <strong>À garder en tête.</strong> Quatre notions à ne pas confondre : <strong>top of mind</strong> (cité en premier), <strong>spontanée</strong> (cité sans aide), <strong>assistée</strong> (reconnu dans une liste), <strong>image</strong> (ce qu'on pense de vous). Et surveillez l'<strong>écart</strong> entre spontanée et assistée : il révèle votre vrai problème.
+        </div>
+      </div>
+
+      <div class="panel" id="panel-retenir" role="tabpanel">
+        <div class="recap">
+          <div class="lbl">À retenir</div>
+          <div class="recap-grid">
+            <div class="recap-card"><div class="rc-k" style="color:var(--fluo-yellow);">Quatre niveaux distincts</div><div class="rc-v">Top of mind, spontanée, assistée, image : ils ne se mesurent pas et ne se travaillent pas pareil.</div></div>
+            <div class="recap-card"><div class="rc-k" style="color:var(--fluo-violet);">L'écart révèle le problème</div><div class="rc-v">Fort en assistée, faible en spontanée : vous êtes connu mais pas présent à l'esprit.</div></div>
+            <div class="recap-card"><div class="rc-k" style="color:var(--fluo-green);">Notoriété ≠ image</div><div class="rc-v">On peut être très connu et mal perçu. Le taux ne dit rien de ce qu'on pense de vous.</div></div>
+            <div class="recap-card"><div class="rc-k" style="color:var(--fluo-pink);">Notoriété ≠ retombées</div><div class="rc-v">Les retombées se comptent en continu ; la notoriété se sonde et bouge lentement.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PANNEAU GLOSSAIRE (cartes fond noir, 12 termes, couleurs alternées) ===== -->
+      <div class="panel" id="panel-gloss" role="tabpanel">
+        <div class="gloss">
+          <div class="gloss-l">Glossaire</div>
+          <div class="gl-grid">
+            <div class="gl-item"><span class="gl-term" style="background:#E8FF00;color:#0D0D0D;">Notoriété</span><span class="gl-def">Degré de présence d'une marque à l'esprit de sa cible ; se mesure par degrés.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#C77DFF;color:#0D0D0D;">Top of mind</span><span class="gl-def">Notoriété spontanée de premier rang : la marque citée en premier, sans aide.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#39FF14;color:#0D0D0D;">Notoriété spontanée</span><span class="gl-def">Part des personnes citant la marque sans aide, à une question ouverte.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#FF6FD8;color:#0D0D0D;">Notoriété assistée</span><span class="gl-def">Part des personnes reconnaissant la marque présentée dans une liste.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#4DD2FF;color:#0D0D0D;">Écart spontanée/assistée</span><span class="gl-def">Différence entre les deux taux ; révèle le défaut d'ancrage ou de mémorisation.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#E8FF00;color:#0D0D0D;">Image de marque</span><span class="gl-def">Ensemble des attributs perçus (sérieux, innovant, cher) ; distinct de la notoriété.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#C77DFF;color:#0D0D0D;">Saillance</span><span class="gl-def">Capacité d'une marque à venir à l'esprit au moment du besoin.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#39FF14;color:#0D0D0D;">Baromètre</span><span class="gl-def">Étude répétée à intervalles réguliers permettant de suivre l'évolution des taux.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#FF6FD8;color:#0D0D0D;">Panel représentatif</span><span class="gl-def">Échantillon reflétant la structure de la population cible ; condition de fiabilité.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#4DD2FF;color:#0D0D0D;">Question ouverte</span><span class="gl-def">Formulation sans liste, utilisée pour mesurer la notoriété spontanée.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#E8FF00;color:#0D0D0D;">Question fermée</span><span class="gl-def">Formulation avec liste préétablie, utilisée pour la notoriété assistée.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#C77DFF;color:#0D0D0D;">E-réputation</span><span class="gl-def">Perception de la marque telle qu'elle s'exprime en ligne, distincte des sondages.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PANNEAU QUIZ (5 questions + feedback noir + score /5) ===== -->
+      <div class="panel" id="panel-quiz" role="tabpanel">
+        <div class="quiz">
+          <div class="quiz-intro">
+            <div class="quiz-head"><span class="qbadge">Quiz</span><span class="qttl">Validez vos acquis</span></div>
+            <p>Cinq questions pour ancrer la logique d'ensemble.</p>
+          </div>
+<div class="q" id="q1">
+            <p class="qn">Question 01 / 05</p>
+            <p class="qt">Qu'est-ce que la notoriété « top of mind » ?</p>
+            <div class="opts">
+              <button class="opt" data-ok="1" data-q="1">La marque citée en premier, spontanément</button>
+              <button class="opt" data-ok="0" data-q="1">La marque la plus vue en publicité</button>
+              <button class="opt" data-ok="0" data-q="1">La marque préférée des consommateurs</button>
+            </div>
+            <div class="fb" id="f1"></div>
+          </div>
+          <div class="q" id="q2">
+            <p class="qn">Question 02 / 05</p>
+            <p class="qt">Comment mesure-t-on la notoriété assistée ?</p>
+            <div class="opts">
+              <button class="opt" data-ok="1" data-q="2">En présentant une liste : « parmi ces marques, lesquelles connaissez-vous ? »</button>
+              <button class="opt" data-ok="0" data-q="2">En comptant les mentions dans la presse</button>
+              <button class="opt" data-ok="0" data-q="2">En posant une question ouverte sans liste</button>
+            </div>
+            <div class="fb" id="f2"></div>
+          </div>
+          <div class="q" id="q3">
+            <p class="qn">Question 03 / 05</p>
+            <p class="qt">Que révèle une forte notoriété assistée avec une faible spontanée ?</p>
+            <div class="opts">
+              <button class="opt" data-ok="1" data-q="3">On vous reconnaît mais on ne pense pas à vous : défaut d'ancrage</button>
+              <button class="opt" data-ok="0" data-q="3">Que votre image est mauvaise</button>
+              <button class="opt" data-ok="0" data-q="3">Que l'étude a été mal réalisée</button>
+            </div>
+            <div class="fb" id="f3"></div>
+          </div>
+          <div class="q" id="q4">
+            <p class="qn">Question 04 / 05</p>
+            <p class="qt">Quelle est la différence entre notoriété et image ?</p>
+            <div class="opts">
+              <button class="opt" data-ok="1" data-q="4">La notoriété dit si l'on vous connaît, l'image ce que l'on pense de vous</button>
+              <button class="opt" data-ok="0" data-q="4">Ce sont deux mots pour la même mesure</button>
+              <button class="opt" data-ok="0" data-q="4">L'image concerne uniquement le logo et le visuel</button>
+            </div>
+            <div class="fb" id="f4"></div>
+          </div>
+          <div class="q" id="q5">
+            <p class="qn">Question 05 / 05</p>
+            <p class="qt">Peut-on mesurer la notoriété en comptant ses retombées presse ?</p>
+            <div class="opts">
+              <button class="opt" data-ok="1" data-q="5">Non : les retombées se comptent, la notoriété se sonde</button>
+              <button class="opt" data-ok="0" data-q="5">Oui, c'est exactement la même chose</button>
+              <button class="opt" data-ok="0" data-q="5">Oui, si l'on a plus de dix retombées</button>
+            </div>
+            <div class="fb" id="f5"></div>
+          </div>
+          </div>
+          </div>
+          </div>
+          <div class="score" id="score">
+            <p class="score-l">Votre score</p>
+            <p class="score-n" id="sn">0 / 5</p>
+            <p class="score-m" id="sm"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PANNEAU TEMPLATE : TRIEUR DE MESURES DE NOTORIÉTÉ ===== -->
+      <div class="panel" id="panel-template" role="tabpanel">
+        <div class="topbar">
+          <div class="topbar-info">Template lié à <strong>Connu comment ?</strong> · Chapitre 2 · Fiche 4 · Débutant</div>
+          <div class="actions"><button class="btn" onclick="resetAll()">↺ Réinitialiser</button><button class="btn" id="btn-copy" onclick="copyPostures()">⧉ Copier mes lectures</button><button class="btn btn-primary" id="btn-pdf" onclick="exportPDF()">↓ Exporter en PDF</button></div>
+        </div>
+        <div id="export-zone">
+          <header class="head">
+            <div class="tags"><span class="tag tpl">Template</span><span class="tag">PR &amp; Communication</span><span class="tag lvl">Débutant</span></div>
+            <h1>QUELLE MESURE<br/>POUR QUOI ?</h1>
+            <p class="intro">Choisissez votre secteur : huit résultats d'étude s'affichent. Pour chacun, dites de quel type de mesure il s'agit — <strong>top of mind</strong>, <strong>spontanée</strong>, <strong>assistée</strong> ou <strong>image</strong>. L'outil corrige et vous donne <strong>ce que ce chiffre veut dire</strong> et quoi en faire.</p>
+          </header>
+          <div class="progress-wrap"><div class="progress-label"><span>Progression</span><span id="ppct">0%</span></div><div class="progress-bar"><div class="progress-fill" id="pfill"></div></div></div>
+
+          <section class="tpl-section">
+            <div class="tpl-sec-head"><span class="tpl-sec-num">01</span><span class="tpl-sec-title">Votre secteur</span></div>
+            <div class="dom-opts" id="dom-opts">
+              <button class="dom-chip" data-v="luxe" onclick="pickDom('luxe',this)"><span class="dom-k">Luxe / mode / culture</span><span class="dom-d">Maisons, créateurs, lieux</span></button>
+              <button class="dom-chip" data-v="serv" onclick="pickDom('serv',this)"><span class="dom-k">Services / conseil</span><span class="dom-d">Cabinets, agences, experts</span></button>
+              <button class="dom-chip" data-v="tech" onclick="pickDom('tech',this)"><span class="dom-k">Tech / numérique</span><span class="dom-d">Applications, plateformes, services</span></button>
+              <button class="dom-chip" data-v="alim" onclick="pickDom('alim',this)"><span class="dom-k">Alimentaire / restauration</span><span class="dom-d">Produits, enseignes, marques</span></button>
+              <button class="dom-chip" data-v="indus" onclick="pickDom('indus',this)"><span class="dom-k">Industrie / énergie</span><span class="dom-d">Groupes, sites, employeurs</span></button>
+            </div>
+          </section>
+
+          <section class="tpl-section" id="qc-sec" style="display:none;">
+            <div class="tpl-sec-head"><span class="tpl-sec-num">02</span><span class="tpl-sec-title">Les résultats à qualifier</span></div>
+            <div class="kp-intro-pool">
+              <div class="kp-pool-h">À qualifier — cliquez le type de mesure</div>
+              <div id="kp-pool"></div>
+            </div>
+            <div class="nt-cols">
+              <div class="nt-col" data-cat="top"><div class="nt-col-h">Top of mind<span class="nt-col-sub">cité en premier</span></div><div class="kp-drop" id="drop-top"></div><div class="kp-count" id="cnt-top">0</div></div>
+              <div class="nt-col" data-cat="spont"><div class="nt-col-h">Spontanée<span class="nt-col-sub">cité sans aide</span></div><div class="kp-drop" id="drop-spont"></div><div class="kp-count" id="cnt-spont">0</div></div>
+              <div class="nt-col" data-cat="assist"><div class="nt-col-h">Assistée<span class="nt-col-sub">reconnu dans une liste</span></div><div class="kp-drop" id="drop-assist"></div><div class="kp-count" id="cnt-assist">0</div></div>
+              <div class="nt-col" data-cat="image"><div class="nt-col-h">Image<span class="nt-col-sub">ce qu'on pense</span></div><div class="kp-drop" id="drop-image"></div><div class="kp-count" id="cnt-image">0</div></div>
+            </div>
+            <div class="reco" id="kp-reco"></div>
+          </section>
+
+          <section class="tpl-section" id="kp-score-sec" style="display:none;">
+            <div class="tpl-sec-head"><span class="tpl-sec-num">03</span><span class="tpl-sec-title">Votre score</span></div>
+            <div class="kp-score-wrap">
+              <div class="kp-donut-wrap">
+                <svg id="kp-donut" viewBox="0 0 120 120" width="140" height="140" role="img" aria-label="Score de tri"></svg>
+                <div class="kp-donut-center"><div class="kp-donut-big" id="kp-donut-pct">0%</div><div class="kp-donut-sub">bien qualifié</div></div>
+              </div>
+              <div class="kp-score-legend">
+                <div class="kp-score-line"><span class="dot ok"></span><span>Bien qualifiés</span><b id="kp-lg-ok">0</b></div>
+                <div class="kp-score-line"><span class="dot ko"></span><span>Mal qualifiés</span><b id="kp-lg-ko">0</b></div>
+                <div class="kp-score-line"><span class="dot todo"></span><span>À qualifier</span><b id="kp-lg-todo">8</b></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="tpl-section" id="kp-post-sec" style="display:none;">
+            <div class="tpl-sec-head"><span class="tpl-sec-num">04</span><span class="tpl-sec-title">Vos lectures — à emporter</span></div>
+            <p class="cd">Pour chaque résultat, ce qu'il signifie vraiment et l'action qui en découle.</p>
+            <div class="kp-fiches" id="kp-postures"></div>
+          </section>
+
+          <div class="bilan" id="bilan">
+            <span class="bilan-lbl">Bilan</span>
+            <h3>Est-ce que je lis bien mes chiffres ?</h3>
+            <div id="bilan-content"><p class="bilan-empty">Choisissez votre secteur et qualifiez les résultats : votre bilan s'affichera ici.</p></div>
+          </div>
+
+          <div class="note">
+            <strong>Rappel de la fiche.</strong> Quatre niveaux : <strong>top of mind</strong>, <strong>spontanée</strong>, <strong>assistée</strong>, <strong>image</strong>. Et surveillez l'<strong>écart</strong> entre spontanée et assistée : c'est lui qui révèle votre vrai problème.
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /body -->
+
+    <footer class="foot"><a href="/home" style="display:inline-flex;flex-direction:column;"><span class="logo-pre">Briefings</span><span><span class="logo-s">SKANNER</span><span class="logo-mag">MAGAZINE</span></span></a><div class="foot-copy">© 2026 — Skanner Magazine</div></footer>
+  </div>
+</div>
+
+<!-- CDN PDF (defer pour ne pas bloquer les onglets) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+
+<!-- JS ONGLETS (OBLIGATOIRE, délégation d'événement) -->
+<script>
+document.addEventListener('click', function(e){
+  var btn = e.target.closest('.tab');
+  if(!btn) return;
+  var name = btn.getAttribute('data-panel');
+  var tabs = document.querySelectorAll('.tab');
+  for(var i=0;i<tabs.length;i++){
+    if(tabs[i].getAttribute('data-panel')===name) tabs[i].classList.add('is-active');
+    else tabs[i].classList.remove('is-active');
+  }
+  var panels = document.querySelectorAll('.panel');
+  for(var j=0;j<panels.length;j++){
+    if(panels[j].id==='panel-'+name) panels[j].classList.add('is-active');
+    else panels[j].classList.remove('is-active');
+  }
+});
+</script>
+
+<!-- JS QUIZ + TEMPLATE -->
+<script>
+// ===== QUIZ — objet FB : 1 entrée par question. c = si bonne réponse, i = si mauvaise =====
+var FB={
+  1:{c:"Exact. Citée en premier et sans aide : c'est le plus haut niveau de notoriété.",i:"Non : ce n'est ni une question d'exposition publicitaire ni de préférence, mais d'ordre de citation."},
+  2:{c:"Exact. Question fermée avec liste préétablie : c'est le niveau le plus facile à atteindre.",i:"Non : les mentions presse sont autre chose, et la question ouverte mesure la spontanée."},
+  3:{c:"Exact. Vous existez sans compter : c'est un problème de saillance, pas de visibilité.",i:"Non : cet écart ne dit rien de votre image ni de la qualité de l'étude. Il révèle un défaut d'ancrage."},
+  4:{c:"Exact. Connaître et bien penser sont deux choses : on peut être très connu et mal perçu.",i:"Non : ce ne sont ni des synonymes ni une question d'identité visuelle. L'image porte sur les attributs perçus."},
+  5:{c:"Exact. Les retombées sont ce qui est publié ; la notoriété est ce qui reste dans les têtes.",i:"Non : beaucoup de retombées peuvent laisser la notoriété inchangée. Elle se mesure par sondage."}
+};
+var ans={},score=0;
+document.querySelectorAll('.opt').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var q=parseInt(btn.getAttribute('data-q'),10);
+    var ok=btn.getAttribute('data-ok')==='1';
+    if(ans[q]!==undefined)return;
+    ans[q]=ok;if(ok)score++;
+    var block=document.getElementById('q'+q);
+    block.querySelectorAll('.opt').forEach(function(x){x.disabled=true;});
+    btn.classList.add(ok?'ok':'no');
+    if(!ok)block.querySelectorAll('.opt').forEach(function(x){if(x.getAttribute('data-ok')==='1')x.classList.add('ok');});
+    var f=document.getElementById('f'+q);
+    f.textContent=ok?FB[q].c:FB[q].i;f.className='fb show';
+    if(Object.keys(ans).length===5)done();
+  });
+});
+function done(){
+  var s=document.getElementById('score');s.classList.add('show');
+  document.getElementById('sn').textContent=score+' / 5';
+  var m=["Aucune bonne réponse — reprends les quatre niveaux.","1/5 : les notions se confondent encore.","2/5 : quelques repères, revois l'écart spontanée/assistée.","3/5 : bonne base. Consolide notoriété vs image.","4/5 : presque tout est là, un dernier point.","5/5 : vous distinguez les niveaux. Direction le trieur."];
+  document.getElementById('sm').textContent=m[score]||'';
+}
+
+// ===== Barre de progression de lecture =====
+(function(){
+  var bar=document.getElementById('readbar');
+  if(!bar)return;
+  function upd(){
+    var h=document.documentElement;
+    var max=h.scrollHeight-h.clientHeight;
+    var p=max>0?(h.scrollTop||document.body.scrollTop)/max*100:0;
+    bar.style.width=p+'%';
+  }
+  window.addEventListener('scroll',upd,{passive:true});
+  window.addEventListener('resize',upd);upd();
+})();
+
+
+
+// ===== Barre de progression : gérée par le hiérarchiseur (2e script) =====
+
+// ===== Calculateurs =====
+function num(id){ var v=parseFloat(document.getElementById(id).value); return isNaN(v)?0:v; }
+function fmt(n){ return n.toLocaleString('fr-FR',{maximumFractionDigits:2}); }
+
+function calcCAC(){
+  var budget=num('cac-budget'), clients=num('cac-clients');
+  var el=document.getElementById('cac-result');
+  if(clients>0){ window._cac=budget/clients; el.textContent=fmt(window._cac)+' €'; el.classList.remove('muted'); }
+  else { window._cac=0; el.textContent='—'; el.classList.add('muted'); }
+  checkVerdict();
+}
+function calcConv(){
+  var v=num('conv-visiteurs'), a=num('conv-achats');
+  var el=document.getElementById('conv-result');
+  if(v>0){ el.textContent=fmt(a/v*100)+' %'; el.classList.remove('muted'); }
+  else { el.textContent='—'; el.classList.add('muted'); }
+}
+function calcPanier(){
+  var ca=num('panier-ca'), cmd=num('panier-cmd');
+  var el=document.getElementById('panier-result');
+  if(cmd>0){ el.textContent=fmt(ca/cmd)+' €'; el.classList.remove('muted'); }
+  else { el.textContent='—'; el.classList.add('muted'); }
+}
+function calcLTV(){
+  var panier=num('ltv-panier'), freq=num('ltv-freq'), duree=num('ltv-duree');
+  var el=document.getElementById('ltv-result');
+  window._ltv=panier*freq*duree;
+  if(window._ltv>0){ el.textContent=fmt(window._ltv)+' €'; el.classList.remove('muted'); }
+  else { el.textContent='—'; el.classList.add('muted'); }
+  checkVerdict();
+}
+function checkVerdict(){
+  var v=document.getElementById('verdict');
+  if(window._cac>0 && window._ltv>0){
+    var ratio=window._ltv/window._cac;
+    v.classList.add('show');
+    if(ratio>=3){
+      v.className='verdict show good';
+      v.innerHTML='<strong>Modèle sain.</strong> Ta valeur vie client ('+fmt(window._ltv)+' €) vaut '+ratio.toFixed(1)+'× ton coût d\'acquisition ('+fmt(window._cac)+' €). Tu es au-dessus du seuil de 3×. Chaque nouveau client enrichit ton activité.';
+    } else {
+      v.className='verdict show bad';
+      v.innerHTML='<strong>À surveiller.</strong> Ta valeur vie client ('+fmt(window._ltv)+' €) ne vaut que '+ratio.toFixed(1)+'× ton coût d\'acquisition ('+fmt(window._cac)+' €). En dessous de 3×, chaque acquisition fragilise ton activité. Leviers : augmenter le panier, la fréquence, la fidélisation — ou réduire le coût d\'acquisition.';
+    }
+  }
+}
+
+// ===== Cases à cocher du plan d'action =====
+document.querySelectorAll('.action-check').forEach(function(box){
+  box.addEventListener('click',function(){ box.classList.toggle('checked'); });
+});
+
+// ===== Réinitialiser =====
+function resetAll(){
+  if(!confirm('Réinitialiser tous les champs ?'))return;
+  document.querySelectorAll('input,textarea').forEach(function(el){ el.value=''; });
+  document.querySelectorAll('.action-check').forEach(function(b){ b.classList.remove('checked'); });
+  document.querySelectorAll('.calc-result span.rv, [id$="-result"]').forEach(function(e){ e.textContent='—'; e.classList.add('muted'); });
+  document.getElementById('verdict').className='verdict';
+  window._cac=0;window._ltv=0;
+  updateProgress();
+}
+
+// ===== Export PDF réel =====
+function exportPDF(){
+  if(typeof window.jspdf==='undefined' || typeof html2canvas==='undefined'){ alert('Le module d\'export se charge encore, réessaie dans un instant.'); return; }
+  var btn=document.getElementById('btn-pdf');
+  btn.disabled=true; var old=btn.textContent; btn.textContent='Génération…';
+  document.body.classList.add('pdf-mode');
+  var target=document.getElementById('export-zone');
+  html2canvas(target,{scale:2,useCORS:true,backgroundColor:'#ffffff',windowWidth:target.scrollWidth}).then(function(canvas){
+    var img=canvas.toDataURL('image/jpeg',0.92);
+    var pdf=new window.jspdf.jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+    var pw=pdf.internal.pageSize.getWidth(), ph=pdf.internal.pageSize.getHeight();
+    var margin=10, cw=pw-margin*2;
+    var ih=canvas.height*cw/canvas.width;
+    var left=ih, pos=margin;
+    pdf.addImage(img,'JPEG',margin,pos,cw,ih); left-=(ph-margin*2);
+    while(left>0){ pdf.addPage(); pos=margin-(ih-left); pdf.addImage(img,'JPEG',margin,pos,cw,ih); left-=(ph-margin*2); }
+    pdf.save('skanner-diagnostic-ecosysteme-digital.pdf');
+    document.body.classList.remove('pdf-mode');
+    btn.disabled=false; btn.textContent=old;
+  }).catch(function(e){
+    console.error(e); alert('Export impossible, réessaie.');
+    document.body.classList.remove('pdf-mode');
+    btn.disabled=false; btn.textContent=old;
+  });
+}
+
+// ===== TRIEUR DE MESURES DE NOTORIÉTÉ =====
+var DOM_LABEL={tech:'Tech / numérique',alim:'Alimentaire / restauration',indus:'Industrie / énergie',luxe:'Luxe / mode / culture',serv:'Services / conseil'};
+var CATLAB={top:'Top of mind',spont:'Spontanée',assist:'Assistée',image:'Image'};
+
+var SITU={
+ tech:[
+  {id:'t1',txt:"18 % des sondés citent votre application en premier quand on évoque votre catégorie",cat:'top',
+   why:"Citée en premier et sans aide : c'est la définition même du top of mind, le plus haut niveau.",
+   geste:"Protégez cette position : elle est plus difficile à reprendre qu'à perdre. Maintenez la présence sur les moments d'usage."},
+  {id:'t2',txt:"64 % reconnaissent votre nom dans une liste d'applications du secteur",cat:'assist',
+   why:"Reconnaissance dans une liste préétablie : question fermée, donc notoriété assistée.",
+   geste:"Le chiffre le plus facile à faire monter. Ne le présentez jamais seul : comparez-le à votre spontanée."},
+  {id:'t3',txt:"37 % citent votre nom sans aide parmi les solutions qu'ils connaissent",cat:'spont',
+   why:"Citée sans être nommée, mais pas nécessairement en premier : notoriété spontanée.",
+   geste:"L'indicateur le plus utile au quotidien. Suivez-le trimestriellement, il bouge lentement."},
+  {id:'t4',txt:"Les répondants vous associent surtout aux mots « fiable » et « cher »",cat:'image',
+   why:"Ce ne sont pas des taux de connaissance mais des attributs perçus : c'est de l'image.",
+   geste:"« Fiable » est un actif, « cher » un frein. Travaillez la valeur perçue, pas le prix affiché."},
+  {id:'t5',txt:"Écart mesuré : 64 % en assistée contre 37 % en spontanée",cat:'assist',
+   why:"L'écart se lit à partir de l'assistée : beaucoup vous reconnaissent, moitié moins pensent à vous.",
+   geste:"Défaut d'ancrage. Le travail n'est pas d'être plus vu, mais d'être associé à un moment ou un usage précis."},
+  {id:'t6',txt:"Vous êtes le premier nom cité par les développeurs, mais pas par les décideurs",cat:'top',
+   why:"Top of mind, mais sur un segment seulement : la notoriété se mesure par cible.",
+   geste:"Segmentez votre baromètre. Une position forte sur les prescripteurs ne se transfère pas automatiquement aux acheteurs."},
+  {id:'t7',txt:"42 % vous jugent « innovant », 12 % « accessible aux débutants »",cat:'image',
+   why:"Deux attributs perçus, mesurés par des questions qualitatives : image de marque.",
+   geste:"L'écart entre les deux attributs indique un positionnement clivant. Décidez si vous l'assumez ou le corrigez."},
+  {id:'t8',txt:"Parmi les non-clients, 8 % vous citent spontanément",cat:'spont',
+   why:"Citation sans aide, mesurée sur une sous-population : c'est de la spontanée segmentée.",
+   geste:"Le vrai gisement de croissance. Comparez avec le taux chez vos clients pour mesurer votre marge de conquête."}
+ ],
+ alim:[
+  {id:'t1',txt:"22 % citent votre marque en premier dans votre catégorie de produits",cat:'top',
+   why:"Première citation spontanée : top of mind, la position la plus forte en rayon.",
+   geste:"Cette position détermine largement l'achat par réflexe. Protégez-la par la constance, pas par les promotions."},
+  {id:'t2',txt:"71 % disent connaître votre marque quand on la leur présente",cat:'assist',
+   why:"Reconnaissance sur liste : notoriété assistée, le niveau le plus accessible.",
+   geste:"Un taux élevé ici est banal en grande distribution. Regardez surtout votre spontanée."},
+  {id:'t3',txt:"29 % vous citent sans aide parmi les marques de la catégorie",cat:'spont',
+   why:"Citation libre, sans premier rang exigé : notoriété spontanée.",
+   geste:"À suivre par région : les écarts territoriaux révèlent où votre distribution est réellement installée."},
+  {id:'t4',txt:"Votre marque est perçue comme « familiale » et « peu innovante »",cat:'image',
+   why:"Attributs perçus, pas taux de connaissance : image de marque.",
+   geste:"« Familiale » rassure, « peu innovante » plafonne le recrutement de nouveaux clients. Arbitrez consciemment."},
+  {id:'t5',txt:"Écart mesuré : 71 % en assistée contre 29 % en spontanée",cat:'assist',
+   why:"Lecture d'écart à partir de l'assistée : forte reconnaissance, faible présence à l'esprit.",
+   geste:"Vous êtes une marque de rayon, pas une marque de liste de courses. Travaillez l'association à une occasion de consommation."},
+  {id:'t6',txt:"Chez les moins de 35 ans, votre spontanée tombe à 9 %",cat:'spont',
+   why:"Même mesure, autre cible : la spontanée se lit toujours par segment.",
+   geste:"Alerte de renouvellement. Un écart générationnel de cette ampleur annonce l'érosion à cinq ans."},
+  {id:'t7',txt:"38 % vous associent à « bon rapport qualité-prix »",cat:'image',
+   why:"Attribut perçu : c'est de l'image, même exprimé en pourcentage.",
+   geste:"Actif solide mais fragile en cas de hausse de prix. Préparez la justification avant, pas après."},
+  {id:'t8',txt:"Vous êtes le premier nom cité pour l'occasion « repas rapide du soir »",cat:'top',
+   why:"Top of mind, mais sur un moment de consommation précis plutôt que sur la catégorie.",
+   geste:"Position très valorisable. Renforcez l'association à ce moment plutôt que de chercher la notoriété générale."}
+ ],
+ indus:[
+  {id:'t1',txt:"12 % du grand public cite votre groupe en premier dans votre filière",cat:'top',
+   why:"Première citation spontanée : top of mind, rare pour un acteur industriel.",
+   geste:"Position exposée : être le plus connu signifie être le premier interrogé en cas de crise sectorielle."},
+  {id:'t2',txt:"58 % reconnaissent votre nom dans une liste d'industriels du secteur",cat:'assist',
+   why:"Reconnaissance sur liste préétablie : notoriété assistée.",
+   geste:"Pour un industriel, c'est souvent suffisant auprès du grand public. Concentrez l'effort sur vos publics prioritaires."},
+  {id:'t3',txt:"Sur le bassin d'emploi local, 44 % vous citent spontanément",cat:'spont',
+   why:"Citation sans aide sur une zone géographique : spontanée territorialisée.",
+   geste:"L'indicateur clé pour un site industriel. Suivez-le, il conditionne l'acceptabilité et le recrutement."},
+  {id:'t4',txt:"Les riverains vous jugent « importants pour l'emploi » mais « opaques »",cat:'image',
+   why:"Attributs perçus : image, et non mesure de connaissance.",
+   geste:"« Opaques » est un signal d'alerte : il précède souvent l'opposition. Ouvrez le site et publiez vos données."},
+  {id:'t5',txt:"Écart mesuré : 58 % en assistée contre 19 % en spontanée nationale",cat:'assist',
+   why:"L'écart part de l'assistée : reconnaissance large, présence à l'esprit faible.",
+   geste:"Normal pour un industriel B2B. Ne cherchez pas à combler cet écart : ce n'est pas votre public utile."},
+  {id:'t6',txt:"Auprès des jeunes ingénieurs, 6 % vous citent comme employeur potentiel",cat:'spont',
+   why:"Citation spontanée sur une cible de recrutement : spontanée segmentée.",
+   geste:"Enjeu de marque employeur. Un taux faible ici coûte cher en difficulté de recrutement."},
+  {id:'t7',txt:"27 % vous associent à « engagé dans la transition » ",cat:'image',
+   why:"Attribut perçu, mesuré en pourcentage mais qualitatif par nature : image.",
+   geste:"À croiser avec vos données réelles. Un écart entre perception et réalité se retourne en accusation de communication trompeuse."},
+  {id:'t8',txt:"Les élus locaux vous citent en premier parmi les employeurs du territoire",cat:'top',
+   why:"Top of mind sur une cible institutionnelle précise.",
+   geste:"Position d'influence forte. Elle vous oblige aussi : vous serez sollicité sur tous les sujets du territoire."}
+ ],
+ luxe:[
+  {id:'t1',txt:"31 % citent votre maison en premier dans votre segment",cat:'top',
+   why:"Première citation spontanée : top of mind, position de leader perçu.",
+   geste:"Dans le luxe, cette position est un actif patrimonial. Elle se protège par la cohérence, pas par le volume."},
+  {id:'t2',txt:"82 % reconnaissent votre nom dans une liste de maisons",cat:'assist',
+   why:"Reconnaissance sur liste : notoriété assistée, souvent très élevée dans le luxe.",
+   geste:"Chiffre flatteur mais peu actionnable. La reconnaissance du nom ne dit rien du désir."},
+  {id:'t3',txt:"46 % vous citent sans aide parmi les maisons du secteur",cat:'spont',
+   why:"Citation libre : notoriété spontanée.",
+   geste:"À suivre par marché géographique : les écarts guident les priorités d'implantation."},
+  {id:'t4',txt:"Vous êtes perçus comme « intemporels » mais « pas pour moi »",cat:'image',
+   why:"Attributs perçus : image, avec un signal de distance.",
+   geste:"« Pas pour moi » est le frein le plus coûteux : la marque est admirée sans être désirée. Travaillez l'accessibilité symbolique."},
+  {id:'t5',txt:"Écart mesuré : 82 % en assistée contre 46 % en spontanée",cat:'assist',
+   why:"Lecture d'écart depuis l'assistée : un écart normal dans un secteur à forte reconnaissance patrimoniale.",
+   geste:"Moins alarmant ici qu'ailleurs. Regardez plutôt l'écart entre notoriété et considération à l'achat."},
+  {id:'t6',txt:"Chez les 18-25 ans, votre spontanée est de 11 %",cat:'spont',
+   why:"Spontanée mesurée sur une génération : segmentation classique.",
+   geste:"Enjeu de renouvellement clientèle. Dans le luxe, la conquête générationnelle se joue sur dix ans, pas sur une campagne."},
+  {id:'t7',txt:"52 % vous associent au savoir-faire artisanal",cat:'image',
+   why:"Attribut perçu, cœur du capital immatériel : image de marque.",
+   geste:"Actif majeur à documenter et à prouver. Une image de savoir-faire non étayée devient vulnérable."},
+  {id:'t8',txt:"Vous êtes la première maison citée pour le cadeau d'exception",cat:'top',
+   why:"Top of mind sur une occasion d'achat précise.",
+   geste:"Position commercialement décisive. Renforcez l'association à ce moment plutôt que la notoriété générale."}
+ ],
+ serv:[
+  {id:'t1',txt:"9 % des décideurs vous citent en premier dans votre spécialité",cat:'top',
+   why:"Première citation spontanée sur une cible professionnelle : top of mind.",
+   geste:"Position rare en conseil. Elle génère du flux entrant : capitalisez en documentant votre expertise."},
+  {id:'t2',txt:"48 % reconnaissent votre cabinet dans une liste d'acteurs du secteur",cat:'assist',
+   why:"Reconnaissance sur liste : notoriété assistée.",
+   geste:"En conseil, ce chiffre pèse peu : on ne consulte pas un cabinet parce qu'on reconnaît son nom."},
+  {id:'t3',txt:"23 % vous citent spontanément comme acteur de référence",cat:'spont',
+   why:"Citation libre sans premier rang : notoriété spontanée.",
+   geste:"L'indicateur qui compte vraiment : c'est lui qui prédit les consultations spontanées."},
+  {id:'t4',txt:"On vous décrit comme « rigoureux » et « peu créatifs »",cat:'image',
+   why:"Attributs perçus : image, distincte de la connaissance.",
+   geste:"Positionnement clair mais limitant sur les missions d'innovation. Choisissez d'assumer ou de rééquilibrer."},
+  {id:'t5',txt:"Écart mesuré : 48 % en assistée contre 23 % en spontanée",cat:'assist',
+   why:"Lecture d'écart à partir de l'assistée : reconnu, mais pas le premier auquel on pense.",
+   geste:"Comblez par la production de contenu d'expertise : en conseil, la spontanée se construit par la publication."},
+  {id:'t6',txt:"Dans le secteur public, votre spontanée n'est que de 4 %",cat:'spont',
+   why:"Spontanée mesurée sur un segment de clientèle : segmentation par marché.",
+   geste:"Si ce marché est stratégique, l'effort passe par les instances et les publications sectorielles, pas par la publicité."},
+  {id:'t7',txt:"34 % vous jugent « chers » parmi ceux qui vous connaissent",cat:'image',
+   why:"Attribut perçu, mesuré sur les connaisseurs : image.",
+   geste:"À traiter par la démonstration de valeur (résultats chiffrés), jamais par la baisse de prix."},
+  {id:'t8',txt:"Vous êtes le premier nom cité sur une expertise de niche précise",cat:'top',
+   why:"Top of mind sur un segment d'expertise : la position la plus rentable en conseil.",
+   geste:"Défendez cette niche avant d'élargir. Une position de référence sur un sujet vaut mieux qu'une présence diffuse."}
+ ]
+};
+
+var dom=null, place={};
+
+function pickDom(v,btn){
+  dom=v;place={};
+  SITU[dom].forEach(function(s){place[s.id]='';});
+  document.querySelectorAll('#dom-opts .dom-chip').forEach(function(c){c.classList.remove('sel');});
+  btn.classList.add('sel');
+  document.getElementById('qc-sec').style.display='block';
+  render();
+}
+
+function classify(id,cat){place[id]=cat;render();}
+function toPool(id){place[id]='';render();}
+
+function render(){
+  if(!dom)return;
+  var items=SITU[dom];
+  var pool=document.getElementById('kp-pool');
+  var inPool=items.filter(function(k){return place[k.id]==='';});
+  pool.innerHTML=inPool.length?inPool.map(function(k){
+    return '<div class="kp-chip"><span class="kp-chip-txt">'+k.txt+'</span><span class="kp-chip-btns">'+
+      '<button class="kp-b4 top" onclick="classify(\''+k.id+'\',\'top\')">Top of mind</button>'+
+      '<button class="kp-b4 spont" onclick="classify(\''+k.id+'\',\'spont\')">Spontanée</button>'+
+      '<button class="kp-b4 assist" onclick="classify(\''+k.id+'\',\'assist\')">Assistée</button>'+
+      '<button class="kp-b4 image" onclick="classify(\''+k.id+'\',\'image\')">Image</button>'+
+      '</span></div>';
+  }).join(''):'<p class="kp-done">Tout est qualifié. Cliquez « changer » pour revoir un choix.</p>';
+  ['top','spont','assist','image'].forEach(function(cat){
+    var drop=document.getElementById('drop-'+cat);
+    var list=items.filter(function(k){return place[k.id]===cat;});
+    drop.innerHTML=list.map(function(k){
+      var correct=place[k.id]===k.cat;
+      var verdict=correct?'Bien vu.':'À revoir — c\'est de la '+CATLAB[k.cat].toLowerCase()+'.';
+      return '<div class="kp-placed '+(correct?'correct':'wrong')+'"><span>'+k.txt+'</span>'+
+        '<span class="fbk"><span class="verdict">'+verdict+'</span> '+k.why+'</span>'+
+        '<button class="kp-back" onclick="toPool(\''+k.id+'\')">↺ changer</button></div>';
+    }).join('');
+    document.getElementById('cnt-'+cat).textContent=list.length+' résultat'+(list.length>1?'s':'');
+  });
+  updateReco();updateProgress();updateBilan();drawScore();buildPostures();
+}
+
+function drawScore(){
+  var sec=document.getElementById('kp-score-sec');
+  var items=SITU[dom];
+  var placed=items.filter(function(k){return place[k.id]!=='';});
+  if(placed.length===0){sec.style.display='none';return;}
+  sec.style.display='block';
+  var ok=placed.filter(function(k){return place[k.id]===k.cat;}).length;
+  var ko=placed.length-ok, todo=items.length-placed.length, total=items.length;
+  var svg=document.getElementById('kp-donut'), circ=2*Math.PI*46;
+  var segs=[[ok,'var(--fluo-green)'],[ko,'var(--fluo-pink)'],[todo,'rgba(255,255,255,.15)']];
+  var off=0,html='<circle cx="60" cy="60" r="46" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="15"/>';
+  segs.forEach(function(s){
+    if(s[0]<=0)return;
+    var len=s[0]/total*circ;
+    html+='<circle cx="60" cy="60" r="46" fill="none" stroke="'+s[1]+'" stroke-width="15" stroke-dasharray="'+len+' '+(circ-len)+'" stroke-dashoffset="'+(-off)+'" transform="rotate(-90 60 60)"/>';
+    off+=len;
+  });
+  svg.innerHTML=html;
+  document.getElementById('kp-donut-pct').textContent=(placed.length?Math.round(ok/placed.length*100):0)+'%';
+  document.getElementById('kp-lg-ok').textContent=ok;
+  document.getElementById('kp-lg-ko').textContent=ko;
+  document.getElementById('kp-lg-todo').textContent=todo;
+}
+
+function buildPostures(){
+  var sec=document.getElementById('kp-post-sec');
+  var items=SITU[dom].filter(function(k){return place[k.id]!=='';});
+  if(items.length===0){sec.style.display='none';return;}
+  sec.style.display='block';
+  document.getElementById('kp-postures').innerHTML=items.map(function(k){
+    return '<div class="kp-fiche"><div class="kp-fiche-sit">'+k.txt+'</div>'+
+      '<span class="kp-fiche-strat '+k.cat+'">'+CATLAB[k.cat]+'</span>'+
+      '<div class="kp-fiche-lab">Ce que ça veut dire</div>'+
+      '<div class="kp-fiche-say">'+k.geste+'</div></div>';
+  }).join('');
+}
+
+function updateReco(){
+  var reco=document.getElementById('kp-reco');
+  var items=SITU[dom];
+  var placed=items.filter(function(k){return place[k.id]!=='';});
+  if(placed.length===0){reco.className='reco';return;}
+  var wrong=placed.filter(function(k){return place[k.id]!==k.cat;});
+  var confImg=placed.filter(function(k){return k.cat==='image'&&place[k.id]!=='image';});
+  if(confImg.length>0){reco.className='reco show bad';reco.innerHTML='<strong>'+confImg.length+' mesure(s) d\'image prise(s) pour de la notoriété.</strong> C\'est la confusion la plus fréquente : un attribut perçu n\'est pas un taux de connaissance.';}
+  else if(placed.length<items.length){reco.className='reco show warn';reco.innerHTML='<strong>'+(items.length-placed.length)+' résultat(s) restant(s).</strong> La question à se poser : a-t-on donné une liste, ou pas ? Et mesure-t-on la connaissance ou la perception ?';}
+  else if(wrong.length>0){reco.className='reco show warn';reco.innerHTML='<strong>'+wrong.length+' erreur(s).</strong> Revoyez les cartes roses : la distinction entre top of mind et spontanée tient au rang de citation.';}
+  else{reco.className='reco show good';reco.innerHTML='<strong>Sans-faute !</strong> Vous lisez correctement vos indicateurs. Vos lectures sont rassemblées plus bas.';}
+}
+
+function updateProgress(){
+  if(!dom){var a=document.getElementById('pfill');if(a)a.style.width='0%';var b=document.getElementById('ppct');if(b)b.textContent='0%';return;}
+  var items=SITU[dom];
+  var placed=items.filter(function(k){return place[k.id]!=='';}).length;
+  var p=Math.round(placed/items.length*100);
+  var pf=document.getElementById('pfill');if(pf)pf.style.width=p+'%';
+  var pp=document.getElementById('ppct');if(pp)pp.textContent=p+'%';
+}
+
+function updateBilan(){
+  var c=document.getElementById('bilan-content');if(!c)return;
+  if(!dom){c.innerHTML='<p class="bilan-empty">Choisissez votre secteur et qualifiez les résultats : votre bilan s\'affichera ici.</p>';return;}
+  var items=SITU[dom];
+  var placed=items.filter(function(k){return place[k.id]!=='';});
+  if(placed.length===0){c.innerHTML='<p class="bilan-empty">Qualifiez les résultats : votre bilan s\'affichera ici.</p>';return;}
+  var wrong=placed.filter(function(k){return place[k.id]!==k.cat;});
+  var good=placed.length-wrong.length;
+  var lines=[];
+  lines.push(['g','<strong>Secteur</strong> : '+DOM_LABEL[dom]+'.']);
+  if(placed.length<items.length)lines.push(['w','Qualification en cours ('+placed.length+'/'+items.length+').']);
+  lines.push([wrong.length===0?'g':'w','<strong>'+good+'/'+placed.length+'</strong> résultat(s) bien qualifié(s).']);
+  var confImg=placed.filter(function(k){return k.cat==='image'&&place[k.id]!=='image';});
+  var confTop=placed.filter(function(k){return k.cat==='top'&&place[k.id]==='spont';});
+  if(confImg.length>0)lines.push(['b','<strong>Image confondue avec notoriété</strong> ('+confImg.length+') \u2014 la confusion la plus coûteuse : on croit mesurer la connaissance quand on mesure la perception.']);
+  if(confTop.length>0)lines.push(['w','<strong>Top of mind pris pour de la spontanée</strong> ('+confTop.length+') \u2014 la différence tient au rang : cité en premier, ou seulement cité.']);
+  if(placed.length===items.length&&wrong.length===0){
+    lines.push(['g','<strong>Les quatre niveaux sont acquis</strong> \u2014 vous ne prendrez plus un taux d\'assistée pour une preuve de notoriété.']);
+    lines.push(['g','<strong>Vos lectures sont prêtes</strong> \u2014 chaque chiffre avec son interprétation et l\'action qui en découle.']);
+  }
+  var bad=lines.some(function(l){return l[0]==='b';}),warn=lines.some(function(l){return l[0]==='w';});
+  var head=bad?'Attention : notoriété et image sont confondues.':(warn?'Bonne progression \u2014 affinez les distinctions.':'Lecture maîtrisée : chaque indicateur à sa place.');
+  var html='<p style="color:#fff;font-size:14px;line-height:1.6;margin:0 0 16px;">'+head+'</p>';
+  lines.forEach(function(l){var s=l[0]==='g'?'OK':(l[0]==='w'?'!':'X');html+='<div class="bilan-line"><span class="bilan-ico '+l[0]+'">'+s+'</span><span>'+l[1]+'</span></div>';});
+  c.innerHTML=html;
+}
+
+function copyPostures(){
+  if(!dom){alert('Choisissez d\'abord votre secteur.');return;}
+  var items=SITU[dom].filter(function(k){return place[k.id]!=='';});
+  if(items.length===0){alert('Qualifiez d\'abord quelques résultats.');return;}
+  var l=['LECTURE DE MES INDICATEURS — '+DOM_LABEL[dom].toUpperCase(),''];
+  items.forEach(function(k){
+    l.push('RÉSULTAT : '+k.txt);
+    l.push('Type : '+CATLAB[k.cat]);
+    l.push('Ce que ça veut dire : '+k.geste);
+    l.push('');
+  });
+  var txt=l.join('\n');
+  var btn=document.getElementById('btn-copy');var old=btn.textContent;
+  function done(){btn.textContent='\u2713 Copié';setTimeout(function(){btn.textContent=old;},1500);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done).catch(function(){fb(txt);done();});}else{fb(txt);done();}
+  function fb(x){var ta=document.createElement('textarea');ta.value=x;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);}
+}
+
+function resetAll(){
+  if(!confirm('Réinitialiser ?'))return;
+  dom=null;place={};
+  document.querySelectorAll('#dom-opts .dom-chip').forEach(function(c){c.classList.remove('sel');});
+  ['qc-sec','kp-score-sec','kp-post-sec'].forEach(function(id){document.getElementById(id).style.display='none';});
+  document.getElementById('kp-reco').className='reco';
+  updateProgress();updateBilan();
+}
+
+function exportPDF(){if(typeof window.jspdf==='undefined'||typeof html2canvas==='undefined'){alert('Le module d\'export se charge encore, réessaie.');return;}var btn=document.getElementById('btn-pdf');btn.disabled=true;var old=btn.textContent;btn.textContent='Génération…';document.body.classList.add('pdf-mode');var target=document.getElementById('export-zone');html2canvas(target,{scale:2,useCORS:true,backgroundColor:'#ffffff',windowWidth:target.scrollWidth}).then(function(canvas){var img=canvas.toDataURL('image/jpeg',0.92);var pdf=new window.jspdf.jsPDF({orientation:'portrait',unit:'mm',format:'a4'});var pw=pdf.internal.pageSize.getWidth(),ph=pdf.internal.pageSize.getHeight();var margin=10,cw=pw-margin*2;var ih=canvas.height*cw/canvas.width;var left=ih,pos=margin;pdf.addImage(img,'JPEG',margin,pos,cw,ih);left-=(ph-margin*2);while(left>0){pdf.addPage();pos=margin-(ih-left);pdf.addImage(img,'JPEG',margin,pos,cw,ih);left-=(ph-margin*2);}pdf.save('skanner-lecture-notoriete.pdf');document.body.classList.remove('pdf-mode');btn.disabled=false;btn.textContent=old;}).catch(function(e){console.error(e);alert('Export impossible.');document.body.classList.remove('pdf-mode');btn.disabled=false;btn.textContent=old;});}
+
+// INIT
+updateProgress();updateBilan();
+</script>
+</body></html>

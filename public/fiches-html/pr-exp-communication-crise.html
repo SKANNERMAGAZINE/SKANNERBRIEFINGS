@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5"/>
+<title>Les premières 24 heures d'une crise — Briefings by Skanner</title>
+<meta name="description" content="Simulateur de crise : décisions en cascade sur les premières 24 heures, par secteur. Débrief et enseignements. Fiche Expert — Skanner Magazine."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=General+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet"/>
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700,800,900&display=swap" rel="stylesheet"/>
+<style>
+
+:root{--glacial:'General Sans','Helvetica Neue',Arial,sans-serif;}
+
+:root{
+  --ink:#0D0D0D;--white:#fff;--paper:#F8F7F5;--rule:#DDDBD6;--muted:#7A7770;
+  --fluo-yellow:#E8FF00;   /* jaune fluo */
+  --fluo-violet:#C77DFF;   /* violet fluo */
+  --fluo-green:#39FF14;    /* vert fluo */
+  --fluo-pink:#FF6FD8;     /* rose fluo */
+  --fluo-blue:#4DD2FF;     /* bleu fluo */
+  --sage:#39FF14;          /* on réutilise le vert fluo partout où --sage était */
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+body{font-family:'General Sans','Helvetica Neue',Arial,sans-serif;background:var(--white);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+
+.sitenav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);border-bottom:1px solid var(--rule);backdrop-filter:blur(8px);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 40px;height:56px;}
+.nav-left{display:flex;align-items:center;gap:4px;}
+.nav-link{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:6px 14px;transition:color .12s;}
+.nav-link:hover{color:var(--ink);}
+.nav-center{text-align:center;justify-self:center;}
+.logo-pre{font-size:8px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:2px;}
+.logo-s{font-size:17px;font-weight:900;letter-spacing:-.02em;text-transform:uppercase;font-style:italic;}
+.logo-mag{font-size:17px;font-weight:400;letter-spacing:.01em;text-transform:uppercase;font-style:normal;}
+.nav-right{display:flex;align-items:center;justify-content:flex-end;gap:12px;}
+.nav-badge{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:3px 9px;border:1px solid var(--rule);color:var(--muted);}
+
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:11px 40px;border-bottom:1px solid var(--rule);background:var(--paper);}
+.breadcrumb .sep{color:var(--rule);}
+.breadcrumb .active{color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:340px 1fr;align-items:start;}
+.col-img{position:sticky;top:56px;height:calc(100vh - 56px);overflow:hidden;background:var(--paper);border-right:1px solid var(--rule);align-self:start;}
+.col-img img{width:100%;height:100%;object-fit:cover;object-position:center;}
+.col-content{min-width:0;}
+
+.head{padding:48px 56px 40px;border-bottom:1px solid var(--rule);}
+.tags{display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap;}
+.tag{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border:1px solid var(--rule);color:var(--muted);}
+.tag.lvl{color:#0D0D0D;border-color:var(--ink);background:var(--fluo-green);font-weight:800;}
+h1.title{font-size:clamp(34px,4.5vw,58px);font-weight:900;letter-spacing:-.03em;line-height:.94;text-transform:uppercase;margin-bottom:18px;}
+.lead{font-size:15px;line-height:1.7;color:var(--muted);border-left:2px solid var(--ink);padding-left:18px;max-width:580px;}
+.lead strong{color:var(--ink);font-weight:600;}
+
+.meta{display:flex;flex-wrap:wrap;border-bottom:1px solid var(--rule);padding:0 56px;}
+.meta-item{font-size:11px;color:var(--muted);padding:14px 48px 14px 0;}
+.meta-item strong{color:var(--ink);font-weight:700;}
+
+.body{padding:8px 56px 64px;}
+.section{margin-top:72px;scroll-margin-top:72px;}
+.sec-label{display:flex;align-items:center;gap:0;margin-bottom:36px;background:var(--ink);color:#fff;}
+.sec-num{font-size:18px;font-weight:900;letter-spacing:.02em;color:#0D0D0D;background:var(--fluo-yellow);flex-shrink:0;padding:20px 22px;align-self:stretch;display:flex;align-items:center;}
+.sec-title-txt{font-size:clamp(18px,2.3vw,25px);font-weight:900;letter-spacing:-.01em;line-height:1.15;text-transform:uppercase;padding:18px 24px;color:#fff;}
+.p{font-size:15px;line-height:1.9;margin-bottom:22px;}
+.p.muted{color:var(--muted);}
+.p b,.p strong{font-weight:700;}
+
+/* GRAND CHIFFRE EN EXERGUE — style magazine */
+.stat{margin:44px 0;padding:36px 40px;background:var(--ink);color:#fff;display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center;}
+.stat-num{font-size:clamp(60px,9.5vw,116px);font-weight:900;letter-spacing:-.04em;line-height:.8;white-space:nowrap;color:var(--fluo-green);}
+.stat-txt{font-size:15px;line-height:1.65;color:rgba(255,255,255,.92);border-left:3px solid var(--fluo-green);padding-left:22px;}
+.stat-txt b{font-weight:700;color:#fff;}
+.stat-txt .src{display:block;margin-top:10px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--fluo-green);}
+
+/* listes éditoriales (remplacent les tableaux) */
+.points{margin:18px 0;}
+.point{display:flex;gap:20px;padding:20px 0;border-bottom:1px solid rgba(0,0,0,.08);}
+.point:last-child{border-bottom:none;}
+.point-k{flex-shrink:0;width:140px;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.02em;line-height:1.3;}
+.point-k small{display:block;font-size:11px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted);margin-top:2px;}
+.point-v{font-size:14px;line-height:1.7;color:var(--ink);}
+.point-v b{font-weight:700;}
+
+.arrow-list{margin:18px 0;}
+.al{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid rgba(0,0,0,.08);}
+.al:last-child{border-bottom:none;}
+.al-a{color:var(--fluo-violet);font-weight:900;flex-shrink:0;font-size:15px;margin-top:1px;}
+.al p{font-size:14px;line-height:1.7;}
+.al strong{font-weight:700;}
+
+/* entonnoir en liste éditoriale */
+.funnel{margin:22px 0;}
+.fn{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid rgba(0,0,0,.08);}
+.fn:last-child{border-bottom:none;}
+.fn-step{font-size:14px;font-weight:700;background:linear-gradient(transparent 28%, var(--fluo-yellow) 28%);padding:2px 5px;display:inline;}
+.fn-step small{font-weight:400;color:var(--muted);}
+.fn-val{font-size:20px;font-weight:900;letter-spacing:-.02em;white-space:nowrap;}
+.fn-val small{font-size:11px;font-weight:600;color:var(--muted);margin-left:8px;letter-spacing:.04em;}
+
+.pull{margin:44px 0;padding:32px 34px;background:#0D0D0D;color:#fff;position:relative;}
+.pull::before{content:"\201C";position:absolute;top:8px;left:18px;font-size:64px;line-height:1;color:var(--fluo-yellow);font-weight:900;}
+.pull p{font-size:23px;font-weight:600;font-style:normal;line-height:1.4;margin-bottom:12px;padding-left:36px;}
+.pull cite{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--fluo-yellow);font-style:normal;padding-left:36px;display:block;}
+
+.gloss{margin:8px 0 0;padding:8px 0 0;}
+.gloss-l{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin-bottom:28px;}
+.gl-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.gl-item{display:flex;flex-direction:column;gap:12px;padding:22px;background:var(--ink);}
+.gl-term{align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:var(--ink);background:var(--pastel,#C4B5FD);padding:6px 13px;}
+.gl-def{display:block;font-size:13px;line-height:1.6;color:rgba(255,255,255,.75);}
+
+.quiz{margin-top:8px;padding:40px;background:var(--paper);border-top:3px solid var(--ink);}
+.quiz-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px;}
+.quiz-head .qbadge{font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#0D0D0D;border:none;background:var(--fluo-violet);padding:5px 12px;}
+.quiz-head .qttl{font-size:clamp(22px,2.8vw,30px);font-weight:900;letter-spacing:-.02em;text-transform:uppercase;}
+.quiz-intro p{font-size:14px;color:var(--muted);margin-bottom:28px;}
+.q{margin-bottom:22px;padding:22px 24px;background:#fff;border:1px solid var(--rule);}
+.qn{font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#0D0D0D;background:var(--fluo-violet);display:inline-block;padding:3px 9px;margin-bottom:12px;}
+.qt{font-size:16px;font-weight:700;margin-bottom:16px;line-height:1.45;}
+.opts{display:flex;flex-direction:column;gap:8px;}
+.opt{text-align:left;font-family:inherit;font-size:14px;color:var(--ink);background:#fff;border:1px solid var(--rule);padding:12px 16px;cursor:pointer;transition:all .14s;line-height:1.5;}
+.opt:hover:not(:disabled){border-color:var(--ink);}
+.opt:disabled{cursor:default;}
+.opt.ok{border-color:#0D0D0D;background:var(--fluo-green);color:#0D0D0D;font-weight:700;}
+.opt.no{border-color:#C8273A;background:rgba(200,39,58,.06);color:#C8273A;}
+.fb{display:none;margin-top:12px;padding:14px 18px;font-size:13px;line-height:1.6;background:#0D0D0D;color:#fff;border-left:4px solid var(--fluo-green);}
+.fb.show{display:block;}
+.score{display:none;margin-top:24px;padding:36px;background:var(--ink);color:#fff;text-align:center;}
+.score.show{display:block;}
+.score-l{font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--fluo-violet);margin-bottom:10px;}
+.score-n{font-size:72px;font-weight:900;letter-spacing:-.04em;line-height:1;margin-bottom:12px;color:var(--fluo-green);}
+.score-m{font-size:14px;line-height:1.6;color:rgba(255,255,255,.8);max-width:380px;margin:0 auto;}
+
+.recap{margin-top:8px;padding:0;background:none;color:var(--ink);}
+.recap .lbl{font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:22px;color:var(--ink);}
+
+.foot{padding:24px 56px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--rule);margin-top:46px;}
+.foot-copy{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.backbtn{position:fixed;top:14px;left:14px;z-index:1000;background:#fff;color:#0D0D0D;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:9px 15px;border:1px solid var(--rule);}
+
+@media(max-width:768px){
+  .sitenav{grid-template-columns:1fr auto;padding:0 16px;height:52px;}
+  .nav-left{display:none;}
+  .layout{grid-template-columns:1fr;}
+  .col-img{display:none;}
+  .breadcrumb,.head,.meta,.body,.foot{padding-left:20px;padding-right:20px;}
+  .quiz{padding:24px 20px;}
+  .q{padding:18px 16px;}
+  .stat{padding:24px;gap:14px;}
+  .recap{padding:24px;}
+  .gl-grid{grid-template-columns:1fr;gap:14px;}
+  .meta-item{padding-right:28px;}
+  h1.title{font-size:30px;}
+  .stat{grid-template-columns:1fr;gap:12px;}
+  .stat-num{font-size:64px;}
+  .point{flex-direction:column;gap:6px;}
+  .point-k{width:auto;}
+}
+
+/* mots-clés en gras : surlignage éditorial discret */
+.body .p strong, .body .p b, .body .point-v b, .body .al p strong{font-weight:700;background:linear-gradient(transparent 30%, var(--fluo-yellow) 30%);padding:1px 3px;}
+
+/* tableau À retenir */
+.recap-tbl{width:100%;border-collapse:collapse;}
+.recap-tbl td{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.15);vertical-align:top;font-size:14px;line-height:1.65;}
+.recap-tbl tr:last-child td{border-bottom:none;}
+.recap-tbl .rt-k{width:160px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;font-size:12px;padding-right:24px;padding-top:18px;color:var(--fluo-yellow);}
+.recap-tbl .rt-v{color:rgba(255,255,255,.92);}
+@media(max-width:768px){
+  .recap-tbl td{display:block;border-bottom:none;padding:4px 0;}
+  .recap-tbl .rt-k{width:auto;padding-top:14px;}
+  .recap-tbl tr{display:block;border-bottom:1px solid var(--rule);padding-bottom:10px;}
+}
+
+/* Barre de progression de lecture */
+.readbar{position:fixed;top:56px;left:0;right:0;height:3px;background:transparent;z-index:99;}
+.readbar-fill{height:100%;width:0;background:var(--fluo-violet);transition:width .1s linear;}
+@media(max-width:768px){.readbar{top:52px;}}
+
+/* Sommaire */
+.toc{margin:8px 0 12px;padding:24px;border:1px solid var(--rule);background:var(--paper);}
+.toc-label{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.toc-item{display:flex;align-items:baseline;gap:14px;padding:10px 0;border-bottom:1px solid var(--rule);transition:padding-left .15s;}
+.toc-item:last-child{border-bottom:none;}
+.toc-item:hover{padding-left:8px;}
+.toc-n{font-size:12px;font-weight:800;color:#0D0D0D;background:var(--fluo-yellow);padding:2px 7px;flex-shrink:0;}
+.toc-t{font-size:14px;font-weight:600;color:var(--ink);}
+
+/* retour haut */
+.totop{display:inline-flex;align-items:center;gap:8px;margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+.totop:hover{color:var(--ink);}
+
+a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:2px;}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important;}}
+
+/* Onglets sticky */
+.tabs{position:sticky;top:56px;z-index:90;display:flex;gap:8px;background:var(--paper);border-bottom:1px solid var(--rule);padding:12px 56px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.tab{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:#fff;border:1px solid var(--rule);padding:12px 18px;cursor:pointer;transition:all .15s;white-space:nowrap;}
+.tab:hover{color:var(--ink);border-color:var(--ink);}
+.tab.active{color:#0D0D0D;background:var(--fluo-violet);border-color:var(--ink);font-weight:800;}
+
+to{opacity:1;transform:none;}}
+@media(max-width:768px){
+  .tabs{top:52px;padding:10px 16px;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .tab{padding:14px 16px;font-size:11px;white-space:nowrap;}
+}
+
+/* accents fluo variés sur les listes de définition */
+.points .point:nth-child(1) .point-k{color:#0D0D0D;}
+.points .point:nth-child(1) .point-k::before{content:'';display:inline-block;width:12px;height:12px;background:var(--fluo-violet);margin-right:8px;vertical-align:middle;}
+.points .point:nth-child(2) .point-k::before{content:'';display:inline-block;width:12px;height:12px;background:var(--fluo-pink);margin-right:8px;vertical-align:middle;}
+.points .point:nth-child(3) .point-k::before{content:'';display:inline-block;width:12px;height:12px;background:var(--fluo-blue);margin-right:8px;vertical-align:middle;}
+/* entonnoir : valeurs en bleu fluo highlight */
+.fn-val{position:relative;}
+.fn:nth-child(odd) .fn-val{background:linear-gradient(transparent 32%, var(--fluo-blue) 32%);padding:2px 5px;}
+.fn:nth-child(even) .fn-val{background:linear-gradient(transparent 32%, var(--fluo-pink) 32%);padding:2px 5px;}
+/* sommaire : numéros alternent jaune/rose */
+.toc-item:nth-child(even) .toc-n{background:var(--fluo-pink);}
+/* Topbar actions */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:24px 0;border-bottom:1px solid var(--rule);flex-wrap:wrap;}
+.topbar-info{font-size:11px;color:var(--muted);}
+.topbar-info strong{color:var(--ink);}
+.actions{display:flex;gap:10px;}
+.btn{font-family:inherit;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:12px 20px;cursor:pointer;border:1px solid var(--ink);background:#fff;color:var(--ink);transition:all .15s;}
+.btn:hover{background:var(--paper);}
+.btn-primary{background:var(--ink);color:#fff;}
+.btn-primary:hover{background:#000;}
+.btn:disabled{opacity:.5;cursor:wait;}
+
+/* Header */
+.head{padding:44px 0 32px;}
+.tags{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;}
+.tag{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border:1px solid var(--rule);color:var(--muted);}
+.tag.tpl{background:var(--fluo-violet);color:#0D0D0D;border-color:var(--ink);font-weight:800;}
+.tag.lvl{background:var(--fluo-green);color:#0D0D0D;border-color:var(--ink);font-weight:800;}
+h1{font-size:clamp(30px,4vw,48px);font-weight:900;letter-spacing:-.03em;line-height:.96;text-transform:uppercase;margin-bottom:16px;}
+.intro{font-size:15px;line-height:1.7;color:var(--muted);border-left:3px solid var(--fluo-yellow);padding-left:18px;max-width:620px;}
+.intro strong{color:var(--ink);font-weight:600;}
+
+/* Progress */
+.progress-wrap{margin:28px 0 8px;}
+.progress-label{display:flex;justify-content:space-between;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.progress-bar{height:6px;background:var(--paper);border:1px solid var(--rule);overflow:hidden;}
+.progress-fill{height:100%;width:0;background:var(--fluo-violet);transition:width .3s ease;}
+
+/* Sections du template */
+.tpl-section{margin:40px 0;}
+.tpl-sec-head{display:flex;align-items:center;gap:0;margin-bottom:24px;}
+.tpl-sec-num{font-size:18px;font-weight:900;color:#0D0D0D;background:var(--fluo-yellow);padding:14px 18px;align-self:stretch;display:flex;align-items:center;}
+.tpl-sec-title{font-size:clamp(17px,2.2vw,22px);font-weight:900;letter-spacing:-.01em;text-transform:uppercase;background:#0D0D0D;color:#fff;padding:14px 20px;flex:1;}
+.tpl-sec-desc{font-size:14px;line-height:1.7;color:var(--muted);margin-bottom:20px;}
+
+/* Champs */
+.field{margin-bottom:20px;}
+.field-label{display:block;font-size:12px;font-weight:700;letter-spacing:.02em;margin-bottom:8px;}
+.field-hint{font-size:12px;color:var(--muted);margin-bottom:8px;font-weight:400;}
+.field-input,.field-textarea{width:100%;font-family:inherit;font-size:14px;color:var(--ink);background:#fff;border:1px solid var(--ink);padding:12px 14px;transition:border-color .15s;}
+.field-input:focus,.field-textarea:focus{outline:none;border-color:var(--fluo-violet);border-width:2px;}
+.field-textarea{min-height:80px;resize:vertical;line-height:1.6;}
+
+/* Grille de canaux owned/earned/paid */
+.channels{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.channel{border:1px solid var(--ink);padding:18px;}
+.channel-tag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;margin-bottom:12px;color:#0D0D0D;}
+.channel:nth-child(1) .channel-tag{background:var(--fluo-violet);}
+.channel:nth-child(2) .channel-tag{background:var(--fluo-pink);}
+.channel:nth-child(3) .channel-tag{background:var(--fluo-blue);}
+.channel-textarea{width:100%;font-family:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--rule);padding:10px;min-height:100px;resize:vertical;line-height:1.6;}
+.channel-textarea:focus{outline:none;border-color:var(--ink);}
+
+/* Calculateur de chiffres */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.calc-card{border:1px solid var(--ink);padding:20px;}
+.calc-card .ck{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;}
+.calc-card .cd{font-size:11px;color:var(--muted);margin-bottom:14px;line-height:1.5;}
+.calc-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.calc-row label{font-size:12px;color:var(--muted);flex:1;}
+.calc-row input{width:120px;font-family:inherit;font-size:14px;border:1px solid var(--rule);padding:8px 10px;text-align:right;}
+.calc-row input:focus{outline:none;border-color:var(--fluo-violet);}
+.calc-result{margin-top:12px;padding:14px;background:#0D0D0D;color:#fff;display:flex;align-items:baseline;justify-content:space-between;}
+.calc-result .rl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fluo-green);}
+.calc-result .rv{font-size:26px;font-weight:900;letter-spacing:-.02em;color:var(--fluo-green);}
+.calc-result .rv.muted{color:var(--muted);font-size:18px;}
+
+/* Verdict LTV/CAC */
+.verdict{margin-top:16px;padding:18px 22px;border:2px solid var(--ink);font-size:14px;line-height:1.6;display:none;}
+.verdict.show{display:block;}
+.verdict.good{background:var(--fluo-green);}
+.verdict.bad{background:var(--fluo-pink);}
+.verdict strong{font-weight:800;}
+
+/* Plan d'action */
+.action-item{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--rule);}
+.action-check{width:22px;height:22px;border:2px solid var(--ink);flex-shrink:0;margin-top:2px;cursor:pointer;position:relative;background:#fff;}
+.action-check.checked{background:var(--fluo-green);}
+.action-check.checked::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;color:#0D0D0D;}
+.action-input{flex:1;font-family:inherit;font-size:14px;border:none;border-bottom:1px solid var(--rule);padding:4px 0;background:transparent;}
+.action-input:focus{outline:none;border-bottom-color:var(--fluo-violet);}
+
+.note{margin:32px 0;padding:28px 30px;background:#0D0D0D;border:2px solid var(--ink);font-size:14px;line-height:1.7;color:rgba(255,255,255,.9);}
+.note strong{color:var(--fluo-green);}
+
+.foot{padding:32px 0;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--rule);margin-top:40px;}
+.foot-copy{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.backbtn{position:fixed;top:14px;left:14px;z-index:1000;background:#fff;color:#0D0D0D;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:9px 15px;border:1px solid var(--rule);}
+
+@media(max-width:768px){
+  .sitenav{grid-template-columns:1fr auto;padding:0 16px;height:52px;}
+  .nav-left{display:none;}
+  .wrap{padding:0 18px;}
+  .breadcrumb{padding:11px 18px;}
+  .channels{grid-template-columns:1fr;}
+  .calc{grid-template-columns:1fr;}
+  h1{font-size:28px;}
+  .topbar{flex-direction:column;align-items:flex-start;}
+}
+/* Styles spécifiques à l'export PDF */
+.pdf-mode .backbtn,.pdf-mode .sitenav,.pdf-mode .actions,.pdf-mode .progress-wrap{display:none!important;}
+.pdf-mode .field-input,.pdf-mode .field-textarea,.pdf-mode .channel-textarea,.pdf-mode .calc-row input,.pdf-mode .action-input{border:1px solid #999;}
+
+/* Listes à choix multiples */
+.checklist{display:flex;flex-direction:column;gap:2px;margin-bottom:12px;}
+.checklist-col{gap:4px;}
+.check{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.5;padding:7px 0;cursor:pointer;color:var(--ink);}
+.check input[type=checkbox]{appearance:none;-webkit-appearance:none;width:18px;height:18px;border:2px solid var(--ink);background:#fff;flex-shrink:0;margin-top:1px;cursor:pointer;position:relative;}
+.check input[type=checkbox]:checked{background:var(--fluo-green);}
+.check input[type=checkbox]:checked::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px;color:#0D0D0D;}
+.check em{font-style:normal;color:var(--muted);font-size:12px;}
+
+/* À retenir : cards colorées */
+.recap-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.recap-card{padding:24px;background:#0D0D0D;color:#fff;border:2px solid var(--ink);display:flex;flex-direction:column;gap:10px;}
+.recap-card .rc-k{font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;}
+.recap-card .rc-v{font-size:14px;line-height:1.6;font-weight:500;color:rgba(255,255,255,.9);}
+@media(max-width:768px){.recap-grid{grid-template-columns:1fr;}}
+
+
+
+
+.panel{ display:none; }
+.panel.is-active{ display:block; }
+.tab{ cursor:pointer; }
+.tab.is-active{ color:#0D0D0D; background:var(--fluo-violet); border-color:var(--ink); font-weight:800; }
+
+
+/* ===== Matrice de notation ===== */
+.matrix{margin:8px 0 4px;border:2px solid var(--ink);background:#fff;}
+.mx-head{display:grid;grid-template-columns:1fr 44px 44px 44px 44px;align-items:center;background:#0D0D0D;color:#fff;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;}
+.mx-head span{padding:10px 12px;text-align:center;}
+.mx-head span:first-child{text-align:left;}
+.mx-row{display:grid;grid-template-columns:1fr 44px 44px 44px 44px;align-items:stretch;border-top:1px solid var(--rule);}
+.mx-row:nth-child(even){background:var(--paper);}
+.mx-label{padding:12px;font-size:13px;font-weight:600;display:flex;align-items:center;}
+.mx-cell{display:flex;align-items:center;justify-content:center;border-left:1px solid var(--rule);cursor:pointer;font-size:13px;font-weight:700;color:var(--muted);transition:all .12s ease;user-select:none;}
+.mx-cell:hover{background:var(--fluo-yellow);color:#0D0D0D;}
+.mx-cell.sel{background:var(--fluo-violet);color:#0D0D0D;font-weight:800;}
+.mx-score{margin-top:14px;padding:18px 22px;background:#0D0D0D;color:#fff;display:flex;flex-direction:column;gap:4px;}
+.mxs-l{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.6);}
+.mxs-v{font-size:28px;font-weight:900;color:var(--fluo-green);line-height:1;}
+.mxs-msg{font-size:13px;color:rgba(255,255,255,.85);margin-top:4px;line-height:1.5;}
+@media(max-width:560px){
+  .mx-head,.mx-row{grid-template-columns:1fr 34px 34px 34px 34px;}
+  .mx-label{font-size:12px;padding:10px;}
+  .mx-cell{font-size:12px;}
+}
+
+
+
+/* ===== Simulateur de pitch (Exp écosystème) ===== */
+.msg-field{width:100%;border:2px solid var(--ink);background:#fff;padding:14px;font-family:inherit;font-size:15px;line-height:1.5;color:var(--ink);resize:vertical;}
+.msg-field:focus{outline:none;border-color:var(--fluo-violet);}
+.pb-field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
+.pb-lab{font-size:13px;font-weight:700;color:var(--ink);display:flex;flex-direction:column;gap:2px;}
+.pb-lab small{font-weight:500;color:var(--muted);font-size:12px;}
+.pb-input{border:2px solid var(--ink);background:#fff;padding:11px 13px;font-family:inherit;font-size:14px;color:var(--ink);}
+.pb-input:focus{outline:none;border-color:var(--fluo-violet);}
+.pitch-mail{border:2px solid var(--ink);background:#0D0D0D;color:#fff;padding:22px;font-size:14px;line-height:1.65;white-space:pre-wrap;font-family:'General Sans','Helvetica Neue',Arial,sans-serif;}
+.pitch-mail .pm-obj{display:block;color:var(--fluo-yellow);font-weight:700;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.15);}
+.sim-stage{border:2px solid var(--ink);background:#0D0D0D;padding:0;overflow:hidden;}
+.sim-bar{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.12);}
+.sim-round{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:rgba(255,255,255,.6);}
+.sim-control{display:flex;align-items:center;gap:8px;}
+.sim-control-lab{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:rgba(255,255,255,.5);}
+.sim-dots{display:flex;gap:4px;}
+.sim-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.18);}
+.sim-dot.good{background:var(--fluo-green);}
+.sim-dot.mid{background:var(--fluo-yellow);}
+.sim-dot.bad{background:var(--fluo-pink);}
+.sim-journo{padding:20px 18px;display:flex;gap:14px;align-items:flex-start;border-bottom:1px solid rgba(255,255,255,.1);}
+.sim-avatar{flex:0 0 40px;width:40px;height:40px;border-radius:50%;background:var(--fluo-blue);color:#0D0D0D;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;}
+.sim-q{flex:1;}
+.sim-q-role{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:rgba(255,255,255,.5);margin-bottom:6px;}
+.sim-q-txt{color:#fff;font-size:16px;line-height:1.5;font-weight:500;}
+.sim-opts{padding:16px 18px;display:flex;flex-direction:column;gap:10px;}
+.sim-opt{text-align:left;border:2px solid rgba(255,255,255,.2);background:transparent;color:#fff;font-family:inherit;font-size:14px;line-height:1.45;padding:13px 15px;cursor:pointer;transition:all .12s;}
+.sim-opt:hover{border-color:#fff;background:rgba(255,255,255,.06);}
+.sim-opt:disabled{cursor:default;}
+.sim-opt.picked-good{border-color:var(--fluo-green);background:rgba(57,255,20,.12);}
+.sim-opt.picked-mid{border-color:var(--fluo-yellow);background:rgba(232,255,0,.1);}
+.sim-opt.picked-bad{border-color:var(--fluo-pink);background:rgba(255,111,216,.12);}
+.sim-opt.dimmed{opacity:.35;}
+.sim-feedback{padding:0 18px 18px;}
+.sim-fb-box{border-left:3px solid;padding:12px 14px;font-size:13px;line-height:1.55;color:#fff;background:rgba(255,255,255,.04);}
+.sim-fb-box.good{border-color:var(--fluo-green);}
+.sim-fb-box.mid{border-color:var(--fluo-yellow);}
+.sim-fb-box.bad{border-color:var(--fluo-pink);}
+.sim-fb-verdict{font-weight:800;text-transform:uppercase;font-size:11px;letter-spacing:.05em;margin-bottom:6px;display:block;}
+.sim-fb-box.good .sim-fb-verdict{color:var(--fluo-green);}
+.sim-fb-box.mid .sim-fb-verdict{color:var(--fluo-yellow);}
+.sim-fb-box.bad .sim-fb-verdict{color:var(--fluo-pink);}
+.sim-next{margin:0 18px 18px;}
+.sim-setup{margin-bottom:16px;}
+
+/* ===== Simulateur interview sous tension ===== */
+.sim-scen{display:flex;flex-direction:column;gap:8px;}
+.sim-chip{border:2px solid var(--ink);background:#fff;color:var(--ink);font-family:inherit;font-size:13px;font-weight:600;padding:12px 14px;cursor:pointer;text-align:left;transition:all .12s;}
+.sim-chip:hover{background:var(--paper);}
+.sim-chip.sel{background:#0D0D0D;color:#fff;}
+.sim-stage{border:2px solid var(--ink);background:#0D0D0D;color:#fff;padding:22px;margin-bottom:14px;}
+.sim-round{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.16em;color:rgba(255,255,255,.5);margin-bottom:10px;}
+.sim-tech{display:inline-block;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;padding:2px 7px;background:var(--fluo-violet);color:#0D0D0D;margin-bottom:10px;}
+.sim-q{font-size:17px;font-weight:700;line-height:1.45;color:#fff;margin-bottom:6px;}
+.sim-q::before{content:'« ';color:var(--fluo-yellow);}
+.sim-q::after{content:' »';color:var(--fluo-yellow);}
+.sim-jour{font-size:12px;color:rgba(255,255,255,.55);margin-bottom:18px;font-style:italic;}
+.sim-opts{display:flex;flex-direction:column;gap:8px;}
+.sim-opt{border:2px solid rgba(255,255,255,.25);background:transparent;color:#fff;font-family:inherit;font-size:13px;line-height:1.5;font-weight:600;padding:12px 14px;cursor:pointer;text-align:left;transition:all .12s;}
+.sim-opt:hover{border-color:var(--fluo-green);background:rgba(57,255,20,.08);}
+.sim-react{border-left:3px solid var(--fluo-green);padding:12px 14px;background:rgba(255,255,255,.05);margin-top:14px;}
+.sim-react.bad{border-left-color:var(--fluo-pink);}
+.sim-react.mid{border-left-color:var(--fluo-yellow);}
+.sim-react-lab{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--fluo-green);margin-bottom:5px;}
+.sim-react.bad .sim-react-lab{color:var(--fluo-pink);}
+.sim-react.mid .sim-react-lab{color:var(--fluo-yellow);}
+.sim-react-txt{font-size:13px;line-height:1.6;color:rgba(255,255,255,.85);}
+.sim-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:16px;}
+.sim-next{background:var(--fluo-green);color:#0D0D0D;border:none;padding:11px 18px;font-family:inherit;font-size:13px;font-weight:800;cursor:pointer;}
+.sim-next:hover{opacity:.85;}
+.sim-retry{background:transparent;color:rgba(255,255,255,.75);border:2px solid rgba(255,255,255,.3);padding:9px 14px;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;transition:all .12s;}
+.sim-retry:hover{border-color:#fff;color:#fff;}
+.sim-tension-wrap{margin-bottom:4px;}
+.sim-tension-lab{display:flex;justify-content:space-between;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin-bottom:6px;}
+.sim-tension-bar{height:10px;background:var(--paper);border:2px solid var(--ink);overflow:hidden;}
+.sim-tension-fill{height:100%;width:0;background:var(--fluo-green);transition:width .4s ease,background .4s ease;}
+.sim-debrief{border:2px solid var(--ink);background:#fff;padding:0;}
+.sim-deb-row{border-bottom:1px solid var(--rule);padding:14px 16px;}
+.sim-deb-row:last-child{border-bottom:none;}
+.sim-deb-q{font-size:12px;font-weight:700;color:var(--muted);margin-bottom:6px;}
+.sim-deb-ch{font-size:13px;color:var(--ink);font-weight:600;line-height:1.5;}
+.sim-deb-verdict{display:inline-block;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;padding:2px 7px;margin-bottom:6px;}
+.sim-deb-verdict.g{background:var(--fluo-green);color:#0D0D0D;}
+.sim-deb-verdict.m{background:var(--fluo-yellow);color:#0D0D0D;}
+.sim-deb-verdict.b{background:var(--fluo-pink);color:#0D0D0D;}
+.sim-deb-tip{font-size:12px;color:var(--muted);line-height:1.55;margin-top:6px;}
+.sim-deb-tip strong{color:var(--ink);}
+
+/* ===== Simulateur 24h : domaines + jauges ===== */
+.dom-opts{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.dom-chip{display:flex;flex-direction:column;gap:3px;text-align:left;border:2px solid var(--ink);background:#fff;padding:12px 14px;cursor:pointer;font-family:inherit;transition:all .12s;}
+.dom-chip:hover{background:var(--paper);}
+.dom-chip.sel{background:#0D0D0D;}
+.dom-k{font-size:14px;font-weight:800;color:var(--ink);}
+.dom-d{font-size:11px;color:var(--muted);}
+.dom-chip.sel .dom-k{color:var(--fluo-yellow);}
+.dom-chip.sel .dom-d{color:rgba(255,255,255,.7);}
+.sim-gauges{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.sim-g-lab{display:flex;justify-content:space-between;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin-bottom:5px;}
+.sim-g-bar{height:10px;background:var(--paper);border:2px solid var(--ink);overflow:hidden;}
+.sim-g-fill{height:100%;width:50%;background:var(--rule);transition:width .4s ease,background .4s ease;}
+.sim-hour{display:inline-block;font-size:10px;font-weight:900;letter-spacing:.06em;padding:3px 9px;background:var(--fluo-yellow);color:#0D0D0D;margin-bottom:10px;}
+@media(max-width:640px){.dom-opts{grid-template-columns:1fr;}.sim-gauges{grid-template-columns:1fr;}}
+
+/* ===== Recommandations dynamiques ===== *//* ===== Recommandations dynamiques ===== */
+.reco{margin-top:14px;padding:14px 16px 14px 18px;border-left:3px solid var(--ink);background:var(--white);font-size:13px;line-height:1.6;color:var(--muted);display:none;position:relative;}
+.reco.show{display:block;}
+.reco::before{content:'';position:absolute;left:-3px;top:0;width:3px;height:22px;background:var(--ink);}
+.reco.good::before{background:var(--fluo-green);}
+.reco.warn::before{background:var(--fluo-yellow);}
+.reco.bad::before{background:var(--fluo-pink);}
+.reco strong{font-weight:700;color:var(--ink);}
+.bilan{margin:36px 0 8px;padding:30px 32px;background:#0D0D0D;border:2px solid var(--ink);}
+.bilan-lbl{display:inline-block;background:var(--fluo-green);color:#0D0D0D;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:4px 10px;margin-bottom:18px;}
+.bilan h3{color:#fff;font-size:20px;font-weight:900;margin:0 0 16px;letter-spacing:-.01em;}
+.bilan-empty{color:rgba(255,255,255,.5);font-size:14px;line-height:1.6;}
+.bilan-line{display:flex;gap:12px;padding:12px 0;border-top:1px solid rgba(255,255,255,.12);font-size:14px;line-height:1.6;color:rgba(255,255,255,.9);}
+.bilan-line:first-of-type{border-top:none;}
+.bilan-ico{flex-shrink:0;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;}
+.bilan-ico.g{background:#39FF14;color:#0D0D0D;}
+.bilan-ico.w{background:#E8FF00;color:#0D0D0D;}
+.bilan-ico.b{background:#FF6FD8;color:#0D0D0D;}
+.bilan-line strong{color:#fff;}
+
+/* ===== Onglets (OBLIGATOIRE) ===== */
+.panel{ display:none; }
+.panel.is-active{ display:block; }
+.tab{ cursor:pointer; }
+.tab.is-active{ color:#0D0D0D; background:var(--fluo-violet); border-color:var(--ink); font-weight:800; }
+</style></head>
+<body>
+<a href="/home" class="backbtn">← Retour</a>
+<nav class="sitenav"><div class="nav-left"><a href="/home" class="nav-link">Thématiques</a><a href="/formules" class="nav-link">Formules</a><a href="/waitlist" class="nav-link" style="color:var(--fluo-green);font-weight:800;">Waiting List</a></div>
+<div class="nav-center"><a href="/home" style="display:inline-flex;flex-direction:column;align-items:center;"><span class="logo-pre">Briefings</span><span><span class="logo-s">SKANNER</span><span class="logo-mag">MAGAZINE</span></span></a></div>
+<div class="nav-right"><span class="nav-badge">PR &amp; Communication</span></div></nav>
+<div class="breadcrumb"><a href="/home" style="color:var(--muted);">Accueil</a><span class="sep">/</span><span>PR &amp; Communication</span><span class="sep">/</span><span class="active">Chapitre 2 · Fiche 2 · Expert</span></div>
+
+<div class="layout">
+  <div class="col-img"><img src="/pr-crise-3.jpg" alt="Gestion de crise, premières heures"/></div>
+  <div class="col-content">
+    <header class="head">
+      <div class="tags"><span class="tag">PR &amp; Communication</span><span class="tag lvl">Expert</span></div>
+      <h1 class="title">LES PREMIÈRES<br/>24 HEURES</h1>
+      <p class="lead">Une crise se joue dans les premières heures. Chaque décision — communiquer ou vérifier, reconnaître ou attendre — <strong>ferme ou ouvre</strong> les options suivantes. Cet exercice vous met aux commandes.</p>
+    </header>
+    <div class="meta">
+      <div class="meta-item">Niveau <strong>Expert</strong></div>
+      <div class="meta-item">Durée <strong>20 min</strong></div>
+      <div class="meta-item">Chapitre <strong>2 — Prise de parole &amp; influence</strong></div>
+      <div class="meta-item">Fiche <strong>2 / 4</strong></div>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab is-active" type="button" data-panel="fiche">Fiche</button>
+      <button class="tab" type="button" data-panel="retenir">À retenir</button>
+      <button class="tab" type="button" data-panel="gloss">Glossaire</button>
+      <button class="tab" type="button" data-panel="quiz">Quiz</button>
+      <button class="tab" type="button" data-panel="template">Template</button>
+    </div>
+
+    <div class="body">
+
+      <!-- ===== PANNEAU FICHE ===== -->
+      <div class="panel is-active" id="panel-fiche" role="tabpanel">
+        <section class="section" id="sec-1">
+          <p class="p" style="font-size:13px;color:var(--muted);border-left:2px solid var(--fluo-blue);padding-left:12px;margin-bottom:16px;">Rappel express : la situation est qualifiée, la cellule est constituée. Reste le plus difficile — décider vite, avec des informations incomplètes.</p>
+          <div class="sec-label"><span class="sec-num">01</span><span class="sec-title-txt">Décider sans tout savoir</span></div>
+          <p class="p">La difficulté des premières heures n'est pas le manque de compétence : c'est le <strong>manque d'information</strong>. Il faut arbitrer alors que les faits ne sont pas consolidés, que la pression monte et que chaque minute de silence est interprétée.</p>
+          <div class="arrow-list">
+            <div class="al"><span class="al-a">→</span><p><strong>Le dilemme du timing.</strong> Communiquer tôt avec peu de faits expose à devoir se dédire. Attendre la certitude laisse d'autres raconter l'histoire à votre place.</p></div>
+            <div class="al"><span class="al-a">→</span><p><strong>La règle du « ce qu'on sait ».</strong> On peut toujours communiquer sur ce qui est établi, sur ce qui ne l'est pas, et sur le moment où l'on en dira plus. C'est la sortie du dilemme.</p></div>
+            <div class="al"><span class="al-a">→</span><p><strong>L'irréversibilité.</strong> Une position prise publiquement est difficile à corriger. Mieux vaut une parole prudente et tenable qu'une affirmation forte à rétracter.</p></div>
+          </div>
+        </section>
+
+        <section class="section" id="sec-2">
+          <div class="sec-label"><span class="sec-num">02</span><span class="sec-title-txt">Les erreurs qui aggravent</span></div>
+          <p class="p">Libaert le rappelle : certaines stratégies — le déni, le silence prolongé, le transfert de responsabilité — offrent un soulagement immédiat et un coût différé très élevé.</p>
+          <div class="points">
+            <div class="point"><div class="point-k">Le déni prématuré<small>Le plus coûteux</small></div><div class="point-v">Nier avant d'avoir vérifié : si les faits sortent ensuite, la crise de communication remplace la crise initiale.</div></div>
+            <div class="point"><div class="point-k">Le silence prolongé<small>Interprété comme un aveu</small></div><div class="point-v">Au-delà de quelques heures sur un sujet visible, l'absence de parole devient elle-même le sujet.</div></div>
+            <div class="point"><div class="point-k">Le transfert<small>Rarement crédible</small></div><div class="point-v">Désigner un fournisseur ou un tiers dilue la responsabilité perçue mais donne l'image d'une organisation qui se défausse.</div></div>
+            <div class="point"><div class="point-k">La sur-promesse<small>La dette de demain</small></div><div class="point-v">S'engager sur l'absolu (« cela n'arrivera plus jamais ») crée l'échec de la prochaine occurrence.</div></div>
+          </div>
+          <div class="pull"><p>La crise de communication est souvent plus grave que la crise initiale : elle porte sur l'honnêteté, pas sur la faute.</p><cite>Principe de gestion de crise</cite></div>
+        </section>
+
+        <section class="section" id="sec-3">
+          <div class="sec-label"><span class="sec-num">03</span><span class="sec-title-txt">L'après commence tout de suite</span></div>
+          <p class="p">Les décisions des premières heures déterminent la <strong>reconstruction d'image</strong>. Une organisation qui a reconnu tôt, informé ses parties prenantes et tenu ses engagements sort d'une crise avec une confiance parfois renforcée. L'inverse laisse une trace durable.</p>
+          <p class="p">D'où l'importance de la <strong>main courante</strong> : consigner les décisions, leur heure et leur motif. C'est ce qui permettra de rendre compte, et d'apprendre.</p>
+        </section>
+
+        <div class="note">
+          <strong>À garder en tête.</strong> Décidez avec <strong>ce que vous savez</strong>, dites ce que vous ignorez, annoncez quand vous en direz plus. Évitez le <strong>déni prématuré</strong>, le <strong>silence prolongé</strong> et la <strong>sur-promesse</strong>. Consignez tout. Le simulateur vous met à l'épreuve sur votre secteur.
+        </div>
+      </div>
+
+      <div class="panel" id="panel-retenir" role="tabpanel">
+        <div class="recap">
+          <div class="lbl">À retenir</div>
+          <div class="recap-grid">
+            <div class="recap-card"><div class="rc-k" style="color:var(--fluo-yellow);">Dire ce qu'on sait</div><div class="rc-v">Ce qui est établi, ce qui ne l'est pas, quand on en dira plus. La sortie du dilemme du timing.</div></div>
+            <div class="recap-card"><div class="rc-k" style="color:var(--fluo-violet);">Jamais de déni prématuré</div><div class="rc-v">Nier avant vérification transforme une crise de faits en crise d'honnêteté, bien plus grave.</div></div>
+            <div class="recap-card"><div class="rc-k" style="color:var(--fluo-green);">Pas de sur-promesse</div><div class="rc-v">« Cela n'arrivera plus jamais » crée l'échec de la prochaine fois. Engagez-vous sur du mesurable.</div></div>
+            <div class="recap-card"><div class="rc-k" style="color:var(--fluo-pink);">Tenir la main courante</div><div class="rc-v">Consigner décisions, heures et motifs : pour rendre compte et pour apprendre.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PANNEAU GLOSSAIRE (cartes fond noir, 12 termes, couleurs alternées) ===== -->
+      <div class="panel" id="panel-gloss" role="tabpanel">
+        <div class="gloss">
+          <div class="gloss-l">Glossaire</div>
+          <div class="gl-grid">
+            <div class="gl-item"><span class="gl-term" style="background:#E8FF00;color:#0D0D0D;">Premières 24 heures</span><span class="gl-def">Fenêtre décisive où les décisions prises orientent durablement la perception de la crise.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#C77DFF;color:#0D0D0D;">Dilemme du timing</span><span class="gl-def">Arbitrage entre communiquer tôt avec peu de faits ou attendre au risque de laisser le récit à d'autres.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#39FF14;color:#0D0D0D;">Faits établis</span><span class="gl-def">Éléments vérifiés et confirmés ; seuls communicables sans risque de démenti.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#FF6FD8;color:#0D0D0D;">Déni prématuré</span><span class="gl-def">Contestation des faits avant vérification ; transforme la crise en crise de crédibilité.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#4DD2FF;color:#0D0D0D;">Silence prolongé</span><span class="gl-def">Absence de parole qui devient elle-même le sujet et s'interprète comme un aveu.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#E8FF00;color:#0D0D0D;">Transfert de responsabilité</span><span class="gl-def">Stratégie consistant à désigner un tiers ; dilue la faute mais donne l'image d'une défausse.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#C77DFF;color:#0D0D0D;">Sur-promesse</span><span class="gl-def">Engagement absolu et invérifiable qui crée l'échec de la prochaine occurrence.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#39FF14;color:#0D0D0D;">Main courante</span><span class="gl-def">Journal horodaté des décisions, indispensable pour rendre compte et tirer les enseignements.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#FF6FD8;color:#0D0D0D;">Reconstruction d'image</span><span class="gl-def">Phase post-crise où la confiance se rebâtit sur les engagements tenus.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#4DD2FF;color:#0D0D0D;">Escalade</span><span class="gl-def">Aggravation d'une crise par des décisions inadaptées dans les premières heures.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#E8FF00;color:#0D0D0D;">Point d'étape</span><span class="gl-def">Communication intermédiaire annonçant ce qui est su, ce qui reste en cours et le prochain rendez-vous.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#C77DFF;color:#0D0D0D;">Irréversibilité</span><span class="gl-def">Caractère difficilement rétractable d'une position prise publiquement en crise.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PANNEAU QUIZ (5 questions + feedback noir + score /5) ===== -->
+      <div class="panel" id="panel-quiz" role="tabpanel">
+        <div class="quiz">
+          <div class="quiz-intro">
+            <div class="quiz-head"><span class="qbadge">Quiz</span><span class="qttl">Validez vos acquis</span></div>
+            <p>Cinq questions pour ancrer la logique d'ensemble.</p>
+          </div>
+<div class="q" id="q1">
+            <p class="qn">Question 01 / 05</p>
+            <p class="qt">Comment sortir du dilemme « communiquer tôt ou attendre la certitude » ?</p>
+            <div class="opts">
+              <button class="opt" data-ok="1" data-q="1">Dire ce qui est établi, ce qui ne l'est pas, et quand on en dira plus</button>
+              <button class="opt" data-ok="0" data-q="1">Attendre systématiquement d'avoir tous les éléments</button>
+              <button class="opt" data-ok="0" data-q="1">Communiquer des hypothèses pour occuper le terrain</button>
+            </div>
+            <div class="fb" id="f1"></div>
+          </div>
+          <div class="q" id="q2">
+            <p class="qn">Question 02 / 05</p>
+            <p class="qt">Pourquoi le déni prématuré est-il l'erreur la plus coûteuse ?</p>
+            <div class="opts">
+              <button class="opt" data-ok="1" data-q="2">Si les faits sortent, la crise d'honnêteté remplace la crise initiale</button>
+              <button class="opt" data-ok="0" data-q="2">Parce qu'il est juridiquement interdit</button>
+              <button class="opt" data-ok="0" data-q="2">Parce qu'il prend trop de temps à préparer</button>
+            </div>
+            <div class="fb" id="f2"></div>
+          </div>
+          <div class="q" id="q3">
+            <p class="qn">Question 03 / 05</p>
+            <p class="qt">Que produit un silence prolongé sur un sujet visible ?</p>
+            <div class="opts">
+              <button class="opt" data-ok="1" data-q="3">L'absence de parole devient elle-même le sujet</button>
+              <button class="opt" data-ok="0" data-q="3">Le sujet finit toujours par s'éteindre seul</button>
+              <button class="opt" data-ok="0" data-q="3">Cela protège juridiquement l'organisation</button>
+            </div>
+            <div class="fb" id="f3"></div>
+          </div>
+          <div class="q" id="q4">
+            <p class="qn">Question 04 / 05</p>
+            <p class="qt">Pourquoi éviter de promettre que « cela n'arrivera plus jamais » ?</p>
+            <div class="opts">
+              <button class="opt" data-ok="1" data-q="4">C'est invérifiable et cela crée l'échec de la prochaine occurrence</button>
+              <button class="opt" data-ok="0" data-q="4">Parce que les journalistes n'aiment pas les engagements</button>
+              <button class="opt" data-ok="0" data-q="4">Parce que ça coûte trop cher à mettre en œuvre</button>
+            </div>
+            <div class="fb" id="f4"></div>
+          </div>
+          <div class="q" id="q5">
+            <p class="qn">Question 05 / 05</p>
+            <p class="qt">À quoi sert la main courante pendant une crise ?</p>
+            <div class="opts">
+              <button class="opt" data-ok="1" data-q="5">Consigner décisions, heures et motifs pour rendre compte et apprendre</button>
+              <button class="opt" data-ok="0" data-q="5">À rédiger le communiqué de presse final</button>
+              <button class="opt" data-ok="0" data-q="5">À désigner les responsables de la crise</button>
+            </div>
+            <div class="fb" id="f5"></div>
+          </div>
+          </div>
+          </div>
+          <div class="score" id="score">
+            <p class="score-l">Votre score</p>
+            <p class="score-n" id="sn">0 / 5</p>
+            <p class="score-m" id="sm"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PANNEAU TEMPLATE : LES PREMIÈRES 24 HEURES ===== -->
+      <div class="panel" id="panel-template" role="tabpanel">
+        <div class="topbar">
+          <div class="topbar-info">Template lié à <strong>Les premières 24 heures</strong> · Chapitre 2 · Fiche 2 · Expert</div>
+          <div class="actions"><button class="btn" onclick="resetAll()">↺ Recommencer</button><button class="btn" id="btn-copy" onclick="copyDebrief()">⧉ Copier le débrief</button><button class="btn btn-primary" id="btn-pdf" onclick="exportPDF()">↓ Exporter en PDF</button></div>
+        </div>
+        <div id="export-zone">
+          <header class="head">
+            <div class="tags"><span class="tag tpl">Template</span><span class="tag">PR &amp; Communication</span><span class="tag lvl">Expert</span></div>
+            <h1>LES PREMIÈRES<br/>24 HEURES</h1>
+            <p class="intro">Une crise se déclare dans votre secteur. Six décisions à prendre, de la première heure au lendemain. Chaque choix fait bouger trois indicateurs : la <strong>couverture médiatique</strong>, la <strong>confiance interne</strong> et votre <strong>position juridique</strong>. À la fin, votre débrief complet.</p>
+          </header>
+          <div class="progress-wrap"><div class="progress-label"><span>Progression</span><span id="ppct">0%</span></div><div class="progress-bar"><div class="progress-fill" id="pfill"></div></div></div>
+
+          <section class="tpl-section">
+            <div class="tpl-sec-head"><span class="tpl-sec-num">01</span><span class="tpl-sec-title">Votre secteur</span></div>
+            <div class="dom-opts" id="sim-scen">
+              <button class="dom-chip" data-v="luxe" onclick="pickScen('luxe',this)"><span class="dom-k">Luxe / mode / culture</span><span class="dom-d">Polémique sur une campagne</span></button>
+              <button class="dom-chip" data-v="serv" onclick="pickScen('serv',this)"><span class="dom-k">Services / conseil</span><span class="dom-d">Rupture de confidentialité</span></button>
+              <button class="dom-chip" data-v="tech" onclick="pickScen('tech',this)"><span class="dom-k">Tech / numérique</span><span class="dom-d">Fuite de données clients</span></button>
+              <button class="dom-chip" data-v="alim" onclick="pickScen('alim',this)"><span class="dom-k">Alimentaire / restauration</span><span class="dom-d">Suspicion de contamination</span></button>
+              <button class="dom-chip" data-v="indus" onclick="pickScen('indus',this)"><span class="dom-k">Industrie / énergie</span><span class="dom-d">Accident sur site</span></button>
+            </div>
+          </section>
+
+          <section class="tpl-section" id="sim-play-sec" style="display:none;">
+            <div class="tpl-sec-head"><span class="tpl-sec-num">02</span><span class="tpl-sec-title">Vos décisions</span></div>
+            <div class="sim-stage" id="sim-stage"></div>
+            <div class="sim-gauges">
+              <div class="sim-g"><div class="sim-g-lab"><span>Médias</span><span id="g-med-v">neutre</span></div><div class="sim-g-bar"><div class="sim-g-fill" id="g-med"></div></div></div>
+              <div class="sim-g"><div class="sim-g-lab"><span>Interne</span><span id="g-int-v">neutre</span></div><div class="sim-g-bar"><div class="sim-g-fill" id="g-int"></div></div></div>
+              <div class="sim-g"><div class="sim-g-lab"><span>Juridique</span><span id="g-jur-v">neutre</span></div><div class="sim-g-bar"><div class="sim-g-fill" id="g-jur"></div></div></div>
+            </div>
+          </section>
+
+          <section class="tpl-section" id="sim-deb-sec" style="display:none;">
+            <div class="tpl-sec-head"><span class="tpl-sec-num">03</span><span class="tpl-sec-title">Votre débrief</span></div>
+            <div class="sim-debrief" id="sim-debrief"></div>
+          </section>
+
+          <div class="bilan" id="bilan">
+            <span class="bilan-lbl">Analyse</span>
+            <h3>Comment j'ai piloté</h3>
+            <div id="bilan-content"><p class="bilan-empty">Choisissez votre secteur et prenez les commandes : votre analyse s'affichera ici.</p></div>
+          </div>
+
+          <div class="note">
+            <strong>Rappel de la fiche.</strong> Communiquez avec <strong>ce que vous savez</strong>, prévenez les concernés <strong>avant</strong> le public, évitez le <strong>déni prématuré</strong> et la <strong>sur-promesse</strong>. Et consignez chaque décision.
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /body -->
+
+    <footer class="foot"><a href="/home" style="display:inline-flex;flex-direction:column;"><span class="logo-pre">Briefings</span><span><span class="logo-s">SKANNER</span><span class="logo-mag">MAGAZINE</span></span></a><div class="foot-copy">© 2026 — Skanner Magazine</div></footer>
+  </div>
+</div>
+
+<!-- CDN PDF (defer pour ne pas bloquer les onglets) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+
+<!-- JS ONGLETS (OBLIGATOIRE, délégation d'événement) -->
+<script>
+document.addEventListener('click', function(e){
+  var btn = e.target.closest('.tab');
+  if(!btn) return;
+  var name = btn.getAttribute('data-panel');
+  var tabs = document.querySelectorAll('.tab');
+  for(var i=0;i<tabs.length;i++){
+    if(tabs[i].getAttribute('data-panel')===name) tabs[i].classList.add('is-active');
+    else tabs[i].classList.remove('is-active');
+  }
+  var panels = document.querySelectorAll('.panel');
+  for(var j=0;j<panels.length;j++){
+    if(panels[j].id==='panel-'+name) panels[j].classList.add('is-active');
+    else panels[j].classList.remove('is-active');
+  }
+});
+</script>
+
+<!-- JS QUIZ + TEMPLATE -->
+<script>
+// ===== QUIZ — objet FB : 1 entrée par question. c = si bonne réponse, i = si mauvaise =====
+var FB={
+  1:{c:"Exact. C'est la formule qui permet de parler tôt sans s'exposer à se dédire.",i:"Non : ni l'attente indéfinie ni les hypothèses. On communique sur ce qui est établi et sur le calendrier."},
+  2:{c:"Exact. La crise porte alors sur l'honnêteté, bien plus difficile à réparer que la faute initiale.",i:"Non : ce n'est ni une question juridique ni de temps de préparation, mais de crédibilité détruite."},
+  3:{c:"Exact. Au-delà de quelques heures, le silence devient le sujet et s'interprète comme un aveu.",i:"Non : un sujet visible ne s'éteint pas seul, et le silence ne protège pas juridiquement."},
+  4:{c:"Exact. Un engagement absolu est invérifiable et vous condamne à la prochaine occurrence.",i:"Non : le problème n'est ni les journalistes ni le coût, mais le caractère intenable de la promesse."},
+  5:{c:"Exact. Elle permet de rendre compte des décisions et d'en tirer les enseignements.",i:"Non : ce n'est ni un outil rédactionnel ni un instrument de sanction, mais un journal de décisions."}
+};
+var ans={},score=0;
+document.querySelectorAll('.opt').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var q=parseInt(btn.getAttribute('data-q'),10);
+    var ok=btn.getAttribute('data-ok')==='1';
+    if(ans[q]!==undefined)return;
+    ans[q]=ok;if(ok)score++;
+    var block=document.getElementById('q'+q);
+    block.querySelectorAll('.opt').forEach(function(x){x.disabled=true;});
+    btn.classList.add(ok?'ok':'no');
+    if(!ok)block.querySelectorAll('.opt').forEach(function(x){if(x.getAttribute('data-ok')==='1')x.classList.add('ok');});
+    var f=document.getElementById('f'+q);
+    f.textContent=ok?FB[q].c:FB[q].i;f.className='fb show';
+    if(Object.keys(ans).length===5)done();
+  });
+});
+function done(){
+  var s=document.getElementById('score');s.classList.add('show');
+  document.getElementById('sn').textContent=score+' / 5';
+  var m=["Aucune bonne réponse — reprends les erreurs qui aggravent.","1/5 : les réflexes de crise ne sont pas là.","2/5 : quelques notions, revois le dilemme du timing.","3/5 : bonne base. Consolide le déni et la sur-promesse.","4/5 : presque tout est acquis, un dernier point.","5/5 : vous maîtrisez les principes. Direction les 24 heures."];
+  document.getElementById('sm').textContent=m[score]||'';
+}
+
+// ===== Barre de progression de lecture =====
+(function(){
+  var bar=document.getElementById('readbar');
+  if(!bar)return;
+  function upd(){
+    var h=document.documentElement;
+    var max=h.scrollHeight-h.clientHeight;
+    var p=max>0?(h.scrollTop||document.body.scrollTop)/max*100:0;
+    bar.style.width=p+'%';
+  }
+  window.addEventListener('scroll',upd,{passive:true});
+  window.addEventListener('resize',upd);upd();
+})();
+
+
+
+// ===== Barre de progression : gérée par la version modèle (2e script) =====
+
+
+// ===== Calculateurs =====
+function num(id){ var v=parseFloat(document.getElementById(id).value); return isNaN(v)?0:v; }
+function fmt(n){ return n.toLocaleString('fr-FR',{maximumFractionDigits:2}); }
+
+function calcCAC(){
+  var budget=num('cac-budget'), clients=num('cac-clients');
+  var el=document.getElementById('cac-result');
+  if(clients>0){ window._cac=budget/clients; el.textContent=fmt(window._cac)+' €'; el.classList.remove('muted'); }
+  else { window._cac=0; el.textContent='—'; el.classList.add('muted'); }
+  checkVerdict();
+}
+function calcConv(){
+  var v=num('conv-visiteurs'), a=num('conv-achats');
+  var el=document.getElementById('conv-result');
+  if(v>0){ el.textContent=fmt(a/v*100)+' %'; el.classList.remove('muted'); }
+  else { el.textContent='—'; el.classList.add('muted'); }
+}
+function calcPanier(){
+  var ca=num('panier-ca'), cmd=num('panier-cmd');
+  var el=document.getElementById('panier-result');
+  if(cmd>0){ el.textContent=fmt(ca/cmd)+' €'; el.classList.remove('muted'); }
+  else { el.textContent='—'; el.classList.add('muted'); }
+}
+function calcLTV(){
+  var panier=num('ltv-panier'), freq=num('ltv-freq'), duree=num('ltv-duree');
+  var el=document.getElementById('ltv-result');
+  window._ltv=panier*freq*duree;
+  if(window._ltv>0){ el.textContent=fmt(window._ltv)+' €'; el.classList.remove('muted'); }
+  else { el.textContent='—'; el.classList.add('muted'); }
+  checkVerdict();
+}
+function checkVerdict(){
+  var v=document.getElementById('verdict');
+  if(window._cac>0 && window._ltv>0){
+    var ratio=window._ltv/window._cac;
+    v.classList.add('show');
+    if(ratio>=3){
+      v.className='verdict show good';
+      v.innerHTML='<strong>Modèle sain.</strong> Ta valeur vie client ('+fmt(window._ltv)+' €) vaut '+ratio.toFixed(1)+'× ton coût d\'acquisition ('+fmt(window._cac)+' €). Tu es au-dessus du seuil de 3×. Chaque nouveau client enrichit ton activité.';
+    } else {
+      v.className='verdict show bad';
+      v.innerHTML='<strong>À surveiller.</strong> Ta valeur vie client ('+fmt(window._ltv)+' €) ne vaut que '+ratio.toFixed(1)+'× ton coût d\'acquisition ('+fmt(window._cac)+' €). En dessous de 3×, chaque acquisition fragilise ton activité. Leviers : augmenter le panier, la fréquence, la fidélisation — ou réduire le coût d\'acquisition.';
+    }
+  }
+}
+
+// ===== Cases à cocher du plan d'action =====
+document.querySelectorAll('.action-check').forEach(function(box){
+  box.addEventListener('click',function(){ box.classList.toggle('checked'); });
+});
+
+// ===== Réinitialiser =====
+function resetAll(){
+  if(!confirm('Réinitialiser tous les champs ?'))return;
+  document.querySelectorAll('input,textarea').forEach(function(el){ el.value=''; });
+  document.querySelectorAll('.action-check').forEach(function(b){ b.classList.remove('checked'); });
+  document.querySelectorAll('.calc-result span.rv, [id$="-result"]').forEach(function(e){ e.textContent='—'; e.classList.add('muted'); });
+  document.getElementById('verdict').className='verdict';
+  window._cac=0;window._ltv=0;
+  updateProgress();
+}
+
+// ===== Export PDF réel =====
+function exportPDF(){
+  if(typeof window.jspdf==='undefined' || typeof html2canvas==='undefined'){ alert('Le module d\'export se charge encore, réessaie dans un instant.'); return; }
+  var btn=document.getElementById('btn-pdf');
+  btn.disabled=true; var old=btn.textContent; btn.textContent='Génération…';
+  document.body.classList.add('pdf-mode');
+  var target=document.getElementById('export-zone');
+  html2canvas(target,{scale:2,useCORS:true,backgroundColor:'#ffffff',windowWidth:target.scrollWidth}).then(function(canvas){
+    var img=canvas.toDataURL('image/jpeg',0.92);
+    var pdf=new window.jspdf.jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+    var pw=pdf.internal.pageSize.getWidth(), ph=pdf.internal.pageSize.getHeight();
+    var margin=10, cw=pw-margin*2;
+    var ih=canvas.height*cw/canvas.width;
+    var left=ih, pos=margin;
+    pdf.addImage(img,'JPEG',margin,pos,cw,ih); left-=(ph-margin*2);
+    while(left>0){ pdf.addPage(); pos=margin-(ih-left); pdf.addImage(img,'JPEG',margin,pos,cw,ih); left-=(ph-margin*2); }
+    pdf.save('skanner-diagnostic-ecosysteme-digital.pdf');
+    document.body.classList.remove('pdf-mode');
+    btn.disabled=false; btn.textContent=old;
+  }).catch(function(e){
+    console.error(e); alert('Export impossible, réessaie.');
+    document.body.classList.remove('pdf-mode');
+    btn.disabled=false; btn.textContent=old;
+  });
+}
+
+// ===== TEMPLATE — helpers =====
+function gv(id){var e=document.getElementById(id);if(!e)return 0;var v=parseFloat(e.value);return isNaN(v)?0:v;}
+function setR(id,txt,color){var e=document.getElementById(id);if(!e)return;e.textContent=txt;e.classList.remove('muted');e.style.color=color||'';}
+function mute(id){var e=document.getElementById(id);if(!e)return;e.textContent='—';e.classList.add('muted');e.style.color='';}
+
+// ===== SIMULATEUR D'INTERVIEW SOUS TENSION =====
+// score: 2 = bonne réaction, 1 = passable, 0 = faute
+var SCEN={
+ crise:{nom:"Un incident vous met en cause",
+  rounds:[
+   {tech:"Question ouverte piégeuse",q:"Que s'est-il passé exactement ?",jour:"Il ouvre large pour voir ce que vous lâchez spontanément.",
+    opts:[
+     {t:"Donner les faits établis, dire ce qui reste en cours d'analyse",s:2,r:"Il note. Vous avez posé un cadre factuel sans surjouer : l'échange démarre sur votre terrain."},
+     {t:"Expliquer que ce n'est pas si grave qu'on le dit",s:0,r:"Il relève immédiatement : « donc vous minimisez ? ». Vous venez de lui offrir son angle."},
+     {t:"Renvoyer à un communiqué déjà publié",s:1,r:"Il insiste : « je vous demande à vous ». L'esquive vous fait perdre un tour."}
+    ],tip:"Ouvrir sur les faits établis évite à la fois la minimisation et l'esquive."},
+   {tech:"Question à présupposé",q:"Pourquoi avez-vous tardé à réagir ?",jour:"Le retard est posé comme acquis dans la question.",
+    opts:[
+     {t:"Refuser le cadre : donner la chronologie précise avant de répondre",s:2,r:"Il ajuste sa question. Vous avez repris la main sur le récit du temps."},
+     {t:"Se justifier longuement sur les raisons du délai",s:1,r:"Il vous laisse parler — et retient surtout que vous vous justifiez."},
+     {t:"Dire qu'il n'y a pas eu de retard",s:0,r:"« Donc vous contestez la chronologie ? » Le débat glisse sur votre déni."}
+    ],tip:"Face à un présupposé, on rétablit les faits AVANT de répondre au fond."},
+   {tech:"Silence provocateur",q:"…",jour:"Il se tait après votre réponse et vous regarde.",
+    opts:[
+     {t:"Soutenir le silence et attendre la question suivante",s:2,r:"Il enchaîne. Vous n'avez rien ajouté d'exploitable : le silence a joué pour vous."},
+     {t:"Ajouter une précision pour combler",s:0,r:"Vous en dites plus que prévu. Il note la phrase — celle-là sera citée."},
+     {t:"Demander s'il a une autre question",s:1,r:"Il sourit et relance. Neutre, mais vous avez montré votre inconfort."}
+    ],tip:"Le silence est une technique. Répondez, puis taisez-vous : c'est à lui de relancer."},
+   {tech:"Alternative fermée",q:"C'est de la négligence ou du manque de moyens ?",jour:"Deux réponses, toutes deux mauvaises pour vous.",
+    opts:[
+     {t:"Refuser les deux termes et proposer la lecture factuelle",s:2,r:"Il accepte la reformulation. Vous avez évité le piège sans paraître fuyant."},
+     {t:"Choisir « manque de moyens », qui paraît moins grave",s:0,r:"Le titre s'écrit tout seul : vous avez validé une des deux accusations."},
+     {t:"Répondre que la question est malveillante",s:1,r:"Il note la tension. Vous avez évité le piège, mais vous paraissez sur la défensive."}
+    ],tip:"Une alternative fermée se refuse en bloc, calmement, puis on propose la troisième voie."},
+   {tech:"Dernière question",q:"Vous engagez-vous à ce que cela ne se reproduise pas ?",jour:"Posée au moment où vous vous détendez.",
+    opts:[
+     {t:"S'engager sur des mesures précises et vérifiables",s:2,r:"Il conclut là-dessus. Vous finissez sur du concret : c'est ce qui sera repris."},
+     {t:"Promettre que cela n'arrivera plus jamais",s:0,r:"Une promesse absolue et invérifiable : elle vous suivra à la prochaine occasion."},
+     {t:"Répondre qu'il est trop tôt pour s'engager",s:1,r:"Il termine sur votre prudence. Correct, mais vous laissez le sujet ouvert."}
+    ],tip:"La dernière question fait souvent le titre. Engagez-vous sur du mesurable, jamais sur l'absolu."}
+  ]},
+ resultats:{nom:"Des résultats décevants",
+  rounds:[
+   {tech:"Confrontation aux annonces",q:"Vous aviez promis mieux. Que s'est-il passé ?",jour:"Il compare vos annonces passées aux chiffres publiés.",
+    opts:[
+     {t:"Assumer l'écart, donner la cause factuelle et la mesure prise",s:2,r:"Il enchaîne sur la mesure. Assumer vous a fait gagner en crédibilité."},
+     {t:"Expliquer que le contexte de marché a tout changé",s:1,r:"« Comme tous vos concurrents ? » Le contexte seul ne suffit pas."},
+     {t:"Contester la lecture des chiffres",s:0,r:"Il sort le document. Contester un chiffre public vous décrédibilise en direct."}
+    ],tip:"Assumer un objectif manqué crédibilise tout le reste du discours."},
+   {tech:"Comparaison concurrentielle",q:"Vos concurrents font mieux. Comment l'expliquez-vous ?",jour:"Il vous met en position d'infériorité.",
+    opts:[
+     {t:"Reconnaître le fait, expliquer le choix stratégique différent",s:2,r:"Il creuse votre stratégie. Vous avez transformé la comparaison en explication."},
+     {t:"Critiquer leur méthode de calcul",s:0,r:"Vous paraissez mauvais joueur. Le sujet devient votre agacement."},
+     {t:"Dire que la comparaison n'a pas de sens",s:1,r:"Il insiste. Refuser la comparaison sans expliquer paraît esquiver."}
+    ],tip:"Reconnaître le fait puis expliquer le choix : nier un chiffre public est fatal."},
+   {tech:"Relance insistante",q:"Mais concrètement, allez-vous atteindre vos objectifs ?",jour:"Troisième formulation de la même question.",
+    opts:[
+     {t:"Répéter la même réponse, calmement, sans agacement",s:2,r:"Il passe à autre chose. La constance a désamorcé la relance."},
+     {t:"Céder et donner un chiffre pour clore le sujet",s:0,r:"Vous venez de vous engager sur un chiffre non validé. Il le note soigneusement."},
+     {t:"Lui faire remarquer qu'il pose trois fois la même question",s:1,r:"Il sourit. Vous avez tenu, mais l'échange s'est tendu inutilement."}
+    ],tip:"La relance mise sur la lassitude. Répéter la même réponse est une réponse."},
+   {tech:"Question personnelle",q:"Votre poste est-il menacé ?",jour:"Il déplace le sujet sur vous.",
+    opts:[
+     {t:"Recentrer sur l'action en cours et le cap fixé",s:2,r:"Il revient au fond. Vous n'êtes pas tombé dans le sujet personnel."},
+     {t:"Affirmer que votre poste n'est pas en jeu",s:1,r:"Il note. Vous avez répondu, mais vous avez accepté de parler de vous."},
+     {t:"Refuser sèchement de répondre",s:0,r:"« Une question qui dérange ? » Le refus brut alimente la spéculation."}
+    ],tip:"Une question personnelle se recentre sur l'action, sans agacement ni déni."},
+   {tech:"Demande d'engagement",q:"Sur quoi acceptez-vous d'être jugé l'an prochain ?",jour:"Il cherche la phrase de conclusion.",
+    opts:[
+     {t:"Un engagement précis, chiffré et daté",s:2,r:"Il conclut là-dessus. Vous choisissez vous-même le critère du jugement."},
+     {t:"Lister plusieurs priorités sans les chiffrer",s:1,r:"Il retient la plus vague. Sans chiffre, l'engagement ne pèse rien."},
+     {t:"Refuser de s'engager sur des critères",s:0,r:"Il termine sur votre refus : l'impression d'un dirigeant qui se protège."}
+    ],tip:"Un seul engagement chiffré et daté vaut mieux que trois promesses floues."}
+  ]},
+ polemique:{nom:"Une polémique publique",
+  rounds:[
+   {tech:"Citation d'un tiers",q:"Untel affirme que votre position est indéfendable. Que répondez-vous ?",jour:"Il vous fait réagir à la parole d'un autre.",
+    opts:[
+     {t:"Ne pas commenter la personne, revenir aux faits",s:2,r:"Il revient au sujet. Vous n'êtes pas entré dans le duel personnel."},
+     {t:"Répondre point par point à ses critiques",s:1,r:"L'échange devient un débat entre vous deux. Vous jouez sur son terrain."},
+     {t:"Mettre en cause sa légitimité à parler",s:0,r:"Il note l'attaque. Le sujet devient votre agressivité, pas le fond."}
+    ],tip:"Ne commentez jamais la personne : revenez systématiquement aux faits."},
+   {tech:"Question à présupposé",q:"Pourquoi refusez-vous le dialogue ?",jour:"Le refus est posé comme un fait.",
+    opts:[
+     {t:"Refuser le cadre : rappeler les échanges qui ont eu lieu",s:2,r:"Il corrige sa question. Le présupposé est tombé."},
+     {t:"Expliquer les raisons de votre position",s:1,r:"En répondant, vous avez implicitement accepté qu'il y a un refus."},
+     {t:"Dire que c'est faux et passer à autre chose",s:1,r:"Il insiste, faute de preuve apportée. La dénégation seule ne suffit pas."}
+    ],tip:"Un présupposé se démonte avec des faits, pas avec une dénégation."},
+   {tech:"Alternative fermée",q:"Vous assumez ou vous reculez ?",jour:"Deux options, toutes deux réductrices.",
+    opts:[
+     {t:"Refuser les deux et décrire la position réelle",s:2,r:"Il accepte la nuance. Vous avez échappé au binaire."},
+     {t:"Répondre « nous assumons »",s:1,r:"Le mot est repris seul, sans le contexte. Il devient un slogan contre vous."},
+     {t:"Répondre que la question est simpliste",s:1,r:"Vous avez raison sur le fond, mais vous paraissez condescendant."}
+    ],tip:"Le binaire est un piège : nommez la troisième option, elle existe presque toujours."},
+   {tech:"Silence provocateur",q:"…",jour:"Il attend, sans rien dire.",
+    opts:[
+     {t:"Soutenir le silence",s:2,r:"Il relance. Rien d'exploitable n'a été ajouté."},
+     {t:"Reformuler votre position pour être sûr d'être clair",s:1,r:"Vous parlez encore. Ce n'était pas nécessaire, et il le sait."},
+     {t:"Ajouter un exemple pour appuyer",s:0,r:"L'exemple est mal choisi sous pression. Il le retient."}
+    ],tip:"Sous tension, chaque phrase ajoutée augmente le risque. Le silence est neutre."},
+   {tech:"Après-micro",q:"Merci. (micro coupé) Franchement, entre nous, vous en pensez quoi ?",jour:"L'entretien semble fini. Il est toujours là.",
+    opts:[
+     {t:"Rester exactement sur la même ligne qu'à l'antenne",s:2,r:"Rien de nouveau à exploiter. Vous avez tenu jusqu'au bout."},
+     {t:"Lâcher une remarque personnelle « entre nous »",s:0,r:"Elle se retrouve dans le papier, en ouverture. L'après-micro n'existe pas."},
+     {t:"Éluder poliment et partir",s:2,r:"Sortie propre. Vous n'avez rien donné de plus."}
+    ],tip:"Tant que le journaliste est là, l'interview continue. Le off ne protège rien."}
+  ]}
+};
+
+var scen=null, round=0, answers=[], answered=false;
+
+function pickScen(v,btn){
+  scen=v;round=0;answers=[];answered=false;
+  document.querySelectorAll('#sim-scen .sim-chip').forEach(function(c){c.classList.remove('sel');});
+  btn.classList.add('sel');
+  document.getElementById('sim-play-sec').style.display='block';
+  document.getElementById('sim-deb-sec').style.display='none';
+  renderRound();updateProgress();updateBilan();
+}
+
+function renderRound(){
+  var st=document.getElementById('sim-stage');
+  var rs=SCEN[scen].rounds;
+  if(round>=rs.length){renderDebrief();return;}
+  var r=rs[round];
+  st.innerHTML='<div class="sim-round">Question '+(round+1)+' / '+rs.length+'</div>'+
+    '<span class="sim-tech">'+r.tech+'</span>'+
+    '<div class="sim-q">'+r.q+'</div>'+
+    '<div class="sim-jour">'+r.jour+'</div>'+
+    '<div class="sim-opts">'+r.opts.map(function(o,i){
+      return '<button class="sim-opt" onclick="answer('+i+')">'+o.t+'</button>';
+    }).join('')+'</div>';
+  drawTension();
+}
+
+function answer(i){
+  if(answered)return;
+  answered=true;
+  var r=SCEN[scen].rounds[round];
+  var o=r.opts[i];
+  answers.push({q:r.q,tech:r.tech,choice:o.t,score:o.s,tip:r.tip});
+  var cls=o.s===2?'':(o.s===1?'mid':'bad');
+  var lab=o.s===2?'Il encaisse':(o.s===1?'Passable':'Il vous coince');
+  var st=document.getElementById('sim-stage');
+  st.querySelectorAll('.sim-opt').forEach(function(b){b.disabled=true;b.style.opacity=.45;});
+  var d=document.createElement('div');
+  d.className='sim-react '+cls;
+  d.innerHTML='<div class="sim-react-lab">'+lab+'</div><div class="sim-react-txt">'+o.r+'</div>'+
+    '<div class="sim-actions">'+
+      '<button class="sim-next" onclick="nextRound()">'+(round+1<SCEN[scen].rounds.length?'Question suivante →':'Voir mon débrief →')+'</button>'+
+      '<button class="sim-retry" onclick="retryRound()">↺ changer ma réponse</button>'+
+    '</div>';
+  st.appendChild(d);
+  drawTension();updateProgress();updateBilan();
+}
+
+// Permet de revenir sur son choix et de tester une autre réaction
+function retryRound(){
+  if(!answered)return;
+  answers.pop();
+  answered=false;
+  renderRound();
+  drawTension();updateProgress();updateBilan();
+}
+
+function nextRound(){round++;answered=false;renderRound();updateProgress();}
+
+function tensionPct(){
+  if(answers.length===0)return 0;
+  var lost=answers.reduce(function(a,x){return a+(2-x.score);},0);
+  return Math.min(Math.round(lost/(answers.length*2)*100),100);
+}
+function drawTension(){
+  var p=tensionPct();
+  var f=document.getElementById('sim-tension-fill');
+  var v=document.getElementById('sim-tension-val');
+  if(!f)return;
+  f.style.width=Math.max(p,4)+'%';
+  f.style.background=p<34?'var(--fluo-green)':(p<67?'var(--fluo-yellow)':'var(--fluo-pink)');
+  v.textContent=p<34?'maîtrisée':(p<67?'sous pression':'critique');
+}
+
+function renderDebrief(){
+  document.getElementById('sim-play-sec').style.display='none';
+  var sec=document.getElementById('sim-deb-sec');
+  sec.style.display='block';
+  document.getElementById('sim-debrief').innerHTML=answers.map(function(a,i){
+    var v=a.score===2?'g':(a.score===1?'m':'b');
+    var vl=a.score===2?'Bonne réaction':(a.score===1?'Passable':'À revoir');
+    return '<div class="sim-deb-row"><div class="sim-deb-q">Q'+(i+1)+' · '+a.tech+'</div>'+
+      '<span class="sim-deb-verdict '+v+'">'+vl+'</span>'+
+      '<div class="sim-deb-ch">'+a.choice+'</div>'+
+      '<div class="sim-deb-tip"><strong>À retenir :</strong> '+a.tip+'</div></div>';
+  }).join('');
+  updateProgress();updateBilan();
+}
+
+function updateProgress(){
+  if(!scen){var pf0=document.getElementById('pfill');if(pf0)pf0.style.width='0%';var pp0=document.getElementById('ppct');if(pp0)pp0.textContent='0%';return;}
+  var total=SCEN[scen].rounds.length;
+  var p=Math.round(answers.length/total*100);
+  var pf=document.getElementById('pfill');if(pf)pf.style.width=p+'%';
+  var pp=document.getElementById('ppct');if(pp)pp.textContent=p+'%';
+}
+
+function updateBilan(){
+  var c=document.getElementById('bilan-content');if(!c)return;
+  if(!scen||answers.length===0){c.innerHTML='<p class="bilan-empty">Choisissez un scénario et menez l\'entretien : votre analyse s\'affichera ici.</p>';return;}
+  var total=SCEN[scen].rounds.length;
+  var pts=answers.reduce(function(a,x){return a+x.score;},0);
+  var max=answers.length*2;
+  var pct=Math.round(pts/max*100);
+  var lines=[];
+  lines.push(['g','<strong>Scénario</strong> : '+SCEN[scen].nom+'.']);
+  if(answers.length<total)lines.push(['w','Entretien en cours ('+answers.length+'/'+total+' questions).']);
+  var good=answers.filter(function(a){return a.score===2;}).length;
+  var bad=answers.filter(function(a){return a.score===0;}).length;
+  lines.push([bad===0?'g':'w','<strong>'+good+'/'+answers.length+'</strong> réaction(s) maîtrisée(s) \u2014 '+pct+'% de contrôle.']);
+  if(bad>0)lines.push(['b','<strong>'+bad+' faute(s)</strong> \u2014 ce sont celles qui font les titres. Le débrief détaille lesquelles.']);
+  if(answers.length===total){
+    if(pct>=85)lines.push(['g','<strong>Vous tenez sous pression</strong> : cadre refusé, silence soutenu, engagements mesurables.']);
+    else if(pct>=60)lines.push(['w','<strong>Base solide</strong>, mais quelques ouvertures laissées au journaliste. Revoyez les techniques en débrief.']);
+    else lines.push(['b','<strong>L\'entretien vous a échappé</strong> \u2014 reprenez la fiche, puis rejouez le scénario.']);
+  }
+  var hasBad=lines.some(function(l){return l[0]==='b';}),warn=lines.some(function(l){return l[0]==='w';});
+  var head=hasBad?'Des réactions ont donné prise au journaliste.':(warn?'Entretien en cours ou perfectible.':'Entretien maîtrisé de bout en bout.');
+  var html='<p style="color:#fff;font-size:14px;line-height:1.6;margin:0 0 16px;">'+head+'</p>';
+  lines.forEach(function(l){var s=l[0]==='g'?'OK':(l[0]==='w'?'!':'X');html+='<div class="bilan-line"><span class="bilan-ico '+l[0]+'">'+s+'</span><span>'+l[1]+'</span></div>';});
+  c.innerHTML=html;
+}
+
+function copyDebrief(){
+  if(answers.length===0){alert('Menez d\'abord l\'entretien.');return;}
+  var l=['DÉBRIEF D\'INTERVIEW SOUS TENSION','','Scénario : '+SCEN[scen].nom,''];
+  answers.forEach(function(a,i){
+    var vl=a.score===2?'Bonne réaction':(a.score===1?'Passable':'À revoir');
+    l.push('Q'+(i+1)+' ('+a.tech+') — '+vl);
+    l.push('Votre choix : '+a.choice);
+    l.push('À retenir : '+a.tip);
+    l.push('');
+  });
+  var txt=l.join('\n');
+  var btn=document.getElementById('btn-copy');var old=btn.textContent;
+  function done(){btn.textContent='\u2713 Copié';setTimeout(function(){btn.textContent=old;},1500);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done).catch(function(){fb(txt);done();});}else{fb(txt);done();}
+  function fb(x){var ta=document.createElement('textarea');ta.value=x;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);}
+}
+
+function resetAll(){
+  if(!confirm('Recommencer l\'entretien ?'))return;
+  scen=null;round=0;answers=[];answered=false;
+  document.querySelectorAll('#sim-scen .sim-chip').forEach(function(c){c.classList.remove('sel');});
+  document.getElementById('sim-play-sec').style.display='none';
+  document.getElementById('sim-deb-sec').style.display='none';
+  updateProgress();updateBilan();
+}
+
+function exportPDF(){if(typeof window.jspdf==='undefined'||typeof html2canvas==='undefined'){alert('Le module d\'export se charge encore, réessaie.');return;}var btn=document.getElementById('btn-pdf');btn.disabled=true;var old=btn.textContent;btn.textContent='Génération…';document.body.classList.add('pdf-mode');var target=document.getElementById('export-zone');html2canvas(target,{scale:2,useCORS:true,backgroundColor:'#ffffff',windowWidth:target.scrollWidth}).then(function(canvas){var img=canvas.toDataURL('image/jpeg',0.92);var pdf=new window.jspdf.jsPDF({orientation:'portrait',unit:'mm',format:'a4'});var pw=pdf.internal.pageSize.getWidth(),ph=pdf.internal.pageSize.getHeight();var margin=10,cw=pw-margin*2;var ih=canvas.height*cw/canvas.width;var left=ih,pos=margin;pdf.addImage(img,'JPEG',margin,pos,cw,ih);left-=(ph-margin*2);while(left>0){pdf.addPage();pos=margin-(ih-left);pdf.addImage(img,'JPEG',margin,pos,cw,ih);left-=(ph-margin*2);}pdf.save('skanner-debrief-interview.pdf');document.body.classList.remove('pdf-mode');btn.disabled=false;btn.textContent=old;}).catch(function(e){console.error(e);alert('Export impossible.');document.body.classList.remove('pdf-mode');btn.disabled=false;btn.textContent=old;});}
+
+// INIT
+updateProgress();updateBilan();
+</script>
+</body></html>

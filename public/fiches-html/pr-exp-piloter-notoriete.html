@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5"/>
+<title>Piloter sa notoriété dans la durée — Briefings by Skanner</title>
+<meta name="description" content="Construire un plan de pilotage de la notoriété : objectif à 18 mois, indicateurs, cibles et rythme de mesure. Fiche Expert — Skanner Magazine."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=General+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet"/>
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700,800,900&display=swap" rel="stylesheet"/>
+<style>
+
+:root{--glacial:'General Sans','Helvetica Neue',Arial,sans-serif;}
+
+:root{
+  --ink:#0D0D0D;--white:#fff;--paper:#F8F7F5;--rule:#DDDBD6;--muted:#7A7770;
+  --fluo-yellow:#E8FF00;   /* jaune fluo */
+  --fluo-violet:#C77DFF;   /* violet fluo */
+  --fluo-green:#39FF14;    /* vert fluo */
+  --fluo-pink:#FF6FD8;     /* rose fluo */
+  --fluo-blue:#4DD2FF;     /* bleu fluo */
+  --sage:#39FF14;          /* on réutilise le vert fluo partout où --sage était */
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+body{font-family:'General Sans','Helvetica Neue',Arial,sans-serif;background:var(--white);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+
+.sitenav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);border-bottom:1px solid var(--rule);backdrop-filter:blur(8px);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 40px;height:56px;}
+.nav-left{display:flex;align-items:center;gap:4px;}
+.nav-link{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:6px 14px;transition:color .12s;}
+.nav-link:hover{color:var(--ink);}
+.nav-center{text-align:center;justify-self:center;}
+.logo-pre{font-size:8px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:2px;}
+.logo-s{font-size:17px;font-weight:900;letter-spacing:-.02em;text-transform:uppercase;font-style:italic;}
+.logo-mag{font-size:17px;font-weight:400;letter-spacing:.01em;text-transform:uppercase;font-style:normal;}
+.nav-right{display:flex;align-items:center;justify-content:flex-end;gap:12px;}
+.nav-badge{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:3px 9px;border:1px solid var(--rule);color:var(--muted);}
+
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:11px 40px;border-bottom:1px solid var(--rule);background:var(--paper);}
+.breadcrumb .sep{color:var(--rule);}
+.breadcrumb .active{color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:340px 1fr;align-items:start;}
+.col-img{position:sticky;top:56px;height:calc(100vh - 56px);overflow:hidden;background:var(--paper);border-right:1px solid var(--rule);align-self:start;}
+.col-img img{width:100%;height:100%;object-fit:cover;object-position:center;}
+.col-content{min-width:0;}
+
+.head{padding:48px 56px 40px;border-bottom:1px solid var(--rule);}
+.tags{display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap;}
+.tag{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border:1px solid var(--rule);color:var(--muted);}
+.tag.lvl{color:#0D0D0D;border-color:var(--ink);background:var(--fluo-green);font-weight:800;}
+h1.title{font-size:clamp(34px,4.5vw,58px);font-weight:900;letter-spacing:-.03em;line-height:.94;text-transform:uppercase;margin-bottom:18px;}
+.lead{font-size:15px;line-height:1.7;color:var(--muted);border-left:2px solid var(--ink);padding-left:18px;max-width:580px;}
+.lead strong{color:var(--ink);font-weight:600;}
+
+.meta{display:flex;flex-wrap:wrap;border-bottom:1px solid var(--rule);padding:0 56px;}
+.meta-item{font-size:11px;color:var(--muted);padding:14px 48px 14px 0;}
+.meta-item strong{color:var(--ink);font-weight:700;}
+
+.body{padding:8px 56px 64px;}
+.section{margin-top:72px;scroll-margin-top:72px;}
+.sec-label{display:flex;align-items:center;gap:0;margin-bottom:36px;background:var(--ink);color:#fff;}
+.sec-num{font-size:18px;font-weight:900;letter-spacing:.02em;color:#0D0D0D;background:var(--fluo-yellow);flex-shrink:0;padding:20px 22px;align-self:stretch;display:flex;align-items:center;}
+.sec-title-txt{font-size:clamp(18px,2.3vw,25px);font-weight:900;letter-spacing:-.01em;line-height:1.15;text-transform:uppercase;padding:18px 24px;color:#fff;}
+.p{font-size:15px;line-height:1.9;margin-bottom:22px;}
+.p.muted{color:var(--muted);}
+.p b,.p strong{font-weight:700;}
+
+/* GRAND CHIFFRE EN EXERGUE — style magazine */
+.stat{margin:44px 0;padding:36px 40px;background:var(--ink);color:#fff;display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center;}
+.stat-num{font-size:clamp(60px,9.5vw,116px);font-weight:900;letter-spacing:-.04em;line-height:.8;white-space:nowrap;color:var(--fluo-green);}
+.stat-txt{font-size:15px;line-height:1.65;color:rgba(255,255,255,.92);border-left:3px solid var(--fluo-green);padding-left:22px;}
+.stat-txt b{font-weight:700;color:#fff;}
+.stat-txt .src{display:block;margin-top:10px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--fluo-green);}
+
+/* listes éditoriales (remplacent les tableaux) */
+.points{margin:18px 0;}
+.point{display:flex;gap:20px;padding:20px 0;border-bottom:1px solid rgba(0,0,0,.08);}
+.point:last-child{border-bottom:none;}
+.point-k{flex-shrink:0;width:140px;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.02em;line-height:1.3;}
+.point-k small{display:block;font-size:11px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted);margin-top:2px;}
+.point-v{font-size:14px;line-height:1.7;color:var(--ink);}
+.point-v b{font-weight:700;}
+
+.arrow-list{margin:18px 0;}
+.al{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid rgba(0,0,0,.08);}
+.al:last-child{border-bottom:none;}
+.al-a{color:var(--fluo-violet);font-weight:900;flex-shrink:0;font-size:15px;margin-top:1px;}
+.al p{font-size:14px;line-height:1.7;}
+.al strong{font-weight:700;}
+
+/* entonnoir en liste éditoriale */
+.funnel{margin:22px 0;}
+.fn{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid rgba(0,0,0,.08);}
+.fn:last-child{border-bottom:none;}
+.fn-step{font-size:14px;font-weight:700;background:linear-gradient(transparent 28%, var(--fluo-yellow) 28%);padding:2px 5px;display:inline;}
+.fn-step small{font-weight:400;color:var(--muted);}
+.fn-val{font-size:20px;font-weight:900;letter-spacing:-.02em;white-space:nowrap;}
+.fn-val small{font-size:11px;font-weight:600;color:var(--muted);margin-left:8px;letter-spacing:.04em;}
+
+.pull{margin:44px 0;padding:32px 34px;background:#0D0D0D;color:#fff;position:relative;}
+.pull::before{content:"\201C";position:absolute;top:8px;left:18px;font-size:64px;line-height:1;color:var(--fluo-yellow);font-weight:900;}
+.pull p{font-size:23px;font-weight:600;font-style:normal;line-height:1.4;margin-bottom:12px;padding-left:36px;}
+.pull cite{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--fluo-yellow);font-style:normal;padding-left:36px;display:block;}
+
+.gloss{margin:8px 0 0;padding:8px 0 0;}
+.gloss-l{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin-bottom:28px;}
+.gl-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.gl-item{display:flex;flex-direction:column;gap:12px;padding:22px;background:var(--ink);}
+.gl-term{align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:var(--ink);background:var(--pastel,#C4B5FD);padding:6px 13px;}
+.gl-def{display:block;font-size:13px;line-height:1.6;color:rgba(255,255,255,.75);}
+
+.quiz{margin-top:8px;padding:40px;background:var(--paper);border-top:3px solid var(--ink);}
+.quiz-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px;}
+.quiz-head .qbadge{font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#0D0D0D;border:none;background:var(--fluo-violet);padding:5px 12px;}
+.quiz-head .qttl{font-size:clamp(22px,2.8vw,30px);font-weight:900;letter-spacing:-.02em;text-transform:uppercase;}
+.quiz-intro p{font-size:14px;color:var(--muted);margin-bottom:28px;}
+.q{margin-bottom:22px;padding:22px 24px;background:#fff;border:1px solid var(--rule);}
+.qn{font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#0D0D0D;background:var(--fluo-violet);display:inline-block;padding:3px 9px;margin-bottom:12px;}
+.qt{font-size:16px;font-weight:700;margin-bottom:16px;line-height:1.45;}
+.opts{display:flex;flex-direction:column;gap:8px;}
+.opt{text-align:left;font-family:inherit;font-size:14px;color:var(--ink);background:#fff;border:1px solid var(--rule);padding:12px 16px;cursor:pointer;transition:all .14s;line-height:1.5;}
+.opt:hover:not(:disabled){border-color:var(--ink);}
+.opt:disabled{cursor:default;}
+.opt.ok{border-color:#0D0D0D;background:var(--fluo-green);color:#0D0D0D;font-weight:700;}
+.opt.no{border-color:#C8273A;background:rgba(200,39,58,.06);color:#C8273A;}
+.fb{display:none;margin-top:12px;padding:14px 18px;font-size:13px;line-height:1.6;background:#0D0D0D;color:#fff;border-left:4px solid var(--fluo-green);}
+.fb.show{display:block;}
+.score{display:none;margin-top:24px;padding:36px;background:var(--ink);color:#fff;text-align:center;}
+.score.show{display:block;}
+.score-l{font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--fluo-violet);margin-bottom:10px;}
+.score-n{font-size:72px;font-weight:900;letter-spacing:-.04em;line-height:1;margin-bottom:12px;color:var(--fluo-green);}
+.score-m{font-size:14px;line-height:1.6;color:rgba(255,255,255,.8);max-width:380px;margin:0 auto;}
+
+.recap{margin-top:8px;padding:0;background:none;color:var(--ink);}
+.recap .lbl{font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:22px;color:var(--ink);}
+
+.foot{padding:24px 56px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--rule);margin-top:46px;}
+.foot-copy{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.backbtn{position:fixed;top:14px;left:14px;z-index:1000;background:#fff;color:#0D0D0D;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:9px 15px;border:1px solid var(--rule);}
+
+@media(max-width:768px){
+  .sitenav{grid-template-columns:1fr auto;padding:0 16px;height:52px;}
+  .nav-left{display:none;}
+  .layout{grid-template-columns:1fr;}
+  .col-img{display:none;}
+  .breadcrumb,.head,.meta,.body,.foot{padding-left:20px;padding-right:20px;}
+  .quiz{padding:24px 20px;}
+  .q{padding:18px 16px;}
+  .stat{padding:24px;gap:14px;}
+  .recap{padding:24px;}
+  .gl-grid{grid-template-columns:1fr;gap:14px;}
+  .meta-item{padding-right:28px;}
+  h1.title{font-size:30px;}
+  .stat{grid-template-columns:1fr;gap:12px;}
+  .stat-num{font-size:64px;}
+  .point{flex-direction:column;gap:6px;}
+  .point-k{width:auto;}
+}
+
+/* mots-clés en gras : surlignage éditorial discret */
+.body .p strong, .body .p b, .body .point-v b, .body .al p strong{font-weight:700;background:linear-gradient(transparent 30%, var(--fluo-yellow) 30%);padding:1px 3px;}
+
+/* tableau À retenir */
+.recap-tbl{width:100%;border-collapse:collapse;}
+.recap-tbl td{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.15);vertical-align:top;font-size:14px;line-height:1.65;}
+.recap-tbl tr:last-child td{border-bottom:none;}
+.recap-tbl .rt-k{width:160px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;font-size:12px;padding-right:24px;padding-top:18px;color:var(--fluo-yellow);}
+.recap-tbl .rt-v{color:rgba(255,255,255,.92);}
+@media(max-width:768px){
+  .recap-tbl td{display:block;border-bottom:none;padding:4px 0;}
+  .recap-tbl .rt-k{width:auto;padding-top:14px;}
+  .recap-tbl tr{display:block;border-bottom:1px solid var(--rule);padding-bottom:10px;}
+}
+
+/* Barre de progression de lecture */
+.readbar{position:fixed;top:56px;left:0;right:0;height:3px;background:transparent;z-index:99;}
+.readbar-fill{height:100%;width:0;background:var(--fluo-violet);transition:width .1s linear;}
+@media(max-width:768px){.readbar{top:52px;}}
+
+/* Sommaire */
+.toc{margin:8px 0 12px;padding:24px;border:1px solid var(--rule);background:var(--paper);}
+.toc-label{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.toc-item{display:flex;align-items:baseline;gap:14px;padding:10px 0;border-bottom:1px solid var(--rule);transition:padding-left .15s;}
+.toc-item:last-child{border-bottom:none;}
+.toc-item:hover{padding-left:8px;}
+.toc-n{font-size:12px;font-weight:800;color:#0D0D0D;background:var(--fluo-yellow);padding:2px 7px;flex-shrink:0;}
+.toc-t{font-size:14px;font-weight:600;color:var(--ink);}
+
+/* retour haut */
+.totop{display:inline-flex;align-items:center;gap:8px;margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+.totop:hover{color:var(--ink);}
+
+a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:2px;}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important;}}
+
+/* Onglets sticky */
+.tabs{position:sticky;top:56px;z-index:90;display:flex;gap:8px;background:var(--paper);border-bottom:1px solid var(--rule);padding:12px 56px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.tab{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:#fff;border:1px solid var(--rule);padding:12px 18px;cursor:pointer;transition:all .15s;white-space:nowrap;}
+.tab:hover{color:var(--ink);border-color:var(--ink);}
+.tab.active{color:#0D0D0D;background:var(--fluo-violet);border-color:var(--ink);font-weight:800;}
+
+to{opacity:1;transform:none;}}
+@media(max-width:768px){
+  .tabs{top:52px;padding:10px 16px;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .tab{padding:14px 16px;font-size:11px;white-space:nowrap;}
+}
+
+/* accents fluo variés sur les listes de définition */
+.points .point:nth-child(1) .point-k{color:#0D0D0D;}
+.points .point:nth-child(1) .point-k::before{content:'';display:inline-block;width:12px;height:12px;background:var(--fluo-violet);margin-right:8px;vertical-align:middle;}
+.points .point:nth-child(2) .point-k::before{content:'';display:inline-block;width:12px;height:12px;background:var(--fluo-pink);margin-right:8px;vertical-align:middle;}
+.points .point:nth-child(3) .point-k::before{content:'';display:inline-block;width:12px;height:12px;background:var(--fluo-blue);margin-right:8px;vertical-align:middle;}
+.points .point:nth-child(4) .point-k::before{content:'';display:inline-block;width:12px;height:12px;background:var(--fluo-green);margin-right:8px;vertical-align:middle;}
+.points .point:nth-child(5) .point-k::before{content:'';display:inline-block;width:12px;height:12px;background:var(--fluo-yellow);margin-right:8px;vertical-align:middle;}
+/* entonnoir : valeurs en bleu fluo highlight */
+.fn-val{position:relative;}
+.fn:nth-child(odd) .fn-val{background:linear-gradient(transparent 32%, var(--fluo-blue) 32%);padding:2px 5px;}
+.fn:nth-child(even) .fn-val{background:linear-gradient(transparent 32%, var(--fluo-pink) 32%);padding:2px 5px;}
+/* sommaire : numéros alternent jaune/rose */
+.toc-item:nth-child(even) .toc-n{background:var(--fluo-pink);}
+/* Topbar actions */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:24px 0;border-bottom:1px solid var(--rule);flex-wrap:wrap;}
+.topbar-info{font-size:11px;color:var(--muted);}
+.topbar-info strong{color:var(--ink);}
+.actions{display:flex;gap:10px;}
+.btn{font-family:inherit;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:12px 20px;cursor:pointer;border:1px solid var(--ink);background:#fff;color:var(--ink);transition:all .15s;}
+.btn:hover{background:var(--paper);}
+.btn-primary{background:var(--ink);color:#fff;}
+.btn-primary:hover{background:#000;}
+.btn:disabled{opacity:.5;cursor:wait;}
+
+/* Header */
+.head{padding:44px 0 32px;}
+.tags{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;}
+.tag{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border:1px solid var(--rule);color:var(--muted);}
+.tag.tpl{background:var(--fluo-violet);color:#0D0D0D;border-color:var(--ink);font-weight:800;}
+.tag.lvl{background:var(--fluo-green);color:#0D0D0D;border-color:var(--ink);font-weight:800;}
+h1{font-size:clamp(30px,4vw,48px);font-weight:900;letter-spacing:-.03em;line-height:.96;text-transform:uppercase;margin-bottom:16px;}
+.intro{font-size:15px;line-height:1.7;color:var(--muted);border-left:3px solid var(--fluo-yellow);padding-left:18px;max-width:620px;}
+.intro strong{color:var(--ink);font-weight:600;}
+
+/* Progress */
+.progress-wrap{margin:28px 0 8px;}
+.progress-label{display:flex;justify-content:space-between;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.progress-bar{height:6px;background:var(--paper);border:1px solid var(--rule);overflow:hidden;}
+.progress-fill{height:100%;width:0;background:var(--fluo-violet);transition:width .3s ease;}
+
+/* Sections du template */
+.tpl-section{margin:40px 0;}
+.tpl-sec-head{display:flex;align-items:center;gap:0;margin-bottom:24px;}
+.tpl-sec-num{font-size:18px;font-weight:900;color:#0D0D0D;background:var(--fluo-yellow);padding:14px 18px;align-self:stretch;display:flex;align-items:center;}
+.tpl-sec-title{font-size:clamp(17px,2.2vw,22px);font-weight:900;letter-spacing:-.01em;text-transform:uppercase;background:#0D0D0D;color:#fff;padding:14px 20px;flex:1;}
+.tpl-sec-desc{font-size:14px;line-height:1.7;color:var(--muted);margin-bottom:20px;}
+
+/* Champs */
+.field{margin-bottom:20px;}
+.field-label{display:block;font-size:12px;font-weight:700;letter-spacing:.02em;margin-bottom:8px;}
+.field-hint{font-size:12px;color:var(--muted);margin-bottom:8px;font-weight:400;}
+.field-input,.field-textarea{width:100%;font-family:inherit;font-size:14px;color:var(--ink);background:#fff;border:1px solid var(--ink);padding:12px 14px;transition:border-color .15s;}
+.field-input:focus,.field-textarea:focus{outline:none;border-color:var(--fluo-violet);border-width:2px;}
+.field-textarea{min-height:80px;resize:vertical;line-height:1.6;}
+
+/* Grille de canaux owned/earned/paid */
+.channels{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.channel{border:1px solid var(--ink);padding:18px;}
+.channel-tag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;margin-bottom:12px;color:#0D0D0D;}
+.channel:nth-child(1) .channel-tag{background:var(--fluo-violet);}
+.channel:nth-child(2) .channel-tag{background:var(--fluo-pink);}
+.channel:nth-child(3) .channel-tag{background:var(--fluo-blue);}
+.channel-textarea{width:100%;font-family:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--rule);padding:10px;min-height:100px;resize:vertical;line-height:1.6;}
+.channel-textarea:focus{outline:none;border-color:var(--ink);}
+
+/* Calculateur de chiffres */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.calc-card{border:1px solid var(--ink);padding:20px;}
+.calc-card .ck{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;}
+.calc-card .cd{font-size:11px;color:var(--muted);margin-bottom:14px;line-height:1.5;}
+.calc-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.calc-row label{font-size:12px;color:var(--muted);flex:1;}
+.calc-row input{width:120px;font-family:inherit;font-size:14px;border:1px solid var(--rule);padding:8px 10px;text-align:right;}
+.calc-row input:focus{outline:none;border-color:var(--fluo-violet);}
+.calc-result{margin-top:12px;padding:14px;background:#0D0D0D;color:#fff;display:flex;align-items:baseline;justify-content:space-between;}
+.calc-result .rl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fluo-green);}
+.calc-result .rv{font-size:26px;font-weight:900;letter-spacing:-.02em;color:var(--fluo-green);}
+.calc-result .rv.muted{color:var(--muted);font-size:18px;}
+
+/* Verdict LTV/CAC */
+.verdict{margin-top:16px;padding:18px 22px;border:2px solid var(--ink);font-size:14px;line-height:1.6;display:none;}
+.verdict.show{display:block;}
+.verdict.good{background:var(--fluo-green);}
+.verdict.bad{background:var(--fluo-pink);}
+.verdict strong{font-weight:800;}
+
+/* Plan d'action */
+.action-item{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--rule);}
+.action-check{width:22px;height:22px;border:2px solid var(--ink);flex-shrink:0;margin-top:2px;cursor:pointer;position:relative;background:#fff;}
+.action-check.checked{background:var(--fluo-green);}
+.action-check.checked::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;color:#0D0D0D;}
+.action-input{flex:1;font-family:inherit;font-size:14px;border:none;border-bottom:1px solid var(--rule);padding:4px 0;background:transparent;}
+.action-input:focus{outline:none;border-bottom-color:var(--fluo-violet);}
+
+.note{margin:32px 0;padding:28px 30px;background:#0D0D0D;border:2px solid var(--ink);font-size:14px;line-height:1.7;color:rgba(255,255,255,.9);}
+.note strong{color:var(--fluo-green);}
+
+.foot{padding:32px 0;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--rule);margin-top:40px;}
+.foot-copy{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.backbtn{position:fixed;top:14px;left:14px;z-index:1000;background:#fff;color:#0D0D0D;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:9px 15px;border:1px solid var(--rule);}
+
+@media(max-width:768px){
+  .sitenav{grid-template-columns:1fr auto;padding:0 16px;height:52px;}
+  .nav-left{display:none;}
+  .wrap{padding:0 18px;}
+  .breadcrumb{padding:11px 18px;}
+  .channels{grid-template-columns:1fr;}
+  .calc{grid-template-columns:1fr;}
+  h1{font-size:28px;}
+  .topbar{flex-direction:column;align-items:flex-start;}
+}
+/* Styles spécifiques à l'export PDF */
+.pdf-mode .backbtn,.pdf-mode .sitenav,.pdf-mode .actions,.pdf-mode .progress-wrap{display:none!important;}
+.pdf-mode .field-input,.pdf-mode .field-textarea,.pdf-mode .channel-textarea,.pdf-mode .calc-row input,.pdf-mode .action-input{border:1px solid #999;}
+
+/* Listes à choix multiples */
+.checklist{display:flex;flex-direction:column;gap:2px;margin-bottom:12px;}
+.checklist-col{gap:4px;}
+.check{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.5;padding:7px 0;cursor:pointer;color:var(--ink);}
+.check input[type=checkbox]{appearance:none;-webkit-appearance:none;width:18px;height:18px;border:2px solid var(--ink);background:#fff;flex-shrink:0;margin-top:1px;cursor:pointer;position:relative;}
+.check input[type=checkbox]:checked{background:var(--fluo-green);}
+.check input[type=checkbox]:checked::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px;color:#0D0D0D;}
+.check em{font-style:normal;color:var(--muted);font-size:12px;}
+
+/* À retenir : cards colorées */
+.recap-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.recap-card{padding:24px;background:#0D0D0D;color:#fff;border:2px solid var(--ink);display:flex;flex-direction:column;gap:10px;}
+.recap-card .rc-k{font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;}
+.recap-card .rc-v{font-size:14px;line-height:1.6;font-weight:500;color:rgba(255,255,255,.9);}
+@media(max-width:768px){.recap-grid{grid-template-columns:1fr;}}
+
+
+
+
+.panel{ display:none; }
+.panel.is-active{ display:block; }
+.tab{ cursor:pointer; }
+.tab.is-active{ color:#0D0D0D; background:var(--fluo-violet); border-color:var(--ink); font-weight:800; }
+
+
+/* ===== Matrice de notation ===== */
+.matrix{margin:8px 0 4px;border:2px solid var(--ink);background:#fff;}
+.mx-head{display:grid;grid-template-columns:1fr 44px 44px 44px 44px;align-items:center;background:#0D0D0D;color:#fff;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;}
+.mx-head span{padding:10px 12px;text-align:center;}
+.mx-head span:first-child{text-align:left;}
+.mx-row{display:grid;grid-template-columns:1fr 44px 44px 44px 44px;align-items:stretch;border-top:1px solid var(--rule);}
+.mx-row:nth-child(even){background:var(--paper);}
+.mx-label{padding:12px;font-size:13px;font-weight:600;display:flex;align-items:center;}
+.mx-cell{display:flex;align-items:center;justify-content:center;border-left:1px solid var(--rule);cursor:pointer;font-size:13px;font-weight:700;color:var(--muted);transition:all .12s ease;user-select:none;}
+.mx-cell:hover{background:var(--fluo-yellow);color:#0D0D0D;}
+.mx-cell.sel{background:var(--fluo-violet);color:#0D0D0D;font-weight:800;}
+.mx-score{margin-top:14px;padding:18px 22px;background:#0D0D0D;color:#fff;display:flex;flex-direction:column;gap:4px;}
+.mxs-l{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.6);}
+.mxs-v{font-size:28px;font-weight:900;color:var(--fluo-green);line-height:1;}
+.mxs-msg{font-size:13px;color:rgba(255,255,255,.85);margin-top:4px;line-height:1.5;}
+@media(max-width:560px){
+  .mx-head,.mx-row{grid-template-columns:1fr 34px 34px 34px 34px;}
+  .mx-label{font-size:12px;padding:10px;}
+  .mx-cell{font-size:12px;}
+}
+
+
+
+/* ===== Fixeur d'objectifs + KPIs (Exp mesurer) ===== */
+.ob-choices{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.ob-chip{display:flex;flex-direction:column;gap:4px;text-align:left;border:2px solid var(--ink);background:#fff;padding:14px;cursor:pointer;font-family:inherit;transition:all .12s;}
+.ob-chip:hover{background:var(--paper);}
+.ob-chip.sel{background:#0D0D0D;}
+.ob-k{font-size:15px;font-weight:800;color:var(--ink);}
+.ob-d{font-size:12px;color:var(--muted);}
+.ob-chip.sel .ob-k{color:var(--fluo-yellow);}
+.ob-chip.sel .ob-d{color:rgba(255,255,255,.7);}
+.ob-kpi{border:2px solid var(--ink);background:#fff;margin-bottom:10px;}
+.ob-kpi-head{display:flex;align-items:flex-start;gap:12px;padding:13px 14px;cursor:pointer;}
+.ob-kpi-check{flex:0 0 20px;width:20px;height:20px;border:2px solid var(--ink);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#fff;margin-top:1px;}
+.ob-kpi.on .ob-kpi-check{background:var(--fluo-green);color:#0D0D0D;}
+.ob-kpi.on .ob-kpi-check::after{content:'\2713';}
+.ob-kpi-txt{flex:1;}
+.ob-kpi-k{font-size:14px;font-weight:700;color:var(--ink);}
+.ob-kpi-d{font-size:12px;color:var(--muted);line-height:1.45;margin-top:2px;}
+.ob-kpi-target{display:none;padding:0 14px 14px 46px;}
+.ob-kpi.on .ob-kpi-target{display:block;}
+.ob-kpi-target label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);display:block;margin-bottom:5px;}
+.ob-target-in{width:100%;border:2px solid var(--ink);background:#fff;padding:9px 12px;font-family:inherit;font-size:13px;color:var(--ink);}
+.ob-target-in:focus{outline:none;border-color:var(--fluo-violet);}
+.ob-fiche{border:2px solid var(--ink);background:#0D0D0D;color:#fff;padding:24px;}
+.ob-fiche-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.5);margin-bottom:14px;}
+.ob-fiche-obj{font-size:18px;font-weight:800;color:#fff;margin-bottom:4px;}
+.ob-fiche-obj span{color:var(--fluo-yellow);}
+.ob-fiche-sub{font-size:12px;color:rgba(255,255,255,.6);margin-bottom:18px;}
+.ob-fiche-kpi{border-top:1px solid rgba(255,255,255,.12);padding:12px 0;}
+.ob-fiche-kpi-k{font-size:14px;font-weight:700;color:#fff;}
+.ob-fiche-kpi-t{font-size:13px;color:var(--fluo-green);margin-top:2px;}
+.ob-fiche-kpi-t.empty{color:rgba(255,255,255,.4);font-style:italic;}
+@media(max-width:560px){.ob-choices{grid-template-columns:1fr;}}
+
+/* ===== Plan de pilotage de la notoriété ===== */
+.pl-phase{margin-bottom:22px;}
+.pl-phase-h{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.pl-phase-n{flex:0 0 auto;font-size:10px;font-weight:900;letter-spacing:.06em;padding:4px 10px;background:#0D0D0D;color:var(--fluo-yellow);text-transform:uppercase;}
+.pl-ind-tag{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:8px;display:block;}
+.pl-act{display:flex;align-items:flex-start;gap:12px;border:2px solid var(--ink);background:#fff;padding:12px 15px;margin-bottom:8px;cursor:pointer;}
+.pl-act-body{flex:1;display:block;}
+.pl-act-k{display:block;font-size:13px;font-weight:700;color:var(--ink);line-height:1.4;}
+.pl-act-d{display:block;font-size:12px;color:var(--muted);line-height:1.55;margin-top:5px;}
+.pl-act.on .kt-check{background:var(--fluo-green);color:#0D0D0D;}
+.pl-act.on .kt-check::after{content:'\2713';}
+.pl-out-act{font-size:12px;color:rgba(255,255,255,.65);line-height:1.5;margin-top:4px;padding-left:10px;border-left:2px solid rgba(57,255,20,.4);}
+
+.pl-note-acces{border:2px solid var(--ink);background:#0D0D0D;color:rgba(255,255,255,.8);padding:14px 16px;font-size:13px;line-height:1.6;margin-bottom:16px;}
+.pl-note-acces strong{color:var(--fluo-green);}
+.pl-objs{display:flex;flex-direction:column;gap:8px;}
+.pl-obj{border:2px solid var(--ink);background:#fff;padding:13px 15px;cursor:pointer;text-align:left;font-family:inherit;transition:all .12s;display:block;width:100%;}
+.pl-obj:hover{background:var(--paper);}
+.pl-obj.sel{background:#0D0D0D;}
+.pl-obj-k{display:block;font-size:14px;font-weight:800;color:var(--ink);line-height:1.35;}
+.pl-obj-d{display:block;font-size:12px;color:var(--muted);line-height:1.5;margin-top:4px;}
+.pl-obj.sel .pl-obj-k{color:var(--fluo-yellow);}
+.pl-obj.sel .pl-obj-d{color:rgba(255,255,255,.7);}
+.pl-ind{border:2px solid var(--ink);background:#fff;margin-bottom:10px;}
+.pl-ind-head{display:flex;align-items:flex-start;gap:12px;padding:13px 15px;cursor:pointer;}
+.pl-ind-body{flex:1;display:block;}
+.pl-ind-k{display:block;font-size:14px;font-weight:700;color:var(--ink);line-height:1.4;}
+.pl-ind-d{display:block;font-size:12px;color:var(--muted);line-height:1.55;margin-top:5px;}
+.pl-ind-vals{display:none;padding:0 15px 14px 47px;gap:10px;flex-wrap:wrap;align-items:flex-end;}
+.pl-ind.on .pl-ind-vals{display:flex;}
+.pl-val{display:flex;flex-direction:column;gap:5px;}
+.pl-val label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);}
+.pl-val input{width:92px;border:2px solid var(--ink);background:#fff;padding:8px 10px;font-family:inherit;font-size:14px;font-weight:700;color:var(--ink);text-align:right;}
+.pl-val input:focus{outline:none;border-color:var(--fluo-violet);}
+.pl-val-unit{font-size:12px;color:var(--muted);padding-bottom:9px;}
+.pl-delta{font-size:12px;font-weight:800;padding:6px 10px;margin-bottom:1px;}
+.pl-delta.ok{background:var(--fluo-green);color:#0D0D0D;}
+.pl-delta.warn{background:var(--fluo-yellow);color:#0D0D0D;}
+.pl-delta.bad{background:var(--fluo-pink);color:#0D0D0D;}
+.pl-opts{display:flex;flex-wrap:wrap;gap:8px;}
+.pl-chip{border:2px solid var(--ink);background:#fff;color:var(--ink);font-family:inherit;font-size:13px;font-weight:600;padding:9px 14px;cursor:pointer;transition:all .12s;}
+.pl-chip:hover{background:var(--paper);}
+.pl-chip.sel{background:#0D0D0D;color:#fff;}
+.pl-field{margin-bottom:16px;}
+.pl-lab{display:block;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:8px;}
+.pl-lab small{font-weight:500;color:var(--muted);}
+.pl-input{width:100%;border:2px solid var(--ink);background:#fff;padding:11px 13px;font-family:inherit;font-size:14px;color:var(--ink);}
+.pl-input:focus{outline:none;border-color:var(--fluo-violet);}
+.pl-out-line{border-top:1px solid rgba(255,255,255,.12);padding:12px 0;}
+.pl-out-k{font-size:13px;font-weight:700;color:#fff;}
+.pl-out-v{font-size:13px;color:var(--fluo-green);margin-top:3px;}
+.pl-out-v.empty{color:rgba(255,255,255,.4);font-style:italic;}
+
+/* ===== Feuille de route d'influence ===== */
+.fr-msg{display:block;background:#0D0D0D;padding:16px 18px;margin-top:12px;}
+.fr-msg-lab{display:block;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--fluo-green);margin-bottom:7px;}
+.fr-msg-txt{display:block;font-size:14px;line-height:1.6;color:#fff;font-style:italic;}
+.fr-liv{display:block;background:#0D0D0D;padding:16px 18px;margin-top:12px;}
+.fr-liv-lab{display:block;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--fluo-violet);margin-bottom:7px;}
+.fr-liv-txt{display:block;font-size:14px;line-height:1.6;color:#fff;}
+.fr-out-msg{display:block;font-size:12px;line-height:1.55;color:rgba(255,255,255,.6);font-style:italic;margin-top:5px;padding-left:10px;border-left:2px solid rgba(57,255,20,.4);}
+.kt-check{flex:0 0 20px;width:20px;height:20px;border:2px solid var(--ink);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;margin-top:1px;}
+.fr-cible.on .kt-check,.fr-lev.on .kt-check{background:var(--fluo-green);color:#0D0D0D;}
+.fr-cible.on .kt-check::after,.fr-lev.on .kt-check::after{content:'\2713';}
+.kt-field{margin-bottom:16px;}
+.kt-lab{display:block;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:8px;}
+.kt-lab small{font-weight:500;color:var(--muted);}
+.kt-input{width:100%;border:2px solid var(--ink);background:#fff;padding:11px 13px;font-family:inherit;font-size:14px;color:var(--ink);}
+.kt-input:focus{outline:none;border-color:var(--fluo-violet);}
+.kt-out{border:2px solid var(--ink);background:#0D0D0D;color:#fff;padding:24px;}
+.kt-out-h{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.5);margin-bottom:6px;}
+.kt-out-title{font-size:17px;font-weight:800;color:#fff;margin-bottom:2px;line-height:1.35;}
+.kt-out-title span{color:var(--fluo-yellow);}
+.kt-out-fmt{font-size:12px;color:rgba(255,255,255,.6);margin-bottom:6px;}
+.dom-opts{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.dom-chip{display:flex;flex-direction:column;gap:3px;text-align:left;border:2px solid var(--ink);background:#fff;padding:12px 14px;cursor:pointer;font-family:inherit;transition:all .12s;}
+.dom-chip:hover{background:var(--paper);}
+.dom-chip.sel{background:#0D0D0D;}
+.dom-k{font-size:14px;font-weight:800;color:var(--ink);}
+.dom-d{font-size:11px;color:var(--muted);}
+.dom-chip.sel .dom-k{color:var(--fluo-yellow);}
+.dom-chip.sel .dom-d{color:rgba(255,255,255,.7);}
+.fr-objs{display:flex;flex-direction:column;gap:8px;}
+.fr-obj{border:2px solid var(--ink);background:#fff;padding:13px 15px;cursor:pointer;text-align:left;font-family:inherit;transition:all .12s;display:block;width:100%;}
+.fr-obj:hover{background:var(--paper);}
+.fr-obj.sel{background:#0D0D0D;}
+.fr-obj-k{display:block;font-size:14px;font-weight:800;color:var(--ink);line-height:1.35;}
+.fr-obj-d{display:block;font-size:12px;color:var(--muted);line-height:1.5;margin-top:4px;}
+.fr-obj.sel .fr-obj-k{color:var(--fluo-yellow);}
+.fr-obj.sel .fr-obj-d{color:rgba(255,255,255,.7);}
+.fr-cible{border:2px solid var(--ink);background:#fff;margin-bottom:9px;}
+.fr-cible-head{display:flex;align-items:flex-start;gap:12px;padding:13px 15px;cursor:pointer;}
+.fr-cible-body{flex:1;display:block;}
+.fr-type{display:inline-block;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;padding:3px 8px;margin-bottom:7px;}
+.fr-type.directe{background:var(--fluo-pink);color:#0D0D0D;}
+.fr-type.relais{background:var(--fluo-green);color:#0D0D0D;}
+.fr-type.ambiance{background:var(--fluo-blue);color:#0D0D0D;}
+.fr-type.opposition{background:var(--fluo-yellow);color:#0D0D0D;}
+.fr-cible-k{display:block;font-size:14px;font-weight:700;color:var(--ink);line-height:1.4;}
+.fr-cible-d{display:block;font-size:12px;color:var(--muted);line-height:1.55;margin-top:5px;}
+.fr-phase{margin-bottom:20px;}
+.fr-phase-h{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.fr-phase-n{flex:0 0 auto;font-size:10px;font-weight:900;letter-spacing:.06em;padding:4px 10px;background:#0D0D0D;color:var(--fluo-yellow);text-transform:uppercase;}
+.fr-phase-t{font-size:13px;font-weight:800;color:var(--ink);}
+.fr-lev{display:flex;align-items:flex-start;gap:12px;border:2px solid var(--ink);background:#fff;padding:12px 15px;margin-bottom:8px;cursor:pointer;}
+.fr-lev-body{flex:1;display:block;}
+.fr-lev-k{display:block;font-size:13px;font-weight:700;color:var(--ink);line-height:1.4;}
+.fr-lev-d{display:block;font-size:12px;color:var(--muted);line-height:1.55;margin-top:5px;}
+.fr-out-sec{border-top:1px solid rgba(255,255,255,.12);padding:14px 0;}
+.fr-out-lab{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--fluo-green);margin-bottom:8px;}
+.fr-out-line{font-size:13px;color:rgba(255,255,255,.85);line-height:1.5;margin-bottom:7px;}
+.fr-out-line b{color:#fff;}
+.fr-out-ph{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--fluo-yellow);margin:12px 0 6px;}
+@media(max-width:640px){.dom-opts{grid-template-columns:1fr;}}
+
+/* ===== Recommandations dynamiques ===== */
+.reco{margin-top:14px;padding:14px 16px 14px 18px;border-left:3px solid var(--ink);background:var(--white);font-size:13px;line-height:1.6;color:var(--muted);display:none;position:relative;}
+.reco.show{display:block;}
+.reco::before{content:'';position:absolute;left:-3px;top:0;width:3px;height:22px;background:var(--ink);}
+.reco.good::before{background:var(--fluo-green);}
+.reco.warn::before{background:var(--fluo-yellow);}
+.reco.bad::before{background:var(--fluo-pink);}
+.reco strong{font-weight:700;color:var(--ink);}
+.bilan{margin:36px 0 8px;padding:30px 32px;background:#0D0D0D;border:2px solid var(--ink);}
+.bilan-lbl{display:inline-block;background:var(--fluo-green);color:#0D0D0D;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:4px 10px;margin-bottom:18px;}
+.bilan h3{color:#fff;font-size:20px;font-weight:900;margin:0 0 16px;letter-spacing:-.01em;}
+.bilan-empty{color:rgba(255,255,255,.5);font-size:14px;line-height:1.6;}
+.bilan-line{display:flex;gap:12px;padding:12px 0;border-top:1px solid rgba(255,255,255,.12);font-size:14px;line-height:1.6;color:rgba(255,255,255,.9);}
+.bilan-line:first-of-type{border-top:none;}
+.bilan-ico{flex-shrink:0;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;}
+.bilan-ico.g{background:#39FF14;color:#0D0D0D;}
+.bilan-ico.w{background:#E8FF00;color:#0D0D0D;}
+.bilan-ico.b{background:#FF6FD8;color:#0D0D0D;}
+.bilan-line strong{color:#fff;}
+
+/* ===== Onglets (OBLIGATOIRE) ===== */
+.panel{ display:none; }
+.panel.is-active{ display:block; }
+.tab{ cursor:pointer; }
+.tab.is-active{ color:#0D0D0D; background:var(--fluo-violet); border-color:var(--ink); font-weight:800; }
+</style></head>
+<body>
+<a href="/home" class="backbtn">← Retour</a>
+<nav class="sitenav"><div class="nav-left"><a href="/home" class="nav-link">Thématiques</a><a href="/formules" class="nav-link">Formules</a><a href="/waitlist" class="nav-link" style="color:var(--fluo-green);font-weight:800;">Waiting List</a></div>
+<div class="nav-center"><a href="/home" style="display:inline-flex;flex-direction:column;align-items:center;"><span class="logo-pre">Briefings</span><span><span class="logo-s">SKANNER</span><span class="logo-mag">MAGAZINE</span></span></a></div>
+<div class="nav-right"><span class="nav-badge">PR &amp; Communication</span></div></nav>
+<div class="breadcrumb"><a href="/home" style="color:var(--muted);">Accueil</a><span class="sep">/</span><span>PR &amp; Communication</span><span class="sep">/</span><span class="active">Chapitre 2 · Fiche 4 · Expert</span></div>
+
+<div class="layout">
+  <div class="col-img"><img src="/pr-notoriete-3.jpg" alt="Pilotage de la notoriété dans la durée"/></div>
+  <div class="col-content">
+    <header class="head">
+      <div class="tags"><span class="tag">PR &amp; Communication</span><span class="tag lvl">Expert</span></div>
+      <h1 class="title">PILOTER<br/>DANS LA DURÉE</h1>
+      <p class="lead">La notoriété ne se pilote pas comme des retombées. Elle bouge <strong>lentement</strong>, ne réagit pas aux coups d'éclat, et ne se juge qu'en <strong>séries longues</strong>. Ce qui change tout dans la façon de fixer les objectifs.</p>
+    </header>
+    <div class="meta">
+      <div class="meta-item">Niveau <strong>Expert</strong></div>
+      <div class="meta-item">Durée <strong>17 min</strong></div>
+      <div class="meta-item">Chapitre <strong>2 — Prise de parole &amp; influence</strong></div>
+      <div class="meta-item">Fiche <strong>4 / 4</strong></div>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab is-active" type="button" data-panel="fiche">Fiche</button>
+      <button class="tab" type="button" data-panel="retenir">À retenir</button>
+      <button class="tab" type="button" data-panel="gloss">Glossaire</button>
+      <button class="tab" type="button" data-panel="quiz">Quiz</button>
+      <button class="tab" type="button" data-panel="template">Template</button>
+    </div>
+
+    <div class="body">
+
+      <!-- ===== PANNEAU FICHE ===== -->
+      <div class="panel is-active" id="panel-fiche" role="tabpanel">
+        <section class="section" id="sec-1">
+          <p class="p" style="font-size:13px;color:var(--muted);border-left:2px solid var(--fluo-blue);padding-left:12px;margin-bottom:16px;">Rappel express : on sait lire les niveaux de notoriété et calculer sa part de voix. Reste le plus exigeant — tenir un cap sur des mois.</p>
+          <div class="sec-label"><span class="sec-num">01</span><span class="sec-title-txt">Le temps long, pas le trimestre</span></div>
+          <p class="p">C'est la difficulté propre à la notoriété : elle <strong>bouge lentement</strong>. Une campagne réussie ne fait pas bondir la spontanée de dix points. À l'inverse, une notoriété installée ne s'effondre pas non plus en un trimestre — ce qui donne une fausse impression de sécurité.</p>
+          <div class="arrow-list">
+            <div class="al"><span class="al-a">→</span><p><strong>Un horizon de douze à dix-huit mois.</strong> En deçà, les variations mesurées relèvent souvent de la marge d'erreur du sondage plutôt que d'un vrai mouvement.</p></div>
+            <div class="al"><span class="al-a">→</span><p><strong>Des mesures espacées mais régulières.</strong> Deux points par an suffisent pour la plupart des marques ; quatre pour un secteur qui bouge vite. L'important est la régularité, pas la fréquence.</p></div>
+            <div class="al"><span class="al-a">→</span><p><strong>La constance méthodologique.</strong> Même panel, même questionnaire, même période de l'année. Changer un paramètre, c'est perdre toute la série accumulée.</p></div>
+          </div>
+        </section>
+
+        <section class="section" id="sec-2">
+          <div class="sec-label"><span class="sec-num">02</span><span class="sec-title-txt">Quatre objectifs, quatre pilotages</span></div>
+          <p class="p">Selon votre situation, ce n'est pas le même indicateur qu'il faut faire bouger. Confondre les quatre, c'est se donner un objectif qu'on ne peut pas atteindre.</p>
+          <div class="points">
+            <div class="point"><div class="point-k">Émerger<small>On ne vous connaît pas</small></div><div class="point-v">Priorité à l'assistée puis à la spontanée. Objectif réaliste : passer d'une reconnaissance nulle à une reconnaissance dans la liste.</div></div>
+            <div class="point"><div class="point-k">Ancrer<small>Connu mais oublié</small></div><div class="point-v">L'écart assistée/spontanée est votre chantier. On travaille l'association à un usage, un moment, un territoire.</div></div>
+            <div class="point"><div class="point-k">Prendre la tête<small>Installé mais second</small></div><div class="point-v">Objectif de part de voix et de top of mind. C'est le pilotage le plus lent et le plus coûteux.</div></div>
+            <div class="point"><div class="point-k">Corriger l'image<small>Connu mais mal perçu</small></div><div class="point-v">La notoriété n'est pas le sujet : ce sont les attributs. On pilote sur un ou deux attributs précis, pas sur un taux global.</div></div>
+          </div>
+        </section>
+
+        <section class="section" id="sec-3">
+          <div class="sec-label"><span class="sec-num">03</span><span class="sec-title-txt">Fixer des cibles tenables</span></div>
+          <p class="p">L'erreur classique consiste à annoncer une progression spectaculaire. Une cible crédible se raisonne en <strong>points de pourcentage</strong> sur la durée, en tenant compte du niveau de départ.</p>
+          <div class="pull"><p>Plus le niveau de départ est haut, plus la progression est difficile. Gagner cinq points quand on est à 15 % n'a rien à voir avec en gagner cinq quand on est à 60 %.</p><cite>Effet de palier</cite></div>
+          <p class="p">Un plan sérieux prévoit aussi ce qu'on <strong>arrête de mesurer</strong>. Accumuler les indicateurs sans jamais en retirer produit des tableaux de bord que personne ne lit.</p>
+          <p class="p">Dernier point, souvent décisif en pratique : <strong>mesurer une notoriété par sondage coûte cher</strong>. Un baromètre auprès d'un échantillon représentatif se chiffre en milliers d'euros. Si vous n'avez pas ce budget, pilotez sur des indicateurs que vous pouvez compter vous-même — part de voix, médias de référence atteints, reprise du message, sollicitations spontanées. Ils sont moins complets mais parfaitement suivis dans le temps, et c'est la régularité qui fait la valeur d'une série.</p>
+        </section>
+
+        <div class="note">
+          <strong>À garder en tête.</strong> Un horizon de <strong>douze à dix-huit mois</strong>, des mesures <strong>régulières et identiques</strong>, un objectif qui correspond à votre situation réelle — émerger, ancrer, prendre la tête ou corriger l'image. Et des cibles en points, calibrées sur le niveau de départ.
+        </div>
+      </div>
+
+      <div class="panel" id="panel-retenir" role="tabpanel">
+        <div class="recap">
+          <div class="lbl">À retenir</div>
+          <div class="recap-grid">
+            <div class="recap-card"><div class="rc-k" style="color:var(--fluo-yellow);">Douze à dix-huit mois</div><div class="rc-v">En deçà, les variations relèvent de la marge d'erreur plutôt que d'un vrai mouvement.</div></div>
+            <div class="recap-card"><div class="rc-k" style="color:var(--fluo-violet);">Régularité, pas fréquence</div><div class="rc-v">Deux points par an suffisent souvent. Ce qui compte, c'est de ne jamais changer la méthode.</div></div>
+            <div class="recap-card"><div class="rc-k" style="color:var(--fluo-green);">Quatre situations distinctes</div><div class="rc-v">Émerger, ancrer, prendre la tête, corriger l'image : ce ne sont pas les mêmes indicateurs.</div></div>
+            <div class="recap-card"><div class="rc-k" style="color:var(--fluo-pink);">L'effet de palier</div><div class="rc-v">Gagner cinq points à 15 % n'a rien à voir avec en gagner cinq à 60 %.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PANNEAU GLOSSAIRE (cartes fond noir, 12 termes, couleurs alternées) ===== -->
+      <div class="panel" id="panel-gloss" role="tabpanel">
+        <div class="gloss">
+          <div class="gloss-l">Glossaire</div>
+          <div class="gl-grid">
+            <div class="gl-item"><span class="gl-term" style="background:#E8FF00;color:#0D0D0D;">Plan de pilotage</span><span class="gl-def">Document fixant objectif, indicateurs, cibles et rythme de mesure sur un horizon donné.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#C77DFF;color:#0D0D0D;">Horizon</span><span class="gl-def">Durée sur laquelle l'objectif est fixé ; douze à dix-huit mois pour la notoriété.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#39FF14;color:#0D0D0D;">Série longue</span><span class="gl-def">Suite de mesures comparables permettant de distinguer une tendance d'une fluctuation.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#FF6FD8;color:#0D0D0D;">Marge d'erreur</span><span class="gl-def">Incertitude statistique d'un sondage ; en deçà, une variation n'est pas significative.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#4DD2FF;color:#0D0D0D;">Constance méthodologique</span><span class="gl-def">Maintien du même panel, du même questionnaire et de la même période à chaque mesure.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#E8FF00;color:#0D0D0D;">Émerger</span><span class="gl-def">Objectif de marque peu connue : faire progresser d'abord la notoriété assistée.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#C77DFF;color:#0D0D0D;">Ancrer</span><span class="gl-def">Objectif de marque reconnue mais peu citée : réduire l'écart assistée/spontanée.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#39FF14;color:#0D0D0D;">Effet de palier</span><span class="gl-def">Difficulté croissante à progresser à mesure que le niveau de départ est élevé.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#FF6FD8;color:#0D0D0D;">Cible en points</span><span class="gl-def">Objectif exprimé en points de pourcentage gagnés, calibré sur le niveau initial.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#4DD2FF;color:#0D0D0D;">Attribut d'image</span><span class="gl-def">Qualité perçue (innovant, accessible, exigeant) que l'on peut piloter séparément.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#E8FF00;color:#0D0D0D;">Rythme de mesure</span><span class="gl-def">Fréquence des vagues d'étude ; régularité plus importante que fréquence élevée.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#C77DFF;color:#0D0D0D;">Indicateur retiré</span><span class="gl-def">Mesure volontairement abandonnée pour garder un tableau de bord lisible.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PANNEAU QUIZ (5 questions + feedback noir + score /5) ===== -->
+      <div class="panel" id="panel-quiz" role="tabpanel">
+        <div class="quiz">
+          <div class="quiz-intro">
+            <div class="quiz-head"><span class="qbadge">Quiz</span><span class="qttl">Validez vos acquis</span></div>
+            <p>Cinq questions pour ancrer la logique d'ensemble.</p>
+          </div>
+<div class="q" id="q1">
+            <p class="qn">Question 01 / 05</p>
+            <p class="qt">Quel horizon retenir pour un objectif de notoriété ?</p>
+            <div class="opts">
+              <button class="opt" data-ok="1" data-q="1">Douze à dix-huit mois</button>
+              <button class="opt" data-ok="0" data-q="1">Un trimestre, comme les retombées</button>
+              <button class="opt" data-ok="0" data-q="1">Cinq ans minimum</button>
+            </div>
+            <div class="fb" id="f1"></div>
+          </div>
+          <div class="q" id="q2">
+            <p class="qn">Question 02 / 05</p>
+            <p class="qt">Qu'est-ce qui compte le plus dans le rythme de mesure ?</p>
+            <div class="opts">
+              <button class="opt" data-ok="1" data-q="2">La régularité et la constance de la méthode</button>
+              <button class="opt" data-ok="0" data-q="2">La fréquence la plus élevée possible</button>
+              <button class="opt" data-ok="0" data-q="2">Mesurer après chaque campagne</button>
+            </div>
+            <div class="fb" id="f2"></div>
+          </div>
+          <div class="q" id="q3">
+            <p class="qn">Question 03 / 05</p>
+            <p class="qt">Vous êtes reconnu dans une liste mais rarement cité. Quel objectif ?</p>
+            <div class="opts">
+              <button class="opt" data-ok="1" data-q="3">Ancrer : réduire l'écart entre assistée et spontanée</button>
+              <button class="opt" data-ok="0" data-q="3">Émerger : faire monter l'assistée</button>
+              <button class="opt" data-ok="0" data-q="3">Corriger l'image : travailler les attributs perçus</button>
+            </div>
+            <div class="fb" id="f3"></div>
+          </div>
+          <div class="q" id="q4">
+            <p class="qn">Question 04 / 05</p>
+            <p class="qt">Qu'est-ce que l'effet de palier ?</p>
+            <div class="opts">
+              <button class="opt" data-ok="1" data-q="4">Plus le niveau de départ est haut, plus la progression est difficile</button>
+              <button class="opt" data-ok="0" data-q="4">La notoriété stagne toujours après trois ans</button>
+              <button class="opt" data-ok="0" data-q="4">Les résultats arrivent d'un coup après une période sans effet</button>
+            </div>
+            <div class="fb" id="f4"></div>
+          </div>
+          <div class="q" id="q5">
+            <p class="qn">Question 05 / 05</p>
+            <p class="qt">Que prévoit aussi un plan de pilotage sérieux ?</p>
+            <div class="opts">
+              <button class="opt" data-ok="1" data-q="5">Ce qu'on arrête de mesurer, pour garder un tableau lisible</button>
+              <button class="opt" data-ok="0" data-q="5">D'ajouter un indicateur à chaque nouvelle campagne</button>
+              <button class="opt" data-ok="0" data-q="5">De changer d'outil dès qu'un meilleur existe</button>
+            </div>
+            <div class="fb" id="f5"></div>
+          </div>
+          </div>
+          </div>
+          <div class="score" id="score">
+            <p class="score-l">Votre score</p>
+            <p class="score-n" id="sn">0 / 5</p>
+            <p class="score-m" id="sm"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PANNEAU TEMPLATE : PLAN DE PILOTAGE ===== -->
+      <div class="panel" id="panel-template" role="tabpanel">
+        <div class="topbar">
+          <div class="topbar-info">Template lié à <strong>Plan de pilotage de la notoriété</strong> · Chapitre 2 · Fiche 4 · Expert</div>
+          <div class="actions"><button class="btn" onclick="resetAll()">↺ Réinitialiser</button><button class="btn" id="btn-copy" onclick="copyPlan()">⧉ Copier le plan</button><button class="btn btn-primary" id="btn-pdf" onclick="exportPDF()">↓ Exporter en PDF</button></div>
+        </div>
+        <div id="export-zone">
+          <header class="head">
+            <div class="tags"><span class="tag tpl">Template</span><span class="tag">PR &amp; Communication</span><span class="tag lvl">Expert</span></div>
+            <h1>MON PLAN DE<br/>PILOTAGE</h1>
+            <p class="intro">Où en êtes-vous, et où voulez-vous aller ? L'outil propose les indicateurs adaptés à votre situation — <strong>tous comptables vous-même</strong>, sans étude payante — vérifie que vos cibles sont tenables au regard de votre point de départ, et cale un rythme de mesure. Vous repartez avec un plan à transmettre.</p>
+          </header>
+          <div class="progress-wrap"><div class="progress-label"><span>Progression</span><span id="ppct">0%</span></div><div class="progress-bar"><div class="progress-fill" id="pfill"></div></div></div>
+
+          <section class="tpl-section">
+            <div class="tpl-sec-head"><span class="tpl-sec-num">01</span><span class="tpl-sec-title">Votre situation</span></div>
+            <p class="cd">Quatre cas de figure. Le vôtre détermine les indicateurs à suivre.</p>
+            <div class="pl-objs" id="pl-objs">
+              <button class="pl-obj" data-v="emerger" onclick="pickObj('emerger',this)"><span class="pl-obj-k">Émerger</span><span class="pl-obj-d">On ne vous connaît pas encore. Priorité : entrer dans le champ de vision.</span></button>
+              <button class="pl-obj" data-v="ancrer" onclick="pickObj('ancrer',this)"><span class="pl-obj-k">Ancrer</span><span class="pl-obj-d">Reconnu dans une liste, rarement cité spontanément. Priorité : la mémorisation.</span></button>
+              <button class="pl-obj" data-v="tete" onclick="pickObj('tete',this)"><span class="pl-obj-k">Prendre la tête</span><span class="pl-obj-d">Installé mais derrière un leader. Priorité : la part de voix et le premier rang.</span></button>
+              <button class="pl-obj" data-v="image" onclick="pickObj('image',this)"><span class="pl-obj-k">Corriger l'image</span><span class="pl-obj-d">Bien connu, mal perçu sur un point. Priorité : un ou deux attributs précis.</span></button>
+            </div>
+          </section>
+
+          <section class="tpl-section" id="pl-ind-sec" style="display:none;">
+            <div class="tpl-sec-head"><span class="tpl-sec-num">02</span><span class="tpl-sec-title">Vos indicateurs</span></div>
+            <p class="cd">Ceux qui correspondent à votre situation. Cochez-en <strong>deux ou trois</strong>. Les chiffres sont facultatifs : renseignez-les si vous les avez, l'outil vérifiera que votre cible est tenable.</p>
+            <div class="pl-note-acces">Les trois premiers de chaque liste se comptent <strong>à la main</strong>, à partir de vos retombées et de votre baromètre. Le quatrième suppose un budget études : ne le retenez que si vous financez un sondage.</div>
+            <div id="pl-inds"></div>
+            <div class="reco" id="pl-reco"></div>
+          </section>
+
+          <section class="tpl-section" id="pl-act-sec" style="display:none;">
+            <div class="tpl-sec-head"><span class="tpl-sec-num">03</span><span class="tpl-sec-title">Ce que vous faites pour y arriver</span></div>
+            <p class="cd">Pour chaque indicateur retenu, les actions qui le font bouger — réparties sur dix-huit mois. Cochez celles que vous engagez.</p>
+            <div id="pl-actions"></div>
+          </section>
+
+          <section class="tpl-section" id="pl-rythme-sec" style="display:none;">
+            <div class="tpl-sec-head"><span class="tpl-sec-num">04</span><span class="tpl-sec-title">Votre rythme de mesure</span></div>
+            <p class="cd">La régularité prime sur la fréquence. Deux points par an suffisent à la plupart des marques.</p>
+            <div class="pl-opts" id="pl-ryt">
+              <button class="pl-chip" data-v="2an" onclick="pickRyt('2an',this)">2 fois par an</button>
+              <button class="pl-chip" data-v="3an" onclick="pickRyt('3an',this)">3 fois par an</button>
+              <button class="pl-chip" data-v="4an" onclick="pickRyt('4an',this)">Chaque trimestre</button>
+              <button class="pl-chip" data-v="1an" onclick="pickRyt('1an',this)">1 fois par an</button>
+            </div>
+            <div class="pl-field" style="margin-top:16px;"><label class="pl-lab">Méthode retenue <small>à ne plus changer une fois fixée</small></label>
+              <input type="text" id="pl-methode" class="pl-input" placeholder="Ex : panel de 12 médias mode suivis à la main + alertes" oninput="render()">
+            </div>
+          </section>
+
+          <section class="tpl-section" id="pl-out-sec" style="display:none;">
+            <div class="tpl-sec-head"><span class="tpl-sec-num">05</span><span class="tpl-sec-title">Votre plan de pilotage</span></div>
+            <div class="kt-out" id="pl-out"></div>
+          </section>
+
+          <div class="bilan" id="bilan">
+            <span class="bilan-lbl">Contrôle</span>
+            <h3>Mes cibles sont-elles tenables ?</h3>
+            <div id="bilan-content"><p class="bilan-empty">Choisissez votre situation : le contrôle s'affichera ici.</p></div>
+          </div>
+
+          <div class="note">
+            <strong>Rappel de la fiche.</strong> Horizon de <strong>douze à dix-huit mois</strong>, mesures <strong>régulières et identiques</strong>, cibles calibrées sur le <strong>niveau de départ</strong>. Et prévoyez ce que vous arrêtez de mesurer.
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /body -->
+
+    <footer class="foot"><a href="/home" style="display:inline-flex;flex-direction:column;"><span class="logo-pre">Briefings</span><span><span class="logo-s">SKANNER</span><span class="logo-mag">MAGAZINE</span></span></a><div class="foot-copy">© 2026 — Skanner Magazine</div></footer>
+  </div>
+</div>
+
+<!-- CDN PDF (defer pour ne pas bloquer les onglets) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+
+<!-- JS ONGLETS (OBLIGATOIRE, délégation d'événement) -->
+<script>
+document.addEventListener('click', function(e){
+  var btn = e.target.closest('.tab');
+  if(!btn) return;
+  var name = btn.getAttribute('data-panel');
+  var tabs = document.querySelectorAll('.tab');
+  for(var i=0;i<tabs.length;i++){
+    if(tabs[i].getAttribute('data-panel')===name) tabs[i].classList.add('is-active');
+    else tabs[i].classList.remove('is-active');
+  }
+  var panels = document.querySelectorAll('.panel');
+  for(var j=0;j<panels.length;j++){
+    if(panels[j].id==='panel-'+name) panels[j].classList.add('is-active');
+    else panels[j].classList.remove('is-active');
+  }
+});
+</script>
+
+<!-- JS QUIZ + TEMPLATE -->
+<script>
+// ===== QUIZ — objet FB : 1 entrée par question. c = si bonne réponse, i = si mauvaise =====
+var FB={
+  1:{c:"Exact. En deçà, les variations relèvent souvent de la marge d'erreur du sondage.",i:"Non : le trimestre est trop court pour la notoriété, cinq ans trop long pour piloter."},
+  2:{c:"Exact. Deux points par an bien faits valent mieux que quatre avec une méthode qui bouge.",i:"Non : ni la fréquence maximale ni le calage sur les campagnes. C'est la constance qui fait la série."},
+  3:{c:"Exact. C'est le cas d'ancrage : on travaille l'association à un usage ou un moment.",i:"Non : l'assistée est déjà bonne, et le problème n'est pas la perception mais la mémorisation."},
+  4:{c:"Exact. Gagner cinq points à 15 % n'a rien à voir avec en gagner cinq à 60 %.",i:"Non : ce n'est ni une stagnation automatique ni un effet retard. C'est la difficulté croissante liée au niveau."},
+  5:{c:"Exact. Accumuler les indicateurs sans jamais en retirer produit des tableaux que personne ne lit.",i:"Non : ajouter sans cesse alourdit, et changer d'outil casse la comparabilité de la série."}
+};
+var ans={},score=0;
+document.querySelectorAll('.opt').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var q=parseInt(btn.getAttribute('data-q'),10);
+    var ok=btn.getAttribute('data-ok')==='1';
+    if(ans[q]!==undefined)return;
+    ans[q]=ok;if(ok)score++;
+    var block=document.getElementById('q'+q);
+    block.querySelectorAll('.opt').forEach(function(x){x.disabled=true;});
+    btn.classList.add(ok?'ok':'no');
+    if(!ok)block.querySelectorAll('.opt').forEach(function(x){if(x.getAttribute('data-ok')==='1')x.classList.add('ok');});
+    var f=document.getElementById('f'+q);
+    f.textContent=ok?FB[q].c:FB[q].i;f.className='fb show';
+    if(Object.keys(ans).length===5)done();
+  });
+});
+function done(){
+  var s=document.getElementById('score');s.classList.add('show');
+  document.getElementById('sn').textContent=score+' / 5';
+  var m=["Aucune bonne réponse — reprends la logique du temps long.","1/5 : le pilotage dans la durée n'est pas acquis.","2/5 : quelques repères, revois les quatre objectifs.","3/5 : bonne base. Consolide l'effet de palier.","4/5 : presque tout est là, un dernier point.","5/5 : vous savez piloter dans la durée. Direction le plan."];
+  document.getElementById('sm').textContent=m[score]||'';
+}
+
+// ===== Barre de progression de lecture =====
+(function(){
+  var bar=document.getElementById('readbar');
+  if(!bar)return;
+  function upd(){
+    var h=document.documentElement;
+    var max=h.scrollHeight-h.clientHeight;
+    var p=max>0?(h.scrollTop||document.body.scrollTop)/max*100:0;
+    bar.style.width=p+'%';
+  }
+  window.addEventListener('scroll',upd,{passive:true});
+  window.addEventListener('resize',upd);upd();
+})();
+
+
+
+// ===== Barre de progression : gérée par le fixeur (2e script) =====
+
+// ===== Calculateurs =====
+function num(id){ var v=parseFloat(document.getElementById(id).value); return isNaN(v)?0:v; }
+function fmt(n){ return n.toLocaleString('fr-FR',{maximumFractionDigits:2}); }
+
+function calcCAC(){
+  var budget=num('cac-budget'), clients=num('cac-clients');
+  var el=document.getElementById('cac-result');
+  if(clients>0){ window._cac=budget/clients; el.textContent=fmt(window._cac)+' €'; el.classList.remove('muted'); }
+  else { window._cac=0; el.textContent='—'; el.classList.add('muted'); }
+  checkVerdict();
+}
+function calcConv(){
+  var v=num('conv-visiteurs'), a=num('conv-achats');
+  var el=document.getElementById('conv-result');
+  if(v>0){ el.textContent=fmt(a/v*100)+' %'; el.classList.remove('muted'); }
+  else { el.textContent='—'; el.classList.add('muted'); }
+}
+function calcPanier(){
+  var ca=num('panier-ca'), cmd=num('panier-cmd');
+  var el=document.getElementById('panier-result');
+  if(cmd>0){ el.textContent=fmt(ca/cmd)+' €'; el.classList.remove('muted'); }
+  else { el.textContent='—'; el.classList.add('muted'); }
+}
+function calcLTV(){
+  var panier=num('ltv-panier'), freq=num('ltv-freq'), duree=num('ltv-duree');
+  var el=document.getElementById('ltv-result');
+  window._ltv=panier*freq*duree;
+  if(window._ltv>0){ el.textContent=fmt(window._ltv)+' €'; el.classList.remove('muted'); }
+  else { el.textContent='—'; el.classList.add('muted'); }
+  checkVerdict();
+}
+function checkVerdict(){
+  var v=document.getElementById('verdict');
+  if(window._cac>0 && window._ltv>0){
+    var ratio=window._ltv/window._cac;
+    v.classList.add('show');
+    if(ratio>=3){
+      v.className='verdict show good';
+      v.innerHTML='<strong>Modèle sain.</strong> Ta valeur vie client ('+fmt(window._ltv)+' €) vaut '+ratio.toFixed(1)+'× ton coût d\'acquisition ('+fmt(window._cac)+' €). Tu es au-dessus du seuil de 3×. Chaque nouveau client enrichit ton activité.';
+    } else {
+      v.className='verdict show bad';
+      v.innerHTML='<strong>À surveiller.</strong> Ta valeur vie client ('+fmt(window._ltv)+' €) ne vaut que '+ratio.toFixed(1)+'× ton coût d\'acquisition ('+fmt(window._cac)+' €). En dessous de 3×, chaque acquisition fragilise ton activité. Leviers : augmenter le panier, la fréquence, la fidélisation — ou réduire le coût d\'acquisition.';
+    }
+  }
+}
+
+// ===== Cases à cocher du plan d'action =====
+document.querySelectorAll('.action-check').forEach(function(box){
+  box.addEventListener('click',function(){ box.classList.toggle('checked'); });
+});
+
+// ===== Réinitialiser =====
+function resetAll(){
+  if(!confirm('Réinitialiser tous les champs ?'))return;
+  document.querySelectorAll('input,textarea').forEach(function(el){ el.value=''; });
+  document.querySelectorAll('.action-check').forEach(function(b){ b.classList.remove('checked'); });
+  document.querySelectorAll('.calc-result span.rv, [id$="-result"]').forEach(function(e){ e.textContent='—'; e.classList.add('muted'); });
+  document.getElementById('verdict').className='verdict';
+  window._cac=0;window._ltv=0;
+  updateProgress();
+}
+
+// ===== Export PDF réel =====
+function exportPDF(){
+  if(typeof window.jspdf==='undefined' || typeof html2canvas==='undefined'){ alert('Le module d\'export se charge encore, réessaie dans un instant.'); return; }
+  var btn=document.getElementById('btn-pdf');
+  btn.disabled=true; var old=btn.textContent; btn.textContent='Génération…';
+  document.body.classList.add('pdf-mode');
+  var target=document.getElementById('export-zone');
+  html2canvas(target,{scale:2,useCORS:true,backgroundColor:'#ffffff',windowWidth:target.scrollWidth}).then(function(canvas){
+    var img=canvas.toDataURL('image/jpeg',0.92);
+    var pdf=new window.jspdf.jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+    var pw=pdf.internal.pageSize.getWidth(), ph=pdf.internal.pageSize.getHeight();
+    var margin=10, cw=pw-margin*2;
+    var ih=canvas.height*cw/canvas.width;
+    var left=ih, pos=margin;
+    pdf.addImage(img,'JPEG',margin,pos,cw,ih); left-=(ph-margin*2);
+    while(left>0){ pdf.addPage(); pos=margin-(ih-left); pdf.addImage(img,'JPEG',margin,pos,cw,ih); left-=(ph-margin*2); }
+    pdf.save('skanner-diagnostic-ecosysteme-digital.pdf');
+    document.body.classList.remove('pdf-mode');
+    btn.disabled=false; btn.textContent=old;
+  }).catch(function(e){
+    console.error(e); alert('Export impossible, réessaie.');
+    document.body.classList.remove('pdf-mode');
+    btn.disabled=false; btn.textContent=old;
+  });
+}
+
+// ===== PLAN DE PILOTAGE DE LA NOTORIÉTÉ =====
+var OBJ_LABEL={emerger:'Émerger',ancrer:'Ancrer',tete:'Prendre la tête',image:"Corriger l'image"};
+var RYT_LABEL={'1an':'1 fois par an','2an':'2 fois par an','3an':'3 fois par an','4an':'Chaque trimestre'};
+
+var IND={
+ emerger:[
+  {id:'i1',k:"Médias de référence atteints",d:"Le nombre de titres qui comptent dans votre secteur où vous avez obtenu une retombée. Comptable à la main, et bien plus parlant que le volume brut quand on démarre.",unit:'médias'},
+  {id:'i2',k:"Part de voix sur votre niche",d:"Votre poids face à trois ou quatre concurrents directs, sur un sujet précis. Calculable avec le baromètre de la fiche précédente.",unit:'%'},
+  {id:'i3',k:"Prescripteurs qui vous citent",d:"Nombre de journalistes, créateurs ou experts du secteur ayant parlé de vous. Se compte à la main et se suit facilement.",unit:'personnes'},
+  {id:'i4',k:"Notoriété assistée (si vous avez un budget études)",d:"L'indicateur de référence, mais il suppose un sondage auprès d'un échantillon représentatif. À réserver si vous pouvez financer une étude.",unit:'%'}
+ ],
+ ancrer:[
+  {id:'i1',k:"Reprise du message clé",d:"Part de vos retombées où votre message principal ressort effectivement. Se compte en relisant les articles : c'est le meilleur indicateur d'ancrage accessible.",unit:'%'},
+  {id:'i2',k:"Retombées obtenues sans sollicitation",d:"Nombre de fois où un journaliste vous contacte de lui-même. C'est le signe le plus concret que vous êtes présent à l'esprit.",unit:'retombées'},
+  {id:'i3',k:"Association à votre sujet de marque",d:"Part de vos retombées qui vous relient au territoire que vous voulez occuper, plutôt qu'à votre catégorie générale.",unit:'%'},
+  {id:'i4',k:"Écart assistée / spontanée (si budget études)",d:"L'indicateur théorique idéal pour l'ancrage, mais il exige deux mesures par sondage. À réserver si vous financez un baromètre.",unit:'points'}
+ ],
+ tete:[
+  {id:'i1',k:"Part de voix",d:"Votre poids dans la conversation face au leader. L'indicateur le plus accessible pour mesurer une position dominante.",unit:'%'},
+  {id:'i2',k:"Écart au leader en part de voix",d:"Se mesurer à celui qui est devant plutôt qu'en absolu : c'est cet écart qui doit se réduire. Calculable avec le baromètre.",unit:'points'},
+  {id:'i3',k:"Sollicitations comme expert du sujet",d:"Nombre de fois où on vous demande votre avis en tant que référence sur le sujet. Le vrai signe d'une position de tête.",unit:'sollicitations'},
+  {id:'i4',k:"Top of mind (si budget études)",d:"L'objectif ultime — être cité en premier — mais mesurable uniquement par sondage. À réserver aux structures qui financent un baromètre annuel.",unit:'%'}
+ ],
+ image:[
+  {id:'i1',k:"Tonalité de vos retombées",d:"Part de retombées positives, neutres, négatives. Se compte en relisant : c'est l'indicateur d'image le plus accessible.",unit:'%'},
+  {id:'i2',k:"Retombées contenant l'angle problématique",d:"Combien de fois le sujet qui vous dessert revient dans la couverture. Il doit baisser.",unit:'retombées'},
+  {id:'i3',k:"Retombées portant l'angle souhaité",d:"Combien de fois l'attribut que vous voulez installer apparaît. Un seul angle à la fois, pas trois.",unit:'retombées'},
+  {id:'i4',k:"Attribut perçu (si budget études)",d:"La mesure directe de l'image auprès du public, par sondage. Plus fiable, mais elle suppose une étude financée.",unit:'%'}
+ ]
+};
+
+
+// Leviers concrets par indicateur — ce qu'on fait pour le faire bouger
+var LEVIERS={
+ 'emerger:i1':[
+  {id:'l1',ph:1,k:"Établir la liste des 12 titres qui comptent",d:"Pas tous les médias : ceux que lisent vos clients et vos pairs. C'est votre périmètre de travail pour 18 mois."},
+  {id:'l2',ph:1,k:"Identifier le journaliste référent de chaque titre",d:"Un nom, un angle de prédilection, un moyen de contact. Un tableau suffit — il vaut plus que n'importe quel fichier presse acheté."},
+  {id:'l3',ph:2,k:"Proposer un sujet sur mesure à trois titres prioritaires",d:"Pas le même communiqué à tous : un angle pensé pour chacun. Trois propositions travaillées valent mieux que trente envois."},
+  {id:'l4',ph:3,k:"Créer un rendez-vous récurrent avec les titres acquis",d:"Une fois la première retombée obtenue, entretenir : information en avant-première, accès aux coulisses, disponibilité."}
+ ],
+ 'emerger:i2':[
+  {id:'l1',ph:1,k:"Choisir un territoire étroit et le tenir",d:"Mieux vaut être identifié sur un sujet précis que dispersé sur votre catégorie entière. La part de voix se gagne sur une niche."},
+  {id:'l2',ph:2,k:"Produire une donnée propriétaire sur ce sujet",d:"Une étude, un chiffre, un observatoire même modeste : c'est ce qui vous rend citable plutôt que commentateur."},
+  {id:'l3',ph:2,k:"Réagir systématiquement à l'actualité du territoire",d:"Être disponible et rapide sur votre sujet crée l'habitude chez les journalistes. La régularité bat l'éclat."},
+  {id:'l4',ph:3,k:"Mesurer la part de voix chaque trimestre",d:"Avec le même panel de concurrents. C'est la série qui montre si le territoire s'installe."}
+ ],
+ 'emerger:i3':[
+  {id:'l1',ph:1,k:"Cartographier les prescripteurs de votre secteur",d:"Journalistes, créateurs, curateurs, acheteurs : qui fait l'opinion dans votre milieu. Quinze noms suffisent."},
+  {id:'l2',ph:2,k:"Créer une occasion de rencontre réelle",d:"Visite d'atelier, présentation intime, petit-déjeuner. Le lien se crée en présence, pas par mail."},
+  {id:'l3',ph:2,k:"Leur donner accès à quelque chose d'exclusif",d:"Une pièce avant tout le monde, une information en primeur, un accès aux coulisses. L'exclusivité crée la citation."},
+  {id:'l4',ph:3,k:"Entretenir sans rien demander",d:"Un message quand ils publient quelque chose de bien, une info utile sans contrepartie. La relation se construit hors campagne."}
+ ],
+ 'ancrer:i1':[
+  {id:'l1',ph:1,k:"Réduire à un seul message clé",d:"Si vous avez trois messages, aucun ne sera repris. Un seul, formulé en une phrase que vous répétez partout."},
+  {id:'l2',ph:1,k:"Le faire dire par votre porte-parole à chaque prise de parole",d:"La répétition est ce qui installe. Ce qui vous semble lassant commence tout juste à être entendu à l'extérieur."},
+  {id:'l3',ph:2,k:"L'appuyer sur une preuve unique et mémorable",d:"Un chiffre, un fait, une image. Un message sans preuve ne se retient pas ; une preuve marquante se cite d'elle-même."},
+  {id:'l4',ph:3,k:"Relire vos retombées et compter la reprise",d:"Trimestriellement : dans combien d'articles votre message apparaît-il ? C'est l'indicateur qui doit monter."}
+ ],
+ 'ancrer:i2':[
+  {id:'l1',ph:1,k:"Devenir la source facile sur votre sujet",d:"Répondre vite, fournir des visuels utilisables, être joignable. Les journalistes rappellent ceux qui leur facilitent le travail."},
+  {id:'l2',ph:2,k:"Constituer un dossier de presse permanent et à jour",d:"Chiffres, historique, visuels haute définition, citations disponibles. Il travaille pour vous quand vous n'êtes pas là."},
+  {id:'l3',ph:2,k:"Se positionner sur les marronniers du secteur",d:"Fashion week, rentrée, fêtes, bilans d'année : les moments où les journalistes cherchent des sources. Anticipez-les."},
+  {id:'l4',ph:3,k:"Tenir le compte des sollicitations entrantes",d:"Un simple tableau daté. Leur progression est le meilleur signe que vous êtes devenu une référence."}
+ ],
+ 'ancrer:i3':[
+  {id:'l1',ph:1,k:"Nommer explicitement votre territoire",d:"Une formule courte que vous employez systématiquement. Sans nom, un territoire ne s'installe pas."},
+  {id:'l2',ph:2,k:"Refuser les sujets hors territoire",d:"Décliner une occasion de visibilité qui ne sert pas votre positionnement. C'est difficile et c'est ce qui construit l'association."},
+  {id:'l3',ph:2,k:"Produire un contenu de référence sur le sujet",d:"Un manifeste, une étude, une série éditoriale. Quelque chose que l'on cite en parlant du sujet."},
+  {id:'l4',ph:3,k:"Vérifier l'association dans vos retombées",d:"Combien de vos retombées vous relient au territoire visé, et non à votre catégorie générale ?"}
+ ],
+ 'tete:i1':[
+  {id:'l1',ph:1,k:"Fixer le panel de concurrents et n'y plus toucher",d:"Trois à cinq acteurs comparables. Le changer en cours de route rend toute la série inutilisable."},
+  {id:'l2',ph:2,k:"Occuper les moments que le leader délaisse",d:"Cherchez les sujets ou les périodes où il est absent. Prendre la tête se joue là, pas en frontal."},
+  {id:'l3',ph:2,k:"Augmenter la fréquence de prise de parole",d:"La part de voix est un jeu à somme fixe : elle monte si vous parlez plus, à condition d'avoir quelque chose à dire."},
+  {id:'l4',ph:3,k:"Mesurer trimestriellement et publier en interne",d:"Une part de voix suivie et partagée mobilise les équipes bien plus qu'un objectif abstrait."}
+ ],
+ 'tete:i2':[
+  {id:'l1',ph:1,k:"Analyser ce qui fait le volume du leader",d:"Quels sujets, quels formats, quels titres. On ne réduit pas un écart qu'on n'a pas décomposé."},
+  {id:'l2',ph:2,k:"Choisir deux angles où il est faible",d:"Plutôt que de le concurrencer partout, prendre la place sur ce qu'il ne couvre pas."},
+  {id:'l3',ph:2,k:"Nouer une relation avec les titres qui le citent",d:"Ce sont eux qui font son écart. Ils sont aussi ceux qui peuvent le réduire."},
+  {id:'l4',ph:3,k:"Suivre l'écart plutôt que votre chiffre absolu",d:"C'est la seule mesure qui dit si vous vous rapprochez réellement."}
+ ],
+ 'tete:i3':[
+  {id:'l1',ph:1,k:"Désigner un porte-parole expert unique",d:"Une seule voix identifiable sur le sujet. Les sollicitations vont à une personne, pas à une entreprise."},
+  {id:'l2',ph:2,k:"Publier régulièrement une analyse de fond",d:"Tribune, décryptage, point de vue. C'est ce qui transforme un acteur en référence consultée."},
+  {id:'l3',ph:2,k:"Se rendre disponible dans l'urgence",d:"Accepter l'interview du jour même. La disponibilité crée le réflexe d'appel."},
+  {id:'l4',ph:3,k:"Compter les sollicitations spontanées",d:"Un tableau daté suffit. Leur progression mesure votre installation comme référence."}
+ ],
+ 'image:i1':[
+  {id:'l1',ph:1,k:"Relire six mois de retombées et coder la tonalité",d:"Positive, neutre, négative. C'est votre point de départ réel, souvent différent de l'impression."},
+  {id:'l2',ph:2,k:"Identifier ce qui déclenche le négatif",d:"Un sujet, un porte-parole, une formulation ? La tonalité a presque toujours une cause identifiable."},
+  {id:'l3',ph:2,k:"Traiter la cause plutôt que la couverture",d:"Communiquer sur un problème non résolu aggrave la tonalité. On corrige, puis on le dit."},
+  {id:'l4',ph:3,k:"Recompter chaque trimestre",d:"La tonalité évolue lentement. Une série trimestrielle montre le mouvement réel."}
+ ],
+ 'image:i2':[
+  {id:'l1',ph:1,k:"Nommer précisément l'angle qui vous dessert",d:"Une formule courte. Tant qu'il reste flou, on ne peut pas le traiter."},
+  {id:'l2',ph:2,k:"Préparer une réponse factuelle et la tenir",d:"Une position documentée, la même à chaque fois. Les réponses variables entretiennent le sujet."},
+  {id:'l3',ph:2,k:"Apporter une preuve vérifiable",d:"Sur les sujets d'image, seule la preuve fait bouger la perception. Le discours seul ne suffit jamais."},
+  {id:'l4',ph:3,k:"Compter les occurrences de l'angle",d:"Il doit reculer. S'il ne bouge pas en 12 mois, c'est que la cause n'est pas traitée."}
+ ],
+ 'image:i3':[
+  {id:'l1',ph:1,k:"Choisir un seul attribut à installer",d:"Pas trois. Une organisation ne fait bouger qu'une perception à la fois."},
+  {id:'l2',ph:2,k:"Trouver la preuve qui l'incarne",d:"Un fait, un engagement daté, une réalisation concrète. L'attribut sans preuve ne s'installe pas."},
+  {id:'l3',ph:2,k:"Le porter dans chaque prise de parole",d:"Pas une campagne dédiée : une présence constante dans tout ce que vous dites."},
+  {id:'l4',ph:3,k:"Compter sa présence dans vos retombées",d:"Combien d'articles portent l'attribut visé ? C'est votre indicateur de progression."}
+ ]
+};
+var PHASE_LABEL={1:'0-6 mois · Poser les bases',2:'6-12 mois · Agir',3:'12-18 mois · Mesurer et consolider'};
+
+var obj=null, ryt=null, indOn={}, indVals={};
+var levOn={};
+
+function pickObj(v,btn){
+  obj=v;indOn={};indVals={};levOn={};
+  document.querySelectorAll('#pl-objs .pl-obj').forEach(function(c){c.classList.remove('sel');});
+  btn.classList.add('sel');
+  document.getElementById('pl-ind-sec').style.display='block';
+  document.getElementById('pl-rythme-sec').style.display='block';
+  render();
+}
+function pickRyt(v,btn){
+  ryt=v;
+  document.querySelectorAll('#pl-ryt .pl-chip').forEach(function(c){c.classList.remove('sel');});
+  btn.classList.add('sel');
+  render();
+}
+function toggleInd(id){indOn[id]=!indOn[id];render();}
+function setVal(id,which,val){
+  if(!indVals[id])indVals[id]={};
+  indVals[id][which]=val;
+  computeOnly();
+}
+function nv(id,which){
+  var o=indVals[id]||{};
+  var v=(o[which]||'').trim().replace(',','.');
+  var n=parseFloat(v);
+  return isNaN(n)?null:n;
+}
+
+function render(){
+  if(!obj)return;
+  document.getElementById('pl-inds').innerHTML=IND[obj].map(function(o){
+    var on=!!indOn[o.id];
+    var v=indVals[o.id]||{};
+    var dh='<span class="pl-delta" id="d-'+o.id+'" style="display:none;"></span>';
+    return '<div class="pl-ind'+(on?' on':'')+'">'+
+      '<div class="pl-ind-head" onclick="toggleInd(\''+o.id+'\')"><span class="kt-check"></span>'+
+      '<span class="pl-ind-body"><span class="pl-ind-k">'+o.k+'</span>'+
+      '<span class="pl-ind-d">'+o.d+'</span></span></div>'+
+      '<div class="pl-ind-vals">'+
+        '<span class="pl-val"><label>Aujourd\'hui <span style=\'font-weight:500;text-transform:none;letter-spacing:0\'>(facultatif)</span></label><input type="text" inputmode="decimal" value="'+((v.now||'').replace(/"/g,'&quot;'))+'" placeholder="0" oninput="setVal(\''+o.id+'\',\'now\',this.value)"></span>'+
+        '<span class="pl-val"><label>Cible à 18 mois</label><input type="text" inputmode="decimal" value="'+((v.goal||'').replace(/"/g,'&quot;'))+'" placeholder="0" oninput="setVal(\''+o.id+'\',\'goal\',this.value)"></span>'+
+        '<span class="pl-val-unit">'+o.unit+'</span>'+dh+
+      '</div></div>';
+  }).join('');
+  renderActions();
+  computeOnly();
+}
+
+function toggleLev(k){levOn[k]=!levOn[k];renderActions();computeOnly();}
+
+function renderActions(){
+  var sec=document.getElementById('pl-act-sec');
+  var sel=selInds();
+  // ne garder que les indicateurs qui ont des leviers (les 3 accessibles)
+  var avecLev=sel.filter(function(o){return LEVIERS[obj+':'+o.id];});
+  if(avecLev.length===0){sec.style.display='none';return;}
+  sec.style.display='block';
+  var html='';
+  [1,2,3].forEach(function(ph){
+    var bloc='';
+    avecLev.forEach(function(o){
+      var list=(LEVIERS[obj+':'+o.id]||[]).filter(function(l){return l.ph===ph;});
+      if(list.length===0)return;
+      bloc+='<span class="pl-ind-tag">'+o.k+'</span>';
+      bloc+=list.map(function(l){
+        var key=obj+':'+o.id+':'+l.id;
+        var on=!!levOn[key];
+        return '<div class="pl-act'+(on?' on':'')+'" onclick="toggleLev(\''+key+'\')">'+
+          '<span class="kt-check"></span><span class="pl-act-body">'+
+          '<span class="pl-act-k">'+l.k+'</span>'+
+          '<span class="pl-act-d">'+l.d+'</span></span></div>';
+      }).join('');
+    });
+    if(bloc==='')return;
+    html+='<div class="pl-phase"><div class="pl-phase-h"><span class="pl-phase-n">'+PHASE_LABEL[ph]+'</span></div>'+bloc+'</div>';
+  });
+  document.getElementById('pl-actions').innerHTML=html;
+}
+
+function selActions(){
+  var out=[];
+  var sel=selInds();
+  sel.forEach(function(o){
+    (LEVIERS[obj+':'+o.id]||[]).forEach(function(l){
+      var key=obj+':'+o.id+':'+l.id;
+      if(levOn[key])out.push({ind:o.k,ph:l.ph,k:l.k,d:l.d});
+    });
+  });
+  return out;
+}
+
+// Écart cible/départ + jugement de faisabilité (effet de palier)
+function deltaOf(id){
+  var now=nv(id,'now'), goal=nv(id,'goal');
+  if(now===null||goal===null)return null;
+  var d=Math.round((goal-now)*10)/10;
+  var cls='ok';
+  // plus le départ est haut, plus la progression est dure
+  var seuil = now<20 ? 12 : (now<40 ? 8 : (now<60 ? 5 : 3));
+  if(d>seuil*1.6)cls='bad';
+  else if(d>seuil)cls='warn';
+  else if(d<0)cls='warn';
+  return {val:d,cls:cls,seuil:seuil,now:now};
+}
+
+function selInds(){return (IND[obj]||[]).filter(function(o){return indOn[o.id];});}
+
+function refreshDeltas(){
+  (IND[obj]||[]).forEach(function(o){
+    var el=document.getElementById('d-'+o.id);
+    if(!el)return;
+    var d=deltaOf(o.id);
+    if(d===null){el.style.display='none';el.className='pl-delta';el.textContent='';return;}
+    var unit=(o.unit==='%'||o.unit==='points')?'pts':o.unit;
+    el.style.display='inline-block';
+    el.className='pl-delta '+d.cls;
+    el.textContent=(d.val>0?'+':'')+d.val+' '+unit;
+  });
+}
+
+function computeOnly(){
+  var sel=selInds();
+  refreshDeltas();
+  var sec=document.getElementById('pl-out-sec');
+  if(sel.length===0){if(sec)sec.style.display='none';updateReco();updateProgress();updateBilan();return;}
+  sec.style.display='block';
+  var meth=(document.getElementById('pl-methode').value||'').trim();
+  var html='<div class="kt-out-h">Plan de pilotage de la notoriété</div>'+
+    '<div class="kt-out-title">Objectif : <span>'+OBJ_LABEL[obj]+'</span></div>'+
+    '<div class="kt-out-fmt">Horizon 18 mois'+(ryt?' · mesure '+RYT_LABEL[ryt].toLowerCase():' · rythme à fixer')+'</div>';
+  sel.forEach(function(o){
+    var d=deltaOf(o.id);
+    var now=nv(o.id,'now'), goal=nv(o.id,'goal');
+    var line=(now!==null&&goal!==null)?(now+' → '+goal+' '+o.unit+' ('+(d.val>0?'+':'')+d.val+')'):'valeurs à renseigner';
+    html+='<div class="pl-out-line"><div class="pl-out-k">'+o.k+'</div>'+
+      '<div class="pl-out-v'+((now!==null&&goal!==null)?'':' empty')+'">'+line+'</div></div>';
+  });
+  var acts=selActions();
+  if(acts.length>0){
+    [1,2,3].forEach(function(ph){
+      var l=acts.filter(function(a){return a.ph===ph;});
+      if(l.length===0)return;
+      html+='<div class="pl-out-line"><div class="pl-out-k">'+PHASE_LABEL[ph]+'</div>';
+      l.forEach(function(a){html+='<div class="pl-out-act">'+a.k+'</div>';});
+      html+='</div>';
+    });
+  }
+  html+='<div class="pl-out-line"><div class="pl-out-k">Méthode</div><div class="pl-out-v'+(meth!==''?'':' empty')+'">'+(meth!==''?meth.replace(/</g,'&lt;'):'à fixer — et à ne plus changer')+'</div></div>';
+  document.getElementById('pl-out').innerHTML=html;
+  updateReco();updateProgress();updateBilan();
+}
+
+function updateReco(){
+  var reco=document.getElementById('pl-reco');if(!reco)return;
+  var sel=selInds();
+  if(sel.length===0){reco.className='reco show warn';reco.innerHTML='<strong>Choisissez vos indicateurs.</strong> Deux ou trois suffisent. Au-delà, le tableau de bord devient illisible et personne ne le regarde.';return;}
+  if(sel.length>3){reco.className='reco show warn';reco.innerHTML='<strong>'+sel.length+' indicateurs, c\'est trop.</strong> Un plan de pilotage tient sur deux ou trois mesures suivies sérieusement.';return;}
+  var trop=sel.filter(function(o){var d=deltaOf(o.id);return d&&d.cls==='bad';});
+  if(trop.length>0){reco.className='reco show bad';reco.innerHTML='<strong>'+trop.length+' cible(s) irréaliste(s).</strong> Rappel de l\'effet de palier : plus votre niveau de départ est élevé, plus chaque point supplémentaire coûte cher. Une cible intenable décrédibilise tout le plan.';return;}
+  var vides=sel.filter(function(o){return nv(o.id,'now')===null||nv(o.id,'goal')===null;});
+  if(vides.length>0){reco.className='reco show warn';reco.innerHTML='<strong>'+vides.length+' indicateur(s) sans valeurs.</strong> Sans point de départ, impossible de savoir si la cible est atteignable.';return;}
+  reco.className='reco show good';reco.innerHTML='<strong>Cibles cohérentes.</strong> '+sel.length+' indicateur(s) avec des progressions calibrées sur votre niveau de départ.';
+}
+
+function updateProgress(){
+  var steps=0,total=4;
+  if(obj)steps++;
+  if(selInds().length>0)steps++;
+  if(selActions().length>0)steps++;
+  var meth=document.getElementById('pl-methode');
+  if(ryt&&meth&&(meth.value||'').trim()!=='')steps++;
+  var p=Math.round(steps/total*100);
+  var pf=document.getElementById('pfill');if(pf)pf.style.width=p+'%';
+  var pp=document.getElementById('ppct');if(pp)pp.textContent=p+'%';
+}
+
+function updateBilan(){
+  var c=document.getElementById('bilan-content');if(!c)return;
+  if(!obj){c.innerHTML='<p class="bilan-empty">Choisissez votre situation : le contrôle s\'affichera ici.</p>';return;}
+  var sel=selInds();
+  var lines=[];
+  lines.push(['g','<strong>Situation</strong> : '+OBJ_LABEL[obj]+'.']);
+  if(sel.length===0)lines.push(['b','<strong>Aucun indicateur retenu</strong> \u2014 commencez par là.']);
+  else{
+    if(sel.length>3)lines.push(['w','<strong>'+sel.length+' indicateurs</strong> \u2014 resserrez sur deux ou trois.']);
+    else lines.push(['g','<strong>'+sel.length+' indicateur(s)</strong> \u2014 bon format de pilotage.']);
+    var acts=selActions();
+    if(acts.length===0)lines.push(['b','<strong>Aucune action engagée</strong> \u2014 un plan sans actions n\'est qu\'un tableau de bord. Cochez les leviers que vous mettez en œuvre.']);
+    else{
+      var p1=acts.filter(function(a){return a.ph===1;}).length;
+      var p2=acts.filter(function(a){return a.ph===2;}).length;
+      var p3=acts.filter(function(a){return a.ph===3;}).length;
+      lines.push(['g','<strong>'+acts.length+' action(s) engagée(s)</strong> \u2014 '+p1+' en amorçage, '+p2+' en déploiement, '+p3+' en consolidation.']);
+      if(p1===0)lines.push(['w','<strong>Aucune action de départ</strong> \u2014 les six premiers mois posent les bases. Sans elles, la suite ne tient pas.']);
+      if(p3===0)lines.push(['w','<strong>Rien en phase de mesure</strong> \u2014 prévoyez comment vous vérifierez que ça a marché.']);
+      if(acts.length>9)lines.push(['w','<strong>'+acts.length+' actions, c\'est beaucoup</strong> \u2014 mieux vaut cinq actions tenues que douze annoncées.']);
+    }
+    var renseignes=sel.filter(function(o){return nv(o.id,'now')!==null&&nv(o.id,'goal')!==null;});
+    if(renseignes.length>0&&renseignes.length<sel.length)lines.push(['w','<strong>Chiffres partiels</strong> \u2014 renseignez tous vos indicateurs ou aucun, pour garder une lecture cohérente.']);
+    var bad=sel.filter(function(o){var d=deltaOf(o.id);return d&&d.cls==='bad';});
+    var warn=sel.filter(function(o){var d=deltaOf(o.id);return d&&d.cls==='warn'&&d.val>0;});
+    var recul=sel.filter(function(o){var d=deltaOf(o.id);return d&&d.val<0;});
+    if(bad.length>0)lines.push(['b','<strong>'+bad.length+' cible(s) hors d\'atteinte</strong> sur 18 mois compte tenu du point de départ. Une cible ratée coûte plus cher qu\'une cible modeste tenue.']);
+    if(warn.length>0)lines.push(['w','<strong>'+warn.length+' cible(s) ambitieuse(s)</strong> \u2014 atteignables mais qui supposent un effort soutenu et constant.']);
+    if(recul.length>0)lines.push(['w','<strong>'+recul.length+' cible(s) en baisse</strong> \u2014 cohérent s\'il s\'agit d\'un attribut négatif à faire reculer.']);
+    if(bad.length===0&&warn.length===0&&renseignes.length===sel.length&&sel.length<=3)lines.push(['g','<strong>Progressions réalistes</strong> \u2014 calibrées sur votre niveau de départ.']);
+  }
+  if(!ryt)lines.push(['w','<strong>Rythme non fixé</strong> \u2014 sans cadence régulière, pas de série comparable.']);
+  else lines.push(['g','<strong>Rythme</strong> : '+RYT_LABEL[ryt]+'.']);
+  var meth=document.getElementById('pl-methode');
+  if(!meth||(meth.value||'').trim()==='')lines.push(['w','<strong>Méthode non précisée</strong> \u2014 c\'est elle qu\'il ne faudra plus changer.']);
+  var bad2=lines.some(function(l){return l[0]==='b';}),warn2=lines.some(function(l){return l[0]==='w';});
+  var head=bad2?'Plan fragile : des cibles ne tiennent pas la route.':(warn2?'Bonne base \u2014 complétez avant de transmettre.':'Plan solide : cibles calibrées, rythme fixé, méthode arrêtée.');
+  var html='<p style="color:#fff;font-size:14px;line-height:1.6;margin:0 0 16px;">'+head+'</p>';
+  lines.forEach(function(l){var s=l[0]==='g'?'OK':(l[0]==='w'?'!':'X');html+='<div class="bilan-line"><span class="bilan-ico '+l[0]+'">'+s+'</span><span>'+l[1]+'</span></div>';});
+  c.innerHTML=html;
+}
+
+function copyPlan(){
+  if(!obj||selInds().length===0){alert('Choisissez une situation et au moins un indicateur.');return;}
+  var sel=selInds();
+  var meth=(document.getElementById('pl-methode').value||'').trim();
+  var l=['PLAN DE PILOTAGE DE LA NOTORIÉTÉ','','Situation : '+OBJ_LABEL[obj],'Horizon : 18 mois','Rythme de mesure : '+(ryt?RYT_LABEL[ryt]:'(à fixer)'),'Méthode : '+(meth||'(à fixer, puis à ne plus changer)'),'','INDICATEURS SUIVIS'];
+  sel.forEach(function(o){
+    var now=nv(o.id,'now'), goal=nv(o.id,'goal');
+    var d=deltaOf(o.id);
+    l.push('- '+o.k);
+    l.push('  '+((now!==null&&goal!==null)?(now+' → '+goal+' '+o.unit+' ('+(d.val>0?'+':'')+d.val+')'):'valeurs à renseigner'));
+    l.push('  '+o.d);
+  });
+  var acts=selActions();
+  if(acts.length>0){
+    l.push('','PLAN D\'ACTION');
+    [1,2,3].forEach(function(ph){
+      var list=acts.filter(function(a){return a.ph===ph;});
+      if(list.length===0)return;
+      l.push(PHASE_LABEL[ph]);
+      list.forEach(function(a){l.push('  - '+a.k);l.push('    '+a.d);});
+    });
+  }
+  l.push('','Rappel : ne pas changer de méthode entre deux mesures, sous peine de perdre la série.');
+  var txt=l.join('\n');
+  var btn=document.getElementById('btn-copy');var old=btn.textContent;
+  function done(){btn.textContent='\u2713 Copié';setTimeout(function(){btn.textContent=old;},1500);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done).catch(function(){fb(txt);done();});}else{fb(txt);done();}
+  function fb(x){var ta=document.createElement('textarea');ta.value=x;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);}
+}
+
+function resetAll(){
+  if(!confirm('Réinitialiser ?'))return;
+  obj=null;ryt=null;indOn={};indVals={};levOn={};
+  var m=document.getElementById('pl-methode');if(m)m.value='';
+  document.querySelectorAll('#pl-objs .pl-obj').forEach(function(c){c.classList.remove('sel');});
+  document.querySelectorAll('#pl-ryt .pl-chip').forEach(function(c){c.classList.remove('sel');});
+  ['pl-ind-sec','pl-act-sec','pl-rythme-sec','pl-out-sec'].forEach(function(id){document.getElementById(id).style.display='none';});
+  document.getElementById('pl-reco').className='reco';
+  updateProgress();updateBilan();
+}
+
+function exportPDF(){if(typeof window.jspdf==='undefined'||typeof html2canvas==='undefined'){alert('Le module d\'export se charge encore, réessaie.');return;}var btn=document.getElementById('btn-pdf');btn.disabled=true;var old=btn.textContent;btn.textContent='Génération…';document.body.classList.add('pdf-mode');var target=document.getElementById('export-zone');html2canvas(target,{scale:2,useCORS:true,backgroundColor:'#ffffff',windowWidth:target.scrollWidth}).then(function(canvas){var img=canvas.toDataURL('image/jpeg',0.92);var pdf=new window.jspdf.jsPDF({orientation:'portrait',unit:'mm',format:'a4'});var pw=pdf.internal.pageSize.getWidth(),ph=pdf.internal.pageSize.getHeight();var margin=10,cw=pw-margin*2;var ih=canvas.height*cw/canvas.width;var left=ih,pos=margin;pdf.addImage(img,'JPEG',margin,pos,cw,ih);left-=(ph-margin*2);while(left>0){pdf.addPage();pos=margin-(ih-left);pdf.addImage(img,'JPEG',margin,pos,cw,ih);left-=(ph-margin*2);}pdf.save('skanner-plan-pilotage-notoriete.pdf');document.body.classList.remove('pdf-mode');btn.disabled=false;btn.textContent=old;}).catch(function(e){console.error(e);alert('Export impossible.');document.body.classList.remove('pdf-mode');btn.disabled=false;btn.textContent=old;});}
+
+// INIT
+updateProgress();updateBilan();
+</script>
+</body></html>

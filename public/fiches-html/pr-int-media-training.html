@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5"/>
+<title>Interview : les bons réflexes et les pièges — Briefings by Skanner</title>
+<meta name="description" content="Reconnaître les bons réflexes et les pièges classiques d'une interview presse. Trieur interactif avec les formulations correctes. Fiche Intermédiaire — Skanner."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=General+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet"/>
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700,800,900&display=swap" rel="stylesheet"/>
+<style>
+
+:root{--glacial:'General Sans','Helvetica Neue',Arial,sans-serif;}
+
+:root{
+  --ink:#0D0D0D;--white:#fff;--paper:#F8F7F5;--rule:#DDDBD6;--muted:#7A7770;
+  --fluo-yellow:#E8FF00;   /* jaune fluo */
+  --fluo-violet:#C77DFF;   /* violet fluo */
+  --fluo-green:#39FF14;    /* vert fluo */
+  --fluo-pink:#FF6FD8;     /* rose fluo */
+  --fluo-blue:#4DD2FF;     /* bleu fluo */
+  --sage:#39FF14;          /* on réutilise le vert fluo partout où --sage était */
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+body{font-family:'General Sans','Helvetica Neue',Arial,sans-serif;background:var(--white);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+
+.sitenav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);border-bottom:1px solid var(--rule);backdrop-filter:blur(8px);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 40px;height:56px;}
+.nav-left{display:flex;align-items:center;gap:4px;}
+.nav-link{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:6px 14px;transition:color .12s;}
+.nav-link:hover{color:var(--ink);}
+.nav-center{text-align:center;justify-self:center;}
+.logo-pre{font-size:8px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:2px;}
+.logo-s{font-size:17px;font-weight:900;letter-spacing:-.02em;text-transform:uppercase;font-style:italic;}
+.logo-mag{font-size:17px;font-weight:400;letter-spacing:.01em;text-transform:uppercase;font-style:normal;}
+.nav-right{display:flex;align-items:center;justify-content:flex-end;gap:12px;}
+.nav-badge{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:3px 9px;border:1px solid var(--rule);color:var(--muted);}
+
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:11px 40px;border-bottom:1px solid var(--rule);background:var(--paper);}
+.breadcrumb .sep{color:var(--rule);}
+.breadcrumb .active{color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:340px 1fr;align-items:start;}
+.col-img{position:sticky;top:56px;height:calc(100vh - 56px);overflow:hidden;background:var(--paper);border-right:1px solid var(--rule);align-self:start;}
+.col-img img{width:100%;height:100%;object-fit:cover;object-position:center;}
+.col-content{min-width:0;}
+
+.head{padding:48px 56px 40px;border-bottom:1px solid var(--rule);}
+.tags{display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap;}
+.tag{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border:1px solid var(--rule);color:var(--muted);}
+.tag.lvl{color:#0D0D0D;border-color:var(--ink);background:var(--fluo-green);font-weight:800;}
+h1.title{font-size:clamp(34px,4.5vw,58px);font-weight:900;letter-spacing:-.03em;line-height:.94;text-transform:uppercase;margin-bottom:18px;}
+.lead{font-size:15px;line-height:1.7;color:var(--muted);border-left:2px solid var(--ink);padding-left:18px;max-width:580px;}
+.lead strong{color:var(--ink);font-weight:600;}
+
+.meta{display:flex;flex-wrap:wrap;border-bottom:1px solid var(--rule);padding:0 56px;}
+.meta-item{font-size:11px;color:var(--muted);padding:14px 48px 14px 0;}
+.meta-item strong{color:var(--ink);font-weight:700;}
+
+.body{padding:8px 56px 64px;}
+.section{margin-top:72px;scroll-margin-top:72px;}
+.sec-label{display:flex;align-items:center;gap:0;margin-bottom:36px;background:var(--ink);color:#fff;}
+.sec-num{font-size:18px;font-weight:900;letter-spacing:.02em;color:#0D0D0D;background:var(--fluo-yellow);flex-shrink:0;padding:20px 22px;align-self:stretch;display:flex;align-items:center;}
+.sec-title-txt{font-size:clamp(18px,2.3vw,25px);font-weight:900;letter-spacing:-.01em;line-height:1.15;text-transform:uppercase;padding:18px 24px;color:#fff;}
+.p{font-size:15px;line-height:1.9;margin-bottom:22px;}
+.p.muted{color:var(--muted);}
+.p b,.p strong{font-weight:700;}
+
+/* GRAND CHIFFRE EN EXERGUE — style magazine */
+.stat{margin:44px 0;padding:36px 40px;background:var(--ink);color:#fff;display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center;}
+.stat-num{font-size:clamp(60px,9.5vw,116px);font-weight:900;letter-spacing:-.04em;line-height:.8;white-space:nowrap;color:var(--fluo-green);}
+.stat-txt{font-size:15px;line-height:1.65;color:rgba(255,255,255,.92);border-left:3px solid var(--fluo-green);padding-left:22px;}
+.stat-txt b{font-weight:700;color:#fff;}
+.stat-txt .src{display:block;margin-top:10px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--fluo-green);}
+
+/* listes éditoriales (remplacent les tableaux) */
+.points{margin:18px 0;}
+.point{display:flex;gap:20px;padding:20px 0;border-bottom:1px solid rgba(0,0,0,.08);}
+.point:last-child{border-bottom:none;}
+.point-k{flex-shrink:0;width:140px;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.02em;line-height:1.3;}
+.point-k small{display:block;font-size:11px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted);margin-top:2px;}
+.point-v{font-size:14px;line-height:1.7;color:var(--ink);}
+.point-v b{font-weight:700;}
+
+.arrow-list{margin:18px 0;}
+.al{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid rgba(0,0,0,.08);}
+.al:last-child{border-bottom:none;}
+.al-a{color:var(--fluo-violet);font-weight:900;flex-shrink:0;font-size:15px;margin-top:1px;}
+.al p{font-size:14px;line-height:1.7;}
+.al strong{font-weight:700;}
+
+/* entonnoir en liste éditoriale */
+.funnel{margin:22px 0;}
+.fn{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid rgba(0,0,0,.08);}
+.fn:last-child{border-bottom:none;}
+.fn-step{font-size:14px;font-weight:700;background:linear-gradient(transparent 28%, var(--fluo-yellow) 28%);padding:2px 5px;display:inline;}
+.fn-step small{font-weight:400;color:var(--muted);}
+.fn-val{font-size:20px;font-weight:900;letter-spacing:-.02em;white-space:nowrap;}
+.fn-val small{font-size:11px;font-weight:600;color:var(--muted);margin-left:8px;letter-spacing:.04em;}
+
+.pull{margin:44px 0;padding:32px 34px;background:#0D0D0D;color:#fff;position:relative;}
+.pull::before{content:"\201C";position:absolute;top:8px;left:18px;font-size:64px;line-height:1;color:var(--fluo-yellow);font-weight:900;}
+.pull p{font-size:23px;font-weight:600;font-style:normal;line-height:1.4;margin-bottom:12px;padding-left:36px;}
+.pull cite{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--fluo-yellow);font-style:normal;padding-left:36px;display:block;}
+
+.gloss{margin:8px 0 0;padding:8px 0 0;}
+.gloss-l{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin-bottom:28px;}
+.gl-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.gl-item{display:flex;flex-direction:column;gap:12px;padding:22px;background:var(--ink);}
+.gl-term{align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:var(--ink);background:var(--pastel,#C4B5FD);padding:6px 13px;}
+.gl-def{display:block;font-size:13px;line-height:1.6;color:rgba(255,255,255,.75);}
+
+.quiz{margin-top:8px;padding:40px;background:var(--paper);border-top:3px solid var(--ink);}
+.quiz-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px;}
+.quiz-head .qbadge{font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#0D0D0D;border:none;background:var(--fluo-violet);padding:5px 12px;}
+.quiz-head .qttl{font-size:clamp(22px,2.8vw,30px);font-weight:900;letter-spacing:-.02em;text-transform:uppercase;}
+.quiz-intro p{font-size:14px;color:var(--muted);margin-bottom:28px;}
+.q{margin-bottom:22px;padding:22px 24px;background:#fff;border:1px solid var(--rule);}
+.qn{font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#0D0D0D;background:var(--fluo-violet);display:inline-block;padding:3px 9px;margin-bottom:12px;}
+.qt{font-size:16px;font-weight:700;margin-bottom:16px;line-height:1.45;}
+.opts{display:flex;flex-direction:column;gap:8px;}
+.opt{text-align:left;font-family:inherit;font-size:14px;color:var(--ink);background:#fff;border:1px solid var(--rule);padding:12px 16px;cursor:pointer;transition:all .14s;line-height:1.5;}
+.opt:hover:not(:disabled){border-color:var(--ink);}
+.opt:disabled{cursor:default;}
+.opt.ok{border-color:#0D0D0D;background:var(--fluo-green);color:#0D0D0D;font-weight:700;}
+.opt.no{border-color:#C8273A;background:rgba(200,39,58,.06);color:#C8273A;}
+.fb{display:none;margin-top:12px;padding:14px 18px;font-size:13px;line-height:1.6;background:#0D0D0D;color:#fff;border-left:4px solid var(--fluo-green);}
+.fb.show{display:block;}
+.score{display:none;margin-top:24px;padding:36px;background:var(--ink);color:#fff;text-align:center;}
+.score.show{display:block;}
+.score-l{font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--fluo-violet);margin-bottom:10px;}
+.score-n{font-size:72px;font-weight:900;letter-spacing:-.04em;line-height:1;margin-bottom:12px;color:var(--fluo-green);}
+.score-m{font-size:14px;line-height:1.6;color:rgba(255,255,255,.8);max-width:380px;margin:0 auto;}
+
+.recap{margin-top:8px;padding:0;background:none;color:var(--ink);}
+.recap .lbl{font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:22px;color:var(--ink);}
+
+.foot{padding:24px 56px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--rule);margin-top:46px;}
+.foot-copy{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.backbtn{position:fixed;top:14px;left:14px;z-index:1000;background:#fff;color:#0D0D0D;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:9px 15px;border:1px solid var(--rule);}
+
+@media(max-width:768px){
+  .sitenav{grid-template-columns:1fr auto;padding:0 16px;height:52px;}
+  .nav-left{display:none;}
+  .layout{grid-template-columns:1fr;}
+  .col-img{display:none;}
+  .breadcrumb,.head,.meta,.body,.foot{padding-left:20px;padding-right:20px;}
+  .quiz{padding:24px 20px;}
+  .q{padding:18px 16px;}
+  .stat{padding:24px;gap:14px;}
+  .recap{padding:24px;}
+  .gl-grid{grid-template-columns:1fr;gap:14px;}
+  .meta-item{padding-right:28px;}
+  h1.title{font-size:30px;}
+  .stat{grid-template-columns:1fr;gap:12px;}
+  .stat-num{font-size:64px;}
+  .point{flex-direction:column;gap:6px;}
+  .point-k{width:auto;}
+}
+
+/* mots-clés en gras : surlignage éditorial discret */
+.body .p strong, .body .p b, .body .point-v b, .body .al p strong{font-weight:700;background:linear-gradient(transparent 30%, var(--fluo-yellow) 30%);padding:1px 3px;}
+
+/* tableau À retenir */
+.recap-tbl{width:100%;border-collapse:collapse;}
+.recap-tbl td{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.15);vertical-align:top;font-size:14px;line-height:1.65;}
+.recap-tbl tr:last-child td{border-bottom:none;}
+.recap-tbl .rt-k{width:160px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;font-size:12px;padding-right:24px;padding-top:18px;color:var(--fluo-yellow);}
+.recap-tbl .rt-v{color:rgba(255,255,255,.92);}
+@media(max-width:768px){
+  .recap-tbl td{display:block;border-bottom:none;padding:4px 0;}
+  .recap-tbl .rt-k{width:auto;padding-top:14px;}
+  .recap-tbl tr{display:block;border-bottom:1px solid var(--rule);padding-bottom:10px;}
+}
+
+/* Barre de progression de lecture */
+.readbar{position:fixed;top:56px;left:0;right:0;height:3px;background:transparent;z-index:99;}
+.readbar-fill{height:100%;width:0;background:var(--fluo-violet);transition:width .1s linear;}
+@media(max-width:768px){.readbar{top:52px;}}
+
+/* Sommaire */
+.toc{margin:8px 0 12px;padding:24px;border:1px solid var(--rule);background:var(--paper);}
+.toc-label{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.toc-item{display:flex;align-items:baseline;gap:14px;padding:10px 0;border-bottom:1px solid var(--rule);transition:padding-left .15s;}
+.toc-item:last-child{border-bottom:none;}
+.toc-item:hover{padding-left:8px;}
+.toc-n{font-size:12px;font-weight:800;color:#0D0D0D;background:var(--fluo-yellow);padding:2px 7px;flex-shrink:0;}
+.toc-t{font-size:14px;font-weight:600;color:var(--ink);}
+
+/* retour haut */
+.totop{display:inline-flex;align-items:center;gap:8px;margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+.totop:hover{color:var(--ink);}
+
+a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:2px;}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important;}}
+
+/* Onglets sticky */
+.tabs{position:sticky;top:56px;z-index:90;display:flex;gap:8px;background:var(--paper);border-bottom:1px solid var(--rule);padding:12px 56px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.tab{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:#fff;border:1px solid var(--rule);padding:12px 18px;cursor:pointer;transition:all .15s;white-space:nowrap;}
+.tab:hover{color:var(--ink);border-color:var(--ink);}
+.tab.active{color:#0D0D0D;background:var(--fluo-violet);border-color:var(--ink);font-weight:800;}
+
+to{opacity:1;transform:none;}}
+@media(max-width:768px){
+  .tabs{top:52px;padding:10px 16px;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .tab{padding:14px 16px;font-size:11px;white-space:nowrap;}
+}
+
+/* accents fluo variés sur les listes de définition */
+.points .point:nth-child(1) .point-k{color:#0D0D0D;}
+.points .point:nth-child(1) .point-k::before{content:'';display:inline-block;width:12px;height:12px;background:var(--fluo-violet);margin-right:8px;vertical-align:middle;}
+.points .point:nth-child(2) .point-k::before{content:'';display:inline-block;width:12px;height:12px;background:var(--fluo-pink);margin-right:8px;vertical-align:middle;}
+.points .point:nth-child(3) .point-k::before{content:'';display:inline-block;width:12px;height:12px;background:var(--fluo-blue);margin-right:8px;vertical-align:middle;}
+.points .point:nth-child(4) .point-k::before{content:'';display:inline-block;width:12px;height:12px;background:var(--fluo-green);margin-right:8px;vertical-align:middle;}
+.points .point:nth-child(5) .point-k::before{content:'';display:inline-block;width:12px;height:12px;background:var(--fluo-yellow);margin-right:8px;vertical-align:middle;}
+/* entonnoir : valeurs en bleu fluo highlight */
+.fn-val{position:relative;}
+.fn:nth-child(odd) .fn-val{background:linear-gradient(transparent 32%, var(--fluo-blue) 32%);padding:2px 5px;}
+.fn:nth-child(even) .fn-val{background:linear-gradient(transparent 32%, var(--fluo-pink) 32%);padding:2px 5px;}
+/* sommaire : numéros alternent jaune/rose */
+.toc-item:nth-child(even) .toc-n{background:var(--fluo-pink);}
+/* Topbar actions */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:24px 0;border-bottom:1px solid var(--rule);flex-wrap:wrap;}
+.topbar-info{font-size:11px;color:var(--muted);}
+.topbar-info strong{color:var(--ink);}
+.actions{display:flex;gap:10px;}
+.btn{font-family:inherit;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:12px 20px;cursor:pointer;border:1px solid var(--ink);background:#fff;color:var(--ink);transition:all .15s;}
+.btn:hover{background:var(--paper);}
+.btn-primary{background:var(--ink);color:#fff;}
+.btn-primary:hover{background:#000;}
+.btn:disabled{opacity:.5;cursor:wait;}
+
+/* Header */
+.head{padding:44px 0 32px;}
+.tags{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;}
+.tag{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border:1px solid var(--rule);color:var(--muted);}
+.tag.tpl{background:var(--fluo-violet);color:#0D0D0D;border-color:var(--ink);font-weight:800;}
+.tag.lvl{background:var(--fluo-green);color:#0D0D0D;border-color:var(--ink);font-weight:800;}
+h1{font-size:clamp(30px,4vw,48px);font-weight:900;letter-spacing:-.03em;line-height:.96;text-transform:uppercase;margin-bottom:16px;}
+.intro{font-size:15px;line-height:1.7;color:var(--muted);border-left:3px solid var(--fluo-yellow);padding-left:18px;max-width:620px;}
+.intro strong{color:var(--ink);font-weight:600;}
+
+/* Progress */
+.progress-wrap{margin:28px 0 8px;}
+.progress-label{display:flex;justify-content:space-between;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.progress-bar{height:6px;background:var(--paper);border:1px solid var(--rule);overflow:hidden;}
+.progress-fill{height:100%;width:0;background:var(--fluo-violet);transition:width .3s ease;}
+
+/* Sections du template */
+.tpl-section{margin:40px 0;}
+.tpl-sec-head{display:flex;align-items:center;gap:0;margin-bottom:24px;}
+.tpl-sec-num{font-size:18px;font-weight:900;color:#0D0D0D;background:var(--fluo-yellow);padding:14px 18px;align-self:stretch;display:flex;align-items:center;}
+.tpl-sec-title{font-size:clamp(17px,2.2vw,22px);font-weight:900;letter-spacing:-.01em;text-transform:uppercase;background:#0D0D0D;color:#fff;padding:14px 20px;flex:1;}
+.tpl-sec-desc{font-size:14px;line-height:1.7;color:var(--muted);margin-bottom:20px;}
+
+/* Champs */
+.field{margin-bottom:20px;}
+.field-label{display:block;font-size:12px;font-weight:700;letter-spacing:.02em;margin-bottom:8px;}
+.field-hint{font-size:12px;color:var(--muted);margin-bottom:8px;font-weight:400;}
+.field-input,.field-textarea{width:100%;font-family:inherit;font-size:14px;color:var(--ink);background:#fff;border:1px solid var(--ink);padding:12px 14px;transition:border-color .15s;}
+.field-input:focus,.field-textarea:focus{outline:none;border-color:var(--fluo-violet);border-width:2px;}
+.field-textarea{min-height:80px;resize:vertical;line-height:1.6;}
+
+/* Grille de canaux owned/earned/paid */
+.channels{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.channel{border:1px solid var(--ink);padding:18px;}
+.channel-tag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;margin-bottom:12px;color:#0D0D0D;}
+.channel:nth-child(1) .channel-tag{background:var(--fluo-violet);}
+.channel:nth-child(2) .channel-tag{background:var(--fluo-pink);}
+.channel:nth-child(3) .channel-tag{background:var(--fluo-blue);}
+.channel-textarea{width:100%;font-family:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--rule);padding:10px;min-height:100px;resize:vertical;line-height:1.6;}
+.channel-textarea:focus{outline:none;border-color:var(--ink);}
+
+/* Calculateur de chiffres */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.calc-card{border:1px solid var(--ink);padding:20px;}
+.calc-card .ck{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;}
+.calc-card .cd{font-size:11px;color:var(--muted);margin-bottom:14px;line-height:1.5;}
+.calc-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.calc-row label{font-size:12px;color:var(--muted);flex:1;}
+.calc-row input{width:120px;font-family:inherit;font-size:14px;border:1px solid var(--rule);padding:8px 10px;text-align:right;}
+.calc-row input:focus{outline:none;border-color:var(--fluo-violet);}
+.calc-result{margin-top:12px;padding:14px;background:#0D0D0D;color:#fff;display:flex;align-items:baseline;justify-content:space-between;}
+.calc-result .rl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fluo-green);}
+.calc-result .rv{font-size:26px;font-weight:900;letter-spacing:-.02em;color:var(--fluo-green);}
+.calc-result .rv.muted{color:var(--muted);font-size:18px;}
+
+/* Verdict LTV/CAC */
+.verdict{margin-top:16px;padding:18px 22px;border:2px solid var(--ink);font-size:14px;line-height:1.6;display:none;}
+.verdict.show{display:block;}
+.verdict.good{background:var(--fluo-green);}
+.verdict.bad{background:var(--fluo-pink);}
+.verdict strong{font-weight:800;}
+
+/* Plan d'action */
+.action-item{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--rule);}
+.action-check{width:22px;height:22px;border:2px solid var(--ink);flex-shrink:0;margin-top:2px;cursor:pointer;position:relative;background:#fff;}
+.action-check.checked{background:var(--fluo-green);}
+.action-check.checked::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;color:#0D0D0D;}
+.action-input{flex:1;font-family:inherit;font-size:14px;border:none;border-bottom:1px solid var(--rule);padding:4px 0;background:transparent;}
+.action-input:focus{outline:none;border-bottom-color:var(--fluo-violet);}
+
+.note{margin:32px 0;padding:28px 30px;background:#0D0D0D;border:2px solid var(--ink);font-size:14px;line-height:1.7;color:rgba(255,255,255,.9);}
+.note strong{color:var(--fluo-green);}
+
+.foot{padding:32px 0;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--rule);margin-top:40px;}
+.foot-copy{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.backbtn{position:fixed;top:14px;left:14px;z-index:1000;background:#fff;color:#0D0D0D;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:9px 15px;border:1px solid var(--rule);}
+
+@media(max-width:768px){
+  .sitenav{grid-template-columns:1fr auto;padding:0 16px;height:52px;}
+  .nav-left{display:none;}
+  .wrap{padding:0 18px;}
+  .breadcrumb{padding:11px 18px;}
+  .channels{grid-template-columns:1fr;}
+  .calc{grid-template-columns:1fr;}
+  h1{font-size:28px;}
+  .topbar{flex-direction:column;align-items:flex-start;}
+}
+/* Styles spécifiques à l'export PDF */
+.pdf-mode .backbtn,.pdf-mode .sitenav,.pdf-mode .actions,.pdf-mode .progress-wrap{display:none!important;}
+.pdf-mode .field-input,.pdf-mode .field-textarea,.pdf-mode .channel-textarea,.pdf-mode .calc-row input,.pdf-mode .action-input{border:1px solid #999;}
+
+/* Listes à choix multiples */
+.checklist{display:flex;flex-direction:column;gap:2px;margin-bottom:12px;}
+.checklist-col{gap:4px;}
+.check{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.5;padding:7px 0;cursor:pointer;color:var(--ink);}
+.check input[type=checkbox]{appearance:none;-webkit-appearance:none;width:18px;height:18px;border:2px solid var(--ink);background:#fff;flex-shrink:0;margin-top:1px;cursor:pointer;position:relative;}
+.check input[type=checkbox]:checked{background:var(--fluo-green);}
+.check input[type=checkbox]:checked::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px;color:#0D0D0D;}
+.check em{font-style:normal;color:var(--muted);font-size:12px;}
+
+/* À retenir : cards colorées */
+.recap-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.recap-card{padding:24px;background:#0D0D0D;color:#fff;border:2px solid var(--ink);display:flex;flex-direction:column;gap:10px;}
+.recap-card .rc-k{font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;}
+.recap-card .rc-v{font-size:14px;line-height:1.6;font-weight:500;color:rgba(255,255,255,.9);}
+@media(max-width:768px){.recap-grid{grid-template-columns:1fr;}}
+
+
+
+
+.panel{ display:none; }
+.panel.is-active{ display:block; }
+.tab{ cursor:pointer; }
+.tab.is-active{ color:#0D0D0D; background:var(--fluo-violet); border-color:var(--ink); font-weight:800; }
+
+
+/* ===== Matrice de notation ===== */
+.matrix{margin:8px 0 4px;border:2px solid var(--ink);background:#fff;}
+.mx-head{display:grid;grid-template-columns:1fr 44px 44px 44px 44px;align-items:center;background:#0D0D0D;color:#fff;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;}
+.mx-head span{padding:10px 12px;text-align:center;}
+.mx-head span:first-child{text-align:left;}
+.mx-row{display:grid;grid-template-columns:1fr 44px 44px 44px 44px;align-items:stretch;border-top:1px solid var(--rule);}
+.mx-row:nth-child(even){background:var(--paper);}
+.mx-label{padding:12px;font-size:13px;font-weight:600;display:flex;align-items:center;}
+.mx-cell{display:flex;align-items:center;justify-content:center;border-left:1px solid var(--rule);cursor:pointer;font-size:13px;font-weight:700;color:var(--muted);transition:all .12s ease;user-select:none;}
+.mx-cell:hover{background:var(--fluo-yellow);color:#0D0D0D;}
+.mx-cell.sel{background:var(--fluo-violet);color:#0D0D0D;font-weight:800;}
+.mx-score{margin-top:14px;padding:18px 22px;background:#0D0D0D;color:#fff;display:flex;flex-direction:column;gap:4px;}
+.mxs-l{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.6);}
+.mxs-v{font-size:28px;font-weight:900;color:var(--fluo-green);line-height:1;}
+.mxs-msg{font-size:13px;color:rgba(255,255,255,.85);margin-top:4px;line-height:1.5;}
+@media(max-width:560px){
+  .mx-head,.mx-row{grid-template-columns:1fr 34px 34px 34px 34px;}
+  .mx-label{font-size:12px;padding:10px;}
+  .mx-cell{font-size:12px;}
+}
+
+
+
+/* ===== Hiérarchiseur de KPIs (Int mesurer) ===== */
+.kp-intro-pool{border:2px solid var(--ink);background:#fff;padding:14px;margin-bottom:18px;}
+.kp-pool-h{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:10px;}
+.kp-pool{display:flex;flex-direction:column;gap:10px;}
+.kp-done{font-size:13px;color:var(--muted);font-style:italic;margin:2px 0;}
+.kp-chip{border:2px solid var(--ink);background:var(--paper);padding:12px;display:flex;flex-direction:column;gap:10px;}
+.kp-chip-txt{font-size:14px;font-weight:600;color:var(--ink);line-height:1.4;}
+.kp-chip-btns{display:flex;gap:8px;}
+.kp-b{flex:1;border:2px solid var(--ink);background:#fff;font-family:inherit;font-size:12px;font-weight:800;letter-spacing:.01em;padding:9px 6px;cursor:pointer;transition:all .12s;color:#0D0D0D;}
+.kp-b.valeur:hover{background:var(--fluo-green);}
+.kp-b.vanite:hover{background:var(--fluo-pink);}
+.kp-cols{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.kp-col{border:2px solid var(--ink);background:#fff;min-height:120px;display:flex;flex-direction:column;}
+.kp-col-h{padding:10px;font-size:13px;font-weight:900;letter-spacing:-.01em;color:#0D0D0D;text-align:center;}
+.kp-col[data-cat="valeur"] .kp-col-h{background:var(--fluo-green);}
+.kp-col[data-cat="vanite"] .kp-col-h{background:var(--fluo-pink);}
+.kp-col-sub{font-size:10px;font-weight:600;letter-spacing:0;opacity:.7;display:block;margin-top:2px;}
+.kp-drop{flex:1;padding:10px;display:flex;flex-direction:column;gap:7px;}
+.kp-placed{border:1px solid var(--rule);background:var(--paper);padding:9px 10px;font-size:12px;line-height:1.4;color:var(--ink);position:relative;}
+.kp-placed.correct{border-color:var(--fluo-green);border-left:4px solid var(--fluo-green);}
+.kp-placed.wrong{border-color:var(--fluo-pink);border-left:4px solid var(--fluo-pink);}
+.kp-placed .fbk{display:block;font-size:11px;margin-top:5px;line-height:1.4;color:var(--muted);}
+.kp-placed .verdict{font-weight:800;}
+.kp-placed.correct .verdict{color:#1a7a0a;}
+.kp-placed.wrong .verdict{color:#b3005f;}
+.kp-back{margin-top:6px;border:1px solid var(--rule);background:#fff;color:var(--muted);font-family:inherit;font-size:10px;font-weight:700;padding:3px 8px;cursor:pointer;}
+.kp-back:hover{background:#0D0D0D;color:#fff;border-color:#0D0D0D;}
+.kp-count{font-size:11px;color:var(--muted);text-align:center;padding:4px 0 8px;}
+@media(max-width:560px){.kp-cols{grid-template-columns:1fr;}}
+.kp-score-wrap{display:flex;align-items:center;gap:24px;border:2px solid var(--ink);background:#0D0D0D;padding:20px 24px;flex-wrap:wrap;}
+.kp-donut-wrap{position:relative;width:140px;height:140px;flex:0 0 140px;}
+.kp-donut-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.kp-donut-big{font-size:26px;font-weight:900;color:#fff;line-height:1;}
+.kp-donut-sub{font-size:9px;text-transform:uppercase;letter-spacing:.04em;color:rgba(255,255,255,.55);margin-top:2px;}
+.kp-score-legend{flex:1;min-width:180px;display:flex;flex-direction:column;gap:10px;}
+.kp-score-line{display:flex;align-items:center;gap:10px;font-size:13px;color:rgba(255,255,255,.8);}
+.kp-score-line b{margin-left:auto;color:#fff;font-weight:800;font-size:15px;}
+.kp-score-line .dot{width:12px;height:12px;border-radius:50%;flex:0 0 12px;}
+.kp-score-line .dot.ok{background:var(--fluo-green);}
+.kp-score-line .dot.ko{background:var(--fluo-pink);}
+.kp-score-line .dot.todo{background:rgba(255,255,255,.2);}
+
+.kp-fiches{display:flex;flex-direction:column;gap:10px;}
+.kp-fiche{border:2px solid var(--ink);background:#fff;padding:14px 16px;}
+.kp-fiche-sit{font-size:13px;font-weight:800;color:var(--ink);margin-bottom:8px;}
+.kp-fiche-sit::before{content:'\26A0';color:var(--fluo-pink);margin-right:7px;font-weight:400;}
+.kp-fiche-lab{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:2px;}
+.kp-fiche-say{display:block;background:#0D0D0D;padding:16px 18px;font-size:14px;line-height:1.6;color:#fff;font-style:italic;margin-top:4px;}
+
+/* ===== Recommandations dynamiques ===== */
+.reco{margin-top:14px;padding:14px 16px 14px 18px;border-left:3px solid var(--ink);background:var(--white);font-size:13px;line-height:1.6;color:var(--muted);display:none;position:relative;}
+.reco.show{display:block;}
+.reco::before{content:'';position:absolute;left:-3px;top:0;width:3px;height:22px;background:var(--ink);}
+.reco.good::before{background:var(--fluo-green);}
+.reco.warn::before{background:var(--fluo-yellow);}
+.reco.bad::before{background:var(--fluo-pink);}
+.reco strong{font-weight:700;color:var(--ink);}
+.bilan{margin:36px 0 8px;padding:30px 32px;background:#0D0D0D;border:2px solid var(--ink);}
+.bilan-lbl{display:inline-block;background:var(--fluo-green);color:#0D0D0D;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:4px 10px;margin-bottom:18px;}
+.bilan h3{color:#fff;font-size:20px;font-weight:900;margin:0 0 16px;letter-spacing:-.01em;}
+.bilan-empty{color:rgba(255,255,255,.5);font-size:14px;line-height:1.6;}
+.bilan-line{display:flex;gap:12px;padding:12px 0;border-top:1px solid rgba(255,255,255,.12);font-size:14px;line-height:1.6;color:rgba(255,255,255,.9);}
+.bilan-line:first-of-type{border-top:none;}
+.bilan-ico{flex-shrink:0;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;}
+.bilan-ico.g{background:#39FF14;color:#0D0D0D;}
+.bilan-ico.w{background:#E8FF00;color:#0D0D0D;}
+.bilan-ico.b{background:#FF6FD8;color:#0D0D0D;}
+.bilan-line strong{color:#fff;}
+
+/* ===== Onglets (OBLIGATOIRE) ===== */
+.panel{ display:none; }
+.panel.is-active{ display:block; }
+.tab{ cursor:pointer; }
+.tab.is-active{ color:#0D0D0D; background:var(--fluo-violet); border-color:var(--ink); font-weight:800; }
+</style></head>
+<body>
+<a href="/home" class="backbtn">← Retour</a>
+<nav class="sitenav"><div class="nav-left"><a href="/home" class="nav-link">Thématiques</a><a href="/formules" class="nav-link">Formules</a><a href="/waitlist" class="nav-link" style="color:var(--fluo-green);font-weight:800;">Waiting List</a></div>
+<div class="nav-center"><a href="/home" style="display:inline-flex;flex-direction:column;align-items:center;"><span class="logo-pre">Briefings</span><span><span class="logo-s">SKANNER</span><span class="logo-mag">MAGAZINE</span></span></a></div>
+<div class="nav-right"><span class="nav-badge">PR &amp; Communication</span></div></nav>
+<div class="breadcrumb"><a href="/home" style="color:var(--muted);">Accueil</a><span class="sep">/</span><span>PR &amp; Communication</span><span class="sep">/</span><span class="active">Chapitre 2 · Fiche 1 · Intermédiaire</span></div>
+
+<div class="layout">
+  <div class="col-img"><img src="/pr-training-2.jpg" alt="Interview face à un journaliste"/></div>
+  <div class="col-content">
+    <header class="head">
+      <div class="tags"><span class="tag">PR &amp; Communication</span><span class="tag lvl">Intermédiaire</span></div>
+      <h1 class="title">RÉFLEXES ET<br/>PIÈGES</h1>
+      <p class="lead">En interview, certains réflexes sauvent une prise de parole, d'autres la coulent. Entre le <strong>« sans commentaire »</strong> et la digression technique, les pièges sont toujours les mêmes — et ils s'évitent tous.</p>
+    </header>
+    <div class="meta">
+      <div class="meta-item">Niveau <strong>Intermédiaire</strong></div>
+      <div class="meta-item">Durée <strong>15 min</strong></div>
+      <div class="meta-item">Chapitre <strong>2 — Prise de parole &amp; influence</strong></div>
+      <div class="meta-item">Fiche <strong>1 / 4</strong></div>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab is-active" type="button" data-panel="fiche">Fiche</button>
+      <button class="tab" type="button" data-panel="retenir">À retenir</button>
+      <button class="tab" type="button" data-panel="gloss">Glossaire</button>
+      <button class="tab" type="button" data-panel="quiz">Quiz</button>
+      <button class="tab" type="button" data-panel="template">Template</button>
+    </div>
+
+    <div class="body">
+
+      <!-- ===== PANNEAU FICHE ===== -->
+      <div class="panel is-active" id="panel-fiche" role="tabpanel">
+        <section class="section" id="sec-1">
+          <p class="p" style="font-size:13px;color:var(--muted);border-left:2px solid var(--fluo-blue);padding-left:12px;margin-bottom:16px;">Rappel express : on sait préparer ses messages clés et ses redirections. Reste à reconnaître, en direct, ce qui sauve une interview et ce qui la coule.</p>
+          <div class="sec-label"><span class="sec-num">01</span><span class="sec-title-txt">Les pièges qui reviennent toujours</span></div>
+          <p class="p">Les erreurs d'interview ne sont pas infinies : ce sont presque toujours les mêmes cinq ou six. Les connaître, c'est déjà les éviter — parce qu'on les repère au moment où on est sur le point de les commettre.</p>
+          <div class="arrow-list">
+            <div class="al"><span class="al-a">→</span><p><strong>Le « sans commentaire ».</strong> Il sonne coupable et laisse le journaliste écrire sans vous. On répond toujours quelque chose, même pour expliquer pourquoi on ne peut pas répondre.</p></div>
+            <div class="al"><span class="al-a">→</span><p><strong>La digression technique.</strong> Vouloir prouver son expertise en entrant dans le détail : le propos devient incompréhensible et rien n'est repris.</p></div>
+            <div class="al"><span class="al-a">→</span><p><strong>Le remplissage du silence.</strong> Un journaliste se tait après votre réponse ? C'est une technique. Beaucoup meublent — et c'est là qu'on dit la phrase de trop.</p></div>
+            <div class="al"><span class="al-a">→</span><p><strong>La reprise du mot négatif.</strong> Répéter le terme accusateur de la question (« non, nous ne sommes pas en faillite ») l'associe à vous. On reformule avec ses propres mots.</p></div>
+          </div>
+        </section>
+
+        <section class="section" id="sec-2">
+          <div class="sec-label"><span class="sec-num">02</span><span class="sec-title-txt">Les réflexes qui sauvent</span></div>
+          <p class="p">À l'inverse, quelques réflexes simples transforment une interview difficile en prise de parole maîtrisée.</p>
+          <div class="points">
+            <div class="point"><div class="point-k">Rediriger<small>La technique de base</small></div><div class="point-v">Reconnaître la question, y répondre brièvement, puis ramener vers son message : « ce que je peux vous dire, c'est que… ».</div></div>
+            <div class="point"><div class="point-k">Reformuler positivement<small>Reprendre la main</small></div><div class="point-v">Ne jamais répéter le mot piège. Réutiliser ses propres termes pour décrire la situation.</div></div>
+            <div class="point"><div class="point-k">Assumer ce qui est vrai<small>Crédibilité</small></div><div class="point-v">Reconnaître un fait établi désarme la question suivante. Nier un chiffre public est fatal.</div></div>
+            <div class="point"><div class="point-k">S'arrêter<small>Discipline</small></div><div class="point-v">Une réponse courte et complète vaut mieux qu'une longue. Après le point final, on se tait.</div></div>
+          </div>
+          <div class="pull"><p>Le silence du journaliste n'est pas un vide à combler : c'est une invitation à en dire trop. Répondez, puis laissez-le reprendre la parole.</p><cite>Règle de media training</cite></div>
+        </section>
+
+        <section class="section" id="sec-3">
+          <div class="sec-label"><span class="sec-num">03</span><span class="sec-title-txt">Le off, une zone à risque</span></div>
+          <p class="p">Le <strong>off the record</strong> — des propos donnés sans autorisation de citation — repose sur la confiance et sur un accord explicite. Il éclaire le journaliste, il ne le lie pas juridiquement. En pratique : ne dites jamais en off ce qui vous détruirait en on.</p>
+        </section>
+
+        <div class="note">
+          <strong>À garder en tête.</strong> Les pièges sont toujours les mêmes : <strong>« sans commentaire »</strong>, jargon, silence comblé, reprise du mot négatif. Les réflexes aussi : <strong>rediriger</strong>, reformuler avec ses mots, assumer les faits, et <strong>s'arrêter</strong>. Le template vous fait trier les uns des autres.
+        </div>
+      </div>
+
+      <!-- ===== PANNEAU À RETENIR ===== -->
+      <div class="panel" id="panel-retenir" role="tabpanel">
+        <div class="recap">
+          <div class="lbl">À retenir</div>
+          <div class="recap-grid">
+            <div class="recap-card"><div class="rc-k" style="color:var(--fluo-yellow);">Jamais « sans commentaire »</div><div class="rc-v">Ça sonne coupable et vous prive de votre version. On répond toujours quelque chose.</div></div>
+            <div class="recap-card"><div class="rc-k" style="color:var(--fluo-violet);">Ne pas reprendre le mot piège</div><div class="rc-v">Répéter le terme négatif l'associe à vous. Reformulez avec vos propres mots.</div></div>
+            <div class="recap-card"><div class="rc-k" style="color:var(--fluo-green);">Le silence est une technique</div><div class="rc-v">Le journaliste se tait pour vous faire parler. Répondez, puis arrêtez-vous.</div></div>
+            <div class="recap-card"><div class="rc-k" style="color:var(--fluo-pink);">Assumer les faits établis</div><div class="rc-v">Reconnaître un fait public désarme la suite. Le nier vous décrédibilise.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PANNEAU GLOSSAIRE (cartes fond noir, 12 termes, couleurs alternées) ===== -->
+      <div class="panel" id="panel-gloss" role="tabpanel">
+        <div class="gloss">
+          <div class="gloss-l">Glossaire</div>
+          <div class="gl-grid">
+            <div class="gl-item"><span class="gl-term" style="background:#E8FF00;color:#0D0D0D;">Réflexe d'interview</span><span class="gl-def">Automatisme acquis par l'entraînement qui permet de bien réagir sous pression.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#C77DFF;color:#0D0D0D;">Sans commentaire</span><span class="gl-def">Réponse à bannir : elle suggère la culpabilité et laisse le récit au journaliste.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#39FF14;color:#0D0D0D;">Redirection</span><span class="gl-def">Répondre à la question puis ramener l'échange vers son message clé.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#FF6FD8;color:#0D0D0D;">Reformulation</span><span class="gl-def">Redire la question ou la situation avec ses propres mots, sans reprendre les termes négatifs.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#4DD2FF;color:#0D0D0D;">Mot piège</span><span class="gl-def">Terme accusateur glissé dans la question ; le répéter l'associe durablement à vous.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#E8FF00;color:#0D0D0D;">Silence tactique</span><span class="gl-def">Pause volontaire du journaliste destinée à pousser l'interviewé à en dire plus.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#C77DFF;color:#0D0D0D;">Digression technique</span><span class="gl-def">Dérive vers le détail expert qui rend le propos incompréhensible et inutilisable.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#39FF14;color:#0D0D0D;">Off the record</span><span class="gl-def">Propos échangés sans autorisation de citation, sur accord explicite préalable.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#FF6FD8;color:#0D0D0D;">On the record</span><span class="gl-def">Mode par défaut : tout ce qui est dit est citable et attribuable.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#4DD2FF;color:#0D0D0D;">Phrase de trop</span><span class="gl-def">Précision ajoutée après une réponse complète, souvent celle qui fait le titre.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#E8FF00;color:#0D0D0D;">Fait établi</span><span class="gl-def">Information publique et vérifiable qu'il est contre-productif de nier.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#C77DFF;color:#0D0D0D;">Cadrage</span><span class="gl-def">Manière dont la question pose implicitement le problème ; on peut refuser un cadrage biaisé.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PANNEAU QUIZ (5 questions + feedback noir + score /5) ===== -->
+      <div class="panel" id="panel-quiz" role="tabpanel">
+        <div class="quiz">
+          <div class="quiz-intro">
+            <div class="quiz-head"><span class="qbadge">Quiz</span><span class="qttl">Validez vos acquis</span></div>
+            <p>Cinq questions pour ancrer la logique d'ensemble.</p>
+          </div>
+<div class="q" id="q1">
+            <p class="qn">Question 01 / 05</p>
+            <p class="qt">Pourquoi ne faut-il jamais répondre « sans commentaire » ?</p>
+            <div class="opts">
+              <button class="opt" data-ok="1" data-q="1">Ça sonne coupable et laisse le journaliste écrire sans vous</button>
+              <button class="opt" data-ok="0" data-q="1">Parce que c'est impoli envers le journaliste</button>
+              <button class="opt" data-ok="0" data-q="1">Parce que la loi impose de répondre</button>
+            </div>
+            <div class="fb" id="f1"></div>
+          </div>
+          <div class="q" id="q2">
+            <p class="qn">Question 02 / 05</p>
+            <p class="qt">Un journaliste se tait après votre réponse. Que faire ?</p>
+            <div class="opts">
+              <button class="opt" data-ok="0" data-q="2">Meubler le silence en ajoutant des précisions</button>
+              <button class="opt" data-ok="1" data-q="2">S'arrêter : le silence est une technique pour vous faire parler</button>
+              <button class="opt" data-ok="0" data-q="2">Poser une question au journaliste</button>
+            </div>
+            <div class="fb" id="f2"></div>
+          </div>
+          <div class="q" id="q3">
+            <p class="qn">Question 03 / 05</p>
+            <p class="qt">On vous demande : « êtes-vous en faillite ? ». Quelle réponse est la meilleure ?</p>
+            <div class="opts">
+              <button class="opt" data-ok="0" data-q="3">« Non, nous ne sommes pas en faillite »</button>
+              <button class="opt" data-ok="1" data-q="3">« Notre situation financière est la suivante : … » (sans reprendre le mot)</button>
+              <button class="opt" data-ok="0" data-q="3">« Je ne répondrai pas à cette question »</button>
+            </div>
+            <div class="fb" id="f3"></div>
+          </div>
+          <div class="q" id="q4">
+            <p class="qn">Question 04 / 05</p>
+            <p class="qt">Face à un chiffre public défavorable, quel est le bon réflexe ?</p>
+            <div class="opts">
+              <button class="opt" data-ok="1" data-q="4">Reconnaître le fait, puis expliquer le choix ou la mesure prise</button>
+              <button class="opt" data-ok="0" data-q="4">Contester le chiffre pour semer le doute</button>
+              <button class="opt" data-ok="0" data-q="4">Changer de sujet sans y répondre</button>
+            </div>
+            <div class="fb" id="f4"></div>
+          </div>
+          <div class="q" id="q5">
+            <p class="qn">Question 05 / 05</p>
+            <p class="qt">Qu'est-ce que le « off the record » ?</p>
+            <div class="opts">
+              <button class="opt" data-ok="1" data-q="5">Des propos donnés sans autorisation de citation, sur accord explicite</button>
+              <button class="opt" data-ok="0" data-q="5">Une garantie juridique que rien ne sera publié</button>
+              <button class="opt" data-ok="0" data-q="5">Un entretien enregistré mais non diffusé</button>
+            </div>
+            <div class="fb" id="f5"></div>
+          </div>
+          </div>
+          <div class="score" id="score">
+            <p class="score-l">Votre score</p>
+            <p class="score-n" id="sn">0 / 5</p>
+            <p class="score-m" id="sm"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PANNEAU TEMPLATE : TRIEUR RÉFLEXES / PIÈGES ===== -->
+      <div class="panel" id="panel-template" role="tabpanel">
+        <div class="topbar">
+          <div class="topbar-info">Template lié à <strong>Réflexes et pièges d'interview</strong> · Chapitre 2 · Fiche 1 · Intermédiaire</div>
+          <div class="actions"><button class="btn" onclick="resetAll()">↺ Réinitialiser</button><button class="btn" id="btn-copy" onclick="copyFiches()">⧉ Copier mes parades</button><button class="btn btn-primary" id="btn-pdf" onclick="exportPDF()">↓ Exporter en PDF</button></div>
+        </div>
+        <div id="export-zone">
+          <header class="head">
+            <div class="tags"><span class="tag tpl">Template</span><span class="tag">PR &amp; Communication</span><span class="tag lvl">Intermédiaire</span></div>
+            <h1>RÉFLEXE OU<br/>PIÈGE ?</h1>
+            <p class="intro">Dix réactions d'interview. Pour chacune, dites si c'est un bon réflexe ou un piège. L'outil corrige, explique — et surtout vous donne <strong>la formulation correcte à utiliser</strong> le jour J. À la fin, vous repartez avec votre aide-mémoire de parades.</p>
+          </header>
+          <div class="progress-wrap"><div class="progress-label"><span>Progression</span><span id="ppct">0%</span></div><div class="progress-bar"><div class="progress-fill" id="pfill"></div></div></div>
+
+          <section class="tpl-section">
+            <div class="tpl-sec-head"><span class="tpl-sec-num">01</span><span class="tpl-sec-title">Les réactions à trier</span></div>
+            <div class="kp-intro-pool">
+              <div class="kp-pool-h">À classer — cliquez la nature de chaque réaction</div>
+              <div id="kp-pool"></div>
+            </div>
+            <div class="kp-cols">
+              <div class="kp-col" data-cat="reflexe"><div class="kp-col-h">Bon réflexe<span class="kp-col-sub">à faire</span></div><div class="kp-drop" id="drop-reflexe"></div><div class="kp-count" id="cnt-reflexe">0</div></div>
+              <div class="kp-col" data-cat="piege"><div class="kp-col-h">Piège<span class="kp-col-sub">à éviter</span></div><div class="kp-drop" id="drop-piege"></div><div class="kp-count" id="cnt-piege">0</div></div>
+            </div>
+            <div class="reco" id="kp-reco"></div>
+          </section>
+
+          <section class="tpl-section" id="kp-score-sec" style="display:none;">
+            <div class="tpl-sec-head"><span class="tpl-sec-num">02</span><span class="tpl-sec-title">Votre score</span></div>
+            <div class="kp-score-wrap">
+              <div class="kp-donut-wrap">
+                <svg id="kp-donut" viewBox="0 0 120 120" width="140" height="140" role="img" aria-label="Score de tri"></svg>
+                <div class="kp-donut-center"><div class="kp-donut-big" id="kp-donut-pct">0%</div><div class="kp-donut-sub">bien classé</div></div>
+              </div>
+              <div class="kp-score-legend">
+                <div class="kp-score-line"><span class="dot ok"></span><span>Bien classés</span><b id="kp-lg-ok">0</b></div>
+                <div class="kp-score-line"><span class="dot ko"></span><span>Mal classés</span><b id="kp-lg-ko">0</b></div>
+                <div class="kp-score-line"><span class="dot todo"></span><span>À classer</span><b id="kp-lg-todo">10</b></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="tpl-section" id="kp-fiches-sec" style="display:none;">
+            <div class="tpl-sec-head"><span class="tpl-sec-num">03</span><span class="tpl-sec-title">Vos parades — à emporter</span></div>
+            <p class="cd">Pour chaque piège rencontré, la formulation correcte à utiliser. C'est votre aide-mémoire.</p>
+            <div class="kp-fiches" id="kp-fiches"></div>
+          </section>
+
+          <div class="bilan" id="bilan">
+            <span class="bilan-lbl">Bilan</span>
+            <h3>Est-ce que je repère les pièges ?</h3>
+            <div id="bilan-content"><p class="bilan-empty">Classez les réactions : votre bilan s'affichera ici.</p></div>
+          </div>
+
+          <div class="note">
+            <strong>Rappel de la fiche.</strong> Les pièges sont toujours les mêmes : <strong>« sans commentaire »</strong>, jargon, silence comblé, reprise du mot négatif. Les réflexes aussi : <strong>rediriger</strong>, reformuler, assumer, <strong>s'arrêter</strong>.
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /body -->
+
+    <footer class="foot"><a href="/home" style="display:inline-flex;flex-direction:column;"><span class="logo-pre">Briefings</span><span><span class="logo-s">SKANNER</span><span class="logo-mag">MAGAZINE</span></span></a><div class="foot-copy">© 2026 — Skanner Magazine</div></footer>
+  </div>
+</div>
+
+<!-- CDN PDF (defer pour ne pas bloquer les onglets) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+
+<!-- JS ONGLETS (OBLIGATOIRE, délégation d'événement) -->
+<script>
+document.addEventListener('click', function(e){
+  var btn = e.target.closest('.tab');
+  if(!btn) return;
+  var name = btn.getAttribute('data-panel');
+  var tabs = document.querySelectorAll('.tab');
+  for(var i=0;i<tabs.length;i++){
+    if(tabs[i].getAttribute('data-panel')===name) tabs[i].classList.add('is-active');
+    else tabs[i].classList.remove('is-active');
+  }
+  var panels = document.querySelectorAll('.panel');
+  for(var j=0;j<panels.length;j++){
+    if(panels[j].id==='panel-'+name) panels[j].classList.add('is-active');
+    else panels[j].classList.remove('is-active');
+  }
+});
+</script>
+
+<!-- JS QUIZ + TEMPLATE -->
+<script>
+// ===== QUIZ — objet FB : 1 entrée par question. c = si bonne réponse, i = si mauvaise =====
+var FB={
+  1:{c:"Exact. Le silence vous prive de votre version et suggère la culpabilité.",i:"Non : ce n'est ni une question de politesse ni de loi. Ça vous fait paraître coupable."},
+  2:{c:"Exact. Le silence est une technique. Répondez, puis laissez-le reprendre la parole.",i:"Non : meubler, c'est risquer la phrase de trop. On s'arrête après une réponse complète."},
+  3:{c:"Exact. On ne répète jamais le mot piège : on reformule avec ses propres termes.",i:"Non : reprendre « faillite » l'associe à vous, et refuser de répondre aggrave le soupçon."},
+  4:{c:"Exact. Assumer un fait établi désamorce la suite et crédibilise votre discours.",i:"Non : contester un chiffre public ou fuir vous décrédibilise immédiatement."},
+  5:{c:"Exact. Un accord de confiance explicite, pas une protection juridique.",i:"Non : le off n'est ni une garantie légale ni un enregistrement non diffusé. C'est un accord de confiance."}
+};
+var ans={},score=0;
+document.querySelectorAll('.opt').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var q=parseInt(btn.getAttribute('data-q'),10);
+    var ok=btn.getAttribute('data-ok')==='1';
+    if(ans[q]!==undefined)return;
+    ans[q]=ok;if(ok)score++;
+    var block=document.getElementById('q'+q);
+    block.querySelectorAll('.opt').forEach(function(x){x.disabled=true;});
+    btn.classList.add(ok?'ok':'no');
+    if(!ok)block.querySelectorAll('.opt').forEach(function(x){if(x.getAttribute('data-ok')==='1')x.classList.add('ok');});
+    var f=document.getElementById('f'+q);
+    f.textContent=ok?FB[q].c:FB[q].i;f.className='fb show';
+    if(Object.keys(ans).length===5)done();
+  });
+});
+function done(){
+  var s=document.getElementById('score');s.classList.add('show');
+  document.getElementById('sn').textContent=score+' / 5';
+  var m=["Aucune bonne réponse — reprends les pièges classiques.","1/5 : les réflexes ne sont pas acquis.","2/5 : quelques notions, revois la reformulation.","3/5 : bonne base. Consolide le silence et le mot piège.","4/5 : presque tout est là, un dernier point.","5/5 : vous repérez les pièges. Direction le trieur pour les ancrer."];
+  document.getElementById('sm').textContent=m[score]||'';
+}
+
+// ===== Barre de progression de lecture =====
+(function(){
+  var bar=document.getElementById('readbar');
+  if(!bar)return;
+  function upd(){
+    var h=document.documentElement;
+    var max=h.scrollHeight-h.clientHeight;
+    var p=max>0?(h.scrollTop||document.body.scrollTop)/max*100:0;
+    bar.style.width=p+'%';
+  }
+  window.addEventListener('scroll',upd,{passive:true});
+  window.addEventListener('resize',upd);upd();
+})();
+
+
+
+// ===== Barre de progression : gérée par le hiérarchiseur (2e script) =====
+
+// ===== Calculateurs =====
+function num(id){ var v=parseFloat(document.getElementById(id).value); return isNaN(v)?0:v; }
+function fmt(n){ return n.toLocaleString('fr-FR',{maximumFractionDigits:2}); }
+
+function calcCAC(){
+  var budget=num('cac-budget'), clients=num('cac-clients');
+  var el=document.getElementById('cac-result');
+  if(clients>0){ window._cac=budget/clients; el.textContent=fmt(window._cac)+' €'; el.classList.remove('muted'); }
+  else { window._cac=0; el.textContent='—'; el.classList.add('muted'); }
+  checkVerdict();
+}
+function calcConv(){
+  var v=num('conv-visiteurs'), a=num('conv-achats');
+  var el=document.getElementById('conv-result');
+  if(v>0){ el.textContent=fmt(a/v*100)+' %'; el.classList.remove('muted'); }
+  else { el.textContent='—'; el.classList.add('muted'); }
+}
+function calcPanier(){
+  var ca=num('panier-ca'), cmd=num('panier-cmd');
+  var el=document.getElementById('panier-result');
+  if(cmd>0){ el.textContent=fmt(ca/cmd)+' €'; el.classList.remove('muted'); }
+  else { el.textContent='—'; el.classList.add('muted'); }
+}
+function calcLTV(){
+  var panier=num('ltv-panier'), freq=num('ltv-freq'), duree=num('ltv-duree');
+  var el=document.getElementById('ltv-result');
+  window._ltv=panier*freq*duree;
+  if(window._ltv>0){ el.textContent=fmt(window._ltv)+' €'; el.classList.remove('muted'); }
+  else { el.textContent='—'; el.classList.add('muted'); }
+  checkVerdict();
+}
+function checkVerdict(){
+  var v=document.getElementById('verdict');
+  if(window._cac>0 && window._ltv>0){
+    var ratio=window._ltv/window._cac;
+    v.classList.add('show');
+    if(ratio>=3){
+      v.className='verdict show good';
+      v.innerHTML='<strong>Modèle sain.</strong> Ta valeur vie client ('+fmt(window._ltv)+' €) vaut '+ratio.toFixed(1)+'× ton coût d\'acquisition ('+fmt(window._cac)+' €). Tu es au-dessus du seuil de 3×. Chaque nouveau client enrichit ton activité.';
+    } else {
+      v.className='verdict show bad';
+      v.innerHTML='<strong>À surveiller.</strong> Ta valeur vie client ('+fmt(window._ltv)+' €) ne vaut que '+ratio.toFixed(1)+'× ton coût d\'acquisition ('+fmt(window._cac)+' €). En dessous de 3×, chaque acquisition fragilise ton activité. Leviers : augmenter le panier, la fréquence, la fidélisation — ou réduire le coût d\'acquisition.';
+    }
+  }
+}
+
+// ===== Cases à cocher du plan d'action =====
+document.querySelectorAll('.action-check').forEach(function(box){
+  box.addEventListener('click',function(){ box.classList.toggle('checked'); });
+});
+
+// ===== Réinitialiser =====
+function resetAll(){
+  if(!confirm('Réinitialiser tous les champs ?'))return;
+  document.querySelectorAll('input,textarea').forEach(function(el){ el.value=''; });
+  document.querySelectorAll('.action-check').forEach(function(b){ b.classList.remove('checked'); });
+  document.querySelectorAll('.calc-result span.rv, [id$="-result"]').forEach(function(e){ e.textContent='—'; e.classList.add('muted'); });
+  document.getElementById('verdict').className='verdict';
+  window._cac=0;window._ltv=0;
+  updateProgress();
+}
+
+// ===== Export PDF réel =====
+function exportPDF(){
+  if(typeof window.jspdf==='undefined' || typeof html2canvas==='undefined'){ alert('Le module d\'export se charge encore, réessaie dans un instant.'); return; }
+  var btn=document.getElementById('btn-pdf');
+  btn.disabled=true; var old=btn.textContent; btn.textContent='Génération…';
+  document.body.classList.add('pdf-mode');
+  var target=document.getElementById('export-zone');
+  html2canvas(target,{scale:2,useCORS:true,backgroundColor:'#ffffff',windowWidth:target.scrollWidth}).then(function(canvas){
+    var img=canvas.toDataURL('image/jpeg',0.92);
+    var pdf=new window.jspdf.jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+    var pw=pdf.internal.pageSize.getWidth(), ph=pdf.internal.pageSize.getHeight();
+    var margin=10, cw=pw-margin*2;
+    var ih=canvas.height*cw/canvas.width;
+    var left=ih, pos=margin;
+    pdf.addImage(img,'JPEG',margin,pos,cw,ih); left-=(ph-margin*2);
+    while(left>0){ pdf.addPage(); pos=margin-(ih-left); pdf.addImage(img,'JPEG',margin,pos,cw,ih); left-=(ph-margin*2); }
+    pdf.save('skanner-diagnostic-ecosysteme-digital.pdf');
+    document.body.classList.remove('pdf-mode');
+    btn.disabled=false; btn.textContent=old;
+  }).catch(function(e){
+    console.error(e); alert('Export impossible, réessaie.');
+    document.body.classList.remove('pdf-mode');
+    btn.disabled=false; btn.textContent=old;
+  });
+}
+
+// ===== TRIEUR RÉFLEXES / PIÈGES D'INTERVIEW =====
+// cat: 'reflexe' | 'piege'  ·  say = la formulation correcte à utiliser
+var ITEMS=[
+ {id:'i1',txt:"Répondre « sans commentaire » à une question gênante",cat:'piege',
+  why:"Ça sonne coupable et laisse le journaliste écrire l'histoire sans votre version.",
+  sit:"Une question à laquelle vous ne pouvez pas répondre",
+  say:"Je ne peux pas vous répondre sur ce point précis, et je vais vous dire pourquoi : [raison — enquête en cours, confidentialité]. En revanche, ce que je peux vous dire, c'est [votre message]."},
+ {id:'i2',txt:"Reconnaître la question, y répondre, puis ramener vers son message",cat:'reflexe',
+  why:"C'est la redirection : la technique de base du media training. On ne fuit pas, on oriente.",
+  sit:"",say:""},
+ {id:'i3',txt:"Répéter le mot négatif de la question pour le nier (« non, nous ne sommes pas en faillite »)",cat:'piege',
+  why:"Reprendre le terme accusateur l'associe durablement à vous — c'est souvent la phrase qui devient le titre.",
+  sit:"Une question contenant un mot accusateur",
+  say:"Notre situation est la suivante : [décrivez avec VOS mots, sans reprendre le terme]. Les chiffres qui comptent sont [donnée factuelle]."},
+ {id:'i4',txt:"Combler le silence du journaliste en ajoutant des précisions",cat:'piege',
+  why:"Le silence est une technique pour vous faire parler. C'est là qu'on lâche la phrase de trop.",
+  sit:"Le journaliste se tait après votre réponse",
+  say:"[Ne rien dire. Votre réponse était complète : soutenez le silence et laissez-le poser la question suivante.]"},
+ {id:'i5',txt:"Assumer un chiffre public défavorable, puis expliquer la mesure prise",cat:'reflexe',
+  why:"Reconnaître un fait établi désarme la question suivante et crédibilise tout le reste du discours.",
+  sit:"",say:""},
+ {id:'i6',txt:"Entrer dans le détail technique pour prouver son expertise",cat:'piege',
+  why:"Le propos devient incompréhensible et donc inutilisable : rien ne sera repris.",
+  sit:"Une question technique ou complexe",
+  say:"Pour le dire simplement : [une phrase accessible]. Si vous voulez le détail technique, je vous l'envoie après l'entretien."},
+ {id:'i7',txt:"Préparer deux ou trois messages clés avant l'entretien",cat:'reflexe',
+  why:"C'est le socle de toute prise de parole maîtrisée : sans messages, on subit les questions.",
+  sit:"",say:""},
+ {id:'i8',txt:"Dire en off ce qu'on refuse de dire en on",cat:'piege',
+  why:"Le off repose sur la confiance, pas sur une protection juridique. Ne dites jamais en off ce qui vous détruirait en on.",
+  sit:"La tentation de confier quelque chose « entre nous »",
+  say:"[Ne rien confier de sensible. Si l'information ne peut pas sortir, elle ne se dit pas — même en off.]"},
+ {id:'i9',txt:"S'arrêter après une réponse courte et complète",cat:'reflexe',
+  why:"Une réponse brève est plus facile à reprendre intégralement — et laisse moins de prise.",
+  sit:"",say:""},
+ {id:'i10',txt:"Accepter le cadrage biaisé d'une question et répondre dedans",cat:'piege',
+  why:"Répondre à une question mal posée valide son présupposé. On peut refuser le cadre, calmement.",
+  sit:"Une question qui contient un présupposé faux",
+  say:"La question mérite d'être posée autrement, parce que [le présupposé] n'est pas exact. Le vrai sujet, c'est [reformulation]. Sur ce point : [votre réponse]."}
+];
+var CATLAB={reflexe:'Bon réflexe',piege:'Piège'};
+var place={};
+ITEMS.forEach(function(k){place[k.id]='';});
+
+function classify(id,cat){place[id]=cat;render();}
+function toPool(id){place[id]='';render();}
+
+function render(){
+  var pool=document.getElementById('kp-pool');
+  var inPool=ITEMS.filter(function(k){return place[k.id]==='';});
+  pool.innerHTML=inPool.length?inPool.map(function(k){
+    return '<div class="kp-chip"><span class="kp-chip-txt">'+k.txt+'</span><span class="kp-chip-btns">'+
+      '<button class="kp-b valeur" onclick="classify(\''+k.id+'\',\'reflexe\')">Bon réflexe</button>'+
+      '<button class="kp-b vanite" onclick="classify(\''+k.id+'\',\'piege\')">Piège</button>'+
+      '</span></div>';
+  }).join(''):'<p class="kp-done">Tout est classé. Cliquez « changer » pour revoir un choix.</p>';
+  ['reflexe','piege'].forEach(function(cat){
+    var drop=document.getElementById('drop-'+cat);
+    var items=ITEMS.filter(function(k){return place[k.id]===cat;});
+    drop.innerHTML=items.map(function(k){
+      var correct=place[k.id]===k.cat;
+      var verdict=correct?'Bien vu.':'À revoir — c\'est '+(k.cat==='reflexe'?'un bon réflexe':'un piège')+'.';
+      return '<div class="kp-placed '+(correct?'correct':'wrong')+'"><span>'+k.txt+'</span>'+
+        '<span class="fbk"><span class="verdict">'+verdict+'</span> '+k.why+'</span>'+
+        '<button class="kp-back" onclick="toPool(\''+k.id+'\')">↺ changer</button></div>';
+    }).join('');
+    document.getElementById('cnt-'+cat).textContent=items.length+' réaction'+(items.length>1?'s':'');
+  });
+  updateReco();updateProgress();updateBilan();drawScore();buildFiches();
+}
+
+function drawScore(){
+  var sec=document.getElementById('kp-score-sec');
+  var placed=ITEMS.filter(function(k){return place[k.id]!=='';});
+  if(placed.length===0){sec.style.display='none';return;}
+  sec.style.display='block';
+  var ok=placed.filter(function(k){return place[k.id]===k.cat;}).length;
+  var ko=placed.length-ok;
+  var todo=ITEMS.length-placed.length;
+  var total=ITEMS.length;
+  var svg=document.getElementById('kp-donut');
+  var circ=2*Math.PI*46;
+  var segs=[[ok,'var(--fluo-green)'],[ko,'var(--fluo-pink)'],[todo,'rgba(255,255,255,.15)']];
+  var off=0,h='<circle cx="60" cy="60" r="46" fill="none" stroke="rgba(255,255,255,.08)" stroke-width="15"/>';
+  segs.forEach(function(s){
+    if(s[0]<=0)return;
+    var len=s[0]/total*circ;
+    h+='<circle cx="60" cy="60" r="46" fill="none" stroke="'+s[1]+'" stroke-width="15" stroke-dasharray="'+len+' '+(circ-len)+'" stroke-dashoffset="'+(-off)+'" transform="rotate(-90 60 60)"/>';
+    off+=len;
+  });
+  svg.innerHTML=h;
+  var pct=placed.length?Math.round(ok/placed.length*100):0;
+  document.getElementById('kp-donut-pct').textContent=pct+'%';
+  document.getElementById('kp-lg-ok').textContent=ok;
+  document.getElementById('kp-lg-ko').textContent=ko;
+  document.getElementById('kp-lg-todo').textContent=todo;
+}
+
+// Les parades : tous les pièges correctement identifiés donnent leur formulation
+function buildFiches(){
+  var sec=document.getElementById('kp-fiches-sec');
+  var pieges=ITEMS.filter(function(k){return k.cat==='piege' && place[k.id]!=='';});
+  if(pieges.length===0){sec.style.display='none';return;}
+  sec.style.display='block';
+  document.getElementById('kp-fiches').innerHTML=pieges.map(function(k){
+    return '<div class="kp-fiche"><div class="kp-fiche-sit">'+k.sit+'</div>'+
+      '<div class="kp-fiche-lab">Ce qu\'il faut dire</div>'+
+      '<div class="kp-fiche-say">'+k.say+'</div></div>';
+  }).join('');
+}
+
+function updateReco(){
+  var reco=document.getElementById('kp-reco');
+  var placed=ITEMS.filter(function(k){return place[k.id]!=='';});
+  if(placed.length===0){reco.className='reco';return;}
+  var wrong=placed.filter(function(k){return place[k.id]!==k.cat;});
+  if(placed.length<ITEMS.length){reco.className='reco show warn';reco.innerHTML='<strong>'+(ITEMS.length-placed.length)+' réaction(s) restante(s).</strong> Une aide : demandez-vous « est-ce que ça me donne la main, ou est-ce que ça la donne au journaliste ? ».';}
+  else if(wrong.length>0){reco.className='reco show bad';reco.innerHTML='<strong>'+wrong.length+' erreur(s).</strong> Les cartes roses sont mal classées — lisez l\'explication et corrigez avec « changer ».';}
+  else{reco.className='reco show good';reco.innerHTML='<strong>Sans-faute !</strong> Vous repérez les pièges classiques. Vos parades sont rassemblées plus bas, prêtes à emporter.';}
+}
+
+function updateProgress(){
+  var placed=ITEMS.filter(function(k){return place[k.id]!=='';}).length;
+  var p=Math.round(placed/ITEMS.length*100);
+  var pf=document.getElementById('pfill');if(pf)pf.style.width=p+'%';
+  var pp=document.getElementById('ppct');if(pp)pp.textContent=p+'%';
+}
+
+function updateBilan(){
+  var c=document.getElementById('bilan-content');if(!c)return;
+  var placed=ITEMS.filter(function(k){return place[k.id]!=='';});
+  if(placed.length===0){c.innerHTML='<p class="bilan-empty">Classez les réactions : votre bilan s\'affichera ici.</p>';return;}
+  var wrong=placed.filter(function(k){return place[k.id]!==k.cat;});
+  var good=placed.length-wrong.length;
+  var lines=[];
+  if(placed.length<ITEMS.length)lines.push(['w','Tri en cours ('+placed.length+'/'+ITEMS.length+'). Terminez pour un bilan complet.']);
+  lines.push([wrong.length===0?'g':'w','<strong>'+good+'/'+placed.length+'</strong> réaction(s) bien classée(s).']);
+  if(wrong.length>0)lines.push(['b','<strong>'+wrong.length+' erreur(s)</strong> \u2014 revoyez les cartes roses, l\'explication est dessus.']);
+  if(placed.length===ITEMS.length&&wrong.length===0){
+    lines.push(['g','<strong>Les pièges sont identifiés</strong> : « sans commentaire », mot négatif repris, silence comblé, jargon, off imprudent, cadrage biaisé.']);
+    lines.push(['g','<strong>Vos parades sont prêtes</strong> \u2014 copiez-les et relisez-les avant votre prochaine interview.']);
+  }
+  var bad=lines.some(function(l){return l[0]==='b';}),warn=lines.some(function(l){return l[0]==='w';});
+  var head=bad?'Des erreurs à corriger : relisez les explications sur les cartes.':(warn?'Bonne progression \u2014 terminez le tri.':'Tri maîtrisé : vous repérez les pièges et vous avez les formulations correctes.');
+  var html='<p style="color:#fff;font-size:14px;line-height:1.6;margin:0 0 16px;">'+head+'</p>';
+  lines.forEach(function(l){var s=l[0]==='g'?'OK':(l[0]==='w'?'!':'X');html+='<div class="bilan-line"><span class="bilan-ico '+l[0]+'">'+s+'</span><span>'+l[1]+'</span></div>';});
+  c.innerHTML=html;
+}
+
+function copyFiches(){
+  var pieges=ITEMS.filter(function(k){return k.cat==='piege' && place[k.id]!=='';});
+  if(pieges.length===0){alert('Classez d\'abord quelques réactions pour obtenir vos parades.');return;}
+  var l=['MES PARADES D\'INTERVIEW','',];
+  pieges.forEach(function(k){l.push('SITUATION : '+k.sit);l.push('À DIRE : '+k.say);l.push('');});
+  var txt=l.join('\n');
+  var btn=document.getElementById('btn-copy');var old=btn.textContent;
+  function done(){btn.textContent='\u2713 Copié';setTimeout(function(){btn.textContent=old;},1500);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done).catch(function(){fb(txt);done();});}else{fb(txt);done();}
+  function fb(x){var ta=document.createElement('textarea');ta.value=x;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);}
+}
+
+function resetAll(){
+  if(!confirm('Réinitialiser ?'))return;
+  ITEMS.forEach(function(k){place[k.id]='';});
+  render();
+}
+
+function exportPDF(){if(typeof window.jspdf==='undefined'||typeof html2canvas==='undefined'){alert('Le module d\'export se charge encore, réessaie.');return;}var btn=document.getElementById('btn-pdf');btn.disabled=true;var old=btn.textContent;btn.textContent='Génération…';document.body.classList.add('pdf-mode');var target=document.getElementById('export-zone');html2canvas(target,{scale:2,useCORS:true,backgroundColor:'#ffffff',windowWidth:target.scrollWidth}).then(function(canvas){var img=canvas.toDataURL('image/jpeg',0.92);var pdf=new window.jspdf.jsPDF({orientation:'portrait',unit:'mm',format:'a4'});var pw=pdf.internal.pageSize.getWidth(),ph=pdf.internal.pageSize.getHeight();var margin=10,cw=pw-margin*2;var ih=canvas.height*cw/canvas.width;var left=ih,pos=margin;pdf.addImage(img,'JPEG',margin,pos,cw,ih);left-=(ph-margin*2);while(left>0){pdf.addPage();pos=margin-(ih-left);pdf.addImage(img,'JPEG',margin,pos,cw,ih);left-=(ph-margin*2);}pdf.save('skanner-parades-interview.pdf');document.body.classList.remove('pdf-mode');btn.disabled=false;btn.textContent=old;}).catch(function(e){console.error(e);alert('Export impossible.');document.body.classList.remove('pdf-mode');btn.disabled=false;btn.textContent=old;});}
+
+// INIT
+render();
+</script>
+</body></html>

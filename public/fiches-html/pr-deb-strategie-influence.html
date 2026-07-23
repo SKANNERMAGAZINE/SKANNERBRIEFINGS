@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5"/>
+<title>Cartographier ses parties prenantes — Briefings by Skanner</title>
+<meta name="description" content="Identifier et prioriser ses parties prenantes avec la matrice de Mendelow. Cartographie interactive par secteur. Fiche Débutant — Skanner Magazine."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=General+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700;1,900&display=swap" rel="stylesheet"/>
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700,800,900&display=swap" rel="stylesheet"/>
+<style>
+
+:root{--glacial:'General Sans','Helvetica Neue',Arial,sans-serif;}
+
+:root{
+  --ink:#0D0D0D;--white:#fff;--paper:#F8F7F5;--rule:#DDDBD6;--muted:#7A7770;
+  --fluo-yellow:#E8FF00;   /* jaune fluo */
+  --fluo-violet:#C77DFF;   /* violet fluo */
+  --fluo-green:#39FF14;    /* vert fluo */
+  --fluo-pink:#FF6FD8;     /* rose fluo */
+  --fluo-blue:#4DD2FF;     /* bleu fluo */
+  --sage:#39FF14;          /* on réutilise le vert fluo partout où --sage était */
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+body{font-family:'General Sans','Helvetica Neue',Arial,sans-serif;background:var(--white);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+
+.sitenav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);border-bottom:1px solid var(--rule);backdrop-filter:blur(8px);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 40px;height:56px;}
+.nav-left{display:flex;align-items:center;gap:4px;}
+.nav-link{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:6px 14px;transition:color .12s;}
+.nav-link:hover{color:var(--ink);}
+.nav-center{text-align:center;justify-self:center;}
+.logo-pre{font-size:8px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:2px;}
+.logo-s{font-size:17px;font-weight:900;letter-spacing:-.02em;text-transform:uppercase;font-style:italic;}
+.logo-mag{font-size:17px;font-weight:400;letter-spacing:.01em;text-transform:uppercase;font-style:normal;}
+.nav-right{display:flex;align-items:center;justify-content:flex-end;gap:12px;}
+.nav-badge{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:3px 9px;border:1px solid var(--rule);color:var(--muted);}
+
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:11px 40px;border-bottom:1px solid var(--rule);background:var(--paper);}
+.breadcrumb .sep{color:var(--rule);}
+.breadcrumb .active{color:var(--ink);}
+
+.layout{display:grid;grid-template-columns:340px 1fr;align-items:start;}
+.col-img{position:sticky;top:56px;height:calc(100vh - 56px);overflow:hidden;background:var(--paper);border-right:1px solid var(--rule);align-self:start;}
+.col-img img{width:100%;height:100%;object-fit:cover;object-position:center;}
+.col-content{min-width:0;}
+
+.head{padding:48px 56px 40px;border-bottom:1px solid var(--rule);}
+.tags{display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap;}
+.tag{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border:1px solid var(--rule);color:var(--muted);}
+.tag.lvl{color:#0D0D0D;border-color:var(--ink);background:var(--fluo-green);font-weight:800;}
+h1.title{font-size:clamp(34px,4.5vw,58px);font-weight:900;letter-spacing:-.03em;line-height:.94;text-transform:uppercase;margin-bottom:18px;}
+.lead{font-size:15px;line-height:1.7;color:var(--muted);border-left:2px solid var(--ink);padding-left:18px;max-width:580px;}
+.lead strong{color:var(--ink);font-weight:600;}
+
+.meta{display:flex;flex-wrap:wrap;border-bottom:1px solid var(--rule);padding:0 56px;}
+.meta-item{font-size:11px;color:var(--muted);padding:14px 48px 14px 0;}
+.meta-item strong{color:var(--ink);font-weight:700;}
+
+.body{padding:8px 56px 64px;}
+.section{margin-top:72px;scroll-margin-top:72px;}
+.sec-label{display:flex;align-items:center;gap:0;margin-bottom:36px;background:var(--ink);color:#fff;}
+.sec-num{font-size:18px;font-weight:900;letter-spacing:.02em;color:#0D0D0D;background:var(--fluo-yellow);flex-shrink:0;padding:20px 22px;align-self:stretch;display:flex;align-items:center;}
+.sec-title-txt{font-size:clamp(18px,2.3vw,25px);font-weight:900;letter-spacing:-.01em;line-height:1.15;text-transform:uppercase;padding:18px 24px;color:#fff;}
+.p{font-size:15px;line-height:1.9;margin-bottom:22px;}
+.p.muted{color:var(--muted);}
+.p b,.p strong{font-weight:700;}
+
+/* GRAND CHIFFRE EN EXERGUE — style magazine */
+.stat{margin:44px 0;padding:36px 40px;background:var(--ink);color:#fff;display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center;}
+.stat-num{font-size:clamp(60px,9.5vw,116px);font-weight:900;letter-spacing:-.04em;line-height:.8;white-space:nowrap;color:var(--fluo-green);}
+.stat-txt{font-size:15px;line-height:1.65;color:rgba(255,255,255,.92);border-left:3px solid var(--fluo-green);padding-left:22px;}
+.stat-txt b{font-weight:700;color:#fff;}
+.stat-txt .src{display:block;margin-top:10px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--fluo-green);}
+
+/* listes éditoriales (remplacent les tableaux) */
+.points{margin:18px 0;}
+.point{display:flex;gap:20px;padding:20px 0;border-bottom:1px solid rgba(0,0,0,.08);}
+.point:last-child{border-bottom:none;}
+.point-k{flex-shrink:0;width:140px;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.02em;line-height:1.3;}
+.point-k small{display:block;font-size:11px;font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted);margin-top:2px;}
+.point-v{font-size:14px;line-height:1.7;color:var(--ink);}
+.point-v b{font-weight:700;}
+
+.arrow-list{margin:18px 0;}
+.al{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid rgba(0,0,0,.08);}
+.al:last-child{border-bottom:none;}
+.al-a{color:var(--fluo-violet);font-weight:900;flex-shrink:0;font-size:15px;margin-top:1px;}
+.al p{font-size:14px;line-height:1.7;}
+.al strong{font-weight:700;}
+
+/* entonnoir en liste éditoriale */
+.funnel{margin:22px 0;}
+.fn{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid rgba(0,0,0,.08);}
+.fn:last-child{border-bottom:none;}
+.fn-step{font-size:14px;font-weight:700;background:linear-gradient(transparent 28%, var(--fluo-yellow) 28%);padding:2px 5px;display:inline;}
+.fn-step small{font-weight:400;color:var(--muted);}
+.fn-val{font-size:20px;font-weight:900;letter-spacing:-.02em;white-space:nowrap;}
+.fn-val small{font-size:11px;font-weight:600;color:var(--muted);margin-left:8px;letter-spacing:.04em;}
+
+.pull{margin:44px 0;padding:32px 34px;background:#0D0D0D;color:#fff;position:relative;}
+.pull::before{content:"\201C";position:absolute;top:8px;left:18px;font-size:64px;line-height:1;color:var(--fluo-yellow);font-weight:900;}
+.pull p{font-size:23px;font-weight:600;font-style:normal;line-height:1.4;margin-bottom:12px;padding-left:36px;}
+.pull cite{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--fluo-yellow);font-style:normal;padding-left:36px;display:block;}
+
+.gloss{margin:8px 0 0;padding:8px 0 0;}
+.gloss-l{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin-bottom:28px;}
+.gl-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.gl-item{display:flex;flex-direction:column;gap:12px;padding:22px;background:var(--ink);}
+.gl-term{align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:var(--ink);background:var(--pastel,#C4B5FD);padding:6px 13px;}
+.gl-def{display:block;font-size:13px;line-height:1.6;color:rgba(255,255,255,.75);}
+
+.quiz{margin-top:8px;padding:40px;background:var(--paper);border-top:3px solid var(--ink);}
+.quiz-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px;}
+.quiz-head .qbadge{font-size:9px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#0D0D0D;border:none;background:var(--fluo-violet);padding:5px 12px;}
+.quiz-head .qttl{font-size:clamp(22px,2.8vw,30px);font-weight:900;letter-spacing:-.02em;text-transform:uppercase;}
+.quiz-intro p{font-size:14px;color:var(--muted);margin-bottom:28px;}
+.q{margin-bottom:22px;padding:22px 24px;background:#fff;border:1px solid var(--rule);}
+.qn{font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#0D0D0D;background:var(--fluo-violet);display:inline-block;padding:3px 9px;margin-bottom:12px;}
+.qt{font-size:16px;font-weight:700;margin-bottom:16px;line-height:1.45;}
+.opts{display:flex;flex-direction:column;gap:8px;}
+.opt{text-align:left;font-family:inherit;font-size:14px;color:var(--ink);background:#fff;border:1px solid var(--rule);padding:12px 16px;cursor:pointer;transition:all .14s;line-height:1.5;}
+.opt:hover:not(:disabled){border-color:var(--ink);}
+.opt:disabled{cursor:default;}
+.opt.ok{border-color:#0D0D0D;background:var(--fluo-green);color:#0D0D0D;font-weight:700;}
+.opt.no{border-color:#C8273A;background:rgba(200,39,58,.06);color:#C8273A;}
+.fb{display:none;margin-top:12px;padding:14px 18px;font-size:13px;line-height:1.6;background:#0D0D0D;color:#fff;border-left:4px solid var(--fluo-green);}
+.fb.show{display:block;}
+.score{display:none;margin-top:24px;padding:36px;background:var(--ink);color:#fff;text-align:center;}
+.score.show{display:block;}
+.score-l{font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--fluo-violet);margin-bottom:10px;}
+.score-n{font-size:72px;font-weight:900;letter-spacing:-.04em;line-height:1;margin-bottom:12px;color:var(--fluo-green);}
+.score-m{font-size:14px;line-height:1.6;color:rgba(255,255,255,.8);max-width:380px;margin:0 auto;}
+
+.recap{margin-top:8px;padding:0;background:none;color:var(--ink);}
+.recap .lbl{font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:22px;color:var(--ink);}
+
+.foot{padding:24px 56px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--rule);margin-top:46px;}
+.foot-copy{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.backbtn{position:fixed;top:14px;left:14px;z-index:1000;background:#fff;color:#0D0D0D;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:9px 15px;border:1px solid var(--rule);}
+
+@media(max-width:768px){
+  .sitenav{grid-template-columns:1fr auto;padding:0 16px;height:52px;}
+  .nav-left{display:none;}
+  .layout{grid-template-columns:1fr;}
+  .col-img{display:none;}
+  .breadcrumb,.head,.meta,.body,.foot{padding-left:20px;padding-right:20px;}
+  .quiz{padding:24px 20px;}
+  .q{padding:18px 16px;}
+  .stat{padding:24px;gap:14px;}
+  .recap{padding:24px;}
+  .gl-grid{grid-template-columns:1fr;gap:14px;}
+  .meta-item{padding-right:28px;}
+  h1.title{font-size:30px;}
+  .stat{grid-template-columns:1fr;gap:12px;}
+  .stat-num{font-size:64px;}
+  .point{flex-direction:column;gap:6px;}
+  .point-k{width:auto;}
+}
+
+/* mots-clés en gras : surlignage éditorial discret */
+.body .p strong, .body .p b, .body .point-v b, .body .al p strong{font-weight:700;background:linear-gradient(transparent 30%, var(--fluo-yellow) 30%);padding:1px 3px;}
+
+/* tableau À retenir */
+.recap-tbl{width:100%;border-collapse:collapse;}
+.recap-tbl td{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.15);vertical-align:top;font-size:14px;line-height:1.65;}
+.recap-tbl tr:last-child td{border-bottom:none;}
+.recap-tbl .rt-k{width:160px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;font-size:12px;padding-right:24px;padding-top:18px;color:var(--fluo-yellow);}
+.recap-tbl .rt-v{color:rgba(255,255,255,.92);}
+@media(max-width:768px){
+  .recap-tbl td{display:block;border-bottom:none;padding:4px 0;}
+  .recap-tbl .rt-k{width:auto;padding-top:14px;}
+  .recap-tbl tr{display:block;border-bottom:1px solid var(--rule);padding-bottom:10px;}
+}
+
+/* Barre de progression de lecture */
+.readbar{position:fixed;top:56px;left:0;right:0;height:3px;background:transparent;z-index:99;}
+.readbar-fill{height:100%;width:0;background:var(--fluo-violet);transition:width .1s linear;}
+@media(max-width:768px){.readbar{top:52px;}}
+
+/* Sommaire */
+.toc{margin:8px 0 12px;padding:24px;border:1px solid var(--rule);background:var(--paper);}
+.toc-label{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.toc-item{display:flex;align-items:baseline;gap:14px;padding:10px 0;border-bottom:1px solid var(--rule);transition:padding-left .15s;}
+.toc-item:last-child{border-bottom:none;}
+.toc-item:hover{padding-left:8px;}
+.toc-n{font-size:12px;font-weight:800;color:#0D0D0D;background:var(--fluo-yellow);padding:2px 7px;flex-shrink:0;}
+.toc-t{font-size:14px;font-weight:600;color:var(--ink);}
+
+/* retour haut */
+.totop{display:inline-flex;align-items:center;gap:8px;margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+.totop:hover{color:var(--ink);}
+
+a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:2px;}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important;}}
+
+/* Onglets sticky */
+.tabs{position:sticky;top:56px;z-index:90;display:flex;gap:8px;background:var(--paper);border-bottom:1px solid var(--rule);padding:12px 56px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.tab{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:#fff;border:1px solid var(--rule);padding:12px 18px;cursor:pointer;transition:all .15s;white-space:nowrap;}
+.tab:hover{color:var(--ink);border-color:var(--ink);}
+.tab.active{color:#0D0D0D;background:var(--fluo-violet);border-color:var(--ink);font-weight:800;}
+
+to{opacity:1;transform:none;}}
+@media(max-width:768px){
+  .tabs{top:52px;padding:10px 16px;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .tab{padding:14px 16px;font-size:11px;white-space:nowrap;}
+}
+
+/* accents fluo variés sur les listes de définition */
+.points .point:nth-child(1) .point-k{color:#0D0D0D;}
+.points .point:nth-child(1) .point-k::before{content:'';display:inline-block;width:12px;height:12px;background:var(--fluo-violet);margin-right:8px;vertical-align:middle;}
+.points .point:nth-child(2) .point-k::before{content:'';display:inline-block;width:12px;height:12px;background:var(--fluo-pink);margin-right:8px;vertical-align:middle;}
+.points .point:nth-child(3) .point-k::before{content:'';display:inline-block;width:12px;height:12px;background:var(--fluo-blue);margin-right:8px;vertical-align:middle;}
+.points .point:nth-child(4) .point-k::before{content:'';display:inline-block;width:12px;height:12px;background:var(--fluo-green);margin-right:8px;vertical-align:middle;}
+.points .point:nth-child(5) .point-k::before{content:'';display:inline-block;width:12px;height:12px;background:var(--fluo-yellow);margin-right:8px;vertical-align:middle;}
+/* entonnoir : valeurs en bleu fluo highlight */
+.fn-val{position:relative;}
+.fn:nth-child(odd) .fn-val{background:linear-gradient(transparent 32%, var(--fluo-blue) 32%);padding:2px 5px;}
+.fn:nth-child(even) .fn-val{background:linear-gradient(transparent 32%, var(--fluo-pink) 32%);padding:2px 5px;}
+/* sommaire : numéros alternent jaune/rose */
+.toc-item:nth-child(even) .toc-n{background:var(--fluo-pink);}
+/* Topbar actions */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:24px 0;border-bottom:1px solid var(--rule);flex-wrap:wrap;}
+.topbar-info{font-size:11px;color:var(--muted);}
+.topbar-info strong{color:var(--ink);}
+.actions{display:flex;gap:10px;}
+.btn{font-family:inherit;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:12px 20px;cursor:pointer;border:1px solid var(--ink);background:#fff;color:var(--ink);transition:all .15s;}
+.btn:hover{background:var(--paper);}
+.btn-primary{background:var(--ink);color:#fff;}
+.btn-primary:hover{background:#000;}
+.btn:disabled{opacity:.5;cursor:wait;}
+
+/* Header */
+.head{padding:44px 0 32px;}
+.tags{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;}
+.tag{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border:1px solid var(--rule);color:var(--muted);}
+.tag.tpl{background:var(--fluo-violet);color:#0D0D0D;border-color:var(--ink);font-weight:800;}
+.tag.lvl{background:var(--fluo-green);color:#0D0D0D;border-color:var(--ink);font-weight:800;}
+h1{font-size:clamp(30px,4vw,48px);font-weight:900;letter-spacing:-.03em;line-height:.96;text-transform:uppercase;margin-bottom:16px;}
+.intro{font-size:15px;line-height:1.7;color:var(--muted);border-left:3px solid var(--fluo-yellow);padding-left:18px;max-width:620px;}
+.intro strong{color:var(--ink);font-weight:600;}
+
+/* Progress */
+.progress-wrap{margin:28px 0 8px;}
+.progress-label{display:flex;justify-content:space-between;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.progress-bar{height:6px;background:var(--paper);border:1px solid var(--rule);overflow:hidden;}
+.progress-fill{height:100%;width:0;background:var(--fluo-violet);transition:width .3s ease;}
+
+/* Sections du template */
+.tpl-section{margin:40px 0;}
+.tpl-sec-head{display:flex;align-items:center;gap:0;margin-bottom:24px;}
+.tpl-sec-num{font-size:18px;font-weight:900;color:#0D0D0D;background:var(--fluo-yellow);padding:14px 18px;align-self:stretch;display:flex;align-items:center;}
+.tpl-sec-title{font-size:clamp(17px,2.2vw,22px);font-weight:900;letter-spacing:-.01em;text-transform:uppercase;background:#0D0D0D;color:#fff;padding:14px 20px;flex:1;}
+.tpl-sec-desc{font-size:14px;line-height:1.7;color:var(--muted);margin-bottom:20px;}
+
+/* Champs */
+.field{margin-bottom:20px;}
+.field-label{display:block;font-size:12px;font-weight:700;letter-spacing:.02em;margin-bottom:8px;}
+.field-hint{font-size:12px;color:var(--muted);margin-bottom:8px;font-weight:400;}
+.field-input,.field-textarea{width:100%;font-family:inherit;font-size:14px;color:var(--ink);background:#fff;border:1px solid var(--ink);padding:12px 14px;transition:border-color .15s;}
+.field-input:focus,.field-textarea:focus{outline:none;border-color:var(--fluo-violet);border-width:2px;}
+.field-textarea{min-height:80px;resize:vertical;line-height:1.6;}
+
+/* Grille de canaux owned/earned/paid */
+.channels{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.channel{border:1px solid var(--ink);padding:18px;}
+.channel-tag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;margin-bottom:12px;color:#0D0D0D;}
+.channel:nth-child(1) .channel-tag{background:var(--fluo-violet);}
+.channel:nth-child(2) .channel-tag{background:var(--fluo-pink);}
+.channel:nth-child(3) .channel-tag{background:var(--fluo-blue);}
+.channel-textarea{width:100%;font-family:inherit;font-size:13px;color:var(--ink);background:var(--paper);border:1px solid var(--rule);padding:10px;min-height:100px;resize:vertical;line-height:1.6;}
+.channel-textarea:focus{outline:none;border-color:var(--ink);}
+
+/* Calculateur de chiffres */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.calc-card{border:1px solid var(--ink);padding:20px;}
+.calc-card .ck{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;}
+.calc-card .cd{font-size:11px;color:var(--muted);margin-bottom:14px;line-height:1.5;}
+.calc-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.calc-row label{font-size:12px;color:var(--muted);flex:1;}
+.calc-row input{width:120px;font-family:inherit;font-size:14px;border:1px solid var(--rule);padding:8px 10px;text-align:right;}
+.calc-row input:focus{outline:none;border-color:var(--fluo-violet);}
+.calc-result{margin-top:12px;padding:14px;background:#0D0D0D;color:#fff;display:flex;align-items:baseline;justify-content:space-between;}
+.calc-result .rl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fluo-green);}
+.calc-result .rv{font-size:26px;font-weight:900;letter-spacing:-.02em;color:var(--fluo-green);}
+.calc-result .rv.muted{color:var(--muted);font-size:18px;}
+
+/* Verdict LTV/CAC */
+.verdict{margin-top:16px;padding:18px 22px;border:2px solid var(--ink);font-size:14px;line-height:1.6;display:none;}
+.verdict.show{display:block;}
+.verdict.good{background:var(--fluo-green);}
+.verdict.bad{background:var(--fluo-pink);}
+.verdict strong{font-weight:800;}
+
+/* Plan d'action */
+.action-item{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--rule);}
+.action-check{width:22px;height:22px;border:2px solid var(--ink);flex-shrink:0;margin-top:2px;cursor:pointer;position:relative;background:#fff;}
+.action-check.checked{background:var(--fluo-green);}
+.action-check.checked::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;color:#0D0D0D;}
+.action-input{flex:1;font-family:inherit;font-size:14px;border:none;border-bottom:1px solid var(--rule);padding:4px 0;background:transparent;}
+.action-input:focus{outline:none;border-bottom-color:var(--fluo-violet);}
+
+.note{margin:32px 0;padding:28px 30px;background:#0D0D0D;border:2px solid var(--ink);font-size:14px;line-height:1.7;color:rgba(255,255,255,.9);}
+.note strong{color:var(--fluo-green);}
+
+.foot{padding:32px 0;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--rule);margin-top:40px;}
+.foot-copy{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.backbtn{position:fixed;top:14px;left:14px;z-index:1000;background:#fff;color:#0D0D0D;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:9px 15px;border:1px solid var(--rule);}
+
+@media(max-width:768px){
+  .sitenav{grid-template-columns:1fr auto;padding:0 16px;height:52px;}
+  .nav-left{display:none;}
+  .wrap{padding:0 18px;}
+  .breadcrumb{padding:11px 18px;}
+  .channels{grid-template-columns:1fr;}
+  .calc{grid-template-columns:1fr;}
+  h1{font-size:28px;}
+  .topbar{flex-direction:column;align-items:flex-start;}
+}
+/* Styles spécifiques à l'export PDF */
+.pdf-mode .backbtn,.pdf-mode .sitenav,.pdf-mode .actions,.pdf-mode .progress-wrap{display:none!important;}
+.pdf-mode .field-input,.pdf-mode .field-textarea,.pdf-mode .channel-textarea,.pdf-mode .calc-row input,.pdf-mode .action-input{border:1px solid #999;}
+
+/* Listes à choix multiples */
+.checklist{display:flex;flex-direction:column;gap:2px;margin-bottom:12px;}
+.checklist-col{gap:4px;}
+.check{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.5;padding:7px 0;cursor:pointer;color:var(--ink);}
+.check input[type=checkbox]{appearance:none;-webkit-appearance:none;width:18px;height:18px;border:2px solid var(--ink);background:#fff;flex-shrink:0;margin-top:1px;cursor:pointer;position:relative;}
+.check input[type=checkbox]:checked{background:var(--fluo-green);}
+.check input[type=checkbox]:checked::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px;color:#0D0D0D;}
+.check em{font-style:normal;color:var(--muted);font-size:12px;}
+
+/* À retenir : cards colorées */
+.recap-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.recap-card{padding:24px;background:#0D0D0D;color:#fff;border:2px solid var(--ink);display:flex;flex-direction:column;gap:10px;}
+.recap-card .rc-k{font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;}
+.recap-card .rc-v{font-size:14px;line-height:1.6;font-weight:500;color:rgba(255,255,255,.9);}
+@media(max-width:768px){.recap-grid{grid-template-columns:1fr;}}
+
+
+
+
+.panel{ display:none; }
+.panel.is-active{ display:block; }
+.tab{ cursor:pointer; }
+.tab.is-active{ color:#0D0D0D; background:var(--fluo-violet); border-color:var(--ink); font-weight:800; }
+
+
+/* ===== Matrice de notation ===== */
+.matrix{margin:8px 0 4px;border:2px solid var(--ink);background:#fff;}
+.mx-head{display:grid;grid-template-columns:1fr 44px 44px 44px 44px;align-items:center;background:#0D0D0D;color:#fff;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;}
+.mx-head span{padding:10px 12px;text-align:center;}
+.mx-head span:first-child{text-align:left;}
+.mx-row{display:grid;grid-template-columns:1fr 44px 44px 44px 44px;align-items:stretch;border-top:1px solid var(--rule);}
+.mx-row:nth-child(even){background:var(--paper);}
+.mx-label{padding:12px;font-size:13px;font-weight:600;display:flex;align-items:center;}
+.mx-cell{display:flex;align-items:center;justify-content:center;border-left:1px solid var(--rule);cursor:pointer;font-size:13px;font-weight:700;color:var(--muted);transition:all .12s ease;user-select:none;}
+.mx-cell:hover{background:var(--fluo-yellow);color:#0D0D0D;}
+.mx-cell.sel{background:var(--fluo-violet);color:#0D0D0D;font-weight:800;}
+.mx-score{margin-top:14px;padding:18px 22px;background:#0D0D0D;color:#fff;display:flex;flex-direction:column;gap:4px;}
+.mxs-l{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.6);}
+.mxs-v{font-size:28px;font-weight:900;color:var(--fluo-green);line-height:1;}
+.mxs-msg{font-size:13px;color:rgba(255,255,255,.85);margin-top:4px;line-height:1.5;}
+@media(max-width:560px){
+  .mx-head,.mx-row{grid-template-columns:1fr 34px 34px 34px 34px;}
+  .mx-label{font-size:12px;padding:10px;}
+  .mx-cell{font-size:12px;}
+}
+
+
+
+/* ===== Hiérarchiseur de KPIs (Int mesurer) ===== */
+.kp-intro-pool{border:2px solid var(--ink);background:#fff;padding:14px;margin-bottom:18px;}
+.kp-pool-h{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:10px;}
+.kp-pool{display:flex;flex-direction:column;gap:10px;}
+.kp-done{font-size:13px;color:var(--muted);font-style:italic;margin:2px 0;}
+.kp-chip{border:2px solid var(--ink);background:var(--paper);padding:12px;display:flex;flex-direction:column;gap:10px;}
+.kp-chip-txt{font-size:14px;font-weight:600;color:var(--ink);line-height:1.4;}
+.kp-chip-btns{display:flex;gap:8px;}
+.kp-b{flex:1;border:2px solid var(--ink);background:#fff;font-family:inherit;font-size:12px;font-weight:800;letter-spacing:.01em;padding:9px 6px;cursor:pointer;transition:all .12s;color:#0D0D0D;}
+.kp-b.valeur:hover{background:var(--fluo-green);}
+.kp-b.vanite:hover{background:var(--fluo-pink);}
+.kp-cols{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.kp-col{border:2px solid var(--ink);background:#fff;min-height:120px;display:flex;flex-direction:column;}
+.kp-col-h{padding:10px;font-size:13px;font-weight:900;letter-spacing:-.01em;color:#0D0D0D;text-align:center;}
+.kp-col[data-cat="valeur"] .kp-col-h{background:var(--fluo-green);}
+.kp-col[data-cat="vanite"] .kp-col-h{background:var(--fluo-pink);}
+.kp-col-sub{font-size:10px;font-weight:600;letter-spacing:0;opacity:.7;display:block;margin-top:2px;}
+.kp-drop{flex:1;padding:10px;display:flex;flex-direction:column;gap:7px;}
+.kp-placed{border:1px solid var(--rule);background:var(--paper);padding:9px 10px;font-size:12px;line-height:1.4;color:var(--ink);position:relative;}
+.kp-placed.correct{border-color:var(--fluo-green);border-left:4px solid var(--fluo-green);}
+.kp-placed.wrong{border-color:var(--fluo-pink);border-left:4px solid var(--fluo-pink);}
+.kp-placed .fbk{display:block;font-size:11px;margin-top:5px;line-height:1.4;color:var(--muted);}
+.kp-placed .verdict{font-weight:800;}
+.kp-placed.correct .verdict{color:#1a7a0a;}
+.kp-placed.wrong .verdict{color:#b3005f;}
+.kp-back{margin-top:6px;border:1px solid var(--rule);background:#fff;color:var(--muted);font-family:inherit;font-size:10px;font-weight:700;padding:3px 8px;cursor:pointer;}
+.kp-back:hover{background:#0D0D0D;color:#fff;border-color:#0D0D0D;}
+.kp-count{font-size:11px;color:var(--muted);text-align:center;padding:4px 0 8px;}
+@media(max-width:560px){.kp-cols{grid-template-columns:1fr;}}
+.kp-score-wrap{display:flex;align-items:center;gap:24px;border:2px solid var(--ink);background:#0D0D0D;padding:20px 24px;flex-wrap:wrap;}
+.kp-donut-wrap{position:relative;width:140px;height:140px;flex:0 0 140px;}
+.kp-donut-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.kp-donut-big{font-size:26px;font-weight:900;color:#fff;line-height:1;}
+.kp-donut-sub{font-size:9px;text-transform:uppercase;letter-spacing:.04em;color:rgba(255,255,255,.55);margin-top:2px;}
+.kp-score-legend{flex:1;min-width:180px;display:flex;flex-direction:column;gap:10px;}
+.kp-score-line{display:flex;align-items:center;gap:10px;font-size:13px;color:rgba(255,255,255,.8);}
+.kp-score-line b{margin-left:auto;color:#fff;font-weight:800;font-size:15px;}
+.kp-score-line .dot{width:12px;height:12px;border-radius:50%;flex:0 0 12px;}
+.kp-score-line .dot.ok{background:var(--fluo-green);}
+.kp-score-line .dot.ko{background:var(--fluo-pink);}
+.kp-score-line .dot.todo{background:rgba(255,255,255,.2);}
+
+.kp-fiches{display:flex;flex-direction:column;gap:10px;}
+.kp-fiche{border:2px solid var(--ink);background:#fff;padding:14px 16px;}
+.kp-fiche-sit{font-size:13px;font-weight:800;color:var(--ink);margin-bottom:8px;}
+.kp-fiche-sit::before{content:'\26A0';color:var(--fluo-pink);margin-right:7px;font-weight:400;}
+.kp-fiche-lab{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:2px;}
+.kp-fiche-say{display:block;background:#0D0D0D;padding:16px 18px;font-size:14px;line-height:1.6;color:#fff;font-style:italic;margin-top:4px;}
+
+/* ===== Qualificateur de crise (domaines + 3 colonnes) ===== */
+.dom-opts{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.dom-chip{display:flex;flex-direction:column;gap:3px;text-align:left;border:2px solid var(--ink);background:#fff;padding:12px 14px;cursor:pointer;font-family:inherit;transition:all .12s;}
+.dom-chip:hover{background:var(--paper);}
+.dom-chip.sel{background:#0D0D0D;}
+.dom-k{font-size:14px;font-weight:800;color:var(--ink);}
+.dom-d{font-size:11px;color:var(--muted);}
+.dom-chip.sel .dom-k{color:var(--fluo-yellow);}
+.dom-chip.sel .dom-d{color:rgba(255,255,255,.7);}
+.qc-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.qc-col{border:2px solid var(--ink);background:#fff;min-height:110px;display:flex;flex-direction:column;}
+.qc-col-h{padding:9px;font-size:12px;font-weight:900;letter-spacing:-.01em;color:#0D0D0D;text-align:center;}
+.qc-col[data-cat="crise"] .qc-col-h{background:var(--fluo-pink);}
+.qc-col[data-cat="incident"] .qc-col-h{background:var(--fluo-yellow);}
+.qc-col[data-cat="bruit"] .qc-col-h{background:var(--rule);}
+.qc-col-sub{font-size:9px;font-weight:600;letter-spacing:0;opacity:.7;display:block;margin-top:2px;}
+.kp-b3{flex:1;border:2px solid var(--ink);background:#fff;font-family:inherit;font-size:11px;font-weight:800;padding:9px 4px;cursor:pointer;transition:all .12s;color:#0D0D0D;}
+.kp-b3.crise:hover{background:var(--fluo-pink);}
+.kp-b3.incident:hover{background:var(--fluo-yellow);}
+.kp-b3.bruit:hover{background:var(--rule);}
+.kp-fiche-strat{display:inline-block;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;padding:2px 7px;background:var(--fluo-violet);color:#0D0D0D;margin-bottom:7px;}
+@media(max-width:640px){.dom-opts{grid-template-columns:1fr;}.qc-cols{grid-template-columns:1fr;}}
+
+/* ===== Cartographie parties prenantes ===== */
+.sh-card{border:2px solid var(--ink);background:#fff;padding:14px;margin-bottom:10px;}
+.sh-name{display:block;font-size:14px;font-weight:800;color:var(--ink);line-height:1.35;}
+.sh-desc{display:block;font-size:12px;color:var(--muted);line-height:1.55;margin-top:5px;margin-bottom:12px;}
+.sh-qs{display:flex;flex-wrap:wrap;gap:14px;}
+.sh-q{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.sh-q-lab{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);}
+.sh-btn{border:2px solid var(--ink);background:#fff;color:var(--ink);font-family:inherit;font-size:12px;font-weight:700;padding:7px 12px;cursor:pointer;transition:all .12s;}
+.sh-btn:hover{background:var(--paper);}
+.sh-btn.on{background:#0D0D0D;color:#fff;}
+.sh-done{font-size:13px;color:var(--muted);font-style:italic;padding:16px;border:2px dashed var(--rule);background:var(--paper);text-align:center;}
+.mx-wrap{display:grid;grid-template-columns:26px 1fr;grid-template-rows:1fr 26px;gap:6px;}
+.mx-ylab{writing-mode:vertical-rl;transform:rotate(180deg);text-align:center;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);}
+.mx-xlab{grid-column:2;text-align:center;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);}
+.mx-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.mx-cell{border:2px solid var(--ink);background:#fff;min-height:120px;display:flex;flex-direction:column;}
+.mx-cell-h{padding:9px 10px;font-size:12px;font-weight:900;color:#0D0D0D;line-height:1.25;}
+.mx-cell-h span{display:block;font-size:9px;font-weight:600;letter-spacing:.02em;opacity:.65;margin-top:2px;}
+.mx-cell.q1 .mx-cell-h{background:var(--fluo-green);}
+.mx-cell.q2 .mx-cell-h{background:var(--fluo-yellow);}
+.mx-cell.q3 .mx-cell-h{background:var(--fluo-blue);}
+.mx-cell.q4 .mx-cell-h{background:var(--rule);}
+.mx-items{flex:1;padding:9px;display:flex;flex-direction:column;gap:6px;}
+.mx-item{border:1px solid var(--rule);background:var(--paper);padding:7px 9px;font-size:12px;line-height:1.35;color:var(--ink);font-weight:600;}
+.mx-item button{display:block;margin-top:4px;border:1px solid var(--rule);background:#fff;color:var(--muted);font-family:inherit;font-size:10px;font-weight:700;padding:2px 7px;cursor:pointer;}
+.mx-item button:hover{background:#0D0D0D;color:#fff;border-color:#0D0D0D;}
+.sh-act-post{display:inline-block;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;padding:3px 8px;margin-bottom:7px;}
+.sh-act-post.q1{background:var(--fluo-green);color:#0D0D0D;}
+.sh-act-post.q2{background:var(--fluo-yellow);color:#0D0D0D;}
+.sh-act-post.q3{background:var(--fluo-blue);color:#0D0D0D;}
+.sh-act-post.q4{background:var(--rule);color:#0D0D0D;}
+@media(max-width:640px){.dom-opts{grid-template-columns:1fr;}.mx-grid{grid-template-columns:1fr;}}
+
+/* ===== Recommandations dynamiques ===== */
+.reco{margin-top:14px;padding:14px 16px 14px 18px;border-left:3px solid var(--ink);background:var(--white);font-size:13px;line-height:1.6;color:var(--muted);display:none;position:relative;}
+.reco.show{display:block;}
+.reco::before{content:'';position:absolute;left:-3px;top:0;width:3px;height:22px;background:var(--ink);}
+.reco.good::before{background:var(--fluo-green);}
+.reco.warn::before{background:var(--fluo-yellow);}
+.reco.bad::before{background:var(--fluo-pink);}
+.reco strong{font-weight:700;color:var(--ink);}
+.bilan{margin:36px 0 8px;padding:30px 32px;background:#0D0D0D;border:2px solid var(--ink);}
+.bilan-lbl{display:inline-block;background:var(--fluo-green);color:#0D0D0D;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding:4px 10px;margin-bottom:18px;}
+.bilan h3{color:#fff;font-size:20px;font-weight:900;margin:0 0 16px;letter-spacing:-.01em;}
+.bilan-empty{color:rgba(255,255,255,.5);font-size:14px;line-height:1.6;}
+.bilan-line{display:flex;gap:12px;padding:12px 0;border-top:1px solid rgba(255,255,255,.12);font-size:14px;line-height:1.6;color:rgba(255,255,255,.9);}
+.bilan-line:first-of-type{border-top:none;}
+.bilan-ico{flex-shrink:0;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;}
+.bilan-ico.g{background:#39FF14;color:#0D0D0D;}
+.bilan-ico.w{background:#E8FF00;color:#0D0D0D;}
+.bilan-ico.b{background:#FF6FD8;color:#0D0D0D;}
+.bilan-line strong{color:#fff;}
+
+/* ===== Onglets (OBLIGATOIRE) ===== */
+.panel{ display:none; }
+.panel.is-active{ display:block; }
+.tab{ cursor:pointer; }
+.tab.is-active{ color:#0D0D0D; background:var(--fluo-violet); border-color:var(--ink); font-weight:800; }
+</style></head>
+<body>
+<a href="/home" class="backbtn">← Retour</a>
+<nav class="sitenav"><div class="nav-left"><a href="/home" class="nav-link">Thématiques</a><a href="/formules" class="nav-link">Formules</a><a href="/waitlist" class="nav-link" style="color:var(--fluo-green);font-weight:800;">Waiting List</a></div>
+<div class="nav-center"><a href="/home" style="display:inline-flex;flex-direction:column;align-items:center;"><span class="logo-pre">Briefings</span><span><span class="logo-s">SKANNER</span><span class="logo-mag">MAGAZINE</span></span></a></div>
+<div class="nav-right"><span class="nav-badge">PR &amp; Communication</span></div></nav>
+<div class="breadcrumb"><a href="/home" style="color:var(--muted);">Accueil</a><span class="sep">/</span><span>PR &amp; Communication</span><span class="sep">/</span><span class="active">Chapitre 2 · Fiche 3 · Débutant</span></div>
+
+<div class="layout">
+  <div class="col-img"><img src="/pr-influence-1.jpg" alt="Cartographie des parties prenantes"/></div>
+  <div class="col-content">
+    <header class="head">
+      <div class="tags"><span class="tag">PR &amp; Communication</span><span class="tag lvl">Débutant</span></div>
+      <h1 class="title">MES PARTIES<br/>PRENANTES</h1>
+      <p class="lead">Avant d'influencer, il faut savoir <strong>qui compte</strong>. Tous les acteurs ne pèsent pas pareil : certains décident, d'autres s'expriment fort sans pouvoir, d'autres encore peuvent tout bloquer en silence. Les cartographier, c'est arrêter de parler à tout le monde pareil.</p>
+    </header>
+    <div class="meta">
+      <div class="meta-item">Niveau <strong>Débutant</strong></div>
+      <div class="meta-item">Durée <strong>15 min</strong></div>
+      <div class="meta-item">Chapitre <strong>2 — Prise de parole &amp; influence</strong></div>
+      <div class="meta-item">Fiche <strong>3 / 4</strong></div>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab is-active" type="button" data-panel="fiche">Fiche</button>
+      <button class="tab" type="button" data-panel="retenir">À retenir</button>
+      <button class="tab" type="button" data-panel="gloss">Glossaire</button>
+      <button class="tab" type="button" data-panel="quiz">Quiz</button>
+      <button class="tab" type="button" data-panel="template">Template</button>
+    </div>
+
+    <div class="body">
+
+      <!-- ===== PANNEAU FICHE ===== -->
+      <div class="panel is-active" id="panel-fiche" role="tabpanel">
+        <section class="section" id="sec-1">
+          <div class="sec-label"><span class="sec-num">01</span><span class="sec-title-txt">Qui sont vos parties prenantes</span></div>
+          <p class="p">Une <strong>partie prenante</strong> est tout acteur concerné par votre activité, ou capable de l'influencer. Clients, salariés, autorités, riverains, investisseurs, associations, médias : la liste est longue, et c'est justement le problème.</p>
+          <p class="p" style="font-size:13px;color:var(--muted);border-left:2px solid var(--fluo-blue);padding-left:12px;">En clair : une <strong>partie prenante</strong>, c'est quelqu'un qui a quelque chose à gagner ou à perdre avec ce que vous faites — ou qui peut vous aider ou vous nuire.</p>
+          <div class="arrow-list">
+            <div class="al"><span class="al-a">→</span><p><strong>Impossible de tous les traiter pareil.</strong> Vous n'avez ni le temps ni les moyens de dialoguer autant avec chacun. Il faut donc choisir.</p></div>
+            <div class="al"><span class="al-a">→</span><p><strong>Le volume sonore n'est pas le pouvoir.</strong> Celui qui s'exprime le plus fort n'est pas toujours celui qui peut vous bloquer. Et l'inverse est vrai aussi.</p></div>
+            <div class="al"><span class="al-a">→</span><p><strong>Les positions changent.</strong> Un acteur périphérique peut devenir central en quelques jours si le sujet le concerne soudainement.</p></div>
+          </div>
+        </section>
+
+        <section class="section" id="sec-2">
+          <div class="sec-label"><span class="sec-num">02</span><span class="sec-title-txt">La matrice de Mendelow</span></div>
+          <p class="p">Publiée par Aubrey Mendelow en 1991 sous le titre « Stakeholder Mapping », cette matrice est devenue la référence, reprise par tous les grands standards de gestion de projet. Elle classe chaque acteur sur <strong>deux axes seulement</strong> : son <strong>pouvoir</strong> (sa capacité à influer sur vos décisions) et son <strong>intérêt</strong> (son degré de préoccupation pour ce que vous faites).</p>
+          <p class="p" style="font-size:13px;color:var(--muted);border-left:2px solid var(--fluo-blue);padding-left:12px;">En clair : le <strong>pouvoir</strong>, c'est « peut-il me bloquer ou m'aider vraiment ? ». L'<strong>intérêt</strong>, c'est « est-ce que ça le concerne au quotidien ? ».</p>
+          <div class="points">
+            <div class="point"><div class="point-k">Pouvoir + / Intérêt +<small>Gérer étroitement</small></div><div class="point-v">Vos acteurs clés. On les associe en amont, on co-construit, on consulte à chaque étape.</div></div>
+            <div class="point"><div class="point-k">Pouvoir + / Intérêt −<small>Satisfaire</small></div><div class="point-v">Puissants mais peu mobilisés. On les tient informés et on évite les surprises : leur réveil peut tout changer.</div></div>
+            <div class="point"><div class="point-k">Pouvoir − / Intérêt +<small>Informer</small></div><div class="point-v">Très concernés, peu de levier direct. On communique abondamment, on écoute, on valorise. Ce sont vos relais naturels.</div></div>
+            <div class="point"><div class="point-k">Pouvoir − / Intérêt −<small>Surveiller</small></div><div class="point-v">Acteurs périphériques. Effort minimal, communication standard — mais une veille, car les positions bougent.</div></div>
+          </div>
+        </section>
+
+        <section class="section" id="sec-3">
+          <div class="sec-label"><span class="sec-num">03</span><span class="sec-title-txt">De la carte à l'action</span></div>
+          <p class="p">La cartographie n'est pas un exercice décoratif : chaque quadrant <strong>dicte une stratégie d'engagement différente</strong>. L'erreur la plus courante est de consacrer son énergie aux acteurs qui font du bruit, en négligeant ceux qui décident.</p>
+          <div class="pull"><p>Le dialogue en amont n'est pas une concession : c'est un investissement. Les projets qui associent tôt leurs parties prenantes clés réussissent nettement mieux que ceux qui passent en force.</p><cite>Principe d'engagement</cite></div>
+        </section>
+
+        <div class="note">
+          <strong>À garder en tête.</strong> Deux questions suffisent pour chaque acteur : <strong>a-t-il du pouvoir</strong> sur ce que je fais, et <strong>est-il concerné</strong> ? Les réponses déterminent quatre postures — gérer étroitement, satisfaire, informer, surveiller. Le template vous fait cartographier votre secteur.
+        </div>
+      </div>
+
+      <div class="panel" id="panel-retenir" role="tabpanel">
+        <div class="recap">
+          <div class="lbl">À retenir</div>
+          <div class="recap-grid">
+            <div class="recap-card"><div class="rc-k" style="color:var(--fluo-yellow);">Deux axes suffisent</div><div class="rc-v">Mendelow (1991) : pouvoir et intérêt. Quatre quadrants, quatre stratégies d'engagement.</div></div>
+            <div class="recap-card"><div class="rc-k" style="color:var(--fluo-violet);">Le bruit n'est pas le pouvoir</div><div class="rc-v">Celui qui s'exprime le plus fort n'est pas forcément celui qui peut vous bloquer.</div></div>
+            <div class="recap-card"><div class="rc-k" style="color:var(--fluo-green);">Attention aux endormis</div><div class="rc-v">Pouvoir fort, intérêt faible : à tenir informés. Leur réveil peut tout changer.</div></div>
+            <div class="recap-card"><div class="rc-k" style="color:var(--fluo-pink);">Les positions bougent</div><div class="rc-v">Un acteur périphérique peut devenir central en quelques jours. La carte se met à jour.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PANNEAU GLOSSAIRE (cartes fond noir, 12 termes, couleurs alternées) ===== -->
+      <div class="panel" id="panel-gloss" role="tabpanel">
+        <div class="gloss">
+          <div class="gloss-l">Glossaire</div>
+          <div class="gl-grid">
+            <div class="gl-item"><span class="gl-term" style="background:#E8FF00;color:#0D0D0D;">Partie prenante</span><span class="gl-def">Acteur concerné par votre activité ou capable de l'influencer, positivement ou négativement.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#C77DFF;color:#0D0D0D;">Matrice de Mendelow</span><span class="gl-def">Grille publiée en 1991 classant les parties prenantes selon leur pouvoir et leur intérêt.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#39FF14;color:#0D0D0D;">Pouvoir</span><span class="gl-def">Capacité d'un acteur à influer sur vos décisions, à vous aider ou à vous bloquer.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#FF6FD8;color:#0D0D0D;">Intérêt</span><span class="gl-def">Degré de préoccupation d'un acteur pour votre activité et ses résultats.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#4DD2FF;color:#0D0D0D;">Gérer étroitement</span><span class="gl-def">Stratégie pour les acteurs à fort pouvoir et fort intérêt : associer, co-construire, consulter.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#E8FF00;color:#0D0D0D;">Satisfaire</span><span class="gl-def">Stratégie pour les acteurs puissants mais peu mobilisés : informer, éviter les surprises.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#C77DFF;color:#0D0D0D;">Informer</span><span class="gl-def">Stratégie pour les acteurs très concernés mais sans levier : communiquer, écouter, valoriser.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#39FF14;color:#0D0D0D;">Surveiller</span><span class="gl-def">Stratégie pour les acteurs périphériques : effort minimal, mais veille sur l'évolution.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#FF6FD8;color:#0D0D0D;">Cartographie</span><span class="gl-def">Représentation visuelle des parties prenantes selon leur position stratégique.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#4DD2FF;color:#0D0D0D;">Relais</span><span class="gl-def">Partie prenante favorable qui porte votre message auprès de son propre réseau.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#E8FF00;color:#0D0D0D;">Opposant</span><span class="gl-def">Acteur défavorable à votre projet ; son pouvoir détermine le niveau de risque.</span></div>
+            <div class="gl-item"><span class="gl-term" style="background:#C77DFF;color:#0D0D0D;">Stratégie d'engagement</span><span class="gl-def">Plan d'action différencié par catégorie de parties prenantes.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PANNEAU QUIZ (5 questions + feedback noir + score /5) ===== -->
+      <div class="panel" id="panel-quiz" role="tabpanel">
+        <div class="quiz">
+          <div class="quiz-intro">
+            <div class="quiz-head"><span class="qbadge">Quiz</span><span class="qttl">Validez vos acquis</span></div>
+            <p>Cinq questions pour ancrer la logique d'ensemble.</p>
+          </div>
+<div class="q" id="q1">
+            <p class="qn">Question 01 / 05</p>
+            <p class="qt">Sur quels axes la matrice de Mendelow classe-t-elle les parties prenantes ?</p>
+            <div class="opts">
+              <button class="opt" data-ok="1" data-q="1">Le pouvoir et l'intérêt</button>
+              <button class="opt" data-ok="0" data-q="1">Le budget et l'ancienneté</button>
+              <button class="opt" data-ok="0" data-q="1">La taille et la localisation</button>
+            </div>
+            <div class="fb" id="f1"></div>
+          </div>
+          <div class="q" id="q2">
+            <p class="qn">Question 02 / 05</p>
+            <p class="qt">Quelle posture adopter face à un acteur à fort pouvoir mais faible intérêt ?</p>
+            <div class="opts">
+              <button class="opt" data-ok="1" data-q="2">Le satisfaire : le tenir informé, éviter les surprises</button>
+              <button class="opt" data-ok="0" data-q="2">L'ignorer, puisqu'il n'est pas concerné</button>
+              <button class="opt" data-ok="0" data-q="2">Le solliciter en permanence pour le mobiliser</button>
+            </div>
+            <div class="fb" id="f2"></div>
+          </div>
+          <div class="q" id="q3">
+            <p class="qn">Question 03 / 05</p>
+            <p class="qt">Un acteur très concerné mais sans levier direct : que faire ?</p>
+            <div class="opts">
+              <button class="opt" data-ok="1" data-q="3">L'informer abondamment, l'écouter, le valoriser</button>
+              <button class="opt" data-ok="0" data-q="3">Ne rien faire, il n'a pas de pouvoir</button>
+              <button class="opt" data-ok="0" data-q="3">Le traiter comme un opposant potentiel</button>
+            </div>
+            <div class="fb" id="f3"></div>
+          </div>
+          <div class="q" id="q4">
+            <p class="qn">Question 04 / 05</p>
+            <p class="qt">Pourquoi le volume sonore n'est-il pas un bon critère de priorisation ?</p>
+            <div class="opts">
+              <button class="opt" data-ok="1" data-q="4">Celui qui s'exprime le plus fort n'est pas forcément celui qui peut bloquer</button>
+              <button class="opt" data-ok="0" data-q="4">Parce qu'il faut toujours répondre aux plus discrets</button>
+              <button class="opt" data-ok="0" data-q="4">Parce que le bruit se mesure mal</button>
+            </div>
+            <div class="fb" id="f4"></div>
+          </div>
+          <div class="q" id="q5">
+            <p class="qn">Question 05 / 05</p>
+            <p class="qt">La cartographie est-elle un exercice définitif ?</p>
+            <div class="opts">
+              <button class="opt" data-ok="1" data-q="5">Non : les positions évoluent, la carte se met à jour</button>
+              <button class="opt" data-ok="0" data-q="5">Oui, une fois faite elle reste valable</button>
+              <button class="opt" data-ok="0" data-q="5">Elle ne sert qu'au lancement d'un projet</button>
+            </div>
+            <div class="fb" id="f5"></div>
+          </div>
+          </div>
+          </div>
+          </div>
+          <div class="score" id="score">
+            <p class="score-l">Votre score</p>
+            <p class="score-n" id="sn">0 / 5</p>
+            <p class="score-m" id="sm"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PANNEAU TEMPLATE : CARTOGRAPHIE DES PARTIES PRENANTES ===== -->
+      <div class="panel" id="panel-template" role="tabpanel">
+        <div class="topbar">
+          <div class="topbar-info">Template lié à <strong>Cartographie des parties prenantes</strong> · Chapitre 2 · Fiche 3 · Débutant</div>
+          <div class="actions"><button class="btn" onclick="resetAll()">↺ Réinitialiser</button><button class="btn" id="btn-copy" onclick="copyCarte()">⧉ Copier ma carte</button><button class="btn btn-primary" id="btn-pdf" onclick="exportPDF()">↓ Exporter en PDF</button></div>
+        </div>
+        <div id="export-zone">
+          <header class="head">
+            <div class="tags"><span class="tag tpl">Template</span><span class="tag">PR &amp; Communication</span><span class="tag lvl">Débutant</span></div>
+            <h1>MA CARTE DES<br/>PARTIES PRENANTES</h1>
+            <p class="intro">Choisissez votre secteur : l'outil liste les acteurs qui comptent dans votre domaine. Pour chacun, dites s'il a du <strong>pouvoir</strong> et s'il est <strong>concerné</strong>. La matrice de Mendelow se construit, et chaque quadrant vous donne la posture à adopter — avec un premier geste concret.</p>
+          </header>
+          <div class="progress-wrap"><div class="progress-label"><span>Progression</span><span id="ppct">0%</span></div><div class="progress-bar"><div class="progress-fill" id="pfill"></div></div></div>
+
+          <section class="tpl-section">
+            <div class="tpl-sec-head"><span class="tpl-sec-num">01</span><span class="tpl-sec-title">Votre secteur</span></div>
+            <div class="dom-opts" id="dom-opts">
+              <button class="dom-chip" data-v="luxe" onclick="pickDom('luxe',this)"><span class="dom-k">Luxe / mode / culture</span><span class="dom-d">Communautés, prescripteurs, distributeurs</span></button>
+              <button class="dom-chip" data-v="serv" onclick="pickDom('serv',this)"><span class="dom-k">Services / conseil</span><span class="dom-d">Clients, ordres, talents, prescripteurs</span></button>
+              <button class="dom-chip" data-v="tech" onclick="pickDom('tech',this)"><span class="dom-k">Tech / numérique</span><span class="dom-d">Utilisateurs, régulateurs, investisseurs</span></button>
+              <button class="dom-chip" data-v="alim" onclick="pickDom('alim',this)"><span class="dom-k">Alimentaire / restauration</span><span class="dom-d">Consommateurs, distributeurs, contrôle</span></button>
+              <button class="dom-chip" data-v="indus" onclick="pickDom('indus',this)"><span class="dom-k">Industrie / énergie</span><span class="dom-d">Riverains, élus, syndicats, autorités</span></button>
+            </div>
+          </section>
+
+          <section class="tpl-section" id="sh-sec" style="display:none;">
+            <div class="tpl-sec-head"><span class="tpl-sec-num">02</span><span class="tpl-sec-title">Positionner vos acteurs</span></div>
+            <p class="cd">Pour chaque acteur, deux questions : <strong>a-t-il du pouvoir</strong> sur vos décisions, et <strong>est-il concerné</strong> par ce que vous faites ?</p>
+            <div id="sh-pool"></div>
+          </section>
+
+          <section class="tpl-section" id="sh-mat-sec" style="display:none;">
+            <div class="tpl-sec-head"><span class="tpl-sec-num">03</span><span class="tpl-sec-title">Votre matrice</span></div>
+            <div class="mx-wrap">
+              <div class="mx-ylab">Pouvoir</div>
+              <div class="mx-grid">
+                <div class="mx-cell q1" id="q-pp"><div class="mx-cell-h">Gérer étroitement<span>pouvoir + · intérêt +</span></div><div class="mx-items" id="items-pp"></div></div>
+                <div class="mx-cell q2" id="q-pm"><div class="mx-cell-h">Satisfaire<span>pouvoir + · intérêt −</span></div><div class="mx-items" id="items-pm"></div></div>
+                <div class="mx-cell q3" id="q-mp"><div class="mx-cell-h">Informer<span>pouvoir − · intérêt +</span></div><div class="mx-items" id="items-mp"></div></div>
+                <div class="mx-cell q4" id="q-mm"><div class="mx-cell-h">Surveiller<span>pouvoir − · intérêt −</span></div><div class="mx-items" id="items-mm"></div></div>
+              </div>
+              <div class="mx-xlab">Intérêt</div>
+            </div>
+            <div class="reco" id="sh-reco"></div>
+          </section>
+
+          <section class="tpl-section" id="sh-act-sec" style="display:none;">
+            <div class="tpl-sec-head"><span class="tpl-sec-num">04</span><span class="tpl-sec-title">Vos actions — à emporter</span></div>
+            <p class="cd">Pour chaque acteur positionné, la posture et le premier geste concret.</p>
+            <div class="kp-fiches" id="sh-actions"></div>
+          </section>
+
+          <div class="bilan" id="bilan">
+            <span class="bilan-lbl">Lecture</span>
+            <h3>Ce que dit ma carte</h3>
+            <div id="bilan-content"><p class="bilan-empty">Choisissez votre secteur et positionnez vos acteurs : la lecture s'affichera ici.</p></div>
+          </div>
+
+          <div class="note">
+            <strong>Rappel de la fiche.</strong> Quatre quadrants, quatre postures : <strong>gérer étroitement</strong>, <strong>satisfaire</strong>, <strong>informer</strong>, <strong>surveiller</strong>. L'erreur classique : dépenser son énergie sur ceux qui font du bruit plutôt que sur ceux qui décident.
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /body -->
+
+    <footer class="foot"><a href="/home" style="display:inline-flex;flex-direction:column;"><span class="logo-pre">Briefings</span><span><span class="logo-s">SKANNER</span><span class="logo-mag">MAGAZINE</span></span></a><div class="foot-copy">© 2026 — Skanner Magazine</div></footer>
+  </div>
+</div>
+
+<!-- CDN PDF (defer pour ne pas bloquer les onglets) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+
+<!-- JS ONGLETS (OBLIGATOIRE, délégation d'événement) -->
+<script>
+document.addEventListener('click', function(e){
+  var btn = e.target.closest('.tab');
+  if(!btn) return;
+  var name = btn.getAttribute('data-panel');
+  var tabs = document.querySelectorAll('.tab');
+  for(var i=0;i<tabs.length;i++){
+    if(tabs[i].getAttribute('data-panel')===name) tabs[i].classList.add('is-active');
+    else tabs[i].classList.remove('is-active');
+  }
+  var panels = document.querySelectorAll('.panel');
+  for(var j=0;j<panels.length;j++){
+    if(panels[j].id==='panel-'+name) panels[j].classList.add('is-active');
+    else panels[j].classList.remove('is-active');
+  }
+});
+</script>
+
+<!-- JS QUIZ + TEMPLATE -->
+<script>
+// ===== QUIZ — objet FB : 1 entrée par question. c = si bonne réponse, i = si mauvaise =====
+var FB={
+  1:{c:"Exact. Deux axes seulement : pouvoir et intérêt. C'est ce qui rend la matrice utilisable.",i:"Non : ni budget, ni taille, ni localisation. Mendelow retient le pouvoir et l'intérêt."},
+  2:{c:"Exact. Puissant mais peu mobilisé : on l'informe pour éviter un réveil brutal.",i:"Non : l'ignorer est risqué, le solliciter en permanence est contre-productif. On le tient informé."},
+  3:{c:"Exact. Ce sont souvent vos meilleurs relais : ils portent votre message par conviction.",i:"Non : ni indifférence ni méfiance. Ces acteurs sont des alliés potentiels à nourrir."},
+  4:{c:"Exact. Le bruit et le pouvoir sont deux choses différentes — et souvent inverses.",i:"Non : il ne s'agit ni de privilégier les discrets ni d'une question de mesure, mais de distinguer bruit et pouvoir réel."},
+  5:{c:"Exact. Un acteur périphérique peut devenir central en quelques jours.",i:"Non : la carte n'est ni figée ni réservée au lancement. Elle se révise régulièrement."}
+};
+var ans={},score=0;
+document.querySelectorAll('.opt').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var q=parseInt(btn.getAttribute('data-q'),10);
+    var ok=btn.getAttribute('data-ok')==='1';
+    if(ans[q]!==undefined)return;
+    ans[q]=ok;if(ok)score++;
+    var block=document.getElementById('q'+q);
+    block.querySelectorAll('.opt').forEach(function(x){x.disabled=true;});
+    btn.classList.add(ok?'ok':'no');
+    if(!ok)block.querySelectorAll('.opt').forEach(function(x){if(x.getAttribute('data-ok')==='1')x.classList.add('ok');});
+    var f=document.getElementById('f'+q);
+    f.textContent=ok?FB[q].c:FB[q].i;f.className='fb show';
+    if(Object.keys(ans).length===5)done();
+  });
+});
+function done(){
+  var s=document.getElementById('score');s.classList.add('show');
+  document.getElementById('sn').textContent=score+' / 5';
+  var m=["Aucune bonne réponse — reprends la matrice de Mendelow.","1/5 : les deux axes ne sont pas acquis.","2/5 : quelques notions, revois les quatre quadrants.","3/5 : bonne base. Consolide la posture des acteurs endormis.","4/5 : presque tout est là, un dernier point.","5/5 : vous savez prioriser. Direction la cartographie."];
+  document.getElementById('sm').textContent=m[score]||'';
+}
+
+// ===== Barre de progression de lecture =====
+(function(){
+  var bar=document.getElementById('readbar');
+  if(!bar)return;
+  function upd(){
+    var h=document.documentElement;
+    var max=h.scrollHeight-h.clientHeight;
+    var p=max>0?(h.scrollTop||document.body.scrollTop)/max*100:0;
+    bar.style.width=p+'%';
+  }
+  window.addEventListener('scroll',upd,{passive:true});
+  window.addEventListener('resize',upd);upd();
+})();
+
+
+
+// ===== Barre de progression : gérée par le hiérarchiseur (2e script) =====
+
+// ===== Calculateurs =====
+function num(id){ var v=parseFloat(document.getElementById(id).value); return isNaN(v)?0:v; }
+function fmt(n){ return n.toLocaleString('fr-FR',{maximumFractionDigits:2}); }
+
+function calcCAC(){
+  var budget=num('cac-budget'), clients=num('cac-clients');
+  var el=document.getElementById('cac-result');
+  if(clients>0){ window._cac=budget/clients; el.textContent=fmt(window._cac)+' €'; el.classList.remove('muted'); }
+  else { window._cac=0; el.textContent='—'; el.classList.add('muted'); }
+  checkVerdict();
+}
+function calcConv(){
+  var v=num('conv-visiteurs'), a=num('conv-achats');
+  var el=document.getElementById('conv-result');
+  if(v>0){ el.textContent=fmt(a/v*100)+' %'; el.classList.remove('muted'); }
+  else { el.textContent='—'; el.classList.add('muted'); }
+}
+function calcPanier(){
+  var ca=num('panier-ca'), cmd=num('panier-cmd');
+  var el=document.getElementById('panier-result');
+  if(cmd>0){ el.textContent=fmt(ca/cmd)+' €'; el.classList.remove('muted'); }
+  else { el.textContent='—'; el.classList.add('muted'); }
+}
+function calcLTV(){
+  var panier=num('ltv-panier'), freq=num('ltv-freq'), duree=num('ltv-duree');
+  var el=document.getElementById('ltv-result');
+  window._ltv=panier*freq*duree;
+  if(window._ltv>0){ el.textContent=fmt(window._ltv)+' €'; el.classList.remove('muted'); }
+  else { el.textContent='—'; el.classList.add('muted'); }
+  checkVerdict();
+}
+function checkVerdict(){
+  var v=document.getElementById('verdict');
+  if(window._cac>0 && window._ltv>0){
+    var ratio=window._ltv/window._cac;
+    v.classList.add('show');
+    if(ratio>=3){
+      v.className='verdict show good';
+      v.innerHTML='<strong>Modèle sain.</strong> Ta valeur vie client ('+fmt(window._ltv)+' €) vaut '+ratio.toFixed(1)+'× ton coût d\'acquisition ('+fmt(window._cac)+' €). Tu es au-dessus du seuil de 3×. Chaque nouveau client enrichit ton activité.';
+    } else {
+      v.className='verdict show bad';
+      v.innerHTML='<strong>À surveiller.</strong> Ta valeur vie client ('+fmt(window._ltv)+' €) ne vaut que '+ratio.toFixed(1)+'× ton coût d\'acquisition ('+fmt(window._cac)+' €). En dessous de 3×, chaque acquisition fragilise ton activité. Leviers : augmenter le panier, la fréquence, la fidélisation — ou réduire le coût d\'acquisition.';
+    }
+  }
+}
+
+// ===== Cases à cocher du plan d'action =====
+document.querySelectorAll('.action-check').forEach(function(box){
+  box.addEventListener('click',function(){ box.classList.toggle('checked'); });
+});
+
+// ===== Réinitialiser =====
+function resetAll(){
+  if(!confirm('Réinitialiser tous les champs ?'))return;
+  document.querySelectorAll('input,textarea').forEach(function(el){ el.value=''; });
+  document.querySelectorAll('.action-check').forEach(function(b){ b.classList.remove('checked'); });
+  document.querySelectorAll('.calc-result span.rv, [id$="-result"]').forEach(function(e){ e.textContent='—'; e.classList.add('muted'); });
+  document.getElementById('verdict').className='verdict';
+  window._cac=0;window._ltv=0;
+  updateProgress();
+}
+
+// ===== Export PDF réel =====
+function exportPDF(){
+  if(typeof window.jspdf==='undefined' || typeof html2canvas==='undefined'){ alert('Le module d\'export se charge encore, réessaie dans un instant.'); return; }
+  var btn=document.getElementById('btn-pdf');
+  btn.disabled=true; var old=btn.textContent; btn.textContent='Génération…';
+  document.body.classList.add('pdf-mode');
+  var target=document.getElementById('export-zone');
+  html2canvas(target,{scale:2,useCORS:true,backgroundColor:'#ffffff',windowWidth:target.scrollWidth}).then(function(canvas){
+    var img=canvas.toDataURL('image/jpeg',0.92);
+    var pdf=new window.jspdf.jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+    var pw=pdf.internal.pageSize.getWidth(), ph=pdf.internal.pageSize.getHeight();
+    var margin=10, cw=pw-margin*2;
+    var ih=canvas.height*cw/canvas.width;
+    var left=ih, pos=margin;
+    pdf.addImage(img,'JPEG',margin,pos,cw,ih); left-=(ph-margin*2);
+    while(left>0){ pdf.addPage(); pos=margin-(ih-left); pdf.addImage(img,'JPEG',margin,pos,cw,ih); left-=(ph-margin*2); }
+    pdf.save('skanner-diagnostic-ecosysteme-digital.pdf');
+    document.body.classList.remove('pdf-mode');
+    btn.disabled=false; btn.textContent=old;
+  }).catch(function(e){
+    console.error(e); alert('Export impossible, réessaie.');
+    document.body.classList.remove('pdf-mode');
+    btn.disabled=false; btn.textContent=old;
+  });
+}
+
+// ===== CARTOGRAPHIE DES PARTIES PRENANTES (Mendelow) =====
+var DOM_LABEL={tech:'Tech / numérique',alim:'Alimentaire / restauration',indus:'Industrie / énergie',luxe:'Luxe / mode / culture',serv:'Services / conseil'};
+var QUAD={pp:{k:'Gérer étroitement',c:'q1'},pm:{k:'Satisfaire',c:'q2'},mp:{k:'Informer',c:'q3'},mm:{k:'Surveiller',c:'q4'}};
+
+// p = pouvoir attendu, i = intérêt attendu (pour le conseil) · act = premier geste
+var SH={
+ tech:[
+  {id:'s1',n:"Vos utilisateurs actifs",d:"Ils vivent le produit au quotidien et parlent de vous publiquement.",p:0,i:1,
+   act:"Ouvrir un canal de retour direct (bêta, communauté) et publier ce que vous en faites. Ils deviennent vos meilleurs relais."},
+  {id:'s2',n:"L'autorité de régulation",d:"Elle encadre votre activité et peut imposer des contraintes lourdes.",p:1,i:0,
+   act:"Anticiper : documenter votre conformité et prendre contact avant d'y être contraint. Ne jamais découvrir un texte en même temps qu'un contrôle."},
+  {id:'s3',n:"Vos investisseurs",d:"Ils financent et suivent de près la trajectoire.",p:1,i:1,
+   act:"Reporting régulier et transparent, y compris sur les difficultés. Les associer en amont des décisions structurantes."},
+  {id:'s4',n:"Les médias tech spécialisés",d:"Ils façonnent la perception dans l'écosystème.",p:1,i:0,
+   act:"Entretenir la relation hors période d'annonce : partager des données, être disponible. Un journaliste qui vous connaît vous appelle avant d'écrire."},
+  {id:'s5',n:"La communauté open source",d:"Très engagée, elle influence votre réputation technique sans pouvoir contractuel.",p:0,i:1,
+   act:"Contribuer réellement et créditer. Une communauté ignorée devient critique ; une communauté associée devient prescriptrice."},
+  {id:'s6',n:"Les concurrents directs",d:"Ils suivent vos mouvements sans lien direct avec vos décisions.",p:0,i:0,
+   act:"Veille régulière sur leurs prises de parole. Aucune action de communication dédiée."}
+ ],
+ alim:[
+  {id:'s1',n:"Les consommateurs finaux",d:"Ils achètent, jugent et racontent leur expérience.",p:0,i:1,
+   act:"Répondre systématiquement aux avis et questions. Sur l'alimentaire, la confiance se construit sur la transparence des ingrédients et de l'origine."},
+  {id:'s2',n:"Les services de contrôle sanitaire",d:"Ils peuvent suspendre votre activité du jour au lendemain.",p:1,i:1,
+   act:"Relation de coopération constante : documentation à jour, autocontrôles, transparence lors des visites. Jamais de posture défensive."},
+  {id:'s3',n:"La grande distribution",d:"Elle décide de votre référencement et donc de votre accès au marché.",p:1,i:1,
+   act:"Contacts réguliers au-delà des négociations commerciales : partager vos données qualité et vos innovations en amont."},
+  {id:'s4',n:"Les producteurs et fournisseurs",d:"Ils conditionnent votre qualité mais suivent peu votre communication.",p:1,i:0,
+   act:"Formaliser les engagements qualité et les informer de vos prises de parole publiques qui les concernent."},
+  {id:'s5',n:"Les associations de consommateurs",d:"Très mobilisées, elles testent et publient sans pouvoir direct sur vous.",p:0,i:1,
+   act:"Répondre à leurs sollicitations avec des données vérifiables. Une association ignorée publie sans votre version."},
+  {id:'s6',n:"Les acteurs du tourisme local",d:"Concernés indirectement par votre activité.",p:0,i:0,
+   act:"Veille sur les initiatives locales. Une présence ponctuelle suffit."}
+ ],
+ indus:[
+  {id:'s1',n:"Les riverains du site",d:"Ils subissent les nuisances et peuvent se mobiliser fortement.",p:0,i:1,
+   act:"Réunions d'information régulières, pas seulement en cas d'incident. Un numéro dédié pour les signalements et une réponse systématique."},
+  {id:'s2',n:"Les autorités et l'inspection",d:"Elles autorisent, contrôlent et peuvent arrêter votre exploitation.",p:1,i:1,
+   act:"Transparence proactive : signaler soi-même les écarts, tenir les engagements de mise en conformité dans les délais annoncés."},
+  {id:'s3',n:"Les élus locaux",d:"Ils portent la voix du territoire et arbitrent les autorisations.",p:1,i:1,
+   act:"Rencontres régulières hors crise, visites de site, information avant toute décision qui touche l'emploi ou l'environnement local."},
+  {id:'s4',n:"Les syndicats et représentants",d:"Ils négocient et peuvent bloquer, avec un intérêt permanent.",p:1,i:1,
+   act:"Associer en amont plutôt qu'informer après. Le dialogue social précoce est un investissement, pas une concession."},
+  {id:'s5',n:"Les associations environnementales",d:"Très mobilisées, elles alertent et documentent sans pouvoir direct.",p:0,i:1,
+   act:"Publier vos données environnementales de vous-même. Proposer un dialogue documenté plutôt que subir une contre-expertise."},
+  {id:'s6',n:"Les clients industriels lointains",d:"Ils achètent mais suivent peu votre actualité locale.",p:1,i:0,
+   act:"Les informer en amont de tout événement susceptible d'affecter la production ou leur image par association."}
+ ],
+ luxe:[
+  {id:'s1',n:"Les clients fidèles",d:"Ils portent la marque et défendent son image.",p:0,i:1,
+   act:"Traitement privilégié et information en avant-première. Ils deviennent vos ambassadeurs naturels s'ils se sentent considérés."},
+  {id:'s2',n:"Les grands distributeurs",d:"Ils contrôlent une part majeure de vos ventes.",p:1,i:1,
+   act:"Relation de partenariat : partager la stratégie de marque, les coordonner sur les prises de parole, anticiper les tensions d'image."},
+  {id:'s3',n:"Les prescripteurs et créateurs de contenu",d:"Ils orientent l'opinion sans lien contractuel permanent.",p:1,i:1,
+   act:"Relation continue, pas seulement transactionnelle. Les associer aux coulisses crée une légitimité que le partenariat payant n'achète pas."},
+  {id:'s4',n:"Les communautés culturelles concernées",d:"Très attentives aux représentations, sans pouvoir formel.",p:0,i:1,
+   act:"Consulter en amont des campagnes sensibles. Une consultation préalable coûte infiniment moins qu'un retrait de campagne."},
+  {id:'s5',n:"Les investisseurs du groupe",d:"Puissants mais peu impliqués dans le quotidien créatif.",p:1,i:0,
+   act:"Informer des sujets de réputation avant qu'ils ne les découvrent dans la presse économique."},
+  {id:'s6',n:"Les écoles de mode",d:"Vivier de talents, peu impliquées dans vos décisions.",p:0,i:0,
+   act:"Présence ponctuelle (jurys, stages) suffisante pour rester visible auprès des futurs talents."}
+ ],
+ serv:[
+  {id:'s1',n:"Vos clients grands comptes",d:"Ils représentent l'essentiel du chiffre et exigent de la proximité.",p:1,i:1,
+   act:"Points réguliers hors mission, associés à vos évolutions d'offre. Un grand compte qui découvre un changement par hasard est un compte à risque."},
+  {id:'s2',n:"Vos consultants et talents",d:"Ils font la valeur du cabinet et peuvent partir avec les clients.",p:1,i:1,
+   act:"Associer aux décisions structurantes et communiquer en interne avant l'externe. La marque employeur se joue là."},
+  {id:'s3',n:"Les ordres et instances professionnelles",d:"Ils encadrent la déontologie, avec un pouvoir de sanction.",p:1,i:0,
+   act:"Se conformer et documenter. En cas de doute déontologique, solliciter un avis avant plutôt qu'après."},
+  {id:'s4',n:"Les prescripteurs du secteur",d:"Ils recommandent sans décider, très attentifs au marché.",p:0,i:1,
+   act:"Partager votre expertise (publications, interventions) sans démarche commerciale directe. La recommandation vient de la crédibilité."},
+  {id:'s5',n:"Les clients ponctuels",d:"Peu de volume, mais ils parlent de vous.",p:0,i:1,
+   act:"Même qualité de suivi que les grands comptes sur la relation, à défaut du volume. Ils alimentent le bouche-à-oreille."},
+  {id:'s6',n:"Les cabinets concurrents",d:"Ils observent le marché sans lien direct avec vos décisions.",p:0,i:0,
+   act:"Veille sur leurs positionnements et leurs recrutements. Aucune communication dédiée."}
+ ]
+};
+
+var dom=null, pos={};
+
+function pickDom(v,btn){
+  dom=v;pos={};
+  SH[dom].forEach(function(s){pos[s.id]={p:null,i:null};});
+  document.querySelectorAll('#dom-opts .dom-chip').forEach(function(c){c.classList.remove('sel');});
+  btn.classList.add('sel');
+  document.getElementById('sh-sec').style.display='block';
+  document.getElementById('sh-mat-sec').style.display='block';
+  render();
+}
+
+function setAxis(id,axis,val){
+  if(!pos[id])pos[id]={p:null,i:null};
+  pos[id][axis]=val;
+  render();
+}
+function resetItem(id){pos[id]={p:null,i:null};render();}
+
+function quadOf(id){
+  var s=pos[id];
+  if(!s||s.p===null||s.i===null)return null;
+  return (s.p?'p':'m')+(s.i?'p':'m');
+}
+function goodQuad(sh){return (sh.p?'p':'m')+(sh.i?'p':'m');}
+
+function render(){
+  if(!dom)return;
+  var items=SH[dom];
+  var todo=items.filter(function(s){return quadOf(s.id)===null;});
+  document.getElementById('sh-pool').innerHTML=todo.length?todo.map(function(s){
+    var st=pos[s.id]||{};
+    return '<div class="sh-card"><span class="sh-name">'+s.n+'</span><span class="sh-desc">'+s.d+'</span>'+
+      '<div class="sh-qs">'+
+        '<div class="sh-q"><span class="sh-q-lab">Pouvoir</span>'+
+          '<button class="sh-btn'+(st.p===true?' on':'')+'" onclick="setAxis(\''+s.id+'\',\'p\',true)">Fort</button>'+
+          '<button class="sh-btn'+(st.p===false?' on':'')+'" onclick="setAxis(\''+s.id+'\',\'p\',false)">Faible</button></div>'+
+        '<div class="sh-q"><span class="sh-q-lab">Intérêt</span>'+
+          '<button class="sh-btn'+(st.i===true?' on':'')+'" onclick="setAxis(\''+s.id+'\',\'i\',true)">Fort</button>'+
+          '<button class="sh-btn'+(st.i===false?' on':'')+'" onclick="setAxis(\''+s.id+'\',\'i\',false)">Faible</button></div>'+
+      '</div></div>';
+  }).join(''):'<p class="sh-done">Tous les acteurs sont positionnés. Cliquez « repositionner » sur la matrice pour en revoir un.</p>';
+
+  ['pp','pm','mp','mm'].forEach(function(q){
+    var box=document.getElementById('items-'+q);
+    var list=items.filter(function(s){return quadOf(s.id)===q;});
+    box.innerHTML=list.map(function(s){
+      return '<div class="mx-item">'+s.n+'<button onclick="resetItem(\''+s.id+'\')">↺ repositionner</button></div>';
+    }).join('');
+  });
+  buildActions();updateReco();updateProgress();updateBilan();
+}
+
+function buildActions(){
+  var sec=document.getElementById('sh-act-sec');
+  var items=SH[dom].filter(function(s){return quadOf(s.id)!==null;});
+  if(items.length===0){sec.style.display='none';return;}
+  sec.style.display='block';
+  document.getElementById('sh-actions').innerHTML=items.map(function(s){
+    var q=quadOf(s.id);
+    return '<div class="kp-fiche"><div class="kp-fiche-sit">'+s.n+'</div>'+
+      '<span class="sh-act-post '+QUAD[q].c+'">'+QUAD[q].k+'</span>'+
+      '<div class="kp-fiche-lab">Premier geste</div>'+
+      '<div class="kp-fiche-say">'+s.act+'</div></div>';
+  }).join('');
+}
+
+function updateReco(){
+  var reco=document.getElementById('sh-reco');
+  var items=SH[dom];
+  var placed=items.filter(function(s){return quadOf(s.id)!==null;});
+  if(placed.length===0){reco.className='reco';return;}
+  var ecarts=placed.filter(function(s){return quadOf(s.id)!==goodQuad(s);});
+  if(placed.length<items.length){reco.className='reco show warn';reco.innerHTML='<strong>'+(items.length-placed.length)+' acteur(s) à positionner.</strong> Deux questions : peut-il vous bloquer ou vous aider vraiment, et est-il concerné au quotidien ?';}
+  else if(ecarts.length>0){reco.className='reco show warn';reco.innerHTML='<strong>'+ecarts.length+' positionnement(s) inhabituel(s).</strong> Ce n\'est pas forcément une erreur — votre contexte peut différer. Mais vérifiez : sous-estimer le pouvoir d\'un acteur est le risque classique.';}
+  else{reco.className='reco show good';reco.innerHTML='<strong>Carte cohérente.</strong> Vos acteurs sont positionnés comme on l\'observe généralement dans votre secteur. Les postures et gestes sont plus bas.';}
+}
+
+function updateProgress(){
+  if(!dom){var a=document.getElementById('pfill');if(a)a.style.width='0%';var b=document.getElementById('ppct');if(b)b.textContent='0%';return;}
+  var items=SH[dom];
+  var placed=items.filter(function(s){return quadOf(s.id)!==null;}).length;
+  var p=Math.round(placed/items.length*100);
+  var pf=document.getElementById('pfill');if(pf)pf.style.width=p+'%';
+  var pp=document.getElementById('ppct');if(pp)pp.textContent=p+'%';
+}
+
+function updateBilan(){
+  var c=document.getElementById('bilan-content');if(!c)return;
+  if(!dom){c.innerHTML='<p class="bilan-empty">Choisissez votre secteur et positionnez vos acteurs : la lecture s\'affichera ici.</p>';return;}
+  var items=SH[dom];
+  var placed=items.filter(function(s){return quadOf(s.id)!==null;});
+  if(placed.length===0){c.innerHTML='<p class="bilan-empty">Positionnez vos acteurs : la lecture s\'affichera ici.</p>';return;}
+  var cnt={pp:0,pm:0,mp:0,mm:0};
+  placed.forEach(function(s){cnt[quadOf(s.id)]++;});
+  var lines=[];
+  lines.push(['g','<strong>Secteur</strong> : '+DOM_LABEL[dom]+'.']);
+  if(placed.length<items.length)lines.push(['w','Cartographie en cours ('+placed.length+'/'+items.length+').']);
+  lines.push([cnt.pp>0?'g':'w','<strong>'+cnt.pp+' acteur(s) à gérer étroitement</strong> \u2014 c\'est là que doit aller l\'essentiel de votre temps.']);
+  if(cnt.pm>0)lines.push(['w','<strong>'+cnt.pm+' acteur(s) puissant(s) mais peu mobilisé(s)</strong> \u2014 tenez-les informés : leur réveil est le risque le plus sous-estimé.']);
+  if(cnt.mp>0)lines.push(['g','<strong>'+cnt.mp+' relais potentiel(s)</strong> \u2014 très concernés sans pouvoir direct : nourrissez-les, ils portent votre message.']);
+  if(cnt.pp===0&&placed.length===items.length)lines.push(['b','<strong>Aucun acteur clé identifié</strong> \u2014 c\'est inhabituel. Revoyez qui peut réellement vous bloquer ou vous aider.']);
+  if(placed.length===items.length){
+    var ec=placed.filter(function(s){return quadOf(s.id)!==goodQuad(s);}).length;
+    if(ec===0)lines.push(['g','<strong>Carte complète et cohérente</strong> \u2014 vos actions différenciées sont prêtes.']);
+    else lines.push(['w','<strong>'+ec+' écart(s)</strong> avec le positionnement habituel du secteur \u2014 à vérifier au regard de votre contexte.']);
+  }
+  var bad=lines.some(function(l){return l[0]==='b';}),warn=lines.some(function(l){return l[0]==='w';});
+  var head=bad?'Carte à revoir : la priorisation ne ressort pas.':(warn?'Cartographie en bonne voie \u2014 quelques points à vérifier.':'Carte lisible : vous savez où porter votre effort.');
+  var html='<p style="color:#fff;font-size:14px;line-height:1.6;margin:0 0 16px;">'+head+'</p>';
+  lines.forEach(function(l){var s=l[0]==='g'?'OK':(l[0]==='w'?'!':'X');html+='<div class="bilan-line"><span class="bilan-ico '+l[0]+'">'+s+'</span><span>'+l[1]+'</span></div>';});
+  c.innerHTML=html;
+}
+
+function copyCarte(){
+  if(!dom){alert('Choisissez d\'abord votre secteur.');return;}
+  var items=SH[dom].filter(function(s){return quadOf(s.id)!==null;});
+  if(items.length===0){alert('Positionnez d\'abord vos acteurs.');return;}
+  var l=['CARTE DES PARTIES PRENANTES — '+DOM_LABEL[dom].toUpperCase(),''];
+  ['pp','pm','mp','mm'].forEach(function(q){
+    var list=items.filter(function(s){return quadOf(s.id)===q;});
+    if(list.length===0)return;
+    l.push(QUAD[q].k.toUpperCase());
+    list.forEach(function(s){l.push('- '+s.n);l.push('  Premier geste : '+s.act);});
+    l.push('');
+  });
+  var txt=l.join('\n');
+  var btn=document.getElementById('btn-copy');var old=btn.textContent;
+  function done(){btn.textContent='\u2713 Copié';setTimeout(function(){btn.textContent=old;},1500);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done).catch(function(){fb(txt);done();});}else{fb(txt);done();}
+  function fb(x){var ta=document.createElement('textarea');ta.value=x;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);}
+}
+
+function resetAll(){
+  if(!confirm('Réinitialiser ?'))return;
+  dom=null;pos={};
+  document.querySelectorAll('#dom-opts .dom-chip').forEach(function(c){c.classList.remove('sel');});
+  ['sh-sec','sh-mat-sec','sh-act-sec'].forEach(function(id){document.getElementById(id).style.display='none';});
+  document.getElementById('sh-reco').className='reco';
+  updateProgress();updateBilan();
+}
+
+function exportPDF(){if(typeof window.jspdf==='undefined'||typeof html2canvas==='undefined'){alert('Le module d\'export se charge encore, réessaie.');return;}var btn=document.getElementById('btn-pdf');btn.disabled=true;var old=btn.textContent;btn.textContent='Génération…';document.body.classList.add('pdf-mode');var target=document.getElementById('export-zone');html2canvas(target,{scale:2,useCORS:true,backgroundColor:'#ffffff',windowWidth:target.scrollWidth}).then(function(canvas){var img=canvas.toDataURL('image/jpeg',0.92);var pdf=new window.jspdf.jsPDF({orientation:'portrait',unit:'mm',format:'a4'});var pw=pdf.internal.pageSize.getWidth(),ph=pdf.internal.pageSize.getHeight();var margin=10,cw=pw-margin*2;var ih=canvas.height*cw/canvas.width;var left=ih,pos2=margin;pdf.addImage(img,'JPEG',margin,pos2,cw,ih);left-=(ph-margin*2);while(left>0){pdf.addPage();pos2=margin-(ih-left);pdf.addImage(img,'JPEG',margin,pos2,cw,ih);left-=(ph-margin*2);}pdf.save('skanner-carte-parties-prenantes.pdf');document.body.classList.remove('pdf-mode');btn.disabled=false;btn.textContent=old;}).catch(function(e){console.error(e);alert('Export impossible.');document.body.classList.remove('pdf-mode');btn.disabled=false;btn.textContent=old;});}
+
+// INIT
+updateProgress();updateBilan();
+</script>
+</body></html>
