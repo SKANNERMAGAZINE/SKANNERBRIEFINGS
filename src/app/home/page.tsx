@@ -70,8 +70,8 @@ export default function HomePage() {
           </Link>
 
           <Link href="/thematique/pr" className="home-theme-card">
-            <div className="home-theme-img" style={{position:'relative',background:'linear-gradient(135deg,#FF6FD8,#E8FF00)'}}>
-              <span className="home-theme-badge home-theme-badge-on">Disponible</span>
+            <div className="home-theme-img" style={{position:'relative'}}>
+              <Image src="/pr-accueil.jpg" alt="PR & Communication" fill style={{objectFit:'cover',objectPosition:'center top'}} />
             </div>
             <div className="home-theme-body">
               <h3 className="home-theme-title">PR &amp; Communication</h3>
