@@ -27,9 +27,8 @@ export const CHAPITRES: Record<Theme, Chapitre[]> = {
   ],
   pr: [
     { num:1, slug:'fondations-rp', nom:'Fondations des relations presse', desc:'Écosystème média, message clé, communiqué, retombées', statut:'dispo' },
+    { num:2, slug:'prise-parole-influence', nom:'Prise de parole & influence', desc:'Media training, communication de crise, influence, notoriété', statut:'dispo' },
   ],
-  { num:2, slug:'prise-parole-influence', nom:'Prise de parole & influence', desc:'Media training, communication de crise, influence, notoriété', statut:'dispo' },
-   ],
   mgmt: [], mktg: [], fin: [],
 }
 
